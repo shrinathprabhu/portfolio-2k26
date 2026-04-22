@@ -1,0 +1,46 @@
+{
+  "subject": "Shrinath Prabhu",
+  "subjectType": "Person",
+  "description": "Senior Staff Frontend Engineer with 7+ years of experience, based in Mumbai, India. Currently at Avail Project leading frontend architecture. Previously led frontend at Arcana Network for 4.5 years through acquisition. Shipped 4 Chrome Extensions with 100% approval rate. Built SendIt (65K+ accounts, 20K+ peak DAU).",
+  "url": "https://shrinath.me",
+  "contact": {
+    "email": "hello@shrinath.me",
+    "linkedin": "https://linkedin.com/in/shrinath-prabhu",
+    "github": "https://github.com/shrinathprabhu",
+    "twitter": "https://twitter.com/shrinath_prabhu"
+  },
+  "expertise": [
+    "Vue.js",
+    "React",
+    "TypeScript",
+    "Node.js",
+    "Chrome Extension Development (Manifest V3)",
+    "Frontend Architecture",
+    "Web3 / DeFi",
+    "AI-augmented Development",
+    "Cross-chain Bridging",
+    "Privacy-first Analytics"
+  ],
+  "notableWork": [
+    {
+      "name": "Arcana Chrome Extension Wallet",
+      "description": "Non-custodial sidebar wallet supporting 13 blockchains, 750+ users, 4.7★ rating",
+      "url": "https://chromewebstore.google.com/detail/arcana-wallet/nieddmedbnibfkfokcionggafcmcgkpi"
+    },
+    {
+      "name": "SendIt",
+      "description": "Cross-chain transfer app with email/X/ENS support, 65K+ accounts, 20K+ peak DAU"
+    },
+    {
+      "name": "Nexus Fastbridge",
+      "description": "Cross-rollup bridge UI with custom Vite SEO solution, no Next.js",
+      "url": "https://fastbridge.availproject.org"
+    },
+    {
+      "name": "Outline Analytics",
+      "description": "Privacy-first, cookie-free web analytics platform, open source",
+      "url": "https://useoutline.xyz"
+    }
+  ],
+  "availability": "Open to full-time remote roles, fractional engagements, and technical advisory"
+}

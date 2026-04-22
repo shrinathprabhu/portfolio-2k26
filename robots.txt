@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://shrinath.me/sitemap.xml
+
+# LLM-readable content
+# llms.txt: https://shrinath.me/llms.txt
+# humans.json: https://shrinath.me/humans.json
+
+# Block error pages from indexing
+Disallow: /404.html

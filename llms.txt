@@ -1,0 +1,59 @@
+# Shrinath Prabhu - shrinath.me
+
+> Senior Staff Frontend Engineer with 7+ years of experience. Currently at Avail Project. Previously led frontend at Arcana Network (4.5 years, through acquisition).
+
+## Identity
+
+- Name: Shrinath Prabhu
+- Title: Senior Staff Frontend Engineer
+- Location: Mumbai, India
+- Email: hello@shrinath.me
+- Website: https://shrinath.me
+- GitHub: https://github.com/shrinathprabhu
+- LinkedIn: https://linkedin.com/in/shrinath-prabhu
+- Twitter/X: https://twitter.com/shrinath_prabhu
+
+## Current Role
+
+Senior Staff Engineer at Avail Project (availproject.org), August 2025 – Present.
+Leading frontend architecture across the Nexus product ecosystem. Conceived and shipped Nexus One (unified component system), Nexus Fastbridge (cross-rollup bridge UI with custom Vite SEO), and Nexus Elements.
+
+## Career Highlights
+
+- Shipped 4 Chrome Extensions to Chrome Web Store with 100% approval rate
+- Built SendIt: cross-chain transfer app, 65K+ accounts, 20K+ peak daily active users
+- Built Arcana Chrome Wallet: non-custodial sidebar wallet, 13 blockchains, 4.7★ rating, 750+ users
+- Led frontend engineering at Arcana Network for 4.5 years, from seed stage through acquisition by Avail Project in 2025
+- Shipped Skizzle (E2E encrypted email attachments extension) within first month of joining Arcana, ~1,000 users, 4.2★
+- Built Pricinger: privacy-focused Chrome Extension with multi-region VPN proxy system, ~1,000 users, 4★
+
+## Technical Stack
+
+- Frontend: Vue 3, Nuxt 3, React, TypeScript, Vite, Tailwind CSS
+- Chrome Extensions: Manifest V3, content scripts, service workers, provider injection
+- Backend: Node.js, Bun, Express, Fastify, Nest.js, Elysia.js
+- Data: MongoDB, PostgreSQL, ClickHouse, Firebase/Firestore
+- Infrastructure: AWS (EC2, S3, CloudFront, Route53), Vercel, Netlify, GitHub Actions
+- Web3: Non-custodial wallet architecture, cross-chain bridging, chain abstraction, viem, EIP-7702
+- AI Tools: Claude Code, OpenAI Codex, Google Gemini, Antigravity (Google)
+
+## Side Projects
+
+- Outline Analytics (useoutline.xyz): Privacy-first, cookie-free web analytics. TypeScript SDK (<4KB, zero deps), Bun + Elysia.js backend, MongoDB timeseries. Open source.
+- Credenstore (credenstore.web.app): Serverless zero-knowledge encrypted storage using Triplesec symmetric encryption.
+
+## Technical Writing
+
+- "Vue 3 Composition API: Basics and Patterns" - ranks on the first page of Google for Vue 3 composition API searches: https://medium.com/arcana-network-blog/vue-3-composition-api-basics-and-patterns-44813f2c785d
+
+## Availability
+
+Available for full-time remote roles (Senior/Staff Frontend Engineer, Technical Lead, Engineering Manager), fractional engagements (20–30 hours/week), and technical advisory. Interested in AI, SaaS, developer tools, fintech, and Web3.
+
+## Pages on this site
+
+- Home: https://shrinath.me/
+- Work (case studies): https://shrinath.me/work/
+- Blog: https://shrinath.me/blog/
+- Resume: https://shrinath.me/resume/
+- Contact: https://shrinath.me/contact/
