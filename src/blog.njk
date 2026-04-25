@@ -1,0 +1,53 @@
+---
+layout: page.njk
+title: "Blog - Shrinath Prabhu | Frontend Architecture & Chrome Extensions"
+description: "Technical writing by Shrinath Prabhu on frontend architecture, Chrome Extension development, Vue.js patterns, Vite SEO, and building products from zero to launch."
+ogTitle: "Blog - Shrinath Prabhu | Frontend Architecture & Chrome Extensions"
+ogDescription: "Technical writing on frontend architecture, Chrome Extension development, Vue.js patterns, and building products from zero to launch."
+ogType: website
+ogImageAlt: "Shrinath Prabhu - Blog"
+permalink: /blog/
+---
+
+<div class="page-header fade-in">
+  <h1>Blog</h1>
+  <p>
+    Technical writing on frontend architecture, Chrome Extensions, and
+    building products from zero to launch.
+  </p>
+</div>
+
+<div>
+  {% for post in collections.posts %}
+  <a
+    href="{{ post.url }}"
+    class="blog-item fade-in"
+    style="display: block; text-decoration: none; color: inherit"
+  >
+    <div class="blog-item__title">{{ post.data.title }}</div>
+    <div class="blog-item__desc">{{ post.data.description }}</div>
+    <div class="blog-item__meta">
+      {% if post.data.category %}
+      <span class="blog-item__tag">{{ post.data.category }}</span>
+      {% endif %}
+      <span style="margin-left: 8px">{{ post.date | readableDate }}</span>
+      {% if post.data.readingTime %}
+      <span> · {{ post.data.readingTime }}</span>
+      {% endif %}
+    </div>
+  </a>
+  {% endfor %}
+</div>
+
+<div
+  style="
+    text-align: center;
+    padding: 40px 0 16px;
+    border-top: 1px solid var(--border-light);
+  "
+>
+  <p style="margin-bottom: 16px">
+    Want to see the projects behind the posts?
+  </p>
+  <a href="/work/" class="btn btn--primary">View Case Studies →</a>
+</div>

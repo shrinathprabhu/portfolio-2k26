@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    {# ── SEO & Meta ── #}
+    {% include "partials/seo.njk" %}
+
+    {# ── Preconnects & DNS Prefetch ── #}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+
+    {# ── Fonts ── #}
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap"
+    />
+
+    {# ── Favicon ── #}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    {# ── Stylesheets ── #}
+    <link rel="stylesheet" href="/styles.css" />
+    {% if stylesheet %}
+    <link rel="stylesheet" href="{{ stylesheet }}" />
+    {% endif %}
+
+    {# ── Per-page inline CSS ── #}
+    {% if extraCSS %}
+    <style>
+      {{ extraCSS | safe }}
+    </style>
+    {% endif %}
+
+    {# ── Per-page extra <head> content (preload, prefetch, etc.) ── #}
+    {% if extraHead %}
+    {{ extraHead | safe }}
+    {% endif %}
+
+    {# ── RSS feed discovery ── #}
+    <link rel="alternate" type="application/atom+xml" title="Shrinath Prabhu — Blog" href="/feed.xml" />
+  </head>
+  <body class="{{ bodyClass or '' }}">
+    {% include "partials/header.njk" %}
+
+    {{ content | safe }}
+
+    {% include "partials/footer.njk" %}
+  </body>
+</html>

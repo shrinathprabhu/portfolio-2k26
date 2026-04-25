@@ -1,0 +1,61 @@
+---
+layout: base.njk
+bodyClass: page-blog-post
+stylesheet: /blog.css
+ogType: article
+---
+
+<div class="container">
+  <article class="blog-post">
+    <div class="page-header fade-in">
+      <h1>{{ title }}</h1>
+      <div class="blog-post__meta">
+        {% if category %}
+        <span class="blog-item__tag">{{ category }}</span>
+        {% endif %}
+        <span>{{ date | readableDate }}</span>
+        {% if readingTime %}
+        <span> · {{ readingTime }}</span>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="blog-post__body fade-in">
+      {{ content | safe }}
+    </div>
+  </article>
+
+  <div style="text-align: center; padding: 48px 0 16px; border-top: 1px solid var(--border-light);">
+    <p style="margin-bottom: 16px">Read more posts or see the projects behind them.</p>
+    <a href="/blog/" class="btn btn--primary">← All Posts</a>
+    <a href="/work/" class="btn btn--secondary" style="margin-left: 8px">Case Studies →</a>
+  </div>
+</div>
+
+{# ── JSON-LD: BlogPosting ── #}
+{% if ogType == "article" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{ title }}",
+  "description": "{{ description }}",
+  "url": "https://shrinath.me{{ page.url }}",
+  "datePublished": "{{ date | isoDate }}",
+  {% if dateModified %}
+  "dateModified": "{{ dateModified | isoDate }}",
+  {% endif %}
+  "author": {
+    "@type": "Person",
+    "name": "{{ author or 'Shrinath Prabhu' }}",
+    "url": "https://shrinath.me"
+  },
+  {% if keywords %}
+  "keywords": {{ keywords | dump | safe }},
+  {% endif %}
+  {% if category %}
+  "articleSection": "{{ category }}"
+  {% endif %}
+}
+</script>
+{% endif %}

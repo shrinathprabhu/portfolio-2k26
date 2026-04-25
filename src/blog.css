@@ -1,0 +1,186 @@
+/* ═══════════════════════════════════════════
+   Blog Post Styles
+   Code highlighting & article typography
+   ═══════════════════════════════════════════ */
+
+/* ── Blog post layout ── */
+.blog-post__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.blog-post__body {
+  padding-top: 32px;
+}
+
+/* ── Article typography ── */
+.blog-post__body h2 {
+  margin: 40px 0 16px;
+  font-size: 1.35rem;
+}
+
+.blog-post__body h3 {
+  margin: 32px 0 12px;
+  font-size: 1.1rem;
+}
+
+.blog-post__body p {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.blog-post__body ul,
+.blog-post__body ol {
+  padding-left: 24px;
+  margin-bottom: 16px;
+}
+
+.blog-post__body li {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+}
+
+.blog-post__body blockquote {
+  border-left: 3px solid var(--accent);
+  padding: 12px 20px;
+  margin: 20px 0;
+  background: var(--bg-card);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-style: italic;
+}
+
+.blog-post__body blockquote p {
+  color: var(--text-secondary);
+  margin-bottom: 0;
+}
+
+.blog-post__body a {
+  font-weight: 500;
+}
+
+.blog-post__body img {
+  border-radius: var(--radius);
+  margin: 20px 0;
+}
+
+.blog-post__body hr {
+  border: none;
+  border-top: 1px solid var(--border-light);
+  margin: 40px 0;
+}
+
+/* ── Code blocks (syntax highlighting) ── */
+.blog-post__body pre {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin: 20px 0;
+}
+
+.blog-post__body pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: inherit;
+}
+
+.blog-post__body code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--bg-tag);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* ── Prism.js token colors ── */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #5c6370;
+  font-style: italic;
+}
+
+.token.punctuation {
+  color: var(--text-tertiary);
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #d19a66;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #98c379;
+}
+
+.token.operator,
+.token.entity,
+.token.url {
+  color: #56b6c2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+  color: #c678dd;
+}
+
+.token.function,
+.token.class-name {
+  color: #61afef;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: #c678dd;
+}
+
+@media (prefers-color-scheme: dark) {
+  .blog-post__body pre {
+    background: #1e1e22;
+    border-color: #2a2a2e;
+  }
+}
+
+/* ── Callout boxes ── */
+.callout {
+  border-left: 3px solid var(--accent);
+  background: var(--bg-card);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 16px 20px;
+  margin: 20px 0;
+  font-size: 0.9rem;
+}
+.callout--warning {
+  border-left-color: #e8a838;
+}
+.callout--danger {
+  border-left-color: #e85d4a;
+}
+.callout--tip {
+  border-left-color: #4ade80;
+}
