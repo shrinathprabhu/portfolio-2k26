@@ -15,7 +15,7 @@
 }
 
 .blog-post__body {
-  padding-top: 32px;
+  padding-top: 16px;
 }
 
 /* ── Article typography ── */
@@ -89,6 +89,60 @@
   margin: 20px 0;
 }
 
+/* ── Titled code blocks (filename tab) ── */
+.code-titled {
+  margin: 20px 0;
+}
+
+.code-titled__name {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-bottom: none;
+  padding: 8px 16px;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.code-titled pre {
+  margin: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+
+/* ── Copy button ── */
+.code-copy {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--bg-tag);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-tertiary);
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s, color 0.2s, background 0.2s;
+}
+
+pre:hover .code-copy {
+  opacity: 1;
+}
+
+.code-copy:hover {
+  color: var(--text-primary);
+  background: var(--bg-card-hover);
+}
+
+.code-copy.copied {
+  color: #22c55e;
+  opacity: 1;
+}
+
 .blog-post__body pre code {
   background: none;
   padding: 0;
@@ -105,6 +159,12 @@
 }
 
 /* ── Prism.js token colors ── */
+.blog-post__body pre code .token {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+}
+
 .token.comment,
 .token.prolog,
 .token.doctype,
@@ -161,6 +221,10 @@
 
 @media (prefers-color-scheme: dark) {
   .blog-post__body pre {
+    background: #1e1e22;
+    border-color: #2a2a2e;
+  }
+  .code-titled__name {
     background: #1e1e22;
     border-color: #2a2a2e;
   }

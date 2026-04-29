@@ -16,5 +16,11 @@ export default {
       }
       return false;
     },
+    ogImage: (data) => {
+      if (data.image) {
+        return `https://shrinath.me${data.image}`;
+      }
+      return undefined; // falls back to global meta-image.png
+    },
   },
 };

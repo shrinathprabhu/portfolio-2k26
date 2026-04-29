@@ -4,7 +4,19 @@ import mila from "markdown-it-link-attributes";
 
 export default function (eleventyConfig) {
   // ── Plugins ──
-  eleventyConfig.addPlugin(syntaxHighlight);
+  eleventyConfig.addPlugin(syntaxHighlight, {
+    init: function ({ Prism }) {
+      // Register Vue SFC as markup so ```vue code fences get syntax highlighting.
+      // Vue SFCs are HTML with embedded JS (<script>) and CSS (<style>),
+      // which Prism's markup grammar already handles.
+      Object.defineProperty(Prism.languages, "vue", {
+        get() {
+          return Prism.languages.markup;
+        },
+        configurable: true,
+      });
+    },
+  });
   eleventyConfig.addPlugin(pluginRss);
 
   // ── Passthrough copy ──
@@ -53,6 +65,19 @@ export default function (eleventyConfig) {
     return JSON.stringify(obj);
   });
 
+  eleventyConfig.addFilter("readingTime", (content) => {
+    if (!content) return "1 min read";
+    // Strip HTML tags and code blocks, then count words
+    const text = content
+      .replace(/<[^>]*>/g, "")
+      .replace(/```[\s\S]*?```/g, "")
+      .replace(/`[^`]*`/g, "")
+      .trim();
+    const words = text.split(/\s+/).filter(Boolean).length;
+    const minutes = Math.max(1, Math.round(words / 200));
+    return `${minutes} min read`;
+  });
+
   // ── Shortcodes ──
   eleventyConfig.addPairedShortcode(
     "callout",
@@ -67,6 +92,20 @@ export default function (eleventyConfig) {
     return `<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:20px 0;border-radius:var(--radius);">
       <iframe src="https://www.youtube-nocookie.com/embed/${id}" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen loading="lazy"></iframe>
     </div>`;
+  });
+
+  // ── Transforms ──
+  eleventyConfig.addTransform("codeFilename", function (content) {
+    if (!this.page.outputPath || !this.page.outputPath.endsWith(".html")) {
+      return content;
+    }
+    // Detect <p><strong>filename.ext</strong></p> followed by <pre> and wrap
+    // them in a titled code block. Requires a dot in the name to avoid
+    // matching regular bold text that happens to precede a code block.
+    return content.replace(
+      /<p><strong>([^<]+\.[a-zA-Z]+)<\/strong><\/p>\s*(<pre\s[^>]*>[\s\S]*?<\/pre>)/g,
+      '<div class="code-titled"><div class="code-titled__name">$1</div>$2</div>',
+    );
   });
 
   // ── Markdown config ──

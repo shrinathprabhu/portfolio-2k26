@@ -31,10 +31,15 @@ permalink: /blog/
       <span class="blog-item__tag">{{ post.data.category }}</span>
       {% endif %}
       <span style="margin-left: 8px">{{ post.date | readableDate }}</span>
-      {% if post.data.readingTime %}
-      <span> · {{ post.data.readingTime }}</span>
-      {% endif %}
+      <span> · {{ post.data.readingTime or (post.templateContent | readingTime) }}</span>
     </div>
+    {% if post.data.postTags %}
+    <div class="tags" style="margin-top: 8px;">
+      {% for tag in post.data.postTags %}
+      <span class="tag" style="font-size: 0.75rem;">{{ tag }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
   </a>
   {% endfor %}
 </div>
