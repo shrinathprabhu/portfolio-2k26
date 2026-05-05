@@ -47,7 +47,7 @@ Here is the central technical challenge of building a crypto wallet extension: e
 
 More recently, [EIP-6963](https://eips.ethereum.org/EIPS/eip-6963) introduced Multi Injected Provider Discovery, a standard that allows multiple wallet extensions to coexist without fighting over `window.ethereum`. Instead of overwriting each other's provider, wallets dispatch `eip6963:announceProvider` events and dApps listen for them. We implemented both standards: EIP-1193 for legacy dApp compatibility and EIP-6963 for modern multi-wallet discovery.
 
-If you are building a new wallet, you have two choices: invent your own provider API and hope dApps adopt it (they will not), or inject a MetaMask-compatible provider and make every existing dApp work with your wallet out of the box.
+If you are building a new wallet, you have two choices: invent your own provider API and hope dApps adopt it (they will not), or inject a MetaMask compatible provider and make every existing dApp work with your wallet out of the box.
 
 I chose the second option. This meant studying MetaMask's open-source codebase to understand exactly how their provider injection works, then building a compatible implementation from scratch.
 
