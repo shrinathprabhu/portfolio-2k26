@@ -6,7 +6,7 @@ category: "Frontend Architecture"
 featured: true
 keywords:
   ["Vite", "SEO", "SPA", "React", "build-time", "Open Graph", "meta tags"]
-postTags: ["react", "vite", "seo"]
+postTags: ["posts", "react", "vite", "seo"]
 image: "/images/vite-seo.jpg"
 ---
 

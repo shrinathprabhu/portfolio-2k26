@@ -34,20 +34,15 @@ permalink: /blog/
       <div class="blog-card__title">{{ post.data.title }}</div>
       <div class="blog-card__desc">{{ post.data.description }}</div>
       <div class="blog-card__footer">
-        <div class="blog-item__meta">
-          {% if post.data.category %}
+        {% if post.data.category %}
+        <div style="margin-bottom: 6px;">
           <span class="blog-item__tag">{{ post.data.category }}</span>
-          {% endif %}
-          <span{% if post.data.category %} style="margin-left: 8px"{% endif %}>{{ post.date | readableDate }}</span>
-          <span> · {{ post.data.readingTime or (post.templateContent | readingTime) }}</span>
-        </div>
-        {% if post.data.postTags %}
-        <div class="tags" style="margin-top: 8px;">
-          {% for tag in post.data.postTags %}
-          <span class="tag" style="font-size: 0.75rem;">{{ tag }}</span>
-          {% endfor %}
         </div>
         {% endif %}
+        <div class="blog-item__meta">
+          <span>{{ post.date | readableDate }}</span>
+          <span> · {{ post.data.readingTime or (post.templateContent | readingTime) }}</span>
+        </div>
       </div>
     </div>
   </a>

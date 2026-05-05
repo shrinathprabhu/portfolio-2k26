@@ -1,8 +1,8 @@
 ---
 title: "Vue 3 Composition API: Basics and Patterns"
 description: "A practical guide to the Vue 3 Composition API covering reactive state, composables, script setup, TypeScript integration, and patterns from building production apps with Vue for 6+ years."
-date: 2023-06-15
-dateModified: 2026-04-23
+date: 2022-04-02
+dateModified: 2026-04-02
 category: "Vue.js"
 featured: true
 keywords:
@@ -17,7 +17,7 @@ keywords:
     "Vue patterns",
     "Vue best practices",
   ]
-postTags: ["vue", "typescript", "frontend"]
+postTags: ["posts", "vue", "typescript", "frontend"]
 originalUrl: "https://medium.com/arcana-network-blog/vue-3-composition-api-basics-and-patterns-44813f2c785d"
 image: "/images/vue-3-composition-api.jpg"
 ---
