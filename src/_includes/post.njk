@@ -23,6 +23,12 @@ ogType: article
       {% endif %}
     </div>
 
+    {% if image %}
+    <div class="blog-post__cover fade-in">
+      <img src="{{ image }}" alt="{{ title }}" loading="lazy" />
+    </div>
+    {% endif %}
+
     <div class="blog-post__body fade-in">
       {{ content | safe }}
     </div>

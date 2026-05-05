@@ -13,5 +13,9 @@
     "@11ty/eleventy-plugin-rss": "^2.0.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
     "markdown-it-link-attributes": "^4.0.1"
+  },
+  "dependencies": {
+    "@fontsource-variable/dm-sans": "^5.2.8",
+    "@fontsource-variable/outfit": "^5.2.8"
   }
 }

@@ -5,6 +5,7 @@ description: "Technical writing by Shrinath Prabhu on frontend architecture, Chr
 ogTitle: "Blog - Shrinath Prabhu | Frontend Architecture & Chrome Extensions"
 ogDescription: "Technical writing on frontend architecture, Chrome Extension development, Vue.js patterns, and building products from zero to launch."
 ogType: website
+ogImage: "https://shrinath.me/images/blog-meta.jpg"  
 ogImageAlt: "Shrinath Prabhu - Blog"
 permalink: /blog/
 ---
@@ -17,29 +18,38 @@ permalink: /blog/
   </p>
 </div>
 
-<div>
+<div class="blog-grid">
   {% for post in collections.posts %}
   <a
     href="{{ post.url }}"
-    class="blog-item fade-in"
-    style="display: block; text-decoration: none; color: inherit"
+    class="blog-card fade-in"
+    style="text-decoration: none; color: inherit"
   >
-    <div class="blog-item__title">{{ post.data.title }}</div>
-    <div class="blog-item__desc">{{ post.data.description }}</div>
-    <div class="blog-item__meta">
-      {% if post.data.category %}
-      <span class="blog-item__tag">{{ post.data.category }}</span>
-      {% endif %}
-      <span style="margin-left: 8px">{{ post.date | readableDate }}</span>
-      <span> · {{ post.data.readingTime or (post.templateContent | readingTime) }}</span>
-    </div>
-    {% if post.data.postTags %}
-    <div class="tags" style="margin-top: 8px;">
-      {% for tag in post.data.postTags %}
-      <span class="tag" style="font-size: 0.75rem;">{{ tag }}</span>
-      {% endfor %}
+    {% if post.data.image %}
+    <div class="blog-card__image">
+      <img src="{{ post.data.image }}" alt="{{ post.data.title }}" loading="lazy" />
     </div>
     {% endif %}
+    <div class="blog-card__body">
+      <div class="blog-card__title">{{ post.data.title }}</div>
+      <div class="blog-card__desc">{{ post.data.description }}</div>
+      <div class="blog-card__footer">
+        <div class="blog-item__meta">
+          {% if post.data.category %}
+          <span class="blog-item__tag">{{ post.data.category }}</span>
+          {% endif %}
+          <span{% if post.data.category %} style="margin-left: 8px"{% endif %}>{{ post.date | readableDate }}</span>
+          <span> · {{ post.data.readingTime or (post.templateContent | readingTime) }}</span>
+        </div>
+        {% if post.data.postTags %}
+        <div class="tags" style="margin-top: 8px;">
+          {% for tag in post.data.postTags %}
+          <span class="tag" style="font-size: 0.75rem;">{{ tag }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
   </a>
   {% endfor %}
 </div>

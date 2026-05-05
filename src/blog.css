@@ -18,6 +18,19 @@
   padding-top: 16px;
 }
 
+/* ── Blog post cover image ── */
+.blog-post__cover {
+  margin: 24px 0 8px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.blog-post__cover img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* ── Article typography ── */
 .blog-post__body h2 {
   margin: 40px 0 16px;

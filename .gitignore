@@ -15,3 +15,5 @@ Thumbs.db
 
 # Context file (not needed in production)
 context.md
+
+.DS_Store

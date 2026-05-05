@@ -23,7 +23,13 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/styles.css");
   eleventyConfig.addPassthroughCopy("src/blog.css");
   eleventyConfig.addPassthroughCopy("src/favicon.svg");
-  eleventyConfig.addPassthroughCopy("src/meta-image.png");
+  // Fontsource self-hosted fonts
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/@fontsource-variable/outfit/files": "fonts/outfit",
+  });
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/@fontsource-variable/dm-sans/files": "fonts/dm-sans",
+  });
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy("src/llms.txt");
   eleventyConfig.addPassthroughCopy("src/humans.json");
@@ -34,6 +40,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/blog/**/*.jpg");
   eleventyConfig.addPassthroughCopy("src/blog/**/*.gif");
   eleventyConfig.addPassthroughCopy("src/blog/**/*.webp");
+  eleventyConfig.addPassthroughCopy("src/images");
 
   // ── Collections ──
   eleventyConfig.addCollection("posts", function (collectionApi) {
