@@ -1,0 +1,60 @@
+{# ── SEO Meta Tags ── #}
+
+{# Title #}
+{% if title %}
+<title>{{ title }}</title>
+{% else %}
+<title>Shrinath Prabhu | Senior Staff Frontend Engineer</title>
+{% endif %}
+
+{# Description #}
+{% if description %}
+<meta name="description" content="{{ description }}" />
+{% endif %}
+
+{# Author #}
+<meta name="author" content="{{ author or 'Shrinath Prabhu' }}" />
+
+{# Robots #}
+<meta name="robots" content="{{ robots or 'index, follow' }}" />
+
+{# ── Open Graph ── #}
+<meta property="og:title" content="{{ ogTitle or title or 'Shrinath Prabhu' }}" />
+{% if ogDescription or description %}
+<meta property="og:description" content="{{ ogDescription or description }}" />
+{% endif %}
+<meta property="og:type" content="{{ ogType or 'website' }}" />
+<meta property="og:url" content="{{ canonical or ('https://shrinath.me' + page.url) }}" />
+<meta property="og:image" content="{{ ogImage or 'https://shrinath.me/images/meta.jpg' }}" />
+<meta property="og:image:width" content="{{ ogImageWidth or '1200' }}" />
+<meta property="og:image:height" content="{{ ogImageHeight or '630' }}" />
+{% if ogImageAlt %}
+<meta property="og:image:alt" content="{{ ogImageAlt }}" />
+{% endif %}
+<meta property="og:site_name" content="Shrinath Prabhu" />
+{% if ogLocale %}
+<meta property="og:locale" content="{{ ogLocale }}" />
+{% endif %}
+
+{# ── Twitter Card ── #}
+<meta name="twitter:card" content="{{ twitterCard or 'summary_large_image' }}" />
+<meta name="twitter:site" content="@shrinath_prabhu" />
+<meta name="twitter:creator" content="@shrinath_prabhu" />
+<meta name="twitter:title" content="{{ twitterTitle or ogTitle or title or 'Shrinath Prabhu' }}" />
+{% if twitterDescription or ogDescription or description %}
+<meta name="twitter:description" content="{{ twitterDescription or ogDescription or description }}" />
+{% endif %}
+<meta name="twitter:image" content="{{ twitterImage or ogImage or 'https://shrinath.me/images/meta.jpg' }}" />
+{% if twitterImageAlt or ogImageAlt %}
+<meta name="twitter:image:alt" content="{{ twitterImageAlt or ogImageAlt }}" />
+{% endif %}
+
+{# ── Canonical URL ── #}
+<link rel="canonical" href="{{ canonical or ('https://shrinath.me' + page.url) }}" />
+
+{# ── JSON-LD Structured Data (from frontmatter) ── #}
+{% if jsonLd %}
+<script type="application/ld+json">
+{{ jsonLd | safe }}
+</script>
+{% endif %}

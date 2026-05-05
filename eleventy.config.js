@@ -1,0 +1,139 @@
+import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
+import pluginRss from "@11ty/eleventy-plugin-rss";
+import mila from "markdown-it-link-attributes";
+
+export default function (eleventyConfig) {
+  // ── Plugins ──
+  eleventyConfig.addPlugin(syntaxHighlight, {
+    init: function ({ Prism }) {
+      // Register Vue SFC as markup so ```vue code fences get syntax highlighting.
+      // Vue SFCs are HTML with embedded JS (<script>) and CSS (<style>),
+      // which Prism's markup grammar already handles.
+      Object.defineProperty(Prism.languages, "vue", {
+        get() {
+          return Prism.languages.markup;
+        },
+        configurable: true,
+      });
+    },
+  });
+  eleventyConfig.addPlugin(pluginRss);
+
+  // ── Passthrough copy ──
+  eleventyConfig.addPassthroughCopy("src/styles.css");
+  eleventyConfig.addPassthroughCopy("src/blog.css");
+  eleventyConfig.addPassthroughCopy("src/favicon.svg");
+  // Fontsource self-hosted fonts
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/@fontsource-variable/outfit/files": "fonts/outfit",
+  });
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/@fontsource-variable/dm-sans/files": "fonts/dm-sans",
+  });
+  eleventyConfig.addPassthroughCopy("src/robots.txt");
+  eleventyConfig.addPassthroughCopy("src/llms.txt");
+  eleventyConfig.addPassthroughCopy("src/humans.json");
+  eleventyConfig.addPassthroughCopy("src/_headers");
+  eleventyConfig.addPassthroughCopy("src/_redirects");
+  eleventyConfig.addPassthroughCopy("src/resume/ShrinathPrabhu2026Resume.pdf");
+  eleventyConfig.addPassthroughCopy("src/blog/**/*.png");
+  eleventyConfig.addPassthroughCopy("src/blog/**/*.jpg");
+  eleventyConfig.addPassthroughCopy("src/blog/**/*.gif");
+  eleventyConfig.addPassthroughCopy("src/blog/**/*.webp");
+  eleventyConfig.addPassthroughCopy("src/images");
+
+  // ── Collections ──
+  eleventyConfig.addCollection("posts", function (collectionApi) {
+    return collectionApi
+      .getFilteredByGlob("src/blog/**/*.md")
+      .filter((post) => !post.data.draft)
+      .sort((a, b) => b.date - a.date);
+  });
+
+  // ── Filters ──
+  eleventyConfig.addFilter("readableDate", (dateObj) => {
+    return new Date(dateObj).toLocaleDateString("en-US", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  });
+
+  eleventyConfig.addFilter("isoDate", (dateObj) => {
+    return new Date(dateObj).toISOString();
+  });
+
+  eleventyConfig.addFilter("head", (array, n) => {
+    if (!Array.isArray(array)) return array;
+    return array.slice(0, n);
+  });
+
+  eleventyConfig.addFilter("dump", (obj) => {
+    return JSON.stringify(obj);
+  });
+
+  eleventyConfig.addFilter("readingTime", (content) => {
+    if (!content) return "1 min read";
+    // Strip HTML tags and code blocks, then count words
+    const text = content
+      .replace(/<[^>]*>/g, "")
+      .replace(/```[\s\S]*?```/g, "")
+      .replace(/`[^`]*`/g, "")
+      .trim();
+    const words = text.split(/\s+/).filter(Boolean).length;
+    const minutes = Math.max(1, Math.round(words / 200));
+    return `${minutes} min read`;
+  });
+
+  // ── Shortcodes ──
+  eleventyConfig.addPairedShortcode(
+    "callout",
+    function (content, type = "info") {
+      return `<div class="callout callout--${type}">
+      <div class="callout__content">${content}</div>
+    </div>`;
+    },
+  );
+
+  eleventyConfig.addShortcode("youtube", function (id) {
+    return `<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:20px 0;border-radius:var(--radius);">
+      <iframe src="https://www.youtube-nocookie.com/embed/${id}" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen loading="lazy"></iframe>
+    </div>`;
+  });
+
+  // ── Transforms ──
+  eleventyConfig.addTransform("codeFilename", function (content) {
+    if (!this.page.outputPath || !this.page.outputPath.endsWith(".html")) {
+      return content;
+    }
+    // Detect <p><strong>filename.ext</strong></p> followed by <pre> and wrap
+    // them in a titled code block. Requires a dot in the name to avoid
+    // matching regular bold text that happens to precede a code block.
+    return content.replace(
+      /<p><strong>([^<]+\.[a-zA-Z]+)<\/strong><\/p>\s*(<pre\s[^>]*>[\s\S]*?<\/pre>)/g,
+      '<div class="code-titled"><div class="code-titled__name">$1</div>$2</div>',
+    );
+  });
+
+  // ── Markdown config ──
+  eleventyConfig.amendLibrary("md", (mdLib) => {
+    mdLib.set({ html: true, linkify: true, typographer: true });
+    mdLib.use(mila, {
+      attrs: {
+        target: "_blank",
+        rel: "noopener",
+      },
+    });
+  });
+
+  return {
+    dir: {
+      input: "src",
+      output: "_site",
+      includes: "_includes",
+    },
+    markdownTemplateEngine: "njk",
+    htmlTemplateEngine: "njk",
+    templateFormats: ["njk", "md", "html"],
+  };
+}

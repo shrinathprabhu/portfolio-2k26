@@ -1,0 +1,39 @@
+{# ── Navigation ── #}
+<nav class="nav" aria-label="Primary navigation">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo" aria-label="Shrinath Prabhu - Home"
+      ><img
+        src="/favicon.svg"
+        alt="Shrinath Prabhu Logo"
+        width="28"
+        height="28"
+    /></a>
+    <button
+      class="nav__toggle"
+      onclick="
+        document.querySelector('.nav__links').classList.toggle('open')
+      "
+      aria-label="Toggle navigation menu"
+    >
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+      >
+        <line x1="3" y1="5" x2="17" y2="5" />
+        <line x1="3" y1="10" x2="17" y2="10" />
+        <line x1="3" y1="15" x2="17" y2="15" />
+      </svg>
+    </button>
+    <div class="nav__links">
+      <a href="/"{% if page.url == "/" %} class="active"{% endif %}>Home</a>
+      <a href="/work/"{% if page.url == "/work/" %} class="active"{% endif %}>Work</a>
+      <a href="/blog/"{% if page.url and page.url.startsWith("/blog/") %} class="active"{% endif %}>Blog</a>
+      <a href="/resume/"{% if page.url == "/resume/" %} class="active"{% endif %}>Resume</a>
+      <a href="/contact/"{% if page.url == "/contact/" %} class="active"{% endif %}>Contact</a>
+    </div>
+  </div>
+</nav>

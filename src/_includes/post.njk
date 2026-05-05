@@ -1,0 +1,93 @@
+---
+layout: base.njk
+bodyClass: page-blog-post
+stylesheet: /blog.css
+ogType: article
+---
+
+<div class="container">
+  <article class="blog-post">
+    <div class="page-header fade-in">
+      <h1>{{ title }}</h1>
+      <div class="blog-post__meta">
+        {% if category %}
+        <span class="blog-item__tag">{{ category }}</span>
+        {% endif %}
+        <span>{{ date | readableDate }}</span>
+        <span> · {{ readingTime or (content | readingTime) }}</span>
+      </div>
+      {% if dateModified %}
+      <div class="blog-post__meta" style="margin-top: 4px; font-size: 0.8rem;">
+        <span>Updated: {{ dateModified | readableDate }}</span>
+      </div>
+      {% endif %}
+    </div>
+
+    {% if image %}
+    <div class="blog-post__cover fade-in">
+      <img src="{{ image }}" alt="{{ title }}" loading="lazy" />
+    </div>
+    {% endif %}
+
+    <div class="blog-post__body fade-in">
+      {{ content | safe }}
+    </div>
+  </article>
+
+  <div style="text-align: center; padding: 48px 0 16px; border-top: 1px solid var(--border-light);">
+    <p style="margin-bottom: 16px">Read more posts or see the projects behind them.</p>
+    <a href="/blog/" class="btn btn--primary">← All Posts</a>
+    <a href="/work/" class="btn btn--secondary" style="margin-left: 8px">Case Studies →</a>
+  </div>
+</div>
+
+<script>
+// Copy-to-clipboard for code blocks
+document.querySelectorAll(".blog-post__body pre").forEach((pre) => {
+  const btn = document.createElement("button");
+  btn.className = "code-copy";
+  btn.setAttribute("aria-label", "Copy code");
+  btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
+  pre.style.position = "relative";
+  pre.appendChild(btn);
+  btn.addEventListener("click", () => {
+    const code = pre.querySelector("code");
+    navigator.clipboard.writeText(code.textContent).then(() => {
+      btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>`;
+      btn.classList.add("copied");
+      setTimeout(() => {
+        btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
+        btn.classList.remove("copied");
+      }, 1500);
+    });
+  });
+});
+</script>
+
+{# ── JSON-LD: BlogPosting ── #}
+{% if ogType == "article" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{ title }}",
+  "description": "{{ description }}",
+  "url": "https://shrinath.me{{ page.url }}",
+  "datePublished": "{{ date | isoDate }}",
+  {% if dateModified %}
+  "dateModified": "{{ dateModified | isoDate }}",
+  {% endif %}
+  "author": {
+    "@type": "Person",
+    "name": "{{ author or 'Shrinath Prabhu' }}",
+    "url": "https://shrinath.me"
+  },
+  {% if keywords %}
+  "keywords": {{ keywords | dump | safe }},
+  {% endif %}
+  {% if category %}
+  "articleSection": "{{ category }}"
+  {% endif %}
+}
+</script>
+{% endif %}

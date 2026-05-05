@@ -3,12 +3,39 @@
    Light default · Dark via system preference
    ═══════════════════════════════════════════ */
 
-/* Google Fonts loaded via <link> in HTML for performance - no @import */
+/* Self-hosted via fontsource — no external network requests */
+
+/* Outfit Variable — normal */
+@font-face {
+  font-family: 'Outfit Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('/fonts/outfit/outfit-latin-wght-normal.woff2') format('woff2-variations');
+}
+
+/* DM Sans Variable — normal */
+@font-face {
+  font-family: 'DM Sans Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 1000;
+  src: url('/fonts/dm-sans/dm-sans-latin-wght-normal.woff2') format('woff2-variations');
+}
+
+/* DM Sans Variable — italic */
+@font-face {
+  font-family: 'DM Sans Variable';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 100 1000;
+  src: url('/fonts/dm-sans/dm-sans-latin-wght-italic.woff2') format('woff2-variations');
+}
 
 /* ── Tokens ── */
 :root {
-  --font-heading: 'Outfit', system-ui, sans-serif;
-  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-heading: 'Outfit Variable', system-ui, sans-serif;
+  --font-body: 'DM Sans Variable', system-ui, sans-serif;
   --font-mono: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
 
   /* Light mode */
@@ -477,24 +504,68 @@ code, .mono {
   font-size: 0.875rem;
 }
 
-/* ── Blog list ── */
-.blog-item {
-  padding: 24px 0;
-  border-bottom: 1px solid var(--border-light);
+/* ── Blog card grid ── */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 16px;
 }
-.blog-item:last-child { border-bottom: none; }
-.blog-item__title {
+.blog-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: all 0.25s;
+}
+.blog-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+  color: inherit;
+}
+.blog-card__image {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--bg-tag);
+}
+.blog-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.blog-card:hover .blog-card__image img {
+  transform: scale(1.04);
+}
+.blog-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20px;
+}
+.blog-card__title {
   font-family: var(--font-heading);
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: var(--text-primary);
   margin-bottom: 8px;
+  line-height: 1.35;
 }
-.blog-item__desc {
-  font-size: 0.9rem;
+.blog-card__desc {
+  font-size: 0.85rem;
   color: var(--text-secondary);
-  line-height: 1.65;
-  margin-bottom: 8px;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.blog-card__footer {
+  margin-top: auto;
 }
 .blog-item__meta { font-size: 0.8rem; color: var(--text-tertiary); }
 .blog-item__tag {
@@ -505,6 +576,12 @@ code, .mono {
   border-radius: 99px;
   background: var(--accent-bg);
   color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ── Resume page ── */
