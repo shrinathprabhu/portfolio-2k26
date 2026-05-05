@@ -10,6 +10,10 @@
     {# ── Favicon ── #}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+    {# ── Font preloads (eliminate FOUT) ── #}
+    <link rel="preload" href="/fonts/outfit/outfit-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/dm-sans/dm-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+
     {# ── Stylesheets ── #}
     <link rel="stylesheet" href="/styles.css" />
     {% if stylesheet %}
