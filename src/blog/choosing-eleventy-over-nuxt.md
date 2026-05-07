@@ -16,6 +16,7 @@ keywords:
     "build tool",
   ]
 image: "/images/eleventy-over-nuxt.jpg"
+featured: true
 ---
 
 I have used Vue and Nuxt professionally for over 6 years. I have built dashboards, Chrome Extensions, SDK documentation sites, and landing pages with Nuxt. If someone asks me what framework to use for a content-heavy website, my default answer is Nuxt 3.

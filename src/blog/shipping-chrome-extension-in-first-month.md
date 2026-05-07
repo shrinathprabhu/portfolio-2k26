@@ -3,7 +3,6 @@ title: "Shipping a Production Chrome Extension in Your First Month at a New Comp
 description: "How I shipped Skizzle, an end-to-end encrypted email attachment extension for Gmail within 30 days of joining a startup. Architecture decisions, scoping strategy, and what I would do differently."
 date: 2026-04-27
 category: "Chrome Extensions"
-featured: false
 keywords:
   [
     "Chrome Extension development",

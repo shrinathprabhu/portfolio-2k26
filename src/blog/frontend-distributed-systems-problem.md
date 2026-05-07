@@ -16,6 +16,7 @@ keywords:
     "staff frontend engineer",
   ]
 image: "/images/frontend-distributed-systems.jpg"
+featured: true
 ---
 
 A backend engineer deploys code to servers they control, known hardware, known OS, known runtime, known network. A frontend engineer deploys code to every device on the planet simultaneously, unknown hardware, unknown browser version, unknown screen size, unknown network speed, unknown ad blockers, unknown browser extensions, unknown accessibility needs, unknown language. The backend has staging environments that mirror production. The frontend's production environment is every phone, laptop, and tablet on earth, and no two are identical.
