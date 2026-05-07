@@ -79,12 +79,28 @@ if (mermaidBlocks.length > 0) {
       lineColor: '#6b8aff',
       secondaryColor: '#1e1e2e',
       tertiaryColor: '#16161e',
+      // Sequence Diagram specific
       actorBorder: '#3a3a4e',
       actorBkg: '#1e1e2e',
       actorTextColor: '#d4d4d4',
       signalColor: '#d4d4d4',
       signalTextColor: '#d4d4d4',
+      // Flowchart specific
+      textColor: '#d4d4d4',
+      tertiaryTextColor: '#d4d4d4',
+      nodeBkg: '#2a2a3e',
+      nodeBorder: '#3a3a4e',
+      nodeTextColor: '#d4d4d4',
+      clusterBkg: '#16161e',
+      clusterBorder: '#3a3a4e',
+      edgeLabelBackground: '#1e1e2e',
     },
+    themeCSS: `
+      .nodeLabel, .nodeLabel p { color: #d4d4d4 !important; fill: #d4d4d4 !important; }
+      .cluster-label text { fill: #d4d4d4 !important; }
+      .cluster-label span { color: #d4d4d4 !important; }
+      .edgeLabel, .edgeLabel p { color: #d4d4d4cc !important; background-color: #2f2f47 !important; }
+    `,
     sequence: {
       actorMargin: 60,
       messageMargin: 30,

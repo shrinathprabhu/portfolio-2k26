@@ -47,7 +47,19 @@ export default function (eleventyConfig) {
     return collectionApi
       .getFilteredByGlob("src/blog/**/*.md")
       .filter((post) => !post.data.draft)
-      .sort((a, b) => b.date - a.date);
+      .sort((a, b) => {
+        const dateA = a.data.dateModified || a.date;
+        const dateB = b.data.dateModified || b.date;
+        return dateB - dateA;
+      })
+      .sort((a, b) => {
+        const aFeatured = a.data.featured === true;
+        const bFeatured = b.data.featured === true;
+
+        if (aFeatured && !bFeatured) return -1;
+        if (!aFeatured && bFeatured) return 1;
+        return 0;
+      });
   });
 
   // ── Filters ──
