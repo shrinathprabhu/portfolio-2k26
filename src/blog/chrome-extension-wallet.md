@@ -1,7 +1,7 @@
 ---
 title: "How I Built a Chrome Extension Wallet for 10+ Blockchains"
 description: "Architecture decisions behind building a non-custodial sidebar wallet, provider injection, MetaMask compatibility, Manifest V3 constraints, content script communication, and unified balance management across 10+ chains."
-date: 2026-05-06
+date: 2026-05-02
 category: "Chrome Extensions"
 keywords:
   [

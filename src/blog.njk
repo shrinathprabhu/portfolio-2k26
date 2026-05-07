@@ -22,7 +22,7 @@ permalink: /blog/
   {% for post in collections.posts %}
   <a
     href="{{ post.url }}"
-    class="blog-card fade-in"
+    class="blog-card fade-in{% if post.data.featured %} blog-card--featured{% endif %}"
     style="text-decoration: none; color: inherit"
   >
     {% if post.data.image %}
@@ -31,6 +31,9 @@ permalink: /blog/
     </div>
     {% endif %}
     <div class="blog-card__body">
+      {% if post.data.featured %}
+      <span class="blog-card__featured">★ Featured</span>
+      {% endif %}
       <div class="blog-card__title">{{ post.data.title }}</div>
       <div class="blog-card__desc">{{ post.data.description }}</div>
       <div class="blog-card__footer">

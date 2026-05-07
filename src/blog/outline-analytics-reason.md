@@ -1,7 +1,7 @@
 ---
 title: "Why I Am Building an Analytics Platform When Plausible Already Exists"
 description: "There are already privacy-first analytics tools. Here is why I am building another one, what I think the market is missing, and an honest assessment of whether this is a good idea."
-date: 2026-05-04
+date: 2026-05-05
 postTags: ["posts", "outline-analytics", "privacy", "startup"]
 category: "Building"
 keywords:

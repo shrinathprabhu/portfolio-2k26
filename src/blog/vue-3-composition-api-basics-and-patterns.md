@@ -405,7 +405,7 @@ const theme = useLocalStorage("theme", "light");
 
 The Composition API is about organizing code by logical concern rather than by framework convention. Start with `<script setup>` for every new component. Extract repeated patterns into composables. Use `ref()` for everything (yes, even objects). Type your props and emits. And when a component starts feeling too long, that is your signal to extract a composable, not to add more sections to a growing file.
 
-For detailed case studies of applications I have built with Vue 3, including a [Chrome Extension wallet supporting 13 blockchains](https://shrinath.me/work/#wallet) and a [SendIt](https://shrinath.me/work/#sendit), visit [shrinath.me/work](https://shrinath.me/work/).
+For detailed case studies of applications I have built with Vue 3, including a [Chrome Extension wallet supporting 10+ blockchains](https://shrinath.me/work/#wallet) and a [SendIt](https://shrinath.me/work/#sendit), visit [shrinath.me/work](https://shrinath.me/work/).
 
 ---
 

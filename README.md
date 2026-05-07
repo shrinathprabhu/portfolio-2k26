@@ -8,7 +8,7 @@ For detailed case studies on each project, visit [shrinath.me/work](https://shri
 
 ## What I've built
 
-**Arcana Wallet** - Non-custodial sidebar wallet supporting 13 blockchains, cross-chain transactions, dApp injection into Aave/Uniswap/Lido, transaction signing, and unified balance management. 750+ users, 4.7 stars during a crypto bear market. Built with Vue 3 and viem. [View on Chrome Web Store →](https://chromewebstore.google.com/detail/arcana-wallet/nieddmedbnibfkfokcionggafcmcgkpi)
+**Arcana Wallet** - Non-custodial sidebar wallet supporting 10+ blockchains, cross-chain transactions, dApp injection into Aave/Uniswap/Lido, transaction signing, and unified balance management. 750+ users, 4.7 stars during a crypto bear market. Built with Vue 3 and viem. [View on Chrome Web Store →](https://chromewebstore.google.com/detail/arcana-wallet/nieddmedbnibfkfokcionggafcmcgkpi)
 
 **SendIt** - Cross-chain token transfer app replacing wallet addresses with email/X handles/ENS. Scaled to 65K+ accounts and 20K+ peak DAU. Frontend traffic exceeded Netlify Pro limits despite aggressive caching, migrated to self-managed AWS infrastructure.
 
