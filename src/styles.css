@@ -119,7 +119,7 @@ code, .mono {
 /* ── Layout ── */
 .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
 .container--wide { max-width: var(--max-w-wide); margin: 0 auto; padding: 0 24px; }
-.section { padding: 64px 0; }
+.section { padding-top: 64px; padding-bottom: 64px; }
 .section + .section { border-top: 1px solid var(--border-light); }
 
 /* ── Navigation ── */
@@ -827,7 +827,7 @@ code, .mono {
   .hero { padding-top: 40px; padding-bottom: 24px; }
   .hero__stats { gap: 12px 20px; padding: 20px; }
   .hero__stat-value { font-size: 1.25rem; }
-  .section { padding: 40px 0; }
+  .section { padding-top: 40px; padding-bottom: 40px; }
   .projects-grid { grid-template-columns: 1fr; }
   .case-study__title { font-size: 1.3rem; }
   .exp-header { flex-direction: column; gap: 2px; }
