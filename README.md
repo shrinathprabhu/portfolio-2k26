@@ -1,6 +1,6 @@
 # Shrinath Prabhu
 
-**Senior Staff Frontend Engineer** with 7+ years building production web applications, Web3 wallets, and privacy-first tooling.
+**Senior Staff Frontend Engineer** with 8+ years building production web applications, Web3 wallets, and privacy-first tooling.
 
 I have shipped **4 Chrome Extensions** to the Chrome Web Store with a **100% approval rate**, including a non-custodial multi-chain sidebar wallet rated 4.7 stars. Most frontend engineers never ship even one.
 

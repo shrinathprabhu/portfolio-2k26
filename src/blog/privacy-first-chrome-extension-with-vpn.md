@@ -1,7 +1,7 @@
 ---
 title: "Building a Privacy-First Chrome Extension with Multi-Region VPN Proxies"
 description: "How I built Pricinger, a Chrome Extension that fights dynamic pricing by routing traffic through VPN proxies in multiple countries, spoofing user agents, and automating per-site privacy optimization."
-date: 2023-07-21
+date: 2026-04-28
 category: "Chrome Extensions"
 postTags: ["posts", "chrome-extensions", "privacy", "node"]
 keywords:

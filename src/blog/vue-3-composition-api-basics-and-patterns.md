@@ -4,7 +4,6 @@ description: "A practical guide to the Vue 3 Composition API covering reactive s
 date: 2022-04-02
 dateModified: 2026-04-02
 category: "Vue.js"
-featured: true
 keywords:
   [
     "Vue 3",

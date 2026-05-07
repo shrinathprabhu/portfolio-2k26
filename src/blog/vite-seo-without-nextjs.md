@@ -1,7 +1,7 @@
 ---
 title: "SEO for Vite SPAs Without Next.js"
 description: "How I achieved full SEO capability for a production cross-chain bridge using build-time HTML page generation in Vite, no SSR framework needed."
-date: 2026-05-05
+date: 2026-05-03
 category: "Frontend Architecture"
 featured: true
 keywords:
