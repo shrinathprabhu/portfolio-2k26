@@ -175,17 +175,26 @@ code, .mono {
 .nav__toggle { display: none; background: none; border: none; cursor: pointer; color: var(--text-primary); }
 @media (max-width: 640px) {
   .nav__links {
-    display: none;
+    display: flex;
     position: absolute;
     top: 56px; left: 0; right: 0;
     flex-direction: column;
-    background: var(--bg-nav);
-    backdrop-filter: blur(16px);
+    background: var(--bg);
     border-bottom: 1px solid var(--border);
     padding: 16px 24px;
     gap: 12px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
   }
-  .nav__links.open { display: flex; }
+  .nav__links.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
   .nav__links a.active::after { display: none; }
   .nav__toggle { display: block; }
 }
