@@ -199,6 +199,26 @@ code, .mono {
   .nav__toggle { display: block; }
 }
 
+/* ── Hamburger Animation ── */
+.hamburger-icon {
+  overflow: visible;
+}
+.hamburger-icon line {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.nav__toggle.open .line-1 {
+  transform: translateY(5px) rotate(45deg);
+}
+.nav__toggle.open .line-2 {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.nav__toggle.open .line-3 {
+  transform: translateY(-5px) rotate(-45deg);
+}
+
 /* ── Hero ── */
 .hero { padding-top: 56px; padding-bottom: 40px; }
 .hero__label {

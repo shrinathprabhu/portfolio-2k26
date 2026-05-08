@@ -11,12 +11,10 @@
     /></a>
     <button
       class="nav__toggle"
-      onclick="
-        document.querySelector('.nav__links').classList.toggle('open')
-      "
       aria-label="Toggle navigation menu"
     >
       <svg
+        class="hamburger-icon"
         width="20"
         height="20"
         viewBox="0 0 20 20"
@@ -24,9 +22,9 @@
         stroke="currentColor"
         stroke-width="1.8"
       >
-        <line x1="3" y1="5" x2="17" y2="5" />
-        <line x1="3" y1="10" x2="17" y2="10" />
-        <line x1="3" y1="15" x2="17" y2="15" />
+        <line x1="3" y1="5" x2="17" y2="5" class="line-1" />
+        <line x1="3" y1="10" x2="17" y2="10" class="line-2" />
+        <line x1="3" y1="15" x2="17" y2="15" class="line-3" />
       </svg>
     </button>
     <div class="nav__links">
@@ -38,3 +36,23 @@
     </div>
   </div>
 </nav>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.querySelector('.nav__toggle');
+    const links = document.querySelector('.nav__links');
+    
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      links.classList.toggle('open');
+      toggle.classList.toggle('open');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (links.classList.contains('open') && !links.contains(e.target) && !toggle.contains(e.target)) {
+        links.classList.remove('open');
+        toggle.classList.remove('open');
+      }
+    });
+  });
+</script>
