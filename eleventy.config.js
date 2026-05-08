@@ -23,6 +23,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/styles.css");
   eleventyConfig.addPassthroughCopy("src/blog.css");
   eleventyConfig.addPassthroughCopy("src/favicon.svg");
+  eleventyConfig.addPassthroughCopy("src/favicon.ico");
   // Fontsource self-hosted fonts
   eleventyConfig.addPassthroughCopy({
     "node_modules/@fontsource-variable/outfit/files": "fonts/outfit",
