@@ -38,7 +38,9 @@
   <body class="{{ bodyClass or '' }}">
     {% include "partials/header.njk" %}
 
-    {{ content | safe }}
+    <main>
+      {{ content | safe }}
+    </main>
 
     {% include "partials/footer.njk" %}
   </body>
