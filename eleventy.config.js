@@ -73,6 +73,9 @@ export default function (eleventyConfig) {
   });
 
   eleventyConfig.addFilter("isoDate", (dateObj) => {
+    if (dateObj === "now") {
+      return new Date().toISOString();
+    }
     return new Date(dateObj).toISOString();
   });
 

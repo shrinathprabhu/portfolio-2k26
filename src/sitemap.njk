@@ -8,7 +8,7 @@ eleventyExcludeFromCollections: true
   {%- if not page.data.eleventyExcludeFromCollections and page.url and page.data.robots != "noindex, nofollow" %}
   <url>
     <loc>https://shrinath.me{{ page.url }}</loc>
-    <lastmod>{{ page.date | isoDate }}</lastmod>
+    <lastmod>{{ "now" | isoDate }}</lastmod>
   </url>
   {%- endif %}
   {%- endfor %}
