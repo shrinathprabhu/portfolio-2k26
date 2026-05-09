@@ -43,6 +43,9 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/blog/**/*.webp");
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("src/js");
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/mermaid/dist/mermaid.esm.min.mjs": "js/mermaid.esm.min.mjs",
+  });
 
   // ── Collections ──
   eleventyConfig.addCollection("posts", function (collectionApi) {

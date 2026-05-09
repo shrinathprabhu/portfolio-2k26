@@ -22,7 +22,7 @@ document.querySelectorAll(".blog-post__body pre").forEach((pre) => {
 // Mermaid diagram rendering
 const mermaidBlocks = document.querySelectorAll('pre > code.language-mermaid');
 if (mermaidBlocks.length > 0) {
-  import('https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs').then(({ default: mermaid }) => {
+  import('/js/mermaid.esm.min.mjs').then(({ default: mermaid }) => {
     mermaid.initialize({
       startOnLoad: false,
       theme: 'dark',
