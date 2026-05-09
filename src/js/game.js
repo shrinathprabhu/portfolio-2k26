@@ -1,0 +1,317 @@
+(function () {
+  const canvas = document.getElementById("game");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
+  const scoreEl = document.getElementById("score");
+  const promptEl = document.getElementById("prompt");
+  const easterEl = document.getElementById("easter");
+
+  // Responsive canvas
+  const dpr = window.devicePixelRatio || 1;
+  const W = 480,
+    H = 160;
+  canvas.width = W * dpr;
+  canvas.height = H * dpr;
+  ctx.scale(dpr, dpr);
+
+  // Colors (respect dark mode)
+  const isDark = window.matchMedia(
+    "(prefers-color-scheme: dark)",
+  ).matches;
+  const COL = {
+    ground: isDark ? "#444" : "#d4d4d4",
+    player: isDark ? "#e0e0e0" : "#1a1a19",
+    obstacle: isDark ? "#ef4444" : "#dc2626",
+    text: isDark ? "#a0a0a0" : "#6b6b68",
+    accent: isDark ? "#6d8cff" : "#2d5be3",
+    cloud: isDark ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.03)",
+  };
+
+  const GROUND_Y = H - 30;
+
+  // Game state
+  let state = "idle"; // idle, playing, dead
+  let score = 0,
+    best = 0,
+    frame = 0;
+  let speed = 3.5;
+
+  // Player
+  const player = {
+    x: 50,
+    y: GROUND_Y,
+    w: 16,
+    h: 24,
+    vy: 0,
+    grounded: true,
+  };
+
+  // Obstacles
+  let obstacles = [];
+  let nextSpawn = 80;
+
+  // Clouds (decoration)
+  let clouds = [
+    { x: 100, y: 25, w: 40, h: 12 },
+    { x: 280, y: 40, w: 30, h: 10 },
+    { x: 420, y: 20, w: 35, h: 11 },
+  ];
+
+  // Easter egg messages
+  const messages = [
+    "💡 Pro tip: you can also press ↑ to jump",
+    "🐛 These bugs aren't real. My code is clean.",
+    "🚀 Shipping at 60fps, even on a 404.",
+    "⌨️ Built this game in fewer lines than my webpack config.",
+    "🎮 High scores are stored in your heart (not localStorage).",
+    "☕ No frameworks were harmed in the making of this game.",
+    "🦖 No dinosaurs were harmed either.",
+  ];
+
+  function jump() {
+    if (state === "idle") {
+      state = "playing";
+      score = 0;
+      speed = 3.5;
+      obstacles = [];
+      nextSpawn = 80;
+      frame = 0;
+      promptEl.style.opacity = 0;
+    }
+    if (state === "dead") {
+      state = "playing";
+      score = 0;
+      speed = 3.5;
+      player.y = GROUND_Y;
+      player.vy = 0;
+      player.grounded = true;
+      obstacles = [];
+      nextSpawn = 80;
+      frame = 0;
+      promptEl.style.opacity = 0;
+    }
+    if (player.grounded) {
+      player.vy = -8.5;
+      player.grounded = false;
+    }
+  }
+
+  // Controls
+  document.addEventListener("keydown", (e) => {
+    if (e.code === "Space" || e.code === "ArrowUp") {
+      e.preventDefault();
+      jump();
+    }
+  });
+  canvas.addEventListener("click", jump);
+  canvas.addEventListener(
+    "touchstart",
+    (e) => {
+      e.preventDefault();
+      jump();
+    },
+    { passive: false },
+  );
+
+  function spawnObstacle() {
+    const types = [
+      { w: 10, h: 20 + Math.random() * 12 }, // thin tall
+      { w: 18, h: 14 + Math.random() * 8 }, // wide short
+      { w: 8, h: 28 + Math.random() * 6 }, // very thin tall
+    ];
+    const t = types[Math.floor(Math.random() * types.length)];
+    obstacles.push({ x: W + 10, y: GROUND_Y - t.h, w: t.w, h: t.h });
+  }
+
+  function update() {
+    if (state !== "playing") return;
+
+    frame++;
+    score = Math.floor(frame / 6);
+    speed = 3.5 + score * 0.008; // gradually speed up
+
+    // Player physics
+    player.vy += 0.5; // gravity
+    player.y += player.vy;
+    if (player.y >= GROUND_Y) {
+      player.y = GROUND_Y;
+      player.vy = 0;
+      player.grounded = true;
+    }
+
+    // Obstacles
+    nextSpawn--;
+    if (nextSpawn <= 0) {
+      spawnObstacle();
+      nextSpawn = 55 + Math.random() * 45 - Math.min(score * 0.15, 20);
+    }
+    for (let i = obstacles.length - 1; i >= 0; i--) {
+      obstacles[i].x -= speed;
+      if (obstacles[i].x + obstacles[i].w < 0) {
+        obstacles.splice(i, 1);
+        continue;
+      }
+      // Collision (with a small forgiveness margin)
+      const o = obstacles[i];
+      const m = 3; // forgiveness margin
+      if (
+        player.x + player.w - m > o.x &&
+        player.x + m < o.x + o.w &&
+        player.y > o.y + m
+      ) {
+        state = "dead";
+        if (score > best) best = score;
+        scoreEl.textContent = `Score: ${score}  ·  Best: ${best}`;
+        promptEl.style.opacity = 1;
+        easterEl.textContent =
+          messages[Math.floor(Math.random() * messages.length)];
+      }
+    }
+
+    // Clouds
+    for (const c of clouds) {
+      c.x -= speed * 0.2;
+      if (c.x + c.w < 0) c.x = W + Math.random() * 50;
+    }
+
+    scoreEl.textContent = `Score: ${score}  ·  Best: ${best}`;
+  }
+
+  function drawPlayer() {
+    const px = player.x,
+      py = player.y;
+
+    // Body
+    ctx.fillStyle = COL.player;
+    ctx.fillRect(px + 3, py - 20, 10, 14); // torso
+
+    // Head
+    ctx.fillRect(px + 4, py - 24, 8, 6);
+
+    // Legs (animated)
+    if (!player.grounded) {
+      // Tucked legs when jumping
+      ctx.fillRect(px + 3, py - 6, 4, 4);
+      ctx.fillRect(px + 9, py - 6, 4, 4);
+    } else {
+      // Running animation
+      const step = Math.floor(frame / 5) % 2;
+      if (step === 0) {
+        ctx.fillRect(px + 3, py - 6, 3, 6);
+        ctx.fillRect(px + 10, py - 8, 3, 4);
+      } else {
+        ctx.fillRect(px + 3, py - 8, 3, 4);
+        ctx.fillRect(px + 10, py - 6, 3, 6);
+      }
+    }
+
+    // Eye
+    ctx.fillStyle = isDark ? "#1a1a19" : "#ffffff";
+    ctx.fillRect(px + 9, py - 23, 2, 2);
+  }
+
+  function draw() {
+    // Clear
+    ctx.clearRect(0, 0, W, H);
+
+    // Clouds
+    ctx.fillStyle = COL.cloud;
+    for (const c of clouds) {
+      ctx.beginPath();
+      ctx.arc(c.x + c.w / 2, c.y, c.w / 2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(c.x + c.w * 0.2, c.y + 3, c.w / 3, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(c.x + c.w * 0.75, c.y + 2, c.w / 3.5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // Ground
+    ctx.strokeStyle = COL.ground;
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(0, GROUND_Y);
+    ctx.lineTo(W, GROUND_Y);
+    ctx.stroke();
+
+    // Ground texture (little dashes)
+    if (state === "playing") {
+      const offset = (frame * speed) % 20;
+      for (let i = -offset; i < W; i += 20) {
+        ctx.beginPath();
+        ctx.moveTo(i, GROUND_Y + 6);
+        ctx.lineTo(i + 6, GROUND_Y + 6);
+        ctx.stroke();
+      }
+    }
+
+    // Obstacles
+    ctx.fillStyle = COL.obstacle;
+    for (const o of obstacles) {
+      // Draw as a "bug" shape
+      const cx = o.x + o.w / 2;
+      const cy = o.y + o.h / 2;
+      // Body
+      ctx.beginPath();
+      ctx.ellipse(
+        cx,
+        cy + o.h * 0.15,
+        o.w / 2,
+        o.h * 0.35,
+        0,
+        0,
+        Math.PI * 2,
+      );
+      ctx.fill();
+      // Head
+      ctx.beginPath();
+      ctx.arc(cx, o.y + o.h * 0.2, o.w * 0.35, 0, Math.PI * 2);
+      ctx.fill();
+      // Antennae
+      ctx.strokeStyle = COL.obstacle;
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(cx - 2, o.y + o.h * 0.1);
+      ctx.lineTo(cx - 6, o.y - 4);
+      ctx.moveTo(cx + 2, o.y + o.h * 0.1);
+      ctx.lineTo(cx + 6, o.y - 4);
+      ctx.stroke();
+    }
+
+    // Player
+    drawPlayer();
+
+    // Idle state text
+    if (state === "idle") {
+      ctx.fillStyle = COL.text;
+      ctx.font = '13px "DM Sans", sans-serif';
+      ctx.textAlign = "center";
+      ctx.fillText("Jump over the bugs 🐛", W / 2, H / 2 - 10);
+    }
+
+    // Dead state
+    if (state === "dead") {
+      ctx.fillStyle = COL.accent;
+      ctx.font = 'bold 18px "Outfit", sans-serif';
+      ctx.textAlign = "center";
+      ctx.fillText("CRASH!", W / 2, H / 2 - 8);
+      ctx.fillStyle = COL.text;
+      ctx.font = '12px "DM Sans", sans-serif';
+      ctx.fillText(
+        `You shipped ${score} lines before hitting a bug`,
+        W / 2,
+        H / 2 + 12,
+      );
+    }
+  }
+
+  function loop() {
+    update();
+    draw();
+    requestAnimationFrame(loop);
+  }
+
+  loop();
+})();

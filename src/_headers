@@ -6,7 +6,11 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-  Content-Security-Policy: default-src 'none'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+  Content-Security-Policy: default-src 'none'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+  X-Permitted-Cross-Domain-Policies: none
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-site
+  Cross-Origin-Embedder-Policy: require-corp
 
 # ── Static assets: immutable, 1 year ──
 /*.css
@@ -20,21 +24,21 @@
 /*.woff
   Cache-Control: public, max-age=31536000, immutable
 
-# ── Images: 30 days ──
+# ── Images: immutable, 1 year ──
 /*.png
-  Cache-Control: public, max-age=2592000
+  Cache-Control: public, max-age=31536000, immutable
 /*.jpg
-  Cache-Control: public, max-age=2592000
+  Cache-Control: public, max-age=31536000, immutable
 /*.jpeg
-  Cache-Control: public, max-age=2592000
+  Cache-Control: public, max-age=31536000, immutable
 /*.webp
-  Cache-Control: public, max-age=2592000
+  Cache-Control: public, max-age=31536000, immutable
 /*.ico
-  Cache-Control: public, max-age=2592000
+  Cache-Control: public, max-age=31536000, immutable
 
 # ── Documents: 24 hours ──
 /*.pdf
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=86400, must-revalidate
 
 # ── SEO/GEO/data files: 24 hours ──
 /*.xml

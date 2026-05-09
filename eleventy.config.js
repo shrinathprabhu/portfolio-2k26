@@ -42,6 +42,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/blog/**/*.gif");
   eleventyConfig.addPassthroughCopy("src/blog/**/*.webp");
   eleventyConfig.addPassthroughCopy("src/images");
+  eleventyConfig.addPassthroughCopy("src/js");
 
   // ── Collections ──
   eleventyConfig.addCollection("posts", function (collectionApi) {
