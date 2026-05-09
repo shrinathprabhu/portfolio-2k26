@@ -38,11 +38,11 @@
 
 # ── SEO/GEO/data files: 24 hours ──
 /*.xml
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=0, must-revalidate
 /*.json
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=0, must-revalidate
 /*.txt
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=0, must-revalidate
 
 # ── HTML pages: always revalidate ──
 /
