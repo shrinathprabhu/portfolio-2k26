@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@fontsource-variable/dm-sans": "^5.2.8",
-    "@fontsource-variable/outfit": "^5.2.8"
+    "@fontsource-variable/outfit": "^5.2.8",
+    "mermaid": "11.14.0"
   }
 }
