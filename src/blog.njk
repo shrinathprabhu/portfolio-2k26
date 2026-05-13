@@ -18,16 +18,22 @@ permalink: /blog/
   </p>
 </div>
 
-<div class="blog-grid">
+<div class="blog-grid" id="blog-grid">
   {% for post in collections.posts %}
   <a
     href="{{ post.url }}"
-    class="blog-card fade-in{% if post.data.featured %} blog-card--featured{% endif %}"
+    class="blog-card fade-in{% if post.data.featured %} blog-card--featured{% endif %}{% if loop.index > 6 %} blog-card--hidden{% endif %}"
     style="text-decoration: none; color: inherit"
+    data-blog-index="{{ loop.index }}"
   >
     {% if post.data.image %}
-    <div class="blog-card__image">
-      <img src="{{ post.data.image }}" alt="{{ post.data.title }}" loading="lazy" />
+    <div class="blog-card__image" style="--placeholder: url('{{ post.data.image | blurPlaceholder }}')">
+      <img
+        src="{{ post.data.image }}"
+        alt="{{ post.data.title }}"
+        loading="{% if loop.index <= 2 %}eager{% else %}lazy{% endif %}"
+        class="is-loading"
+      />
     </div>
     {% endif %}
     <div class="blog-card__body">
@@ -44,13 +50,22 @@ permalink: /blog/
         {% endif %}
         <div class="blog-item__meta">
           <span>{{ post.date | readableDate }}</span>
-          <span> · {{ post.data.readingTime or (post.templateContent | readingTime) }}</span>
+          <span> · {{ post.data.readingTime }}</span>
         </div>
       </div>
     </div>
   </a>
   {% endfor %}
 </div>
+
+{% if collections.posts.length > 6 %}
+<div class="blog-load-more" id="blog-load-more">
+  <button class="blog-load-more__btn" id="blog-load-more-btn" type="button">
+    Show More Posts
+    <span class="blog-load-more__count" id="blog-load-more-count"></span>
+  </button>
+</div>
+{% endif %}
 
 <div
   style="
@@ -63,3 +78,5 @@ permalink: /blog/
   </p>
   <a href="/work/" class="btn btn--primary">View Case Studies →</a>
 </div>
+
+<script src="/js/blog-list.js" defer></script>

@@ -1,6 +1,30 @@
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import pluginRss from "@11ty/eleventy-plugin-rss";
 import mila from "markdown-it-link-attributes";
+import { readFileSync, writeFileSync, existsSync, mkdirSync, statSync } from "fs";
+import { join } from "path";
+
+// ── Blur placeholder cache (LQIP) ──
+const CACHE_DIR = ".cache";
+const CACHE_FILE = join(CACHE_DIR, "blur-placeholders.json");
+let placeholderCache = {};
+
+try {
+  if (existsSync(CACHE_FILE)) {
+    placeholderCache = JSON.parse(readFileSync(CACHE_FILE, "utf-8"));
+  }
+} catch {
+  placeholderCache = {};
+}
+
+function savePlaceholderCache() {
+  try {
+    mkdirSync(CACHE_DIR, { recursive: true });
+    writeFileSync(CACHE_FILE, JSON.stringify(placeholderCache));
+  } catch {
+    // Silent fail — cache is optional
+  }
+}
 
 export default function (eleventyConfig) {
   // ── Plugins ──
@@ -18,6 +42,42 @@ export default function (eleventyConfig) {
     },
   });
   eleventyConfig.addPlugin(pluginRss);
+
+  // ── LQIP: build-time blur placeholders for blog images ──
+  eleventyConfig.addAsyncFilter(
+    "blurPlaceholder",
+    async function (imagePath) {
+      if (!imagePath) return "";
+
+      const fullPath = join("src", imagePath);
+
+      try {
+        const mtime = statSync(fullPath).mtimeMs.toString();
+        const cacheKey = `${imagePath}:${mtime}`;
+
+        if (placeholderCache[cacheKey]) {
+          return placeholderCache[cacheKey];
+        }
+
+        const sharp = (await import("sharp")).default;
+        const buffer = await sharp(fullPath)
+          .resize(20) // 20px wide — produces ~300-500 byte JPEG
+          .jpeg({ quality: 20 })
+          .toBuffer();
+
+        const dataUri = `data:image/jpeg;base64,${buffer.toString("base64")}`;
+        placeholderCache[cacheKey] = dataUri;
+        return dataUri;
+      } catch {
+        return "";
+      }
+    },
+  );
+
+  // Save placeholder cache after build completes
+  eleventyConfig.on("eleventy.after", () => {
+    savePlaceholderCache();
+  });
 
   // ── Passthrough copy ──
   eleventyConfig.addPassthroughCopy("src/styles.css");
