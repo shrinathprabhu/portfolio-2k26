@@ -36,7 +36,9 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/humans.json");
   eleventyConfig.addPassthroughCopy("src/_headers");
   eleventyConfig.addPassthroughCopy("src/_redirects");
-  eleventyConfig.addPassthroughCopy("src/resume/ShrinathPrabhu2026Resume.pdf");
+  eleventyConfig.addPassthroughCopy(
+    "src/resume/SHRINATH_PRABHU_UPDATED_RESUME_2026.pdf",
+  );
   eleventyConfig.addPassthroughCopy("src/blog/**/*.png");
   eleventyConfig.addPassthroughCopy("src/blog/**/*.jpg");
   eleventyConfig.addPassthroughCopy("src/blog/**/*.gif");
