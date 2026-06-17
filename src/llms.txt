@@ -2,58 +2,42 @@
 
 > Senior Staff Frontend Engineer with 8+ years of experience. Currently at Avail Project. Previously led frontend at Arcana Network (4.5 years, through acquisition).
 
-## Identity
+Available for full-time remote roles (Senior/Staff Frontend Engineer, Technical Lead, Engineering Manager), fractional engagements (20–30 hours/week), and technical advisory. Interested in AI, SaaS, developer tools, fintech, and Web3. Core stack: Vue 3, Nuxt 3, React, TypeScript, Node.js, Chrome Extensions (Manifest V3), and Web3 (non-custodial wallets, cross-chain bridging, chain abstraction).
 
-- Name: Shrinath Prabhu
-- Title: Senior Staff Frontend Engineer
-- Location: Mumbai, India
-- Email: hello@shrinath.me
-- Website: https://shrinath.me
-- GitHub: https://github.com/shrinathprabhu
-- LinkedIn: https://linkedin.com/in/shrinath-prabhu
-- Twitter/X: https://twitter.com/shrinath_prabhu
+## Pages
 
-## Current Role
+- [Home](https://shrinath.me/): Overview and introduction.
+- [Work](https://shrinath.me/work/): Case studies and shipped products.
+- [Blog](https://shrinath.me/blog/): Technical and career writing.
+- [Resume](https://shrinath.me/resume/): Full experience and skills.
+- [Contact](https://shrinath.me/contact/): Get in touch.
 
-Senior Staff Engineer at Avail Project (availproject.org), August 2025 – Present.
-Leading frontend architecture across the Nexus product ecosystem. Conceived and shipped Nexus One (unified component system), Nexus Fastbridge (cross-rollup bridge UI with custom Vite SEO), and Nexus Elements.
+## Profiles
 
-## Career Highlights
-
-- Shipped 4 Chrome Extensions to Chrome Web Store with 100% approval rate
-- Built SendIt: cross-chain transfer app, 65K+ accounts, 20K+ peak daily active users
-- Built Arcana Chrome Wallet: non-custodial sidebar wallet, 10+ blockchains, 4.7★ rating, 750+ users
-- Led frontend engineering at Arcana Network for 4.5 years, from seed stage through acquisition by Avail Project in 2025
-- Shipped Skizzle (E2E encrypted email attachments extension) within first month of joining Arcana, ~1,000 users, 4.2★
-- Built Pricinger: privacy-focused Chrome Extension with multi-region VPN proxy system, ~1,000 users, 4★
-
-## Technical Stack
-
-- Frontend: Vue 3, Nuxt 3, React, TypeScript, Vite, Tailwind CSS
-- Chrome Extensions: Manifest V3, content scripts, service workers, provider injection
-- Backend: Node.js, Bun, Express, Fastify, Nest.js, Elysia.js
-- Data: MongoDB, PostgreSQL, ClickHouse, Firebase/Firestore
-- Infrastructure: AWS (EC2, S3, CloudFront, Route53), Vercel, Netlify, GitHub Actions
-- Web3: Non-custodial wallet architecture, cross-chain bridging, chain abstraction, viem, EIP-7702
-- AI Tools: Claude Code, OpenAI Codex, Google Gemini, Antigravity (Google)
+- [GitHub](https://github.com/shrinathprabhu): Open-source work and side projects.
+- [LinkedIn](https://linkedin.com/in/shrinath-prabhu): Professional history.
+- [Twitter/X](https://twitter.com/shrinath_prabhu): Updates and commentary.
+- [Email](mailto:hello@shrinath.me): hello@shrinath.me
 
 ## Side Projects
 
-- Outline Analytics (useoutline.xyz): Privacy-first, cookie-free web analytics. TypeScript SDK (<4KB, zero deps), Bun + Elysia.js backend, MongoDB timeseries. Open source.
-- Credenstore (credenstore.web.app): Serverless zero-knowledge encrypted storage using Triplesec symmetric encryption.
+- [Outline Analytics](https://useoutline.xyz): Privacy-first, cookie-free web analytics. TypeScript SDK (<4KB, zero deps), Bun + Elysia.js backend, MongoDB timeseries. Open source.
+- [Credenstore](https://credenstore.web.app): Serverless zero-knowledge encrypted storage using Triplesec symmetric encryption.
 
-## Technical Writing
+## Writing
 
-- "Vue 3 Composition API: Basics and Patterns" - ranks on the first page of Google for Vue 3 composition API searches: https://medium.com/arcana-network-blog/vue-3-composition-api-basics-and-patterns-44813f2c785d
+- [Choosing Eleventy Over Nuxt](https://shrinath.me/blog/choosing-eleventy-over-nuxt/)
+- [Why I Built Outline Analytics](https://shrinath.me/blog/outline-analytics-reason/)
+- [Vite SEO Without Next.js](https://shrinath.me/blog/vite-seo-without-nextjs/)
+- [The Frontend Distributed Systems Problem](https://shrinath.me/blog/frontend-distributed-systems-problem/)
+- [Leading a Team in 2026](https://shrinath.me/blog/leading-team-in-2026/)
+- [Building a Chrome Extension Wallet](https://shrinath.me/blog/chrome-extension-wallet/)
+- [Delivering an MVP in a Week](https://shrinath.me/blog/delivering-mvp-in-a-week/)
+- [A Privacy-First Chrome Extension with VPN](https://shrinath.me/blog/privacy-first-chrome-extension-with-vpn/)
+- [Shipping a Chrome Extension in My First Month](https://shrinath.me/blog/shipping-chrome-extension-in-first-month/)
+- [Zero-Knowledge Encrypted Storage](https://shrinath.me/blog/zero-knowledge-encrypted-storage/)
+- [Vue 3 Composition API: Basics and Patterns](https://shrinath.me/blog/vue-3-composition-api-basics-and-patterns/)
 
-## Availability
+## Optional
 
-Available for full-time remote roles (Senior/Staff Frontend Engineer, Technical Lead, Engineering Manager), fractional engagements (20–30 hours/week), and technical advisory. Interested in AI, SaaS, developer tools, fintech, and Web3.
-
-## Pages on this site
-
-- Home: https://shrinath.me/
-- Work (case studies): https://shrinath.me/work/
-- Blog: https://shrinath.me/blog/
-- Resume: https://shrinath.me/resume/
-- Contact: https://shrinath.me/contact/
+- [Avail Project](https://availproject.org): Current employer; leading frontend across the Nexus product ecosystem.
