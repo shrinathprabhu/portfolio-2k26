@@ -16,7 +16,7 @@ keywords:
     "Node.js",
     "AWS",
   ]
-image: "/images/pricinger.jpg"
+image: "/images/pricinger.png"
 ---
 
 Booking a flight from India costs differently than booking the same flight from Albania. Shopping for headphones on a Mac shows different prices than shopping on a Linux machine. Visiting the same hotel booking site with cookies from a previous visit shows higher prices than visiting in a fresh browser session.

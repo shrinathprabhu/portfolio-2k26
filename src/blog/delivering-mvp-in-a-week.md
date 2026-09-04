@@ -17,7 +17,7 @@ keywords:
     "Video.js",
     "startup engineering",
   ]
-image: "/images/agrostar-mvp.jpg"
+image: "/images/agrostar-mvp.png"
 ---
 
 As soon as I joined the company as a tempory resource, I received the requirements. A week later, the VP was using the app. He offered me a full-time retainer role based on what he saw.

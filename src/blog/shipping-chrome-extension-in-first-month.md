@@ -15,7 +15,7 @@ keywords:
     "Web3Auth",
     "browser extension",
   ]
-image: "/images/shipping-skizzle.jpg"
+image: "/images/shipping-skizzle.png"
 postTags: ["posts", "chrome-extensions", "career"]
 ---
 

@@ -18,7 +18,7 @@ keywords:
   ]
 postTags: ["posts", "vue", "typescript", "frontend"]
 originalUrl: "https://medium.com/arcana-network-blog/vue-3-composition-api-basics-and-patterns-44813f2c785d"
-image: "/images/vue-3-composition-api.jpg"
+image: "/images/vue-3-composition-api.png"
 ---
 
 > Originally published on the [Arcana Network Blog](https://medium.com/arcana-network-blog/vue-3-composition-api-basics-and-patterns-44813f2c785d) in April 2022. Updated in April 2026 with modern patterns, `<script setup>` as the default syntax, and insights from 5 years of production Vue development.

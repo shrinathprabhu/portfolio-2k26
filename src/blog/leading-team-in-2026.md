@@ -15,7 +15,7 @@ keywords:
     "tech lead 2026",
     "AI-augmented development",
   ]
-image: "/images/ai-lead.jpg"
+image: "/images/ai-lead.png"
 ---
 
 I lead a frontend team where everyone uses AI coding tools daily. Claude Code for architecture planning and code generation. Antigravity for inline assistance and refactoring. Codex for prototyping. Gemini, Claude and ChatGPT for research.

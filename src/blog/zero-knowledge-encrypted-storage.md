@@ -15,7 +15,7 @@ keywords:
     "no backend",
     "browser encryption",
   ]
-image: "/images/credenstore.jpg"
+image: "/images/credenstore.png"
 ---
 
 In 2020, I needed a way to share secrets: API keys, passwords, private notes, with teammates without sending them in plain text over Slack or email. Every existing tool either required an account (1Password, Bitwarden), needed a backend server (self-hosted Vault), or was a paid service.

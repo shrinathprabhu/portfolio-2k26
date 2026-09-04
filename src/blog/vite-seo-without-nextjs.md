@@ -6,7 +6,7 @@ category: "Frontend Architecture"
 keywords:
   ["Vite", "SEO", "SPA", "React", "build-time", "Open Graph", "meta tags"]
 postTags: ["posts", "react", "vite", "seo"]
-image: "/images/vite-seo.jpg"
+image: "/images/vite-seo.png"
 ---
 
 Everyone will tell you the same thing, if you need SEO in a React app, use Next.js. I needed SEO in a React app and I chose not to use Next.js. Here is why, and how I built a custom solution that achieves the same result with dramatically less complexity.

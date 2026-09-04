@@ -19,7 +19,7 @@ keywords:
     "TypeScript SDK",
     "rule-based tracking",
   ]
-image: "/images/outline-analytics.jpg"
+image: "/images/building-analytics.png"
 featured: true
 ---
 

@@ -21,7 +21,7 @@ keywords:
     "dApp injection",
   ]
 postTags: ["posts", "chrome-extensions", "web3", "vue"]
-image: "/images/chrome-extension-wallet.jpg"
+image: "/images/chrome-extension-wallet.png"
 ---
 
 In 2024, I built a non-custodial multi-chain crypto wallet as a Chrome Extension sidebar. It supports 10+ blockchains, injects unified cross-chain balances into third-party DeFi applications like Aave, Uniswap, Lido, and Hyperliquid, and handles transaction signing, all from a sidebar panel that sits alongside the active tab. It reached 750+ users with a 4.7-star rating on Chrome Web Store during a crypto bear market.

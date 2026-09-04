@@ -15,7 +15,7 @@ keywords:
     "SSG",
     "build tool",
   ]
-image: "/images/eleventy-over-nuxt.jpg"
+image: "/images/eleventy-over-nuxt.png"
 featured: true
 ---
 
