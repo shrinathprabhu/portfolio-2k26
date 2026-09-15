@@ -95,7 +95,6 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/llms.txt");
   eleventyConfig.addPassthroughCopy("src/humans.json");
   eleventyConfig.addPassthroughCopy("src/_headers");
-  eleventyConfig.addPassthroughCopy("src/_redirects");
   eleventyConfig.addPassthroughCopy(
     "src/resume/SHRINATH_PRABHU_UPDATED_RESUME_2026.pdf",
   );

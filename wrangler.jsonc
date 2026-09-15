@@ -1,0 +1,23 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "shrinath-portfolio",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-09-01",
+  // Serves the Eleventy build output. The Worker runs first on every
+  // request so it can redirect www.shrinath.me → shrinath.me before
+  // falling through to static assets (_headers is applied automatically).
+  "assets": {
+    "directory": "./_site",
+    "binding": "ASSETS",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page",
+    "run_worker_first": true
+  },
+  "routes": [
+    { "pattern": "shrinath.me", "custom_domain": true },
+    { "pattern": "www.shrinath.me", "custom_domain": true }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}

@@ -6,13 +6,16 @@
   "scripts": {
     "dev": "npx @11ty/eleventy --serve",
     "build": "npx @11ty/eleventy",
-    "clean": "rm -rf _site"
+    "clean": "rm -rf _site",
+    "preview": "npm run build && wrangler dev",
+    "deploy": "npm run build && wrangler deploy"
   },
   "devDependencies": {
     "@11ty/eleventy": "3.0.0",
     "@11ty/eleventy-plugin-rss": "2.0.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "5.0.0",
-    "markdown-it-link-attributes": "4.0.1"
+    "markdown-it-link-attributes": "4.0.1",
+    "wrangler": "4.132.0"
   },
   "dependencies": {
     "@fontsource-variable/dm-sans": "5.2.8",
