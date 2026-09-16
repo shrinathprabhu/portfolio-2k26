@@ -50,6 +50,14 @@
 /*.txt
   Cache-Control: public, max-age=0, must-revalidate
 
+# ── Well-known & Security: text/plain ──
+/.well-known/security.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=0, must-revalidate
+/security.txt
+  Content-Type: text/plain; charset=utf-8
+  Cache-Control: public, max-age=0, must-revalidate
+
 # ── HTML pages: always revalidate ──
 /
   Cache-Control: public, max-age=0, must-revalidate

@@ -10,6 +10,12 @@ export default {
       return Response.redirect(url.toString(), 308);
     }
 
+    // ── /security.txt → /.well-known/security.txt (RFC 9116) ──
+    if (url.pathname === "/security.txt") {
+      url.pathname = "/.well-known/security.txt";
+      return Response.redirect(url.toString(), 308);
+    }
+
     return env.ASSETS.fetch(request);
   },
 };

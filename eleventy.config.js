@@ -94,6 +94,10 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy("src/llms.txt");
   eleventyConfig.addPassthroughCopy("src/humans.json");
+  eleventyConfig.addPassthroughCopy({ "src/.well-known": ".well-known" });
+  eleventyConfig.addPassthroughCopy({
+    "src/.well-known/security.txt": "security.txt",
+  });
   eleventyConfig.addPassthroughCopy("src/_headers");
   eleventyConfig.addPassthroughCopy(
     "src/resume/SHRINATH_PRABHU_UPDATED_RESUME_2026.pdf",

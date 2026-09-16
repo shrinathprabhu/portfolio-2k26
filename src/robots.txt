@@ -8,5 +8,8 @@ Sitemap: https://shrinath.me/sitemap.xml
 # llms.txt: https://shrinath.me/llms.txt
 # humans.json: https://shrinath.me/humans.json
 
+# Security
+# security.txt: https://shrinath.me/.well-known/security.txt
+
 # Block error pages from indexing
 Disallow: /404.html
