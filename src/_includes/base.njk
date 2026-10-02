@@ -40,6 +40,9 @@
     {{ extraHead | safe }}
     {% endif %}
 
+    {# ── Analytics: OwlEye (cookie-free), see /js/analytics.js ── #}
+    <script type="module" src="/js/analytics.js?v={{ owleye.rev }}" data-owl-id="{{ owleye.id }}" data-owl-sdk="{{ owleye.sdk }}"></script>
+
     {# ── RSS feed discovery ── #}
     <link rel="alternate" type="application/atom+xml" title="Shrinath Prabhu — Blog" href="/feed.xml" />
   </head>

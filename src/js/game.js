@@ -77,6 +77,7 @@
       nextSpawn = 80;
       frame = 0;
       promptEl.style.opacity = 0;
+      document.dispatchEvent(new CustomEvent("game:start"));
     }
     if (state === "dead") {
       state = "playing";
@@ -163,6 +164,10 @@
         if (score > best) best = score;
         scoreEl.textContent = `Score: ${score}  ·  Best: ${best}`;
         promptEl.style.opacity = 1;
+        // Picked up by /js/analytics.js
+        document.dispatchEvent(
+          new CustomEvent("game:over", { detail: { score, best } }),
+        );
         easterEl.textContent =
           messages[Math.floor(Math.random() * messages.length)];
       }

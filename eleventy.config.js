@@ -1,8 +1,16 @@
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import pluginRss from "@11ty/eleventy-plugin-rss";
 import mila from "markdown-it-link-attributes";
-import { readFileSync, writeFileSync, existsSync, mkdirSync, statSync } from "fs";
+import {
+  readFileSync,
+  writeFileSync,
+  existsSync,
+  mkdirSync,
+  statSync,
+  readdirSync,
+} from "fs";
 import { join } from "path";
+import { createHash } from "crypto";
 
 // ── Blur placeholder cache (LQIP) ──
 const CACHE_DIR = ".cache";
@@ -15,6 +23,21 @@ try {
   }
 } catch {
   placeholderCache = {};
+}
+
+// ── OwlEye Analytics (owleye.dev) ──
+// The tracking ID is public. The SDK is served from this origin because the
+// CSP only allows same-origin scripts, and from a versioned folder because
+// /*.js is cached as immutable.
+const OWLEYE_ID = "owl_578ab49ae6a4404f914f2f4ee4b4109b";
+const OWLEYE_PKG = "node_modules/@owleye/analytics";
+const owleyeVersion = JSON.parse(
+  readFileSync(join(OWLEYE_PKG, "package.json"), "utf-8"),
+).version;
+const OWLEYE_DIR = `js/owleye-${owleyeVersion}`;
+
+function fileHash(path) {
+  return createHash("sha256").update(readFileSync(path)).digest("hex").slice(0, 10);
 }
 
 function savePlaceholderCache() {
@@ -111,6 +134,21 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "node_modules/mermaid/dist/mermaid.esm.min.mjs": "js/mermaid.esm.min.mjs",
   });
+  // OwlEye ES modules and their shared chunks (the CDN builds stay behind)
+  for (const file of readdirSync(join(OWLEYE_PKG, "dist"))) {
+    if (!file.endsWith(".js") || file.endsWith(".iife.js")) continue;
+    eleventyConfig.addPassthroughCopy({
+      [join(OWLEYE_PKG, "dist", file)]: `${OWLEYE_DIR}/${file}`,
+    });
+  }
+
+  // ── Global data ──
+  eleventyConfig.addGlobalData("owleye", () => ({
+    id: OWLEYE_ID,
+    sdk: `/${OWLEYE_DIR}`,
+    // Cache-buster for /js/analytics.js
+    rev: fileHash("src/js/analytics.js"),
+  }));
 
   // ── Collections ──
   eleventyConfig.addCollection("posts", function (collectionApi) {
