@@ -1,10 +1,9 @@
 /**
  * Usage statistics, sent to OwlEye Analytics (owleye.dev).
  *
- * The SDK is cookie-free, stores nothing in the browser, drops URL queries
- * and fragments, and stays silent when the browser sends Do Not Track or
- * Global Privacy Control. It records page views and time on page by itself;
- * this file adds Web Vitals, page-load numbers and a few named events.
+ * The SDK is cookie-free, stores nothing in the browser and drops URL queries
+ * and fragments. It records page views and time on page by itself; this file
+ * adds Web Vitals, page-load numbers and a few named events.
  *
  * Every event carries ids, hosts, counts and durations that come from this
  * site's own markup. Nothing a visitor types, and no error message.
@@ -25,6 +24,11 @@ try {
 
 const config = {
   captureCampaigns: true, // utm_source, utm_medium and utm_campaign only
+  // Left on (the default), the SDK sends nothing at all from a browser with
+  // Do Not Track or Global Privacy Control set: Brave, Firefox and others.
+  // OwlEye's API may still honour the signals on its side.
+  respectDoNotTrack: false,
+  respectGlobalPrivacyControl: false,
   mock: location.hostname !== "shrinath.me",
   debug,
 };
