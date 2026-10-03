@@ -9,7 +9,8 @@
  * site's own markup. Nothing a visitor types, and no error message.
  *
  * Only shrinath.me reports. Anywhere else (localhost, previews) the same code
- * runs with requests off. `localStorage.owl = "debug"` prints each payload.
+ * runs with requests off. `localStorage.owl = "debug"` makes the SDK log what
+ * it sends or skips, and why.
  */
 const script = document.querySelector("script[data-owl-id]");
 const SITE_ID = script.dataset.owlId;
@@ -25,9 +26,7 @@ try {
 const config = {
   captureCampaigns: true, // utm_source, utm_medium and utm_campaign only
   // Left on (the default), the SDK sends nothing at all from a browser with
-  // Do Not Track or Global Privacy Control set: Brave, Firefox and others.
-  // OwlEye's API may still honour the signals on its side.
-  respectDoNotTrack: false,
+  // Global Privacy Control set: Brave, Firefox and others.
   respectGlobalPrivacyControl: false,
   mock: location.hostname !== "shrinath.me",
   debug,
