@@ -427,6 +427,17 @@ a.status__badge:where(:hover, :focus-visible) {
   margin-top: 2px;
 }
 
+.brand-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand-title img {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
 /* ── Project Cards ── */
 .projects-grid {
   display: grid;

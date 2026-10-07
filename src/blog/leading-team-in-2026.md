@@ -28,7 +28,7 @@ The conversation about AI in engineering leadership is dominated by two extremes
 
 **The definition of "junior" changed.** A junior engineer with Claude Code can now produce code that looks senior in terms of syntax, patterns, and test coverage. But they cannot evaluate whether the AI's suggestion is the right approach for this specific system. The gap between "can write code" and "can make engineering decisions" widened. As a lead, I spend more time on decision-making mentorship and less time on syntax correction.
 
-**Prototyping is genuinely faster.** When I conceived Nexus One at Avail, I had a working prototype within days instead of weeks. AI tools let me explore architectural options rapidly, generating three different component structures and evaluating each one rather than committing to the first approach and discovering its flaws later. This is a real, meaningful productivity gain for senior engineers who know what they want but need to iterate on how to build it.
+**Prototyping is genuinely faster.** When I conceived Nexus One (now [Nexus Widgets](/work/#widgets)) at Avail, I had a working prototype within days instead of weeks. AI tools let me explore architectural options rapidly, generating three different component structures and evaluating each one rather than committing to the first approach and discovering its flaws later. This is a real, meaningful productivity gain for senior engineers who know what they want but need to iterate on how to build it.
 
 **Documentation improved.** AI tools write excellent documentation. README files, inline comments, API descriptions, the tedious writing that engineers historically skipped is now generated in seconds and only needs review. Our codebase is better documented than it has ever been.
 

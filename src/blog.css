@@ -84,6 +84,15 @@
   margin: 20px 0;
 }
 
+.blog-post__body img.inline-logo {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin: 0 8px 0 0;
+  border-radius: 0;
+  vertical-align: middle;
+}
+
 .blog-post__body hr {
   border: none;
   border-top: 1px solid var(--border-light);

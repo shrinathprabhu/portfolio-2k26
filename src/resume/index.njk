@@ -94,13 +94,21 @@ jsonLd: |
       </li>
       <li>
         Conceived, architected, and secured executive buy-in for Nexus
-        One, a unified component system that consolidates multiple product
-        interfaces into a single configurable element.
+        Widgets (formerly Nexus One / Elements), open-source React
+        components for cross-chain swap, send, and deposit. Shipped as
+        both an npm package for config-only integrations and a shadcn
+        registry for teams that want full source control.
+      </li>
+      <li>
+        Built the Widget Configurator, a live playground with presets and
+        one-click config export, and added fiat onramping (card, Apple
+        Pay, bank transfer) to the Deposit Widget via Meld.
       </li>
       <li>
         Architected and shipped Nexus Fastbridge, a cross-rollup bridge UI
         with a custom Vite-based SEO solution that generates per-chain
         HTML pages at build time, achieving full SEO without Next.js.
+        Scaled it to 15 EVM chains.
       </li>
       <li>
         Leading frontend migration to Nexus v2, a backend-driven
@@ -111,6 +119,16 @@ jsonLd: |
         Shipped Nexus SDK Injector to Chrome Web Store, injecting Avail's
         chain abstraction SDK into DeFi platforms (Hyperliquid, Pendle,
         Yearn, Scroll).
+      </li>
+      <li>
+        Extended Nexus beyond EVM through proofs of concept: Gummee, a
+        PWA that lets Tron users swap to and from EVM chains and deposit
+        into EVM yield apps such as Aave and Compound, and a Starknet
+        flow that bridges from EVM and deposits into a yield app.
+      </li>
+      <li>
+        Contributed to ShieldTx, a private-transaction trading product
+        for Hyperliquid, and to the Nexus v2 intent explorer.
       </li>
     </ul>
   </div>
@@ -147,6 +165,11 @@ jsonLd: |
         injection system built by studying MetaMask's architecture.
         Technology later extracted into a TypeScript SDK for B2B
         distribution.
+      </li>
+      <li>
+        Integrated non-EVM chains across Arcana's wallets: Solana and
+        NEAR in the open-source web wallet, and Fuel in the chain
+        abstraction wallet.
       </li>
       <li>
         Built SendIt, a gamified cross-chain transfer app (email/X/ENS
@@ -266,8 +289,9 @@ jsonLd: |
     <div class="skill-group">
       <div class="skill-group__title">Backend & Data</div>
       <div class="skill-group__items">
-        Node.js, Bun, Express, Fastify, Nest.js, Elysia.js, MongoDB,
-        PostgreSQL, Firebase/Firestore, REST API Design
+        Node.js, Bun, Rust (Axum), Express, Fastify, Nest.js, Elysia.js,
+        MongoDB, PostgreSQL, ClickHouse, SQLite, Firebase/Firestore, REST
+        API Design
       </div>
     </div>
     <div class="skill-group">
@@ -281,7 +305,8 @@ jsonLd: |
       <div class="skill-group__title">Domain Expertise</div>
       <div class="skill-group__items">
         Web3 (wallets, bridging, chain abstraction, dApp injection,
-        EIP-7702), Client-Side Encryption (Triplesec, RSA,
+        EIP-7702, EVM, Solana, NEAR, Fuel, Tron, Starknet), Fiat
+        Onramping, Client-Side Encryption (Triplesec, RSA,
         zero-knowledge), Privacy Analytics
       </div>
     </div>
@@ -344,7 +369,9 @@ jsonLd: |
     India, with over 8 years of professional software engineering
     experience. He currently serves as Senior Staff Engineer at Avail
     Project, where he leads frontend architecture across the Nexus product
-    ecosystem. He previously led frontend engineering at Arcana Network
+    ecosystem, including Nexus Widgets (formerly Nexus One and Nexus
+    Elements), the Widget Configurator, and Nexus Fastbridge, which runs
+    on 15 EVM chains. He previously led frontend engineering at Arcana Network
     for 4.5 years, from seed stage through the company's acquisition by
     Avail Project in August 2025.
   </p>

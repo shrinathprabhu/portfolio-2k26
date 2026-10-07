@@ -2,7 +2,8 @@
 title: "Why I Am Building an Analytics Platform When Plausible Already Exists"
 description: "There are already privacy-first analytics tools. Here is why I am building another one, what I think the market is missing, and an honest assessment of whether this is a good idea."
 date: 2026-05-05
-postTags: ["posts", "owleye", "outline-analytics", "privacy", "startup"]
+dateModified: 2026-10-07
+postTags: ["posts", "owleye", "privacy", "startup"]
 category: "Building"
 keywords:
   [
@@ -29,7 +30,7 @@ Plausible exists. Fathom exists. Umami exists. Simple Analytics exists. PostHog 
 
 I am building Outline Analytics anyway.
 
-> **Update, October 2026:** Outline Analytics is now [OwlEye](https://owleye.dev). The reasoning in this post still stands, but the implementation moved on: I rebuilt the product from scratch as a hosted service on Rust, Axum, and ClickHouse, and the SDK is now `@owleye/analytics`. The Bun, MongoDB, and single-binary self-hosting details below describe the first version. The current design is in the [OwlEye case study](/work/#owleye) and the [architecture docs](https://owleye.dev/docs/architecture/).
+> <img src="/images/owleye-mark.svg" alt="OwlEye logo" width="40" height="40" class="inline-logo" /> **Update, October 2026:** Outline Analytics is now [OwlEye](https://owleye.dev). The reasoning in this post still stands, but the implementation moved on: I rebuilt the product from scratch as a hosted service on Rust, Axum, and ClickHouse, and the SDK is now `@owleye/analytics`. The Bun, MongoDB, and single-binary self-hosting details below describe the first version. The current design is in the [OwlEye case study](/work/#owleye) and the [architecture docs](https://owleye.dev/docs/architecture/).
 
 [owleye.dev →](https://owleye.dev) • [GitHub →](https://github.com/shrinathprabhu/owleye)
 

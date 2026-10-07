@@ -30,7 +30,7 @@ Available for full-time remote roles (Senior/Staff Frontend Engineer, Technical 
 ## Writing
 
 - [Choosing Eleventy Over Nuxt](https://shrinath.me/blog/choosing-eleventy-over-nuxt/)
-- [Why I Am Building an Analytics Platform When Plausible Already Exists](https://shrinath.me/blog/outline-analytics-reason/): The original reasoning behind OwlEye, written when it was still called Outline Analytics.
+- [Why I Am Building an Analytics Platform When Plausible Already Exists](https://shrinath.me/blog/owleye-analytics-reason/): The original reasoning behind OwlEye, written when it was still called Outline Analytics.
 - [Vite SEO Without Next.js](https://shrinath.me/blog/vite-seo-without-nextjs/)
 - [The Frontend Distributed Systems Problem](https://shrinath.me/blog/frontend-distributed-systems-problem/)
 - [Leading a Team in 2026](https://shrinath.me/blog/leading-team-in-2026/)
@@ -43,4 +43,5 @@ Available for full-time remote roles (Senior/Staff Frontend Engineer, Technical 
 
 ## Optional
 
-- [Avail Project](https://availproject.org): Current employer; leading frontend across the Nexus product ecosystem.
+- [Avail Project](https://availproject.org): Current employer; leading frontend across the Nexus product ecosystem (Fastbridge, Nexus Widgets, Widget Configurator).
+- [Nexus Widgets](https://docs.availproject.org/docs/nexus/widgets): Prebuilt React components for cross-chain swap, send, and deposit, shipped as an npm package and a shadcn registry. Formerly Nexus One / Nexus Elements.

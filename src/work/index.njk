@@ -26,10 +26,11 @@ jsonLd: |
         { "@type": "ListItem", "position": 2, "name": "Arcana Chrome Extension Wallet", "description": "Non-custodial sidebar wallet supporting 10+ blockchains with dApp injection, unified balance management, and 4.7-star rating on Chrome Web Store.", "url": "https://shrinath.me/work/#wallet" },
         { "@type": "ListItem", "position": 3, "name": "SendIt", "description": "Gamified cross-chain token transfer app replacing wallet addresses with email, X handles, and ENS domains. Scaled to 65K+ accounts and 20K+ peak DAU.", "url": "https://shrinath.me/work/#sendit" },
         { "@type": "ListItem", "position": 4, "name": "Skizzle - E2E Encrypted Email Attachments", "description": "Chrome and Firefox extension for end-to-end encrypted email attachments using RSA keys via Web3Auth and decentralized storage. Approximately 1,000 users with 4.2-star rating.", "url": "https://shrinath.me/work/#skizzle" },
-        { "@type": "ListItem", "position": 5, "name": "Nexus Fastbridge", "description": "Cross-rollup bridge UI with custom Vite-based SEO solution generating per-chain HTML pages at build time without Next.js.", "url": "https://shrinath.me/work/#fastbridge" },
-        { "@type": "ListItem", "position": 6, "name": "Pricinger - Privacy-Focused Pricing Tool", "description": "Chrome Extension with multi-region VPN proxies, automated per-site optimization crawler, and privacy controls. 1,000+ users with 4-star rating.", "url": "https://shrinath.me/work/#pricinger" },
-        { "@type": "ListItem", "position": 7, "name": "Arcana Developer Dashboard", "description": "Primary interface for Web3 developers to register dApps, configure authentication providers, and manage wallet settings. Built with Vue 3 and TypeScript.", "url": "https://shrinath.me/work/#dashboard" },
-        { "@type": "ListItem", "position": 8, "name": "Credenstore - Zero-Knowledge Encrypted Storage", "description": "Serverless zero-knowledge encrypted storage application using client-side Triplesec encryption and Firebase. No login required.", "url": "https://shrinath.me/work/#credenstore" }
+        { "@type": "ListItem", "position": 5, "name": "Nexus Fastbridge", "description": "Cross-rollup bridge UI live on 15 EVM chains, with custom Vite-based SEO solution generating per-chain HTML pages at build time without Next.js.", "url": "https://shrinath.me/work/#fastbridge" },
+        { "@type": "ListItem", "position": 6, "name": "Nexus Widgets", "description": "Prebuilt React components for cross-chain swap, send, and deposit, shipped as an npm package and a shadcn registry, with a live configurator and fiat onramping.", "url": "https://shrinath.me/work/#widgets" },
+        { "@type": "ListItem", "position": 7, "name": "Pricinger - Privacy-Focused Pricing Tool", "description": "Chrome Extension with multi-region VPN proxies, automated per-site optimization crawler, and privacy controls. 1,000+ users with 4-star rating.", "url": "https://shrinath.me/work/#pricinger" },
+        { "@type": "ListItem", "position": 8, "name": "Arcana Developer Dashboard", "description": "Primary interface for Web3 developers to register dApps, configure authentication providers, and manage wallet settings. Built with Vue 3 and TypeScript.", "url": "https://shrinath.me/work/#dashboard" },
+        { "@type": "ListItem", "position": 9, "name": "Credenstore - Zero-Knowledge Encrypted Storage", "description": "Serverless zero-knowledge encrypted storage application using client-side Triplesec encryption and Firebase. No login required.", "url": "https://shrinath.me/work/#credenstore" }
       ]
     }
   }
@@ -46,7 +47,10 @@ jsonLd: |
 <!-- OwlEye Analytics -->
 <article class="case-study fade-in" id="owleye">
   <div class="case-study__header">
-    <h2 class="case-study__title">OwlEye Analytics</h2>
+    <h2 class="case-study__title brand-title">
+      <img src="/images/owleye-mark.svg" alt="" width="36" height="36" />
+      OwlEye Analytics
+    </h2>
     <div class="case-study__meta">
       <span class="case-study__meta-item">Independent • 2023 – Present</span>
       <span class="case-study__meta-item">Founder & sole developer</span>
@@ -135,7 +139,7 @@ jsonLd: |
         rel="noopener"
         class="case-study__link"
         >GitHub →</a>
-      <a href="/blog/outline-analytics-reason/" class="case-study__link"
+      <a href="/blog/owleye-analytics-reason/" class="case-study__link"
         >Why I started it →</a>
     </div>
   </div>
@@ -330,6 +334,7 @@ jsonLd: |
       <span class="case-study__meta-item">React • TypeScript • Vite</span>
     </div>
     <div class="tags">
+      <span class="tag">15 EVM chains</span>
       <span class="tag">Custom SEO</span>
       <span class="tag">Vite SPA</span>
       <span class="tag">No Next.js</span>
@@ -357,8 +362,11 @@ jsonLd: |
     <div class="case-study__outcome">
       <p>
         Full SEO capability without Next.js. Clean, fast bridge UI that
-        handles high-frequency state updates seamlessly. Currently live in
-        production.
+        handles high-frequency state updates seamlessly. Live in
+        production and scaled to 15 EVM chains, each with its own
+        indexable page. Next up is Opportunities: depositing a combined
+        balance across every chain and token straight into yield apps
+        like Aave and Compound without leaving Fastbridge.
       </p>
     </div>
     <a
@@ -367,6 +375,82 @@ jsonLd: |
       rel="noopener"
       class="case-study__link"
       >View Fastbridge →</a>
+  </div>
+</article>
+
+<!-- Nexus Widgets -->
+<article class="case-study fade-in" id="widgets">
+  <div class="case-study__header">
+    <h2 class="case-study__title">Nexus Widgets</h2>
+    <div class="case-study__meta">
+      <span class="case-study__meta-item">Avail Project • 2025 – Present</span>
+      <span class="case-study__meta-item">Conceived & led frontend</span>
+      <span class="case-study__meta-item">React • TypeScript • shadcn/ui • Nexus SDK</span>
+    </div>
+    <div class="tags">
+      <span class="tag">npm package</span>
+      <span class="tag">shadcn registry</span>
+      <span class="tag">Fiat onramp</span>
+      <span class="tag">Open Source</span>
+    </div>
+  </div>
+  <div class="case-study__body">
+    <h3>The Challenge</h3>
+    <p>
+      Avail's Nexus SDK lets an app spend a user's balance across chains
+      as if it were one balance, but every team integrating it had to
+      build the same swap, send, and deposit interfaces from scratch. I
+      proposed a single configurable component that any app could drop
+      in, originally pitched as Nexus One, later shipped as Nexus
+      Elements, and now called Widgets.
+    </p>
+    <h3>The Approach</h3>
+    <p>
+      Different teams want different amounts of control, so Widgets ship
+      two ways from one codebase. Teams that only need basic configuration
+      install the npm package. Teams that want to own every line pull the
+      components from a shadcn registry and edit the source in their own
+      repo.
+    </p>
+    <p>
+      To make the configuration discoverable I built the Widget
+      Configurator: it runs the real widget in the browser with ready-made
+      presets (for example, a deposit into Aave on Arbitrum), lets you
+      change branding, funding options, and destination, and exports the
+      resulting config to paste into your app.
+    </p>
+    <p>
+      I also added fiat onramping to the Deposit Widget through Meld, so
+      a user can fund a deposit from a card or bank transfer instead of
+      needing crypto in a wallet first.
+    </p>
+    <div class="case-study__outcome">
+      <p>
+        Open source and live in production, powering swap, send, and
+        deposit flows from one component. A developer dashboard for API
+        keys, onramp onboarding, and observability is in planning.
+      </p>
+    </div>
+    <div style="display: flex; gap: 16px; margin-top: 16px; flex-wrap: wrap">
+      <a
+        href="https://widgets.availproject.org/"
+        target="_blank"
+        rel="noopener"
+        class="case-study__link"
+        >Try the configurator →</a>
+      <a
+        href="https://docs.availproject.org/docs/nexus/widgets"
+        target="_blank"
+        rel="noopener"
+        class="case-study__link"
+        >Docs →</a>
+      <a
+        href="https://github.com/availproject/widgets"
+        target="_blank"
+        rel="noopener"
+        class="case-study__link"
+        >GitHub →</a>
+    </div>
   </div>
 </article>
 

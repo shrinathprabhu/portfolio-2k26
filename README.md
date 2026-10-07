@@ -22,7 +22,7 @@ For detailed case studies on each project, visit [shrinath.me/work](https://shri
 
 ## Currently
 
-🏗️ **Senior Staff Engineer** at [Avail Project](https://availproject.org) - leading frontend architecture across the Nexus product ecosystem. Shipped Nexus One, [Fastbridge](https://fastbridge.availproject.org), and [Nexus Elements](https://elements.nexus.availproject.org).
+🏗️ **Senior Staff Engineer** at [Avail Project](https://availproject.org) - leading frontend architecture across the Nexus product ecosystem. Shipped [Fastbridge](https://fastbridge.availproject.org) (15 EVM chains), [Nexus Widgets](https://docs.availproject.org/docs/nexus/widgets) (formerly Nexus One / Elements, npm package + shadcn registry), and the [Widget Configurator](https://widgets.availproject.org).
 
 🔬 **Building** [OwlEye Analytics](https://owleye.dev) - hosted, cookie-free web analytics (Rust + Axum, ClickHouse, dependency-free TypeScript SDK)
 
