@@ -12,7 +12,7 @@ For detailed case studies on each project, visit [shrinath.me/work](https://shri
 
 **SendIt** - Cross-chain token transfer app replacing wallet addresses with email/X handles/ENS. Scaled to 65K+ accounts and 20K+ peak DAU. Frontend traffic exceeded Netlify Pro limits despite aggressive caching, migrated to self-managed AWS infrastructure.
 
-**Outline Analytics** - Privacy-first, cookie-free web analytics I'm building as founder. TypeScript SDK under 4KB with zero dependencies, Bun + Elysia.js backend, MongoDB timeseries. Open source alternative to Plausible and Fathom. [GitHub →](https://github.com/useoutline)
+**OwlEye Analytics** - Hosted, cookie-free web analytics I'm building as founder. Dependency-free TypeScript SDK, Rust + Axum API, ClickHouse event store. Tracking rules are set up in the console, no redeploys. Rebuilt from the first version (Outline Analytics, Bun + MongoDB). [owleye.dev →](https://owleye.dev) • [GitHub →](https://github.com/shrinathprabhu/owleye)
 
 **Skizzle** - Chrome + Firefox extension for encrypted email attachments using RSA keys via Web3Auth (Torus) and decentralized storage. ~1,000 users, 4.2 stars. Shipped in my first month at the company.
 
@@ -24,7 +24,7 @@ For detailed case studies on each project, visit [shrinath.me/work](https://shri
 
 🏗️ **Senior Staff Engineer** at [Avail Project](https://availproject.org) - leading frontend architecture across the Nexus product ecosystem. Shipped Nexus One, [Fastbridge](https://fastbridge.availproject.org), and [Nexus Elements](https://elements.nexus.availproject.org).
 
-🔬 **Building** [Outline Analytics](https://useoutline.xyz) - privacy-first, cookie-free web analytics (TypeScript SDK <4KB, Bun + Elysia.js)
+🔬 **Building** [OwlEye Analytics](https://owleye.dev) - hosted, cookie-free web analytics (Rust + Axum, ClickHouse, dependency-free TypeScript SDK)
 
 ## Previously
 
@@ -37,8 +37,8 @@ Led frontend engineering at **[Arcana Network](https://arcana.network)** for 4.5
 ## Stack
 
 **Frontend:** Vue 3, Nuxt 3, React, TypeScript, Tailwind CSS, Chrome Extensions (Manifest V3).  
-**Backend:** Node.js, Bun, Express, Fastify, Nest.js, Elysia.js.  
-**Data:** MongoDB, PostgreSQL, Firebase/Firestore.  
+**Backend:** Node.js, Bun, Rust (Axum), Express, Fastify, Nest.js, Elysia.js.  
+**Data:** MongoDB, PostgreSQL, ClickHouse, SQLite, Firebase/Firestore.  
 **Web3:** Wallet architecture, cross-chain bridging, chain abstraction, viem, EIP-7702.  
 **AI Tools:** Claude Code, OpenAI Codex, Google Gemini, Antigravity (Google).
 

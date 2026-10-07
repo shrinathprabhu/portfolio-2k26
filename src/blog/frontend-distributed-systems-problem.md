@@ -84,7 +84,7 @@ Backend performance is measured in milliseconds of server response time. Fronten
 
 These are fundamentally different metrics. A server that responds in 200ms is fast. A frontend that shows a blank screen for 200ms, then a layout shift, then loads an image that pushes the content down — that frontend feels slow even though every individual operation completed quickly. Cumulative Layout Shift, Largest Contentful Paint, First Input Delay, Interaction to Next Paint — these Core Web Vitals are not technical benchmarks. They are perceptual benchmarks that measure the user's subjective experience of speed.
 
-My Outline Analytics SDK is under 4KB gzipped with zero dependencies. That is not a technical flex — it is a product decision. Every analytics SDK the user's site loads adds to their page weight, competes for network bandwidth, and potentially blocks rendering. A 40KB analytics library on a page that otherwise loads in 1.2 seconds might push it to 1.5 seconds. That 300ms difference is the difference between a user staying and a user bouncing. My SDK's size is a feature that directly affects my users' users.
+The first SDK I wrote for my analytics product ([OwlEye](https://owleye.dev), then called Outline Analytics) was under 4KB gzipped with zero dependencies. That is not a technical flex — it is a product decision. Every analytics SDK the user's site loads adds to their page weight, competes for network bandwidth, and potentially blocks rendering. A 40KB analytics library on a page that otherwise loads in 1.2 seconds might push it to 1.5 seconds. That 300ms difference is the difference between a user staying and a user bouncing. My SDK's size is a feature that directly affects my users' users.
 
 ## SEO is an architecture decision
 

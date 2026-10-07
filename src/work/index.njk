@@ -1,9 +1,9 @@
 ---
 layout: page.njk
 title: "Work - Shrinath Prabhu | Case Studies & Projects"
-description: "Case studies of products Shrinath Prabhu has architected and shipped - Chrome Extension wallets, cross-chain transfer apps (65K+ users), encrypted email tools, privacy analytics, and developer platforms."
+description: "Case studies of products Shrinath Prabhu has architected and shipped - Chrome Extension wallets, cross-chain transfer apps (65K+ users), encrypted email tools, OwlEye cookie-free analytics, and developer platforms."
 ogTitle: "Work - Shrinath Prabhu | Projects & Case Studies"
-ogDescription: "Case studies of products shipped over 8 years - Chrome Extension wallets, cross-chain transfers (65K+ users), encrypted email, privacy analytics, and developer platforms."
+ogDescription: "Case studies of products shipped over 8 years - Chrome Extension wallets, cross-chain transfers (65K+ users), encrypted email, OwlEye cookie-free analytics, and developer platforms."
 ogType: website
 ogImageAlt: "Shrinath Prabhu - Work & Case Studies"
 jsonLd: |
@@ -22,12 +22,12 @@ jsonLd: |
     "mainEntity": {
       "@type": "ItemList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Arcana Chrome Extension Wallet", "description": "Non-custodial sidebar wallet supporting 10+ blockchains with dApp injection, unified balance management, and 4.7-star rating on Chrome Web Store.", "url": "https://shrinath.me/work/#wallet" },
-        { "@type": "ListItem", "position": 2, "name": "SendIt", "description": "Gamified cross-chain token transfer app replacing wallet addresses with email, X handles, and ENS domains. Scaled to 65K+ accounts and 20K+ peak DAU.", "url": "https://shrinath.me/work/#sendit" },
-        { "@type": "ListItem", "position": 3, "name": "Skizzle - E2E Encrypted Email Attachments", "description": "Chrome and Firefox extension for end-to-end encrypted email attachments using RSA keys via Web3Auth and decentralized storage. Approximately 1,000 users with 4.2-star rating.", "url": "https://shrinath.me/work/#skizzle" },
-        { "@type": "ListItem", "position": 4, "name": "Nexus Fastbridge", "description": "Cross-rollup bridge UI with custom Vite-based SEO solution generating per-chain HTML pages at build time without Next.js.", "url": "https://shrinath.me/work/#fastbridge" },
-        { "@type": "ListItem", "position": 5, "name": "Pricinger - Privacy-Focused Pricing Tool", "description": "Chrome Extension with multi-region VPN proxies, automated per-site optimization crawler, and privacy controls. 1,000+ users with 4-star rating.", "url": "https://shrinath.me/work/#pricinger" },
-        { "@type": "ListItem", "position": 6, "name": "Outline Analytics", "description": "Privacy-first, cookie-free web analytics platform with TypeScript SDK under 4KB gzipped and zero dependencies. Open source.", "url": "https://shrinath.me/work/#outline" },
+        { "@type": "ListItem", "position": 1, "name": "OwlEye Analytics", "description": "Hosted, cookie-free web analytics for small product teams. Dependency-free TypeScript SDK, Rust and Axum API, ClickHouse event store. Rebuilt from its first version, Outline Analytics.", "url": "https://shrinath.me/work/#owleye" },
+        { "@type": "ListItem", "position": 2, "name": "Arcana Chrome Extension Wallet", "description": "Non-custodial sidebar wallet supporting 10+ blockchains with dApp injection, unified balance management, and 4.7-star rating on Chrome Web Store.", "url": "https://shrinath.me/work/#wallet" },
+        { "@type": "ListItem", "position": 3, "name": "SendIt", "description": "Gamified cross-chain token transfer app replacing wallet addresses with email, X handles, and ENS domains. Scaled to 65K+ accounts and 20K+ peak DAU.", "url": "https://shrinath.me/work/#sendit" },
+        { "@type": "ListItem", "position": 4, "name": "Skizzle - E2E Encrypted Email Attachments", "description": "Chrome and Firefox extension for end-to-end encrypted email attachments using RSA keys via Web3Auth and decentralized storage. Approximately 1,000 users with 4.2-star rating.", "url": "https://shrinath.me/work/#skizzle" },
+        { "@type": "ListItem", "position": 5, "name": "Nexus Fastbridge", "description": "Cross-rollup bridge UI with custom Vite-based SEO solution generating per-chain HTML pages at build time without Next.js.", "url": "https://shrinath.me/work/#fastbridge" },
+        { "@type": "ListItem", "position": 6, "name": "Pricinger - Privacy-Focused Pricing Tool", "description": "Chrome Extension with multi-region VPN proxies, automated per-site optimization crawler, and privacy controls. 1,000+ users with 4-star rating.", "url": "https://shrinath.me/work/#pricinger" },
         { "@type": "ListItem", "position": 7, "name": "Arcana Developer Dashboard", "description": "Primary interface for Web3 developers to register dApps, configure authentication providers, and manage wallet settings. Built with Vue 3 and TypeScript.", "url": "https://shrinath.me/work/#dashboard" },
         { "@type": "ListItem", "position": 8, "name": "Credenstore - Zero-Knowledge Encrypted Storage", "description": "Serverless zero-knowledge encrypted storage application using client-side Triplesec encryption and Firebase. No login required.", "url": "https://shrinath.me/work/#credenstore" }
       ]
@@ -42,6 +42,104 @@ jsonLd: |
     Web3 infrastructure, privacy tooling, and developer platforms.
   </p>
 </div>
+
+<!-- OwlEye Analytics -->
+<article class="case-study fade-in" id="owleye">
+  <div class="case-study__header">
+    <h2 class="case-study__title">OwlEye Analytics</h2>
+    <div class="case-study__meta">
+      <span class="case-study__meta-item">Independent • 2023 – Present</span>
+      <span class="case-study__meta-item">Founder & sole developer</span>
+      <span class="case-study__meta-item">Rust • Axum • ClickHouse • SQLite • TypeScript</span>
+    </div>
+    <div class="tags">
+      <span class="tag">Founder</span>
+      <span class="tag">Cookie-free</span>
+      <span class="tag">Hosted</span>
+      <span class="tag">Open Source</span>
+    </div>
+  </div>
+  <div class="case-study__body">
+    <h3>Why It Exists</h3>
+    <p>
+      In every team I have worked on, a new tracking question ("does the
+      new button get clicked?") turned into a ticket, a code change, a
+      review, and a deploy. Google Tag Manager removes the deploy but
+      brings a privacy liability with it. Privacy-first tools like
+      Plausible and Fathom keep the privacy but stop at page views and
+      hand-written events. OwlEye is the gap between them: install the
+      SDK once, then define click, form, and visibility rules from the
+      console and see the events on the next page load.
+    </p>
+    <h3 id="outline">From Outline to OwlEye</h3>
+    <p>
+      The first version shipped as Outline Analytics: a TypeScript SDK, a
+      Bun and Elysia.js ingestion API, and MongoDB timeseries collections.
+      It worked, but aggregating events for dashboards and funnels was the
+      wrong job for that stack, and the plan to make it a single
+      self-hosted binary meant every user would inherit the operations
+      work. I rebuilt it from scratch as a hosted service on Rust and
+      ClickHouse and renamed it OwlEye.
+    </p>
+    <h3>Architecture Decisions</h3>
+    <p>
+      One Rust and Axum backend serves three clients: the browser SDK, the
+      team console, and scoped server-to-server APIs. Storage is split by
+      job. High-volume analytics facts (page views, custom events, rule
+      events, performance measurements) go to ClickHouse. Users, sites,
+      rules, keys, and billing state stay in SQLite. Ingestion runs
+      through a bounded in-process queue that batches writes into
+      ClickHouse and returns a 503 when full instead of growing without
+      limit, and the API only acknowledges events after the insert
+      succeeds.
+    </p>
+    <p>
+      The browser SDK has no runtime dependencies and is split into three
+      entrypoints: visitor analytics, rule tracking, and performance
+      timing. A site that only needs page views and custom events never
+      downloads the rule engine or the performance collector.
+    </p>
+    <h3>Privacy Boundaries</h3>
+    <p>
+      The public SDK writes no cookies, no <code>localStorage</code>, and
+      no <code>sessionStorage</code>. URL query strings and fragments are
+      excluded by default, request credentials are omitted, and Global
+      Privacy Control is respected by default. Visitors are counted with
+      site-scoped pseudonyms derived on the server; the client address is
+      used transiently and never stored as an analytics column. The
+      <a
+        href="https://owleye.dev/docs/architecture/"
+        target="_blank"
+        rel="noopener"
+        >architecture docs</a
+      >
+      publish exactly what is collected and what is not.
+    </p>
+    <div class="case-study__outcome">
+      <p>
+        SDK published on npm as <code>@owleye/analytics</code> (MIT).
+        Hosted beta in preparation. This site runs on OwlEye, so every
+        page view here is one of its production events.
+      </p>
+    </div>
+    <div style="display: flex; gap: 16px; margin-top: 16px; flex-wrap: wrap">
+      <a
+        href="https://owleye.dev"
+        target="_blank"
+        rel="noopener"
+        class="case-study__link"
+        >Visit owleye.dev →</a>
+      <a
+        href="https://github.com/shrinathprabhu/owleye"
+        target="_blank"
+        rel="noopener"
+        class="case-study__link"
+        >GitHub →</a>
+      <a href="/blog/outline-analytics-reason/" class="case-study__link"
+        >Why I started it →</a>
+    </div>
+  </div>
+</article>
 
 <!-- Wallet -->
 <article class="case-study fade-in" id="wallet">
@@ -322,68 +420,6 @@ jsonLd: |
         ~1,000 installs with a 4★ rating. Discontinued when the client's
         budget was cut due to COVID-19.
       </p>
-    </div>
-  </div>
-</article>
-
-<!-- Outline Analytics -->
-<article class="case-study fade-in" id="outline">
-  <div class="case-study__header">
-    <h2 class="case-study__title">Outline Analytics</h2>
-    <div class="case-study__meta">
-      <span class="case-study__meta-item">Independent • 2023 – Present</span>
-      <span class="case-study__meta-item">Founder & sole developer</span>
-      <span class="case-study__meta-item">TypeScript • Bun • Elysia.js • MongoDB • ClickHouse</span>
-    </div>
-    <div class="tags">
-      <span class="tag">Open Source</span>
-      <span class="tag">Privacy-first</span>
-      <span class="tag">Cookie-free</span>
-    </div>
-  </div>
-  <div class="case-study__body">
-    <h3>The Challenge</h3>
-    <p>
-      Privacy-focused web analytics tools exist (Plausible, Fathom,
-      Umami), but most require significant setup for self-hosting and lack
-      extensibility for custom events beyond page views. The goal is to
-      build a lightweight, privacy-first analytics platform that is easy
-      to self-host, provides meaningful insights without cookies or
-      personal data collection, and works across any platform: web,
-      mobile, backend, and infrastructure.
-    </p>
-    <h3>The Approach</h3>
-    <p>
-      The SDK is built in TypeScript with zero dependencies, coming in
-      under 4KB gzipped. It exposes a simple API for tracking page views,
-      custom events, and rule-based tracking (for example, tracking when a
-      user scrolls past 50% of a page). The backend uses Bun and Elysia.js
-      for high-throughput event ingestion, with MongoDB timeseries
-      collections for efficient time-bucketed queries.
-    </p>
-    <p>
-      Currently planning a migration to ClickHouse for the analytical
-      query layer, a full rebrand, and a public launch.
-    </p>
-    <div class="case-study__outcome">
-      <p>
-        Active development. SDK and backend API functional. Dashboard and
-        documentation in progress. Planning rebrand and public launch.
-      </p>
-    </div>
-    <div style="display: flex; gap: 16px; margin-top: 16px">
-      <a
-        href="https://useoutline.xyz"
-        target="_blank"
-        rel="noopener"
-        class="case-study__link"
-        >View project →</a>
-      <a
-        href="https://github.com/useoutline"
-        target="_blank"
-        rel="noopener"
-        class="case-study__link"
-        >GitHub →</a>
     </div>
   </div>
 </article>

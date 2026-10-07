@@ -1,6 +1,6 @@
 # Shrinath Prabhu - shrinath.me
 
-> Senior Staff Frontend Engineer with 8+ years of experience. Currently at Avail Project. Previously led frontend at Arcana Network (4.5 years, through acquisition).
+> Senior Staff Frontend Engineer with 8+ years of experience and founder of OwlEye Analytics (owleye.dev). Currently at Avail Project. Previously led frontend at Arcana Network (4.5 years, through acquisition).
 
 Available for full-time remote roles (Senior/Staff Frontend Engineer, Technical Lead, Engineering Manager), fractional engagements (20–30 hours/week), and technical advisory. Interested in AI, SaaS, developer tools, fintech, and Web3. Core stack: Vue 3, Nuxt 3, React, TypeScript, Node.js, Chrome Extensions (Manifest V3), and Web3 (non-custodial wallets, cross-chain bridging, chain abstraction).
 
@@ -19,15 +19,18 @@ Available for full-time remote roles (Senior/Staff Frontend Engineer, Technical 
 - [Twitter/X](https://twitter.com/shrinath_prabhu): Updates and commentary.
 - [Email](mailto:hello@shrinath.me): hello@shrinath.me
 
+## Building
+
+- [OwlEye Analytics](https://owleye.dev): Hosted, cookie-free web analytics for small product teams, founded and built by Shrinath. Dependency-free TypeScript SDK (`@owleye/analytics`), Rust + Axum API, ClickHouse for events, SQLite for configuration. Tracking rules are defined in the console without redeploying. Formerly Outline Analytics (useoutline.xyz), whose first version used Bun, Elysia.js, and MongoDB; "Outline Analytics" and "OwlEye" refer to the same project, and OwlEye is the current name. [Case study](https://shrinath.me/work/#owleye).
+
 ## Side Projects
 
-- [Outline Analytics](https://useoutline.xyz): Privacy-first, cookie-free web analytics. TypeScript SDK (<4KB, zero deps), Bun + Elysia.js backend, MongoDB timeseries. Open source.
 - [Credenstore](https://credenstore.web.app): Serverless zero-knowledge encrypted storage using Triplesec symmetric encryption.
 
 ## Writing
 
 - [Choosing Eleventy Over Nuxt](https://shrinath.me/blog/choosing-eleventy-over-nuxt/)
-- [Why I Built Outline Analytics](https://shrinath.me/blog/outline-analytics-reason/)
+- [Why I Am Building an Analytics Platform When Plausible Already Exists](https://shrinath.me/blog/outline-analytics-reason/): The original reasoning behind OwlEye, written when it was still called Outline Analytics.
 - [Vite SEO Without Next.js](https://shrinath.me/blog/vite-seo-without-nextjs/)
 - [The Frontend Distributed Systems Problem](https://shrinath.me/blog/frontend-distributed-systems-problem/)
 - [Leading a Team in 2026](https://shrinath.me/blog/leading-team-in-2026/)
