@@ -66,7 +66,7 @@ When a user with Pricinger installed visited a supported site, the extension che
 
 The extension reached approximately 1,000 users with a 4-star rating and over 50 reviews. It was built for a German client who self-funded the project. When COVID hit in 2020, travel bookings collapsed, the client's budget was cut, and Pricinger was discontinued.
 
-The technical foundation, multi-region proxy deployment, automated web scraping at scale, Chrome Extension architecture with complex privacy controls, became the basis for my later Chrome Extension work. I went on to build three more extensions, including a non-custodial crypto wallet supporting 10+ blockchains. The privacy engineering instincts I developed on Pricinger directly influenced my later work on client-side encryption (Skizzle, Credenstore) and privacy-first analytics (Outline Analytics).
+The technical foundation, multi-region proxy deployment, automated web scraping at scale, Chrome Extension architecture with complex privacy controls, became the basis for my later Chrome Extension work. I went on to build three more extensions, including a non-custodial crypto wallet supporting 10+ blockchains. The privacy engineering instincts I developed on Pricinger directly influenced my later work on client-side encryption (Skizzle, [Credo](https://credo.lowkey.tools)) and privacy-first analytics ([OwlEye](https://owleye.dev)).
 
 Sometimes the projects that teach you the most are the ones that do not survive.
 

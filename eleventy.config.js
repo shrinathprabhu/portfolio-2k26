@@ -123,7 +123,7 @@ export default function (eleventyConfig) {
   });
   eleventyConfig.addPassthroughCopy("src/_headers");
   eleventyConfig.addPassthroughCopy(
-    "src/resume/SHRINATH_PRABHU_UPDATED_RESUME_2026.pdf",
+    "src/resume/SHRINATH_PRABHU_RESUME.pdf",
   );
   eleventyConfig.addPassthroughCopy("src/blog/**/*.png");
   eleventyConfig.addPassthroughCopy("src/blog/**/*.jpg");

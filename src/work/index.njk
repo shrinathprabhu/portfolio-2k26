@@ -26,11 +26,11 @@ jsonLd: |
         { "@type": "ListItem", "position": 2, "name": "Arcana Chrome Extension Wallet", "description": "Non-custodial sidebar wallet supporting 10+ blockchains with dApp injection, unified balance management, and 4.7-star rating on Chrome Web Store.", "url": "https://shrinath.me/work/#wallet" },
         { "@type": "ListItem", "position": 3, "name": "SendIt", "description": "Gamified cross-chain token transfer app replacing wallet addresses with email, X handles, and ENS domains. Scaled to 65K+ accounts and 20K+ peak DAU.", "url": "https://shrinath.me/work/#sendit" },
         { "@type": "ListItem", "position": 4, "name": "Skizzle - E2E Encrypted Email Attachments", "description": "Chrome and Firefox extension for end-to-end encrypted email attachments using RSA keys via Web3Auth and decentralized storage. Approximately 1,000 users with 4.2-star rating.", "url": "https://shrinath.me/work/#skizzle" },
-        { "@type": "ListItem", "position": 5, "name": "Nexus Fastbridge", "description": "Cross-rollup bridge UI live on 15 EVM chains, with custom Vite-based SEO solution generating per-chain HTML pages at build time without Next.js.", "url": "https://shrinath.me/work/#fastbridge" },
-        { "@type": "ListItem", "position": 6, "name": "Nexus Widgets", "description": "Prebuilt React components for cross-chain swap, send, and deposit, shipped as an npm package and a shadcn registry, with a live configurator and fiat onramping.", "url": "https://shrinath.me/work/#widgets" },
+        { "@type": "ListItem", "position": 5, "name": "Nexus Fastbridge", "description": "Cross-rollup bridge UI live on 15 EVM chains with ~$100K monthly volume, with custom Vite-based SEO solution generating per-chain HTML pages at build time without Next.js.", "url": "https://shrinath.me/work/#fastbridge" },
+        { "@type": "ListItem", "position": 6, "name": "Nexus Widgets", "description": "Prebuilt React components for cross-chain swap, send, and deposit, shipped as an npm package and a shadcn registry, with a live configurator and fiat onramping. Used by 10+ dApps.", "url": "https://shrinath.me/work/#widgets" },
         { "@type": "ListItem", "position": 7, "name": "Pricinger - Privacy-Focused Pricing Tool", "description": "Chrome Extension with multi-region VPN proxies, automated per-site optimization crawler, and privacy controls. 1,000+ users with 4-star rating.", "url": "https://shrinath.me/work/#pricinger" },
         { "@type": "ListItem", "position": 8, "name": "Arcana Developer Dashboard", "description": "Primary interface for Web3 developers to register dApps, configure authentication providers, and manage wallet settings. Built with Vue 3 and TypeScript.", "url": "https://shrinath.me/work/#dashboard" },
-        { "@type": "ListItem", "position": 9, "name": "Credenstore - Zero-Knowledge Encrypted Storage", "description": "Serverless zero-knowledge encrypted storage application using client-side Triplesec encryption and Firebase. No login required.", "url": "https://shrinath.me/work/#credenstore" }
+        { "@type": "ListItem", "position": 9, "name": "lowkey.tools", "description": "A collection of twelve tiny, free, offline-first browser tools with no accounts, including FuseLLM (bring-your-own-key AI workflows) and Credo (zero-knowledge secret sharing). Open source.", "url": "https://shrinath.me/work/#lowkeytools" }
       ]
     }
   }
@@ -335,6 +335,7 @@ jsonLd: |
     </div>
     <div class="tags">
       <span class="tag">15 EVM chains</span>
+      <span class="tag">~$100K monthly volume</span>
       <span class="tag">Custom SEO</span>
       <span class="tag">Vite SPA</span>
       <span class="tag">No Next.js</span>
@@ -364,7 +365,8 @@ jsonLd: |
         Full SEO capability without Next.js. Clean, fast bridge UI that
         handles high-frequency state updates seamlessly. Live in
         production and scaled to 15 EVM chains, each with its own
-        indexable page. Next up is Opportunities: depositing a combined
+        indexable page, with about $100K swapped and bridged through it every
+        month. Next up is Opportunities: depositing a combined
         balance across every chain and token straight into yield apps
         like Aave and Compound without leaving Fastbridge.
       </p>
@@ -388,6 +390,7 @@ jsonLd: |
       <span class="case-study__meta-item">React • TypeScript • shadcn/ui • Nexus SDK</span>
     </div>
     <div class="tags">
+      <span class="tag">10+ dApps</span>
       <span class="tag">npm package</span>
       <span class="tag">shadcn registry</span>
       <span class="tag">Fiat onramp</span>
@@ -426,8 +429,8 @@ jsonLd: |
     </p>
     <div class="case-study__outcome">
       <p>
-        Open source and live in production, powering swap, send, and
-        deposit flows from one component. A developer dashboard for API
+        Open source and live in production, used by 10+ dApps to power
+        swap, send, and deposit flows from one component. A developer dashboard for API
         keys, onramp onboarding, and observability is in planning.
       </p>
     </div>
@@ -555,64 +558,77 @@ jsonLd: |
   </div>
 </article>
 
-<!-- Credenstore -->
-<article class="case-study fade-in" id="credenstore">
+<!-- lowkey.tools -->
+<article class="case-study fade-in" id="lowkeytools">
   <div class="case-study__header">
-    <h2 class="case-study__title">
-      Credenstore - Zero-Knowledge Encrypted Storage
-    </h2>
+    <h2 class="case-study__title">lowkey.tools</h2>
     <div class="case-study__meta">
-      <span class="case-study__meta-item">Independent • 2020</span>
+      <span class="case-study__meta-item">Independent • Ongoing</span>
       <span class="case-study__meta-item">Sole developer</span>
-      <span class="case-study__meta-item">Vue • Triplesec • Firebase</span>
+      <span class="case-study__meta-item">HTML • CSS • JavaScript • PWA • Cloudflare Workers</span>
     </div>
     <div class="tags">
-      <span class="tag">Zero-knowledge</span>
-      <span class="tag">Serverless</span>
-      <span class="tag">No login required</span>
+      <span class="tag">12 tools</span>
+      <span class="tag">No accounts</span>
+      <span class="tag">Offline-first</span>
+      <span class="tag">Open Source</span>
     </div>
   </div>
   <div class="case-study__body">
-    <h3>The Challenge</h3>
+    <h3>The Idea</h3>
     <p>
-      Build a tool where users can store sensitive information
-      (credentials, notes, secrets) and share them securely, without
-      creating an account, without trusting a server with plaintext data,
-      and without installing anything. The entire encryption and
-      decryption process must happen client-side so that the server never
-      sees unencrypted data.
+      Most small utilities on the web ask for a signup, show ads, or send
+      your data to a server for a job the browser can do on its own.
+      lowkey.tools is my collection of tiny, free tools that skip all of
+      that: no accounts, nothing to install, and your data stays on your
+      device wherever the tool allows it.
+    </p>
+    <h3>What Is In It</h3>
+    <p>
+      Twelve tools so far. FuseLLM chains your own AI models into
+      workflows using your own API keys, with prompts going straight from
+      the browser to the provider. SuperBrain is local-first notes,
+      SuperSplit splits bills, SuperFocus and StreakFreak cover focus and
+      habits, Converteasy handles everyday conversions, and Favigen turns
+      one image into every favicon size. There are three quick games too:
+      MathMagician, Chesscape, and SpotFast. Several of the apps are
+      installable PWAs that keep working offline.
+    </p>
+    <p id="credenstore">
+      Credo is the security-minded one: paste a password, API key, or env
+      file and it is sealed in your browser with AES-256-GCM, using a key
+      stretched from your passphrase with Argon2id. Only ciphertext is
+      stored, the link expires on its own, and the passphrase never
+      leaves your device.
     </p>
     <h3>The Approach</h3>
     <p>
-      I built Credenstore as a serverless web app using Vue and
-      Firebase/Firestore. All data is encrypted client-side using
-      Triplesec symmetric encryption before being stored in Firestore.
-      Users can share encrypted data via a unique link, recipients need
-      only the link and the password to decrypt. No account creation, no
-      server-side decryption keys, no login required.
-    </p>
-    <p>
-      The app also supports file encryption, time-bound expiry (data
-      auto-deletes after a set period), and password protected sharing.
-      Because the server never has access to the encryption keys or
-      plaintext data, this is a true zero-knowledge architecture, even if
-      Firestore is compromised, the stored data is unreadable without the
-      password.
+      The hub is plain HTML, CSS, and JavaScript on Cloudflare Workers,
+      with no framework, no third-party scripts, and no package
+      dependencies. A single tool inventory generates the static pages,
+      so adding a tool is one entry in one file. Each tool lives on its
+      own subdomain and ships independently.
     </p>
     <div class="case-study__outcome">
       <p>
-        Fully functional and deployed. Demonstrates client-side encryption
-        architecture, zero-knowledge design principles, and serverless
-        deployment patterns. Used personally and shared with colleagues
-        for secure credential sharing.
+        Twelve tools live, free, and open source. It is where I try
+        ideas quickly and keep my hand in on plain web platform work.
       </p>
     </div>
-    <a
-      href="https://credenstore.web.app"
-      target="_blank"
-      rel="noopener"
-      class="case-study__link"
-      >Try Credenstore →</a>
+    <div style="display: flex; gap: 16px; margin-top: 16px; flex-wrap: wrap">
+      <a
+        href="https://lowkey.tools"
+        target="_blank"
+        rel="noopener"
+        class="case-study__link"
+        >Visit lowkey.tools →</a>
+      <a
+        href="https://github.com/shrinathprabhu/lowkeytools"
+        target="_blank"
+        rel="noopener"
+        class="case-study__link"
+        >GitHub →</a>
+    </div>
   </div>
 </article>
 

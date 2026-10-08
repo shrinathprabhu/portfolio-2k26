@@ -381,6 +381,13 @@ a.status__badge:where(:hover, :focus-visible) {
   border-radius: var(--radius);
 }
 .building__main { max-width: 600px; }
+.building--minor {
+  margin-top: 16px;
+  border-left-color: var(--border);
+}
+.building--minor .building__title { font-size: 1.1rem; }
+.building--minor .building__desc { margin-bottom: 0; }
+.building--minor .hero__actions { margin-top: 0; flex-shrink: 0; }
 .building__eyebrow {
   font-size: 0.75rem;
   font-weight: 600;

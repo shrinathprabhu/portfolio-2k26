@@ -4,6 +4,8 @@ const CANONICAL_HOST = "shrinath.me";
 const REDIRECTS = {
   // Outline Analytics was renamed OwlEye
   "/blog/outline-analytics-reason": "/blog/owleye-analytics-reason/",
+  "/resume/SHRINATH_PRABHU_UPDATED_RESUME_2026.pdf":
+    "/resume/SHRINATH_PRABHU_RESUME.pdf",
 };
 
 export default {
