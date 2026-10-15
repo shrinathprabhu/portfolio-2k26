@@ -1,5 +1,5 @@
 /**
- * /launch-plan/: tabs, the 15–31 Oct calendar, task ticks, copy buttons and
+ * /launch-plan/: tabs, the 16–31 Oct calendar, task ticks, copy buttons and
  * the scoreboard. Ticks, scoreboard numbers and the open tab are kept in this
  * browser's localStorage only, and the page works the same when it's blocked.
  */
@@ -126,7 +126,7 @@
   const now = new Date();
   const today =
     now.getFullYear() === 2026 && now.getMonth() === 9 ? now.getDate() : null;
-  const firstDay = 15;
+  const firstDay = 16;
   const lastDay = 31;
   if (today && today >= firstDay && today <= lastDay) {
     root.querySelector(`.cal__day[data-goto="${today}"]`)?.classList.add("is-today");
@@ -225,11 +225,11 @@
     });
   });
 
-  // ── Scoreboard: one row per night, 15–31 Oct ──
+  // ── Scoreboard: one row per night, 16–31 Oct ──
   const body = root.querySelector("#kpi-body");
   if (body) {
     const columns = ["xf", "rk", "ov", "sv", "lv", "su", "cv", "pd"];
-    const rows = [{ id: "start", label: "Thu 15 (start)", preset: { xf: 635, rk: 80 } }];
+    const rows = [{ id: "start", label: "Fri 16 (start)", preset: { xf: 635, rk: 80 } }];
     for (let day = firstDay; day <= lastDay; day++) {
       const weekday = new Date(2026, 9, day).toLocaleDateString("en-GB", {
         weekday: "short",
