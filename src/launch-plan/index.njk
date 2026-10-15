@@ -1,0 +1,1883 @@
+---
+layout: base.njk
+permalink: /launch-plan/
+title: "OwlEye Launch Plan, 15–31 Oct 2026 | Shrinath Prabhu"
+description: "A day-by-day plan for launching OwlEye on Reddit, X and LinkedIn: four days of countdown, launch day on 20 October, and two weeks of follow-through to 31 October. Every post is ready to copy."
+robots: "noindex, follow"
+bodyClass: "page-launch-plan"
+inlineStylesheet: "../launch-plan.css"
+eleventyExcludeFromCollections: true
+---
+
+<div class="lp">
+{% raw %}
+<div class="wrap">
+<header class="top">
+  <span class="eyebrow">Shrinath Prabhu · OwlEye · launch plan, 15–31 Oct 2026 · times in IST</span>
+  <h1>Four days of noise. One launch. Two weeks of follow-through.</h1>
+  <p class="lede">A day-by-day plan for Reddit, X and LinkedIn that builds up to a Tuesday launch on 20 October, then keeps the momentum going to the end of the month. Every post is ready to copy. Highlighted <mark>{{blanks}}</mark> need your real numbers before posting. The one goal underneath all of it: five conversations with people who could pay $9 by launch day, and paying customers by 31 October. Tap a day to open its checklist.</p>
+  <div class="cal" aria-label="Calendar, 15 to 31 October">
+    <div class="cal__bar">
+      <div class="cal__legend">
+        <span><i class="k-count"></i>Countdown</span>
+        <span><i class="k-launch"></i>Launch</span>
+        <span><i class="k-after"></i>Follow-through</span>
+        <span><i class="k-wave"></i>Second wave</span>
+      </div>
+      <span class="cal__overall" id="cal-overall" aria-live="polite"></span>
+    </div>
+    <div class="cal__grid">
+      <div class="cal__dow" aria-hidden="true">Mon</div>
+      <div class="cal__dow" aria-hidden="true">Tue</div>
+      <div class="cal__dow" aria-hidden="true">Wed</div>
+      <div class="cal__dow" aria-hidden="true">Thu</div>
+      <div class="cal__dow" aria-hidden="true">Fri</div>
+      <div class="cal__dow" aria-hidden="true">Sat</div>
+      <div class="cal__dow" aria-hidden="true">Sun</div>
+      <div class="cal__off" aria-hidden="true">12</div>
+      <div class="cal__off" aria-hidden="true">13</div>
+      <div class="cal__off" aria-hidden="true">14</div>
+      <a class="cal__day ph-count" href="#day-15" data-goto="15" data-label="Thu 15 Oct, Open the countdown"><span class="cal__num">15<small>Thu</small></span><span class="cal__theme">Open the countdown</span><span class="cal__prog"><b></b></span></a>
+      <a class="cal__day ph-count" href="#day-16" data-goto="16" data-label="Fri 16 Oct, Show it working"><span class="cal__num">16<small>Fri</small></span><span class="cal__theme">Show it working</span><span class="cal__prog"><b></b></span></a>
+      <a class="cal__day ph-count" href="#day-17" data-goto="17" data-label="Sat 17 Oct, Open the hood"><span class="cal__num">17<small>Sat</small></span><span class="cal__theme">Open the hood</span><span class="cal__prog"><b></b></span></a>
+      <a class="cal__day ph-count" href="#day-18" data-goto="18" data-label="Sun 18 Oct, Show the numbers"><span class="cal__num">18<small>Sun</small></span><span class="cal__theme">Show the numbers</span><span class="cal__prog"><b></b></span></a>
+      <a class="cal__day ph-count" href="#day-19" data-goto="19" data-label="Mon 19 Oct, Load the launch"><span class="cal__num">19<small>Mon</small></span><span class="cal__theme">Load the launch</span><span class="cal__prog"><b></b></span></a>
+      <a class="cal__day ph-launch" href="#launch" data-goto="20" data-label="Tue 20 Oct, Launch"><span class="cal__num">20<small>Tue</small></span><span class="cal__theme">Launch</span><span class="cal__prog"><b></b></span></a>
+      <a class="cal__day ph-after" href="#day-21" data-goto="21" data-label="Wed 21 Oct, The morning after"><span class="cal__num">21<small>Wed</small></span><span class="cal__theme">The morning after</span><span class="cal__prog"><b></b></span></a>
+      <a class="cal__day ph-after" href="#day-22" data-goto="22" data-label="Thu 22 Oct, Fix it in public"><span class="cal__num">22<small>Thu</small></span><span class="cal__theme">Fix it in public</span><span class="cal__prog"><b></b></span></a>
+      <a class="cal__day ph-after" href="#day-23" data-goto="23" data-label="Fri 23 Oct, Roast my page"><span class="cal__num">23<small>Fri</small></span><span class="cal__theme">Roast my page</span><span class="cal__prog"><b></b></span></a>
+      <a class="cal__day ph-after" href="#day-24" data-goto="24" data-label="Sat 24 Oct, Showoff, round two"><span class="cal__num">24<small>Sat</small></span><span class="cal__theme">Showoff, round two</span><span class="cal__prog"><b></b></span></a>
+      <a class="cal__day ph-after" href="#day-25" data-goto="25" data-label="Sun 25 Oct, Week-one numbers"><span class="cal__num">25<small>Sun</small></span><span class="cal__theme">Week-one numbers</span><span class="cal__prog"><b></b></span></a>
+      <a class="cal__day ph-wave" href="#day-26" data-goto="26" data-label="Mon 26 Oct, Second wave"><span class="cal__num">26<small>Mon</small></span><span class="cal__theme">Second wave</span><span class="cal__prog"><b></b></span></a>
+      <a class="cal__day ph-wave" href="#day-27" data-goto="27" data-label="Tue 27 Oct, Get listed"><span class="cal__num">27<small>Tue</small></span><span class="cal__theme">Get listed</span><span class="cal__prog"><b></b></span></a>
+      <a class="cal__day ph-wave" href="#day-28" data-goto="28" data-label="Wed 28 Oct, The extension story"><span class="cal__num">28<small>Wed</small></span><span class="cal__theme">The extension story</span><span class="cal__prog"><b></b></span></a>
+      <a class="cal__day ph-wave" href="#day-29" data-goto="29" data-label="Thu 29 Oct, Space night"><span class="cal__num">29<small>Thu</small></span><span class="cal__theme">Space night</span><span class="cal__prog"><b></b></span></a>
+      <a class="cal__day ph-wave" href="#day-30" data-goto="30" data-label="Fri 30 Oct, Checkpoint"><span class="cal__num">30<small>Fri</small></span><span class="cal__theme">Checkpoint</span><span class="cal__prog"><b></b></span></a>
+      <a class="cal__day ph-wave" href="#day-31" data-goto="31" data-label="Sat 31 Oct, Halloween + retro"><span class="cal__num">31<small>Sat</small></span><span class="cal__theme">Halloween + retro</span><span class="cal__prog"><b></b></span></a>
+      <div class="cal__off" aria-hidden="true">1</div>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs" role="tablist" aria-label="Sections">
+  <button role="tab" data-tab="plan" aria-selected="true">Plan</button>
+  <button role="tab" data-tab="days">Day by day</button>
+  <button role="tab" data-tab="reddit">Reddit posts</button>
+  <button role="tab" data-tab="x">X posts</button>
+  <button role="tab" data-tab="linkedin">LinkedIn posts</button>
+  <button role="tab" data-tab="leads">Leads &amp; DMs</button>
+  <button role="tab" data-tab="growth">Followers &amp; karma</button>
+  <button role="tab" data-tab="launch">Launch day</button>
+  <button role="tab" data-tab="after">After launch</button>
+</nav>
+
+<!-- ============ PLAN ============ -->
+<section class="panel" id="plan" role="tabpanel">
+  <div class="grid3">
+    <div class="box hero goal"><span class="eyebrow">Goal 1 · money</span><span class="num">5 <small>interested buyers by Tue</small></span><p class="muted">Then 1 paid Pro ($9) in launch week, 3 paying by 31 Oct, and 5 within 30 days of launch.</p></div>
+    <div class="box goal"><span class="eyebrow">Goal 2 · X followers</span><span class="num">635→2,000 <small>by 30 Nov</small></span><p class="muted">1,200 by 30 Oct, then about 27 a day. One post that takes off can bring this forward by weeks.</p></div>
+    <div class="box goal"><span class="eyebrow">Goal 3 · Reddit karma</span><span class="num">80→280 <small>by 30 Oct</small></span><p class="muted">About 14 a day: 10–15 good comments plus one useful post daily.</p></div>
+  </div>
+
+  <div class="box">
+    <h2>The story you are telling this week</h2>
+    <p><strong>"Senior staff engineer by day. At night I built a whole analytics product. It launches Tuesday, and I'm showing everything on the way."</strong></p>
+    <p>That one line does three jobs. The day job proves you can build. The countdown gives people a reason to follow now instead of later. "Showing everything" lets you post every day without it reading as an ad. Every post this week is a chapter of that story.</p>
+    <p>The product hook stays the same everywhere: <strong>change what you track from a dashboard, without shipping code.</strong> Install the SDK once, then point at a button, name the event, save. The next page load tracks it. No cookies or browser storage from the visitor script. Free up to 10K events, $9 for 100K.</p>
+  </div>
+
+  <div class="grid2">
+    <div class="box">
+      <h3>What we're borrowing, and from whom</h3>
+      <ul>
+        <li><strong>levelsio:</strong> real numbers in public, even bad ones. Ship small things people ask for in replies, the same day.</li>
+        <li><strong>Marc Lou:</strong> a visible countdown. "Reply 'owl' and I'll DM you on launch day" builds a launch list from replies. Memes about the pain, not the product.</li>
+        <li><strong>Jonathan Wilke:</strong> clean product screenshots and short videos with one clear claim each. Consistent updates.</li>
+        <li><strong>Kitze:</strong> sharp opinions about the incumbent (GA4) that people want to quote-post. Humour does the selling.</li>
+        <li><strong>LinkedIn storytellers:</strong> a hook line, a short personal story, three lessons, one question at the end. "Comment 'owl'" to collect leads.</li>
+        <li><strong>Reddit winners:</strong> long value posts with no link in the body. Numbers recaps. Showoff Saturday. The product shows up in your profile and in the comments when people ask.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>The two lead magnets</h3>
+      <p><strong>1. Free tracking audit.</strong> "Drop your site URL, I'll reply with the 3 events you should be tracking." Each reply is a conversation, a signal to the X algorithm, and a qualified lead who has a live site. For the best ones, record a 2-minute Loom showing the rule set up in OwlEye. Cap it at 10.</p>
+      <p><strong>2. The Founding 10.</strong> The first 10 paid Pro users get: you personally setting up their first events on a 15-minute call, their feature requests at the front of the queue, and a direct line to you. It costs you time, not price changes, so there's nothing to configure in billing.</p>
+      <p class="muted">Want a discount too? Create the code in your billing provider first and test it before you mention it anywhere.</p>
+    </div>
+  </div>
+
+  <div class="box">
+    <h3>Where the traffic goes</h3>
+    <div class="tablewrap" style="border:0">
+    <table>
+      <thead><tr><th>Surface</th><th>Points to</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>X website field</td><td>owleye.dev</td><td>For launch week only. Put shrinath.me in the bio text.</td></tr>
+        <tr><td>Reddit profile link</td><td>shrinath.me</td><td>Reddit dislikes the same product domain in every post. Your portfolio links to OwlEye and lowkey, and it reads as a person.</td></tr>
+        <tr><td>LinkedIn Featured</td><td>owleye.dev, shrinath.me, lowkey.tools</td><td>Profile visits jump after every post. Featured is what they click.</td></tr>
+        <tr><td>lowkey.tools posts</td><td>The tool itself</td><td>The footer already credits OwlEye. Game and utility posts earn karma and reach people who'd never open an analytics post.</td></tr>
+        <tr><td>Every DM and reply</td><td>owleye.dev/demo/</td><td>The live demo needs no signup. It's a softer first click than "sign up".</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="callout muted">Attribution: OwlEye ignores URL query strings by default, so UTM tags won't show in your own dashboard. Use the referrer hosts it does record (reddit.com, t.co, linkedin.com, news.ycombinator.com). Add a one-field "How did you hear about OwlEye?" to signup if you can.</p>
+  </div>
+
+  <div class="box">
+    <h3>Daily scoreboard</h3>
+    <p class="muted">Fill this in every night at 11pm. Both Sunday numbers posts (18 and 25 Oct) and the 30 Oct checkpoint are built from it. The values are saved in this browser only.</p>
+    <div class="tablewrap kpi">
+      <table>
+        <thead><tr><th>Day</th><th>X followers</th><th>Reddit karma</th><th>owleye.dev visitors</th><th>shrinath.me visitors</th><th>lowkey visitors</th><th>Signups</th><th>Conversations</th><th>Paid</th></tr></thead>
+        <tbody id="kpi-body"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DAYS ============ -->
+<section class="panel" id="days" role="tabpanel" hidden>
+  <p class="muted">Weekdays assume about 2.5 hours around your job: 45 minutes in the morning, 20 at lunch, 90 in the evening. US mornings are 6:30–9:30pm IST, which is when Reddit and X posts land best. LinkedIn goes out at 9am for your India network. Ticks are saved in this browser.</p>
+  <div class="daytools"><button class="btn" type="button" id="jump-today">Jump to today</button></div>
+
+  <div class="weekhead"><span class="eyebrow">Week 1 · 15–19 Oct</span><h2>The countdown</h2></div>
+
+  <div class="day" id="day-15" data-day="15">
+    <div class="dayhead"><h2>Thursday 15 Oct</h2><span class="theme">Open the countdown</span><span class="count"></span></div>
+    <div class="slots">
+      <div class="slot"><time>Now</time><label><input type="checkbox" id="thu1"><span><span class="chip c-ops">setup</span>Update profiles with the copy in "Followers &amp; karma". X website field → owleye.dev. LinkedIn Featured → 3 links. Reddit bio + shrinath.me.</span></label></div>
+      <div class="slot"><time>Now</time><label><input type="checkbox" id="thu2"><span><span class="chip c-ops">setup</span>Start a lead sheet with columns: name, handle, site, segment, where found, first touch, reply, next step, status.</span></label></div>
+      <div class="slot"><time>Lunch</time><label><input type="checkbox" id="thu3"><span><span class="chip c-li">LinkedIn</span>Post <strong>LI-1 "Nights and weekends"</strong>. Reply to every comment within the hour.</span></label></div>
+      <div class="slot"><time>18:30</time><label><input type="checkbox" id="thu4"><span><span class="chip c-r">Reddit</span>Read the rules, then post <strong>R-1</strong> in r/developersIndia. No link. Reply to every comment for the first 90 minutes.</span></label></div>
+      <div class="slot"><time>19:30</time><label><input type="checkbox" id="thu5"><span><span class="chip c-x">X</span>Post thread <strong>X-1 "Countdown"</strong> and pin it. Then 30 minutes of replies on other people's posts (see the reply list).</span></label></div>
+      <div class="slot"><time>20:30</time><label><input type="checkbox" id="thu6"><span><span class="chip c-lk">lowkey</span>Post <strong>R-L1</strong> (SpotFast or MathMagician) to r/WebGames. Easy karma and lowkey traffic.</span></label></div>
+      <div class="slot"><time>21:00</time><label><input type="checkbox" id="thu7"><span><span class="chip c-r">Reddit</span>Karma block: 10 helpful comments in r/webdev, r/reactjs, r/developersIndia and r/GoogleAnalytics, on posts less than 2 hours old.</span></label></div>
+      <div class="slot"><time>21:45</time><label><input type="checkbox" id="thu8"><span><span class="chip c-ops">asset</span>Record the 40-second demo for tomorrow. Shot list is under X-4.</span></label></div>
+      <div class="slot"><time>22:15</time><label><input type="checkbox" id="thu9"><span><span class="chip c-lead">leads</span>Find 10 leads (segments 1–3 first). Send 5 warm openers. Reply "owl" people get a "you're on the list" DM.</span></label></div>
+      <div class="slot"><time>22:45</time><label><input type="checkbox" id="thu10"><span><span class="chip c-x">X</span>Post <strong>X-2 "GA4 take"</strong>. It lands in the US afternoon.</span></label></div>
+      <div class="slot"><time>23:00</time><label><input type="checkbox" id="thu11"><span><span class="chip c-ops">log</span>Fill the scoreboard.</span></label></div>
+    </div>
+  </div>
+
+  <div class="day" id="day-16" data-day="16">
+    <div class="dayhead"><h2>Friday 16 Oct</h2><span class="theme">Show it working</span><span class="count"></span></div>
+    <div class="slots">
+      <div class="slot"><time>09:00</time><label><input type="checkbox" id="fri1"><span><span class="chip c-li">LinkedIn</span>Post <strong>LI-2 "5 events"</strong>. Comment on 10 posts from founders or engineers in your feed.</span></label></div>
+      <div class="slot"><time>Lunch</time><label><input type="checkbox" id="fri2"><span><span class="chip c-x">X</span>20 replies. Answer anyone who replied to yesterday's thread.</span></label></div>
+      <div class="slot"><time>18:30</time><label><input type="checkbox" id="fri3"><span><span class="chip c-r">Reddit</span>Post <strong>R-2 "5 events"</strong> in r/SaaS. Stay for the first hour of comments.</span></label></div>
+      <div class="slot"><time>19:30</time><label><input type="checkbox" id="fri4"><span><span class="chip c-x">X</span>Post <strong>X-4 demo video</strong>. Quote-post it into the Build in Public community.</span></label></div>
+      <div class="slot"><time>20:15</time><label><input type="checkbox" id="fri5"><span><span class="chip c-r">Reddit</span>If r/selfhosted allows new-project posts today (check the sidebar; they limit these to set days), post <strong>R-3</strong>. Otherwise move it to their allowed day.</span></label></div>
+      <div class="slot"><time>21:00</time><label><input type="checkbox" id="fri6"><span><span class="chip c-x">X</span>Post <strong>X-5 "Drop your URL"</strong>. Answer every URL with 3 specific events. This is your best lead source of the week.</span></label></div>
+      <div class="slot"><time>22:00</time><label><input type="checkbox" id="fri7"><span><span class="chip c-r">Reddit</span>Karma block: 10 comments, with at least 3 GA4 answers in r/GoogleAnalytics.</span></label></div>
+      <div class="slot"><time>22:30</time><label><input type="checkbox" id="fri8"><span><span class="chip c-lead">leads</span>Follow up with every "owl" and every URL reply that has a real product. Send 5 new openers.</span></label></div>
+      <div class="slot"><time>23:00</time><label><input type="checkbox" id="fri9"><span><span class="chip c-x">X</span>Post <strong>X-6 "pageviews lie"</strong>. Fill the scoreboard.</span></label></div>
+    </div>
+  </div>
+
+  <div class="day" id="day-17" data-day="17">
+    <div class="dayhead"><h2>Saturday 17 Oct</h2><span class="theme">Open the hood</span><span class="count"></span></div>
+    <div class="slots">
+      <div class="slot"><time>10:00</time><label><input type="checkbox" id="sat1"><span><span class="chip c-li">LinkedIn</span>Post <strong>LI-3 "Why Rust and ClickHouse"</strong>.</span></label></div>
+      <div class="slot"><time>11:00</time><label><input type="checkbox" id="sat2"><span><span class="chip c-lead">leads</span>Record up to 5 two-minute Looms for the best "drop your URL" sites: their page, 3 events, the rule built in OwlEye. DM each one with the link.</span></label></div>
+      <div class="slot"><time>13:00</time><label><input type="checkbox" id="sat3"><span><span class="chip c-r">Reddit</span>Post the <strong>R-M meme</strong> in r/ProgrammerHumor. No product mention; this one is purely for karma.</span></label></div>
+      <div class="slot"><time>19:00</time><label><input type="checkbox" id="sat4"><span><span class="chip c-r">Reddit</span><strong>Main event:</strong> post <strong>R-4</strong> in r/webdev for Showoff Saturday. Block the next 2 hours for replies.</span></label></div>
+      <div class="slot"><time>20:00</time><label><input type="checkbox" id="sat5"><span><span class="chip c-x">X</span>Post thread <strong>X-7 "How I built it"</strong>. Threads like this get bookmarked, and bookmarks rank well.</span></label></div>
+      <div class="slot"><time>22:00</time><label><input type="checkbox" id="sat6"><span><span class="chip c-x">X</span>Post <strong>X-8 "0 stars"</strong>.</span></label></div>
+      <div class="slot"><time>22:30</time><label><input type="checkbox" id="sat7"><span><span class="chip c-r">Reddit</span>Karma block: 15 comments. Weekends are slower, so comments on rising posts stand out more.</span></label></div>
+      <div class="slot"><time>23:00</time><label><input type="checkbox" id="sat8"><span><span class="chip c-ops">log</span>Fill the scoreboard. Screenshot the OwlEye referrer view for Sunday.</span></label></div>
+    </div>
+  </div>
+
+  <div class="day" id="day-18" data-day="18">
+    <div class="dayhead"><h2>Sunday 18 Oct</h2><span class="theme">Show the numbers</span><span class="count"></span></div>
+    <div class="slots">
+      <div class="slot"><time>10:00</time><label><input type="checkbox" id="sun1"><span><span class="chip c-ops">data</span>Pull the week's numbers: X analytics, Reddit post stats, OwlEye referrers for all three sites, signups and conversations.</span></label></div>
+      <div class="slot"><time>12:00</time><label><input type="checkbox" id="sun2"><span><span class="chip c-ops">prep</span>Draft the Product Hunt page, the Show HN text and the launch email (Launch tab). Schedule Product Hunt for Tuesday.</span></label></div>
+      <div class="slot"><time>18:30</time><label><input type="checkbox" id="sun3"><span><span class="chip c-r">Reddit</span>Post <strong>R-5 "4 days, real numbers"</strong> in r/indiehackers. Recap posts like this get saved and shared.</span></label></div>
+      <div class="slot"><time>19:30</time><label><input type="checkbox" id="sun4"><span><span class="chip c-x">X</span>Post <strong>X-9 numbers</strong>, the same data as R-5, as a screenshot card.</span></label></div>
+      <div class="slot"><time>20:00</time><label><input type="checkbox" id="sun5"><span><span class="chip c-li">LinkedIn</span>Post <strong>LI-4 "Launching Tuesday"</strong> now, or at 9am Monday if Sunday-night reach looks weak.</span></label></div>
+      <div class="slot"><time>20:30</time><label><input type="checkbox" id="sun6"><span><span class="chip c-r">Reddit</span>Post <strong>R-6</strong> in r/rust, if the sub's project rules allow it.</span></label></div>
+      <div class="slot"><time>21:30</time><label><input type="checkbox" id="sun7"><span><span class="chip c-x">X</span>Post <strong>X-10 "Tuesday"</strong>, the last call for the launch list.</span></label></div>
+      <div class="slot"><time>22:00</time><label><input type="checkbox" id="sun8"><span><span class="chip c-lead">leads</span>DM every warm lead: "Launching Tuesday. Want to set it up together on Monday or Tuesday evening?" Book the calls.</span></label></div>
+    </div>
+  </div>
+
+  <div class="day" id="day-19" data-day="19">
+    <div class="dayhead"><h2>Monday 19 Oct</h2><span class="theme">Load the launch</span><span class="count"></span></div>
+    <div class="slots">
+      <div class="slot"><time>Morning</time><label><input type="checkbox" id="mon1"><span><span class="chip c-ops">check</span>Sign up fresh in a private window, install on a test site, create a rule, see the event, upgrade to Pro, cancel. Fix anything that breaks before you invite anyone.</span></label></div>
+      <div class="slot"><time>Lunch</time><label><input type="checkbox" id="mon2"><span><span class="chip c-x">X</span>A short post: "Tomorrow." plus one screenshot. Replies only for the rest of the day.</span></label></div>
+      <div class="slot"><time>Evening</time><label><input type="checkbox" id="mon3"><span><span class="chip c-lead">leads</span>Run setup calls with Founding 10 candidates. Ask the ones who like it if you can quote them on launch day.</span></label></div>
+      <div class="slot"><time>Evening</time><label><input type="checkbox" id="mon4"><span><span class="chip c-r">Reddit</span>Optional: post <strong>R-7</strong> in r/Frontend. Skip it if you're tired. Launch day matters more.</span></label></div>
+    </div>
+  </div>
+
+  <div class="launchcard" >
+    <div><span class="eyebrow" style="color:inherit;opacity:.8">Tuesday 20 Oct</span><h2 style="color:inherit">Launch day</h2><p>Product Hunt at 12:30, Show HN at 18:30, everything in between. It has its own run sheet.</p></div>
+    <a class="btn" href="#launch" data-show="launch">Open the launch-day run sheet →</a>
+  </div>
+
+  <div class="weekhead"><span class="eyebrow">Week 2 · 21–25 Oct</span><h2>Follow-through</h2><p class="muted">Launch traffic fades in about 72 hours. This week turns it into conversations, fixes you can point at, and a second Showoff Saturday. The weekly rhythm from the X tab starts here: a frontend post every morning, OwlEye in the evening.</p></div>
+
+  <div class="day" id="day-21" data-day="21">
+    <div class="dayhead"><h2>Wednesday 21 Oct</h2><span class="theme">The morning after</span><span class="count"></span></div>
+    <div class="slots">
+      <div class="slot"><time>08:30</time><label><input type="checkbox" id="d21-1"><span><span class="chip c-x">X</span>Post <strong>X-12</strong>, the career thread. It's the first of the morning posts, and it reaches people who missed the launch.</span></label></div>
+      <div class="slot"><time>09:00</time><label><input type="checkbox" id="d21-2"><span><span class="chip c-li">LinkedIn</span>Post <strong>LI-5 "What launch day taught me"</strong>. Reply to every comment within the hour.</span></label></div>
+      <div class="slot"><time>Lunch</time><label><input type="checkbox" id="d21-3"><span><span class="chip c-lead">leads</span>Send <strong>D-6</strong> to every launch-day signup. Note who already has events coming in and who got stuck at install.</span></label></div>
+      <div class="slot"><time>18:30</time><label><input type="checkbox" id="d21-4"><span><span class="chip c-ops">PH + HN</span>Leave a thank-you comment on Product Hunt and the Show HN thread. Answer anything still unanswered.</span></label></div>
+      <div class="slot"><time>19:30</time><label><input type="checkbox" id="d21-5"><span><span class="chip c-x">X</span>Post <strong>X-18 "launch day vs day after"</strong>.</span></label></div>
+      <div class="slot"><time>20:30</time><label><input type="checkbox" id="d21-6"><span><span class="chip c-ops">feedback</span>Put every piece of launch feedback (PH, HN, Reddit, X, DMs) into one list. Pick the one small thing you can ship tomorrow.</span></label></div>
+      <div class="slot"><time>21:30</time><label><input type="checkbox" id="d21-7"><span><span class="chip c-r">Reddit</span>Karma block: 10 comments. Go back to your launch-week posts first and answer anything new.</span></label></div>
+      <div class="slot"><time>23:00</time><label><input type="checkbox" id="d21-8"><span><span class="chip c-ops">log</span>Fill the scoreboard.</span></label></div>
+    </div>
+  </div>
+  <div class="day" id="day-22" data-day="22">
+    <div class="dayhead"><h2>Thursday 22 Oct</h2><span class="theme">Fix it in public</span><span class="count"></span></div>
+    <div class="slots">
+      <div class="slot"><time>08:30</time><label><input type="checkbox" id="d22-1"><span><span class="chip c-x">X</span>Post <strong>X-13</strong> tip #1 (AbortController). Every weekday morning from here gets a tip or a take.</span></label></div>
+      <div class="slot"><time>Lunch</time><label><input type="checkbox" id="d22-2"><span><span class="chip c-x">X</span>20 replies, then answer anything left over from the launch thread.</span></label></div>
+      <div class="slot"><time>18:30</time><label><input type="checkbox" id="d22-3"><span><span class="chip c-r">Reddit</span>Post <strong>R-8</strong> in r/reactjs. No link and no product mention; it's pure help.</span></label></div>
+      <div class="slot"><time>19:30</time><label><input type="checkbox" id="d22-4"><span><span class="chip c-ops">ship</span>Ship yesterday's pick. Keep it small enough to finish tonight.</span></label></div>
+      <div class="slot"><time>20:30</time><label><input type="checkbox" id="d22-5"><span><span class="chip c-x">X</span>Post <strong>X-19 "shipped from your feedback"</strong> with a 20-second screen recording. Tag the person who asked, if they're happy to be tagged.</span></label></div>
+      <div class="slot"><time>21:00</time><label><input type="checkbox" id="d22-6"><span><span class="chip c-lead">leads</span>Run Founding 10 setup calls with anyone who signed up on launch day.</span></label></div>
+      <div class="slot"><time>22:00</time><label><input type="checkbox" id="d22-7"><span><span class="chip c-r">Reddit</span>Karma block: 10 comments, at least 3 of them in r/reactjs on posts other than yours.</span></label></div>
+      <div class="slot"><time>23:00</time><label><input type="checkbox" id="d22-8"><span><span class="chip c-ops">log</span>Fill the scoreboard.</span></label></div>
+    </div>
+  </div>
+  <div class="day" id="day-23" data-day="23">
+    <div class="dayhead"><h2>Friday 23 Oct</h2><span class="theme">Roast my page</span><span class="count"></span></div>
+    <div class="slots">
+      <div class="slot"><time>08:30</time><label><input type="checkbox" id="d23-1"><span><span class="chip c-x">X</span>Post one <strong>X-14</strong> frontend take.</span></label></div>
+      <div class="slot"><time>09:00</time><label><input type="checkbox" id="d23-2"><span><span class="chip c-li">LinkedIn</span>No post today. Spend 15 minutes on real comments on founders' and engineering leaders' posts.</span></label></div>
+      <div class="slot"><time>18:30</time><label><input type="checkbox" id="d23-3"><span><span class="chip c-r">Reddit</span>Answer 5 questions in r/GoogleAnalytics. Answer only; mention OwlEye only if someone asks for alternatives.</span></label></div>
+      <div class="slot"><time>20:00</time><label><input type="checkbox" id="d23-4"><span><span class="chip c-x">X</span>Post <strong>X-20 "roast my landing page"</strong>. Answer each reply with one specific, kind fix. No pitch.</span></label></div>
+      <div class="slot"><time>21:30</time><label><input type="checkbox" id="d23-5"><span><span class="chip c-lead">leads</span>Follow up once with launch-week leads who went quiet, using <strong>D-8</strong>. After this one, stop.</span></label></div>
+      <div class="slot"><time>22:30</time><label><input type="checkbox" id="d23-6"><span><span class="chip c-r">Reddit</span>Karma block: 10 comments.</span></label></div>
+      <div class="slot"><time>23:00</time><label><input type="checkbox" id="d23-7"><span><span class="chip c-ops">log</span>Fill the scoreboard.</span></label></div>
+    </div>
+  </div>
+  <div class="day" id="day-24" data-day="24">
+    <div class="dayhead"><h2>Saturday 24 Oct</h2><span class="theme">Showoff, round two</span><span class="count"></span></div>
+    <div class="slots">
+      <div class="slot"><time>10:00</time><label><input type="checkbox" id="d24-1"><span><span class="chip c-lead">leads</span>Record up to 5 two-minute Looms for the best "roast" replies that would also be good OwlEye fits. DM each one with the link.</span></label></div>
+      <div class="slot"><time>13:00</time><label><input type="checkbox" id="d24-2"><span><span class="chip c-x">X</span>Draft <strong>X-21</strong>, the launch-lessons thread, with real numbers from the scoreboard.</span></label></div>
+      <div class="slot"><time>19:00</time><label><input type="checkbox" id="d24-3"><span><span class="chip c-lk">lowkey</span><strong>Main event:</strong> post <strong>R-9</strong> in r/webdev for Showoff Saturday. This week it's lowkey.tools, not OwlEye, so you don't show the same project two weeks running. Block 2 hours for replies.</span></label></div>
+      <div class="slot"><time>20:00</time><label><input type="checkbox" id="d24-4"><span><span class="chip c-x">X</span>Post <strong>X-21 "what launching with a day job taught me"</strong>. Pin it if it does better than X-11.</span></label></div>
+      <div class="slot"><time>22:00</time><label><input type="checkbox" id="d24-5"><span><span class="chip c-r">Reddit</span>Karma block: 15 comments on rising posts.</span></label></div>
+      <div class="slot"><time>23:00</time><label><input type="checkbox" id="d24-6"><span><span class="chip c-ops">log</span>Fill the scoreboard. Screenshot the OwlEye referrer view for all three sites.</span></label></div>
+    </div>
+  </div>
+  <div class="day" id="day-25" data-day="25">
+    <div class="dayhead"><h2>Sunday 25 Oct</h2><span class="theme">Week-one numbers</span><span class="count"></span></div>
+    <div class="slots">
+      <div class="slot"><time>Morning</time><label><input type="checkbox" id="d25-1"><span><span class="chip c-ops">rest</span>Rest. No posting before noon.</span></label></div>
+      <div class="slot"><time>12:00</time><label><input type="checkbox" id="d25-2"><span><span class="chip c-ops">data</span>Pull the week's numbers: MRR, paying and free accounts, events tracked, X, Reddit and LinkedIn stats, referrers.</span></label></div>
+      <div class="slot"><time>18:30</time><label><input type="checkbox" id="d25-3"><span><span class="chip c-r">Reddit</span>Post <strong>R-10</strong> in r/SaaS, the first week after launch with every number.</span></label></div>
+      <div class="slot"><time>19:30</time><label><input type="checkbox" id="d25-4"><span><span class="chip c-x">X</span>Post <strong>X-15</strong>, week 1. It becomes a Sunday series from today.</span></label></div>
+      <div class="slot"><time>20:30</time><label><input type="checkbox" id="d25-5"><span><span class="chip c-ops">prep</span>Write next week's posts into drafts, and schedule LI-6 for Monday 9am.</span></label></div>
+      <div class="slot"><time>21:30</time><label><input type="checkbox" id="d25-6"><span><span class="chip c-lead">leads</span>Message everyone who installed and has events coming in. Ask how it's going, and ask the happy ones for one sentence you can quote.</span></label></div>
+      <div class="slot"><time>22:00</time><label><input type="checkbox" id="d25-7"><span><span class="chip c-ops">review</span>Read the scoreboard. Write down the one format that worked best, and do more of it next week.</span></label></div>
+    </div>
+  </div>
+  <div class="weekhead"><span class="eyebrow">Week 3 · 26–31 Oct</span><h2>Second wave</h2><p class="muted">New audiences instead of the same ones again: agencies and freelancers, directories, Chrome-extension builders, and your first X Space. The month ends with a checkpoint against the goals.</p></div>
+
+  <div class="day" id="day-26" data-day="26">
+    <div class="dayhead"><h2>Monday 26 Oct</h2><span class="theme">Second wave</span><span class="count"></span></div>
+    <div class="slots">
+      <div class="slot"><time>08:30</time><label><input type="checkbox" id="d26-1"><span><span class="chip c-x">X</span>Post <strong>X-13</strong> tip #2 (content-visibility).</span></label></div>
+      <div class="slot"><time>09:00</time><label><input type="checkbox" id="d26-2"><span><span class="chip c-li">LinkedIn</span>Post <strong>LI-6</strong>, written for agencies and freelancers.</span></label></div>
+      <div class="slot"><time>Lunch</time><label><input type="checkbox" id="d26-3"><span><span class="chip c-lead">leads</span>Send 10 <strong>D-5</strong> connection notes to Webflow, Framer and WordPress freelancers (segment 5).</span></label></div>
+      <div class="slot"><time>18:30</time><label><input type="checkbox" id="d26-4"><span><span class="chip c-lead">email</span>Send <strong>D-7</strong>, the week-one changelog, to Free accounts. Include the unsubscribe line.</span></label></div>
+      <div class="slot"><time>19:30</time><label><input type="checkbox" id="d26-5"><span><span class="chip c-x">X</span>Post one thing you shipped this week, with a screenshot. Then post <strong>X-16</strong>, the Space invite for Thursday.</span></label></div>
+      <div class="slot"><time>21:00</time><label><input type="checkbox" id="d26-6"><span><span class="chip c-ops">blog</span>Draft <strong>B-1</strong> for shrinath.me (outline in the After launch tab).</span></label></div>
+      <div class="slot"><time>22:30</time><label><input type="checkbox" id="d26-7"><span><span class="chip c-r">Reddit</span>Karma block: 10 comments.</span></label></div>
+      <div class="slot"><time>23:00</time><label><input type="checkbox" id="d26-8"><span><span class="chip c-ops">log</span>Fill the scoreboard.</span></label></div>
+    </div>
+  </div>
+  <div class="day" id="day-27" data-day="27">
+    <div class="dayhead"><h2>Tuesday 27 Oct</h2><span class="theme">Get listed</span><span class="count"></span></div>
+    <div class="slots">
+      <div class="slot"><time>08:30</time><label><input type="checkbox" id="d27-1"><span><span class="chip c-x">X</span>Post one <strong>X-14</strong> frontend take.</span></label></div>
+      <div class="slot"><time>Lunch</time><label><input type="checkbox" id="d27-2"><span><span class="chip c-ops">listings</span>Submit OwlEye to the directories in the After launch tab. Read each one's rules first, and skip any that want payment for a basic listing.</span></label></div>
+      <div class="slot"><time>18:30</time><label><input type="checkbox" id="d27-3"><span><span class="chip c-lk">lowkey</span>Post <strong>R-L2</strong> (MathMagician) in r/WebGames. It's been 12 days since SpotFast.</span></label></div>
+      <div class="slot"><time>19:30</time><label><input type="checkbox" id="d27-4"><span><span class="chip c-x">X</span>Reply block only: 60 replies. No posts tonight.</span></label></div>
+      <div class="slot"><time>20:30</time><label><input type="checkbox" id="d27-5"><span><span class="chip c-ops">blog</span>Publish <strong>B-1</strong> on shrinath.me. Cross-post to dev.to and Hashnode with the canonical URL pointing back to shrinath.me.</span></label></div>
+      <div class="slot"><time>21:30</time><label><input type="checkbox" id="d27-6"><span><span class="chip c-lead">leads</span>Follow-up calls with anyone from Monday's notes who replied.</span></label></div>
+      <div class="slot"><time>23:00</time><label><input type="checkbox" id="d27-7"><span><span class="chip c-ops">log</span>Fill the scoreboard.</span></label></div>
+    </div>
+  </div>
+  <div class="day" id="day-28" data-day="28">
+    <div class="dayhead"><h2>Wednesday 28 Oct</h2><span class="theme">The extension story</span><span class="count"></span></div>
+    <div class="slots">
+      <div class="slot"><time>08:30</time><label><input type="checkbox" id="d28-1"><span><span class="chip c-x">X</span>Post <strong>X-22</strong>, the Chrome-extension thread. Wednesday is the long-thread morning.</span></label></div>
+      <div class="slot"><time>09:00</time><label><input type="checkbox" id="d28-2"><span><span class="chip c-li">LinkedIn</span>Post <strong>LI-7</strong>, the same story told for LinkedIn.</span></label></div>
+      <div class="slot"><time>18:30</time><label><input type="checkbox" id="d28-3"><span><span class="chip c-r">Reddit</span>Post <strong>R-11</strong> in r/chrome_extensions. No link; your profile does that job.</span></label></div>
+      <div class="slot"><time>20:00</time><label><input type="checkbox" id="d28-4"><span><span class="chip c-x">X</span>Something funny about building. Use an unused <strong>X-3</strong> post, or whatever went wrong this week.</span></label></div>
+      <div class="slot"><time>21:00</time><label><input type="checkbox" id="d28-5"><span><span class="chip c-lead">leads</span>Run setup calls. Every Founding 10 seat that's still open is worth a direct ask.</span></label></div>
+      <div class="slot"><time>22:00</time><label><input type="checkbox" id="d28-6"><span><span class="chip c-r">Reddit</span>Karma block: 10 comments.</span></label></div>
+      <div class="slot"><time>23:00</time><label><input type="checkbox" id="d28-7"><span><span class="chip c-ops">log</span>Fill the scoreboard.</span></label></div>
+    </div>
+  </div>
+  <div class="day" id="day-29" data-day="29">
+    <div class="dayhead"><h2>Thursday 29 Oct</h2><span class="theme">Space night</span><span class="count"></span></div>
+    <div class="slots">
+      <div class="slot"><time>08:30</time><label><input type="checkbox" id="d29-1"><span><span class="chip c-x">X</span>Post <strong>X-13</strong> tip #3 (inert).</span></label></div>
+      <div class="slot"><time>Lunch</time><label><input type="checkbox" id="d29-2"><span><span class="chip c-ops">prep</span>Use the Space run sheet: confirm the co-hosts, write the 4 segment questions, pin the invite.</span></label></div>
+      <div class="slot"><time>18:30</time><label><input type="checkbox" id="d29-3"><span><span class="chip c-r">Reddit</span>Post <strong>R-12</strong> in r/developersIndia, two weeks after R-1.</span></label></div>
+      <div class="slot"><time>20:00</time><label><input type="checkbox" id="d29-4"><span><span class="chip c-x">X</span>Post a 20-second OwlEye feature video (funnels, or a rule being created) and the "Space in 1 hour" reminder.</span></label></div>
+      <div class="slot"><time>21:00</time><label><input type="checkbox" id="d29-5"><span><span class="chip c-x">X</span><strong>Host the X Space</strong>, 30 minutes.</span></label></div>
+      <div class="slot"><time>21:45</time><label><input type="checkbox" id="d29-6"><span><span class="chip c-x">X</span>Follow everyone who spoke. Post 3 takeaways from the Space as a short thread.</span></label></div>
+      <div class="slot"><time>23:00</time><label><input type="checkbox" id="d29-7"><span><span class="chip c-ops">log</span>Fill the scoreboard.</span></label></div>
+    </div>
+  </div>
+  <div class="day" id="day-30" data-day="30">
+    <div class="dayhead"><h2>Friday 30 Oct</h2><span class="theme">Checkpoint</span><span class="count"></span></div>
+    <div class="slots">
+      <div class="slot"><time>08:30</time><label><input type="checkbox" id="d30-1"><span><span class="chip c-x">X</span>Post one <strong>X-14</strong> frontend take.</span></label></div>
+      <div class="slot"><time>09:00</time><label><input type="checkbox" id="d30-2"><span><span class="chip c-li">LinkedIn</span>Post <strong>LI-8 "October in numbers"</strong>.</span></label></div>
+      <div class="slot"><time>18:30</time><label><input type="checkbox" id="d30-3"><span><span class="chip c-r">Reddit</span>Karma block: 10 comments. Check karma against the 280 target.</span></label></div>
+      <div class="slot"><time>20:00</time><label><input type="checkbox" id="d30-4"><span><span class="chip c-x">X</span>Repost <strong>X-5 "drop your URL"</strong>. It's exactly two weeks since the first one; change the opening line so it isn't a copy.</span></label></div>
+      <div class="slot"><time>21:30</time><label><input type="checkbox" id="d30-5"><span><span class="chip c-lead">leads</span>Answer every URL with 3 specific events. Invite the best fits to a 15-minute setup call.</span></label></div>
+      <div class="slot"><time>22:30</time><label><input type="checkbox" id="d30-6"><span><span class="chip c-ops">review</span>Checkpoint: X 1,200? Reddit 280? 3 paying? Write down what to drop and what to double in November.</span></label></div>
+      <div class="slot"><time>23:00</time><label><input type="checkbox" id="d30-7"><span><span class="chip c-ops">log</span>Fill the scoreboard.</span></label></div>
+    </div>
+  </div>
+  <div class="day" id="day-31" data-day="31">
+    <div class="dayhead"><h2>Saturday 31 Oct</h2><span class="theme">Halloween + retro</span><span class="count"></span></div>
+    <div class="slots">
+      <div class="slot"><time>10:00</time><label><input type="checkbox" id="d31-1"><span><span class="chip c-lead">leads</span>Record Looms for the best URL replies from last night. Up to 5.</span></label></div>
+      <div class="slot"><time>13:00</time><label><input type="checkbox" id="d31-2"><span><span class="chip c-r">Reddit</span>Post the <strong>R-M2</strong> Halloween meme in r/ProgrammerHumor. No product mention.</span></label></div>
+      <div class="slot"><time>19:00</time><label><input type="checkbox" id="d31-3"><span><span class="chip c-r">Reddit</span><strong>Main event:</strong> post <strong>R-13</strong> in r/webdev for Showoff Saturday, two weeks after R-4. Block 2 hours for replies.</span></label></div>
+      <div class="slot"><time>20:00</time><label><input type="checkbox" id="d31-4"><span><span class="chip c-x">X</span>Post <strong>X-23</strong>, the Halloween post.</span></label></div>
+      <div class="slot"><time>21:00</time><label><input type="checkbox" id="d31-5"><span><span class="chip c-ops">plan</span>Write November on one page using the weekly rhythm in the X tab. Keep what worked, cut what didn't.</span></label></div>
+      <div class="slot"><time>22:00</time><label><input type="checkbox" id="d31-6"><span><span class="chip c-r">Reddit</span>Karma block: 15 comments.</span></label></div>
+      <div class="slot"><time>23:00</time><label><input type="checkbox" id="d31-7"><span><span class="chip c-ops">log</span>Fill the last scoreboard row and compare it with the target row.</span></label></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REDDIT ============ -->
+<section class="panel" id="reddit" role="tabpanel" hidden>
+  <div class="box amber">
+    <h3>Before every Reddit post</h3>
+    <ul>
+      <li>Read the sidebar rules and pinned posts that day. Rules change, and some subs only allow projects on set days or in a weekly thread.</li>
+      <li>Say "I built this" in the first lines of any post about your work. Never use alt accounts, never ask anyone to upvote, never repost after a removal. If a mod objects, stop and do what they ask.</li>
+      <li>Two posts a day at most, in different subs, with different text. Same-day cross-posting of one text is the fastest way to trip the spam filter.</li>
+      <li>Reply to every comment for the first 90 minutes. That's when Reddit decides whether a post rises.</li>
+    </ul>
+  </div>
+
+  <div class="post"><div class="ph"><h3>R-1 · r/developersIndia · Thu 18:30</h3><button class="copy">Copy</button></div>
+  <p class="meta">A discussion post with no link. The product is named once, and people who are curious will open your profile. Choose a general or discussion flair.</p>
+<pre class="copytext">Title: 8+ years in frontend, now a Senior Staff Engineer. I built a full SaaS on nights and weekends. Things nobody told me.
+
+I've been a frontend engineer for 8+ years. For the last {{N}} months I've also been building a hosted analytics product after work (it's called OwlEye, but this post isn't about the product, it's about the process). It launches next week, so I wanted to write down what I learned while it's fresh.
+
+1. Seniority at work does not transfer cleanly. At work, someone else decides what's worth building. Alone, every expensive mistake I made was a product decision, not a code bug.
+
+2. I rewrote the backend once. v1 was Bun + MongoDB. v2 is Rust + ClickHouse. {{One honest line on why, e.g. "Aggregations over millions of events got slow and expensive."}} Pick storage for the shape of your data early.
+
+3. I renamed the product after people had already signed up for early access. It was the right call and it still hurt. Check the name, domain and handles before you collect a single email.
+
+4. Budgets in CI beat good intentions. My tracking script has a gzip size budget in CI. If a PR pushes it over, the build fails. That's the only reason it stayed small.
+
+5. Legal and privacy took longer than the features: terms, privacy policy, refunds, account deletion, data export. Nobody shows this part in "I built X in a weekend" posts.
+
+6. Get your code reviewed even if you're alone. I ran several full review passes and found real security issues I would have shipped.
+
+7. Scope is the product. I cut far more features than I shipped. The one thing I kept: you can change what you track from a dashboard without redeploying.
+
+8. Marketing is the job I avoided. I'm fixing that this week, and it's harder than the Rust.
+
+9. Time: about {{X}} hours on weekdays, more on weekends. {{One honest line about burnout, sleep or family.}}
+
+Happy to answer anything about the stack, balancing it with a full-time role, or what I'd do differently.</pre></div>
+
+  <div class="post"><div class="ph"><h3>R-2 · r/SaaS · Fri 18:30</h3><button class="copy">Copy</button></div>
+  <p class="meta">Pure value, with the disclosure at the end. Naming competitors fairly builds trust. Leave the link out unless the rules clearly allow it; people will ask in the comments.</p>
+<pre class="copytext">Title: Most SaaS landing pages only track pageviews. Here are the 5 events I set up first on every site.
+
+Pageviews tell you how many people showed up. They don't tell you why they didn't sign up. These are the 5 events I add to every site before anything else:
+
+1. Hero CTA click (hero_cta_click)
+Is your headline doing its job? If 1,000 people land and 8 click the main button, the problem is above the fold, not in your onboarding.
+
+2. Pricing plan click (pricing_plan_click, with plan=pro or plan=business)
+It shows which plan people consider, not just which one they buy. If everyone clicks the cheapest plan and then leaves, your pricing page is scaring them.
+
+3. Signup started (signup_started)
+Fire it when the form opens or the first field is focused. The gap between "started" and "completed" is your form friction.
+
+4. Signup completed (signup_completed)
+The mistake I see most: counting submit-button clicks as signups. Validation errors, duplicate emails and failed OTPs all count as "clicks". Track completion where it actually succeeds: on the success page or on your server.
+
+5. First key action (e.g. project_created)
+The first thing that means someone got value. This is your activation rate, and it's the number that predicts who pays.
+
+How to read them: put them in order as a funnel (CTA → signup started → signup completed → first action) and only fix the biggest drop. Ignore everything else for two weeks.
+
+Bonus: a "pricing section visible" event (fires when the section scrolls into view) tells you whether people even reach your pricing.
+
+Any analytics tool can do this: Plausible, Umami, PostHog, GA4. The point is to track them at all.
+
+Disclosure: I build OwlEye, a cookie-free analytics tool. The reason I built it is that adding #1–3 normally means a code change and a deploy each time. In OwlEye you install the SDK once, then pick the button in a dashboard and name the event. Happy to share it if anyone wants it, but the list above works with whatever you use.
+
+What would you add as event #6?</pre></div>
+
+  <div class="post"><div class="ph"><h3>R-3 · r/selfhosted · on their allowed project day</h3><button class="copy">Copy</button></div>
+  <p class="meta">r/selfhosted wants software you can actually host yourself. Lead with the MIT distribution, mention the hosted version once, and answer their AI-use disclosure question if the rules ask for it.</p>
+<pre class="copytext">Title: OwlEye: MIT-licensed, cookie-free web analytics (Rust + ClickHouse + SQLite)
+
+I've been building OwlEye, a web and product analytics tool, and the self-hosted distribution is MIT-licensed: https://github.com/shrinathprabhu/owleye
+
+What it does:
+- Page views, referrers, countries and custom events from a dependency-free JS SDK
+- The visitor SDK writes no cookies, localStorage or sessionStorage
+- Query strings and URL fragments are excluded by default
+- Click, form and visibility tracking rules you can change from the console after one SDK install (no redeploy for each new event)
+- Funnels and performance timing
+
+Stack: Rust/Axum API, ClickHouse for events, SQLite for app data, Nuxt console.
+
+Honest limits: visitor IDs are site-scoped pseudonyms, not anonymous data. Cookie-free doesn't automatically mean you need no consent; that depends on your setup and jurisdiction. You need a ClickHouse instance, so it's heavier than a single-binary tool.
+
+Disclosure: I'm the developer. There's also a hosted version at owleye.dev if you'd rather not run ClickHouse, but this post is about the self-hosted one.
+
+I'd love feedback on the setup docs and what's missing for your homelab. {{If the sub asks about AI use, add one honest line here.}}</pre></div>
+
+  <div class="post"><div class="ph"><h3>R-4 · r/webdev Showoff Saturday · Sat 19:00 · main post</h3><button class="copy">Copy</button></div>
+  <p class="meta">Self-promotion is welcome here on Saturdays only. Attach the demo video if videos are allowed. If not, link the X video and the live demo at the end.</p>
+<pre class="copytext">Title: [Showoff Saturday] I built analytics where you add click tracking from a dashboard instead of shipping new code
+
+Every time someone asked me "can we track that button?", the answer was: add code → PR → CI → deploy → wait for data. For one click event.
+
+So I built OwlEye. You install the SDK once (npm or a script tag). After that:
+1. Open the dashboard and pick an element by CSS selector
+2. Name the event, e.g. pricing_cta_click
+3. Save. The next page load starts tracking it.
+
+It works for clicks, form submits and "section became visible". Rules load when the tracker starts, so pages that are already open pick them up on the next load.
+
+Other bits webdevs asked me about:
+- The visitor SDK writes no cookies, localStorage or sessionStorage
+- The core script has a 4.6 KB gzip budget enforced in CI
+- React/Next.js, Nuxt and WordPress guides
+- Rust + ClickHouse backend, and an MIT-licensed self-host version on GitHub
+- Free up to 10K events/month, $9/month for 100K
+
+What I'd love feedback on: is "change tracking without a deploy" a real pain for you, or do you just add the event and move on?
+
+Demo video (40s): {{X post link}}
+Live demo, no signup: https://owleye.dev/demo/
+
+I'm the solo dev, ask me anything.</pre></div>
+
+  <div class="post"><div class="ph"><h3>R-5 · r/indiehackers · Sun 18:30</h3><button class="copy">Copy</button></div>
+  <p class="meta">A recap with numbers, including the bad ones. Fill every blank honestly, even if a number is zero. Low numbers stated plainly do well here.</p>
+<pre class="copytext">Title: I marketed my SaaS on Reddit, X and LinkedIn for 4 days around a full-time job. Every number.
+
+Context: I'm a Senior Staff frontend engineer. My side project is OwlEye, cookie-free web analytics. It launches Tuesday. I gave myself 4 days and about 2.5 hours a weekday to see what actually moves numbers before launch.
+
+Starting point (Thursday): {{X followers}} X followers, 80 Reddit karma, {{N}} LinkedIn connections, {{N}} signups.
+
+What I posted:
+- Reddit: a career-lessons post (no link), a "5 events to track" value post, Showoff Saturday
+- X: a countdown thread, a 40s demo video, "drop your URL and I'll tell you what to track", a build thread
+- LinkedIn: 3 posts, story first
+
+Results after 4 days:
+- X: {{+N}} followers. Best post: {{which}} ({{impressions}} impressions)
+- Reddit: karma 80 → {{N}}. Best post: {{which}} ({{upvotes}} upvotes)
+- LinkedIn: {{impressions}} impressions, {{N}} "owl" comments
+- Site visitors: {{N}} (top referrers: {{reddit / t.co / linkedin}})
+- Signups: {{N}}. Real conversations with potential buyers: {{N}}. Paid: {{0, so far}}
+
+What worked:
+- {{e.g. "Drop your URL" got the most replies AND the best leads}}
+- {{...}}
+
+What flopped:
+- {{e.g. polished product posts with no story}}
+- {{...}}
+
+Biggest lesson: {{one sentence}}
+
+Happy to share the exact posts if anyone wants to copy the format.</pre></div>
+
+  <div class="post"><div class="ph"><h3>R-6 · r/rust · Sun 20:30</h3><button class="copy">Copy</button></div>
+  <p class="meta">A technical write-up. Stick to things the code actually does. Ask for critique; Rust readers enjoy reviewing.</p>
+<pre class="copytext">Title: Lessons from building an analytics ingestion API in Axum + ClickHouse (MIT, source linked)
+
+I'm a frontend engineer by trade, and OwlEye (web analytics) is the biggest Rust thing I've shipped. A few things I learned that might help someone:
+
+1. Separate rate-limit pools per traffic class. My first limiter used one global capacity. Public ingestion traffic could starve login and billing. Now each class (public events, auth, billing webhooks) has its own pool, and site buckets are weighted by event count, not request count.
+
+2. Don't trust X-Forwarded-For unless the immediate peer is a proxy you control. I parse repeated headers fully and fall back safely, and forwarded addresses are ignored unless the peer is in a trusted CIDR list.
+
+3. Refuse to start with a weak secret. On a non-loopback address the API won't boot unless the hash salt is an explicit secret of at least 32 bytes. Annoying in dev, great in prod.
+
+4. ClickHouse for events, SQLite for everything else (users, sites, sessions). Two stores sounds like more work, but it kept the hot path simple.
+
+5. {{One more thing you learned, e.g. about batching, error types or testing}}
+
+Source: https://github.com/shrinathprabhu/owleye
+
+I'd really like critique on the limiter design and anything that looks un-idiomatic.</pre></div>
+
+  <div class="post"><div class="ph"><h3>R-7 · r/Frontend · Mon (optional)</h3><button class="copy">Copy</button></div>
+<pre class="copytext">Title: I made bundle size a CI budget instead of a goal. Here's the setup.
+
+For my analytics SDK I set hard gzip budgets per entrypoint: 4,600 bytes for the core, 8,300 for the optional rules module, 4,400 for performance timing. A small script gzips each build output and fails CI if any of them goes over.
+
+What changed:
+- "It's only 300 bytes" stopped being an argument. You either remove something else or justify raising the budget in the PR.
+- Splitting into separate entrypoints mattered more than micro-optimising. People who don't need rules don't download rules.
+- No dependencies. Every dependency I considered would have blown the budget alone.
+
+The budget is a maximum, not a measurement. Real release sizes are a bit smaller, and I report those separately.
+
+Write-up with the script: https://owleye.dev/blog/sdk-size-is-a-budget/
+
+How do you enforce size limits? size-limit, bundlesize, something custom?</pre></div>
+
+  <div class="post"><div class="ph"><h3>R-M · r/ProgrammerHumor · Sat 13:00</h3><button class="copy">Copy</button></div>
+  <p class="meta">An image meme with no product mention. Make it in any meme generator.</p>
+<pre class="copytext">Format: Drake (or "Two buttons")
+
+Panel 1 (Drake rejects): "Track one button click: open GTM, create a trigger, create a variable, create a tag, preview, publish, wait 24h, find out it fired twice"
+Panel 2 (Drake approves): "console.log('clicked') and squint at the server logs"
+
+Title: PM: "can we just track that button?"</pre></div>
+
+  <div class="post"><div class="ph"><h3>R-L1 · r/WebGames · Thu 20:30 · lowkey.tools</h3><button class="copy">Copy</button></div>
+  <p class="meta">Follow the sub's title format and flair rules. One game per week at most. Chesscape could suit chess subs, but most of them forbid self-promotion, so check first.</p>
+<pre class="copytext">Title: SpotFast: a quick observation and memory game (free, no signup, plays in the browser)
+
+I made this. You get a few seconds to look at a scene, then answer questions about what you saw. Rounds take about a minute.
+
+https://lowkey.tools/{{spotfast path}}
+
+Would love to know your best score and whether the difficulty curve feels fair.</pre></div>
+
+  <div class="subhead"><span class="eyebrow">21–31 Oct</span><h2>Weeks 2 and 3 posts</h2><p class="muted">After launch, Reddit is about staying useful. Two of these mention a project; the rest are pure help, which keeps your promo share under 10%.</p></div>
+
+  <div class="post"><div class="ph"><h3>R-8 · r/reactjs · Thu 22 Oct 18:30</h3><button class="copy">Copy</button></div>
+  <p class="meta">Pure help, no link, no product. Use Reddit's code block formatting for the snippet. It doubles as tip #1 on X, so post it here first.</p>
+<pre class="copytext">Title: The race condition hiding in most React search boxes, and the fix
+
+You type "rea", then "react". Two requests go out. If the "rea" response arrives last, the list shows results for "rea" while the input says "react". It's rare on fast Wi-Fi and common on mobile, which is why it slips through review.
+
+The fix is to cancel the previous request whenever a new one starts:
+
+    useEffect(() =&gt; {
+      const controller = new AbortController();
+      fetch(`/api/search?q=${encodeURIComponent(query)}`, { signal: controller.signal })
+        .then((res) =&gt; res.json())
+        .then(setResults)
+        .catch((err) =&gt; {
+          if (err.name !== "AbortError") setError(err);
+        });
+      return () =&gt; controller.abort();
+    }, [query]);
+
+Why it works: React runs the cleanup before the next effect, so the old request is aborted before the new one starts. The aborted fetch rejects with an AbortError, which you ignore.
+
+Three things people miss:
+1. Ignore AbortError explicitly, or you'll flash an error state on every keystroke.
+2. Debounce as well. Aborting stops stale results; debouncing stops the request spam. You usually want both.
+3. React Query and SWR already ignore stale responses. React Query also passes an AbortSignal to your query function, so pass it to fetch and the request is actually cancelled, not just ignored.
+
+To see the bug for yourself: DevTools → Network → throttle to Slow 4G, then type fast.
+
+What other "only on slow networks" bugs have you hit?</pre></div>
+
+  <div class="post"><div class="ph"><h3>R-9 · r/webdev Showoff Saturday · Sat 24 Oct 19:00 · lowkey.tools</h3><button class="copy">Copy</button></div>
+  <p class="meta">Self-promotion is only allowed on Saturdays. Showing lowkey.tools this week, rather than OwlEye again, keeps you from posting the same project twice in a row. The lowkey footer already credits OwlEye.</p>
+<pre class="copytext">Title: [Showoff Saturday] lowkey.tools: tiny free browser tools in plain HTML, CSS and JS. No framework, no accounts.
+
+I build small single-purpose tools on weekends and keep them under one roof: https://lowkey.tools
+
+The rules every tool follows:
+- Plain HTML, CSS and JavaScript. No framework, no package dependencies.
+- No account and nothing to install. Some are installable and work offline.
+- Static hosting on Cloudflare Workers.
+
+A few of them:
+- Credo: zero-knowledge secret sharing (AES-256-GCM, encrypted in your browser)
+- FuseLLM: bring-your-own-key AI workflows
+- MathMagician: a 30-second mental-math sprint
+- SpotFast: a quick observation and memory game
+- {{1–2 more you want to show}}
+
+One thing that made a dozen tools manageable: the hub is generated from a single inventory file by a small Node script, which also writes the sitemap and llms.txt. Adding a tool is one entry.
+
+Which one would you actually use, and what should I build next?</pre></div>
+
+  <div class="post"><div class="ph"><h3>R-10 · r/SaaS · Sun 25 Oct 18:30</h3><button class="copy">Copy</button></div>
+  <p class="meta">A week-one recap with every number, including the bad ones. It's 9 days after R-2 and a different format, so it won't read as a repeat.</p>
+<pre class="copytext">Title: I launched my analytics SaaS last Tuesday with a full-time job. Week one, every number.
+
+Context: Senior Staff frontend engineer by day. OwlEye (cookie-free web analytics where you add events from a dashboard) launched on Tue 20 Oct on Product Hunt, Show HN, Reddit, X and LinkedIn.
+
+Launch day:
+- Product Hunt: {{rank}}, {{upvotes}} upvotes, {{comments}} comments
+- Show HN: {{points}} points, {{comments}} comments
+- Visitors: {{n}} (top referrers: {{…}})
+- Signups: {{n}}
+
+Week one (20–25 Oct):
+- Signups: {{n}}, of which {{n}} installed the SDK and sent events
+- Paying: {{n}} (MRR ${{n}})
+- Setup calls: {{n}}
+- X followers: 635 → {{n}}. Reddit karma: 80 → {{n}}
+
+What converted: {{e.g. setup calls: n of n people who got on a call installed it}}
+What didn't: {{e.g. launch-site traffic signed up but never installed}}
+What I shipped from feedback: {{1–3 items}}
+
+Biggest surprise: {{one line}}
+
+Happy to answer anything about the launch. If you were me, which of these numbers would you work on first?</pre></div>
+
+  <div class="post"><div class="ph"><h3>R-11 · r/chrome_extensions · Wed 28 Oct 18:30</h3><button class="copy">Copy</button></div>
+  <p class="meta">No link; your profile and the comments do that job. Check every number against your own record before posting.</p>
+<pre class="copytext">Title: I've shipped 4 extensions to the Chrome Web Store without a rejection. The checklist I run before every submission.
+
+Over 8 years I've shipped 4 Chrome extensions, including a multi-chain wallet and a privacy extension with its own proxy network. None were rejected. Review isn't random. This is what I check before every submission:
+
+1. Fewest permissions possible. Each one needs a reason you can say in one sentence. Use activeTab instead of &lt;all_urls&gt; wherever you can. Broad host access is a common cause of slow reviews.
+2. One purpose, stated plainly. The listing, the description and the code should all describe the same single thing. Hidden extra features read as a policy problem.
+3. No remote code. Under Manifest V3 everything that runs must ship in the package. No eval, no scripts loaded from your server.
+4. Privacy disclosures that match the code. If you say you collect nothing, make sure that's literally true.
+5. A justification for every sensitive permission in the submission form, written for a reviewer who has five minutes.
+6. Test the zip you upload, not the unpacked folder.
+7. Screenshots of the real UI. Mock-ups that don't match the extension get flagged.
+
+{{One story: the review that took longest, and why.}}
+
+What's slowed down your reviews?</pre></div>
+
+  <div class="post"><div class="ph"><h3>R-12 · r/developersIndia · Thu 29 Oct 18:30</h3><button class="copy">Copy</button></div>
+  <p class="meta">The follow-up to R-1, two weeks later. People who read the first post will want the ending. No link.</p>
+<pre class="copytext">Title: Two weeks ago I posted about building a SaaS alongside my job. It launched last week. Here's how the first 10 days actually went.
+
+A lot of you asked how the launch would go, so here's the honest follow-up.
+
+The schedule: {{e.g. 45 min before work, 20 at lunch, 90 after}}. Launch day was a Tuesday, and I {{took leave / worked through it}}.
+
+What happened:
+- {{signups, paying customers, one number that surprised you}}
+
+What I got wrong:
+- {{e.g. I expected launch sites to bring buyers. They brought other makers.}}
+
+What I got right:
+- {{e.g. doing setup calls personally}}
+
+On balancing it with the job:
+- {{sleep, family, one honest line on burnout}}
+- Read your employment contract for side-project and moonlighting clauses before you launch anything. {{One line on how you handled it.}}
+
+If you're thinking about building something on the side, ask me anything.</pre></div>
+
+  <div class="post"><div class="ph"><h3>R-13 · r/webdev Showoff Saturday · Sat 31 Oct 19:00 · main post</h3><button class="copy">Copy</button></div>
+  <p class="meta">Two weeks after R-4. Build it entirely from real comments on that post; quoting people (briefly, without names unless they agree) shows you listened.</p>
+<pre class="copytext">Title: [Showoff Saturday] Two weeks ago I showed you OwlEye. Here's what I changed because of your comments.
+
+On 17 Oct I posted OwlEye here: analytics where you add click, form and visibility tracking from a dashboard after a one-time SDK install. You left {{n}} comments. These came up most, and here's what I did:
+
+1. "{{comment}}" → {{what you shipped or decided}}
+2. "{{comment}}" → {{…}}
+3. "{{comment}}" → {{…, or why you didn't}}
+
+Since launching on 20 Oct: {{one honest number, e.g. n sites sending events}}.
+
+What hasn't changed: the visitor SDK writes no cookies, localStorage or sessionStorage, the core script has a 4.6 KB gzip budget in CI, and it's free up to 10K events a month.
+
+Live demo, no signup: https://owleye.dev/demo/
+
+What should I focus on for the next two weeks?</pre></div>
+
+  <div class="post"><div class="ph"><h3>R-L2 · r/WebGames · Tue 27 Oct 18:30 · lowkey.tools</h3><button class="copy">Copy</button></div>
+  <p class="meta">Follow the sub's title format and flair rules. One game a week at most.</p>
+<pre class="copytext">Title: MathMagician: a 30-second mental math sprint (free, no signup, works offline)
+
+I made this. You get 30 seconds (or anywhere from 10 to 120) to solve as many questions as you can. Four difficulty levels, from Kids (0–20) to God (0–1,000), and questions with up to four numbers and mixed operators, so precedence matters.
+
+{{MathMagician link}}
+
+What's your best score on Legendary? Does God mode feel possible, or just cruel?</pre></div>
+
+  <div class="post"><div class="ph"><h3>R-M2 · r/ProgrammerHumor · Sat 31 Oct 13:00</h3><button class="copy">Copy</button></div>
+  <p class="meta">Halloween meme, no product mention.</p>
+<pre class="copytext">Format: Scooby-Doo mask reveal
+
+Panel 1: "Let's see who's really been haunting our conversion rate"
+Panel 2 (mask off): "A signup event that fires on button click, not on success"
+
+Backup: a tombstone that reads "Universal Analytics, 2005–2023. Never had to learn GA4."
+
+Title: The scariest thing I found this Halloween</pre></div>
+
+  <div class="box">
+    <h3>Comments that earn karma</h3>
+    <p>Canned comments get flagged, so here's a pattern instead of templates. Use it on posts less than 2 hours old, sorted by Rising or New.</p>
+    <ol>
+      <li><strong>Answer the actual question</strong> in the first sentence.</li>
+      <li><strong>Add one detail from experience</strong> ("I've seen this break when…", "At work we solved it by…").</li>
+      <li><strong>End with one practical next step.</strong> Three to six sentences total. No links unless asked.</li>
+    </ol>
+    <p><strong>Where you have an unfair advantage:</strong> React and frontend architecture questions in r/reactjs, r/Frontend, r/webdev and r/nextjs. Career questions in r/developersIndia and r/cscareerquestionsIN, where your senior title carries weight. GA4 help in r/GoogleAnalytics. Those people are also your buyers, so help first and only mention OwlEye if someone asks for alternatives.</p>
+  </div>
+</section>
+
+<!-- ============ X ============ -->
+<section class="panel" id="x" role="tabpanel" hidden>
+  <div class="box amber">
+    <h3>Before every X post</h3>
+    <ul>
+      <li><strong>Main posts get media:</strong> a screenshot, GIF or short video. Text-only works for takes and jokes.</li>
+      <li><strong>Links go in the first reply</strong>, never in the main post. X cuts reach for posts with outbound links.</li>
+      <li><strong>Reply to every reply for the first 60 minutes.</strong> Replies are the heaviest ranking signal right now, and that includes your own replies in the thread.</li>
+      <li><strong>Each post goes to your profile plus at most one Community</strong>, and only where the Community's rules allow it. Never paste the same post into several Communities.</li>
+      <li><strong>One hashtag at most</strong> (#buildinpublic). More reads as spam.</li>
+      <li><strong>Timing:</strong> 19:30–23:00 IST reaches US mornings and indie Twitter. 08:30–10:00 IST reaches Indian tech Twitter. Use mornings for frontend and career posts, evenings for build-in-public posts.</li>
+    </ul>
+  </div>
+
+  <div class="box hero">
+    <h2>635 → 2,000 followers</h2>
+    <p>You need about 1,365 more. Posts about OwlEye alone won't get you there, because analytics is a small topic. Frontend and career posts reach far more people, and your Senior Staff title is what makes them land. People follow the engineer, then see OwlEye in the bio and the pinned post.</p>
+    <div class="tablewrap" style="border:0">
+    <table>
+      <thead><tr><th>Checkpoint</th><th>Followers</th><th>What gets you there</th></tr></thead>
+      <tbody>
+        <tr><td>Sun 18 Oct</td><td>800</td><td>The countdown, "drop your URL", the build thread, 40 replies a day</td></tr>
+        <tr><td>Tue 20 Oct</td><td>900</td><td>Launch day spike from Product Hunt, HN and LinkedIn</td></tr>
+        <tr><td>Sun 25 Oct</td><td>1,050</td><td>Morning tips start, "roast my page", the launch-lessons thread, the first weekly numbers</td></tr>
+        <tr><td>Fri 30 Oct</td><td>1,200</td><td>The Chrome-extension thread, the first X Space, "drop your URL" round two, 60 replies a day</td></tr>
+        <tr><td>Sun 15 Nov</td><td>1,600</td><td>Two long threads a week and one X Space</td></tr>
+        <tr><td>Mon 30 Nov</td><td>2,000</td><td>Keep the weekly rhythm going. One post that takes off brings this forward.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div class="grid2">
+      <div class="box note">
+        <h3>Daily inputs</h3>
+        <ul>
+          <li>60 replies (40 during launch week)</li>
+          <li>3–4 posts of your own</li>
+          <li>A thread every 2–3 days</li>
+          <li>15 minutes chatting with people your size in #buildinpublic</li>
+        </ul>
+      </div>
+      <div class="box note">
+        <h3>Content mix</h3>
+        <ul>
+          <li><strong>40%</strong> frontend and career: tips, lessons, takes</li>
+          <li><strong>30%</strong> building OwlEye in public: numbers, shipping, mistakes</li>
+          <li><strong>20%</strong> humour and opinions</li>
+          <li><strong>10%</strong> direct asks: demo, launch, "try it"</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="box">
+    <h3>Profile: turning visits into follows</h3>
+    <p>Every good reply sends people to your profile, and the profile has about three seconds to convince them.</p>
+    <ul>
+      <li><strong>Name:</strong> Shrinath · building OwlEye</li>
+      <li><strong>Bio (160 characters max):</strong> Sr Staff frontend eng by day. Building OwlEye (owleye.dev): analytics you set up from a dashboard, no cookies. + lowkey.tools · shrinath.me</li>
+      <li><strong>Header:</strong> a dashboard screenshot with "Launching Tue 20 Oct". After launch, change it to "Day N of OwlEye".</li>
+      <li><strong>Pinned:</strong> X-1 until launch, then the launch post, then your best-performing thread.</li>
+      <li><strong>Weekly check:</strong> in X analytics, compare profile visits with new follows. Under about 5% means the bio or pinned post needs work.</li>
+    </ul>
+  </div>
+
+  <h2>Launch-week posts</h2>
+
+  <div class="post"><div class="ph"><h3>X-1 · Profile, then pin · Thu 19:30</h3><button class="copy">Copy</button></div>
+  <p class="meta">This is the anchor for the whole week, and every later post quotes back to it. Put a GIF of the rule editor on post 3. After posting, quote it into the Build in Public Community with one line: "Launching Tuesday, sharing everything until then."</p>
+<pre class="copytext">I'm a Senior Staff engineer by day.
+
+At night I built OwlEye: web analytics where you add click tracking from a dashboard instead of shipping new code.
+
+It launches Tuesday.
+
+For the next 4 days I'm sharing everything. Stack, costs, mistakes, numbers. 🧵
+
+---
+
+2/ Why build another analytics tool?
+
+Every time someone asked "can we track that button?" it meant: add code → PR → CI → deploy → wait.
+
+For one click event.
+
+---
+
+3/ OwlEye: install the SDK once.
+
+Then pick the element in the dashboard, name the event, save. The next page load tracks it.
+
+[GIF of the rule editor]
+
+---
+
+4/ The visitor script writes no cookies, localStorage or sessionStorage.
+
+Rust + ClickHouse underneath. There's an MIT-licensed self-host version too.
+
+---
+
+5/ Free up to 10K events a month. $9 for 100K.
+
+That's the whole pitch.
+
+---
+
+6/ This week:
+Fri: 40s demo, GA4 vs OwlEye
+Sat: the full stack and what it costs to run
+Sun: every number from this week, good or bad
+Tue: launch
+
+Follow if you like watching someone launch with a day job.
+
+---
+
+7/ Want early access and me personally setting it up on your site?
+
+Reply "owl" and I'll DM you on launch day.</pre></div>
+
+  <div class="post"><div class="ph"><h3>X-2 · Profile only · Thu 22:45</h3><button class="copy">Copy</button></div>
+  <p class="meta">A take people want to quote-post. Don't mention OwlEye in replies to this one; let curious people find it in your bio. If a GA4 fan pushes back, agree with whatever is fair in their point. That makes the thread longer, which helps.</p>
+<pre class="copytext">GA4 is the only product where tracking one button click needs a tutorial, a tag manager, three new concepts and a day of waiting to see if it worked.
+
+I spent the last year building the opposite.</pre></div>
+
+  <div class="post"><div class="ph"><h3>X-3 · Spare short posts · profile, any day</h3><button class="copy">Copy</button></div>
+  <p class="meta">Fillers for quiet hours. Post one when you haven't posted for 4 hours. The day-N template can go into the Build in Public Community.</p>
+<pre class="copytext">Senior engineer at work: "let's write an RFC first"
+Senior engineer at 1am on his side project: renames the database table in prod
+
+---
+
+Building a SaaS with a day job is just doing two code reviews a day, and one of them is your own at midnight.
+
+---
+
+Day {{N}} of 4 before launch.
+Done today: {{3 bullets}}
+Tomorrow: {{1 thing}}
+
+---
+
+Things I underestimated building OwlEye:
+1. Privacy policy
+2. Account deletion
+3. Refunds
+4. Telling anyone it exists
+
+Things I overestimated:
+1. How long Rust would take to learn</pre></div>
+
+  <div class="post"><div class="ph"><h3>X-4 · Profile + Build in Public · Fri 19:30</h3><button class="copy">Copy</button></div>
+  <p class="meta">Upload the video natively; X ranks native video well above YouTube links. Shot list, 40 seconds, landscape, captions burned in: (1) 0–12s: GTM or code-edit steps at 8× speed, caption "GA4: tracking one button". (2) 12–30s: OwlEye rules screen at normal speed: pick selector, type <code>pricing_cta_click</code>, save. (3) 30–40s: reload the site, click the button, the event shows up. Caption "OwlEye: done". End card: "Launching Tue · owleye.dev". Reuse this video on Reddit, LinkedIn and Product Hunt.</p>
+<pre class="copytext">Tracking one "Pricing" button click:
+
+GA4 → edit code or set up GTM, publish, wait
+OwlEye → pick the button in the dashboard, name it, save
+
+No new deploy, after a one-time SDK install.
+
+Launching Tuesday.
+
+[video]
+
+(first reply: Live demo, no signup: https://owleye.dev/demo/)</pre></div>
+
+  <div class="post"><div class="ph"><h3>X-5 · Profile + Indie Hackers Community · Fri 21:00 · lead magnet</h3><button class="copy">Copy</button></div>
+  <p class="meta">This is your best post of the week for both followers and leads. Every URL reply is a person with a live site, and every answer you write is another reply in the thread. Answer each one with three events specific to their page, not a template. For good fits, follow up with: "want me to set these up with you on a 15-min call?" Repost it every 2 weeks.</p>
+<pre class="copytext">Free for the next 48 hours:
+
+Drop your website below. I'll reply with the 3 events you should be tracking, and why.
+
+No pitch unless you ask. I've done frontend for 8 years and I'm tired of seeing landing pages that only track pageviews.</pre></div>
+
+  <div class="post"><div class="ph"><h3>X-6 · Profile · Fri 23:00</h3><button class="copy">Copy</button></div>
+  <p class="meta">A value post that people bookmark and share. It's the X version of R-2, so post it after the Reddit one to avoid looking cross-posted.</p>
+<pre class="copytext">Most indie founders track pageviews and nothing else.
+
+Then they wonder why signups dropped.
+
+The 5 events that matter:
+1. Hero CTA click
+2. Pricing plan click
+3. Signup started
+4. Signup completed (track it where it succeeds, not on the button)
+5. First key action
+
+Pageviews tell you traffic. Events tell you the story.</pre></div>
+
+  <div class="post"><div class="ph"><h3>X-7 · Profile + Software Engineering Community · Sat 20:00</h3><button class="copy">Copy</button></div>
+  <p class="meta">Bookmarks rank this kind of thread well. Use one screenshot or diagram per part if you can, and post the GitHub link as the first reply under part 9. Fill in the real costs; a thread with actual numbers spreads much further than one without.</p>
+<pre class="copytext">How I built a cookie-free analytics SaaS solo, with a full-time job.
+
+Stack, monthly cost, and what I'd do differently 🧵
+
+---
+
+2/ API: Rust + Axum.
+I'm a frontend engineer. I picked Rust because ingestion is the hot path, and I wanted it boring and fast. {{One line on how learning it went.}}
+
+---
+
+3/ Storage: ClickHouse for events, SQLite for users, sites and sessions.
+v1 was Bun + MongoDB. {{Why you moved, in one line.}}
+
+---
+
+4/ Console: Nuxt. Website: Astro. Both on Cloudflare Workers.
+
+---
+
+5/ SDK: dependency-free TypeScript.
+The core has a 4.6 KB gzip budget in CI. Go over it and the build fails.
+
+---
+
+6/ Privacy: no cookies, localStorage or sessionStorage from the visitor script.
+Visitor IDs are site-scoped pseudonyms. I don't call it "anonymous", because it isn't, and I'd rather be precise.
+
+---
+
+7/ Monthly cost to run: {{$total}}
+Servers: {{$}}
+ClickHouse: {{$}}
+Email: {{$}}
+Domains: {{$}}
+
+---
+
+8/ Biggest mistake: I renamed the product (Outline → OwlEye) after people had signed up.
+Check the name, domain and handles before you collect a single email.
+
+---
+
+9/ The self-host version is MIT on GitHub. A star would make my weekend.
+(link in the next reply)
+
+Launch is Tuesday.</pre></div>
+
+  <div class="post"><div class="ph"><h3>X-8 · Profile · Sat 22:00</h3><button class="copy">Copy</button></div>
+  <p class="meta">Self-deprecating posts get shared. This is one of the few posts where the link goes in the main post, because the link is the joke.</p>
+<pre class="copytext">My open-source analytics repo has exactly 0 GitHub stars.
+
+Rust, ClickHouse, cookie-free, MIT licensed, and apparently invisible 😅
+
+Let's see if X can fix that before Tuesday's launch:
+github.com/shrinathprabhu/owleye</pre></div>
+
+  <div class="post"><div class="ph"><h3>X-9 · Profile + Build in Public · Sun 19:30</h3><button class="copy">Copy</button></div>
+  <p class="meta">Make the numbers a clean image card as well as text; screenshots of numbers get saved. Post honest numbers even if they're small. Small accounts posting real data is exactly what #buildinpublic rewards.</p>
+<pre class="copytext">4 days of building in public with a full-time job.
+
+Real numbers:
+X followers: 635 → {{b}}
+Reddit karma: 80 → {{n}}
+owleye.dev visitors: {{n}} (top source: {{source}})
+Signups: {{n}}
+Conversations with possible buyers: {{n}}
+Paid: {{0}} (so far)
+
+What worked: {{one line}}
+What flopped: {{one line}}
+
+Launch is Tuesday.</pre></div>
+
+  <div class="post"><div class="ph"><h3>X-10 · Profile · Sun 21:30</h3><button class="copy">Copy</button></div>
+  <p class="meta">Last call for the launch list. DM everyone who replies "owl" right away with "you're on the list". Then message them again on Tuesday.</p>
+<pre class="copytext">Tuesday.
+
+{{N}} people are already on the launch list. Last call: reply "owl" and you get the link first, plus me setting up your first 3 events for free.
+
+[screenshot of the dashboard]</pre></div>
+
+  <div class="post"><div class="ph"><h3>X-11 · Profile, then pin · Tue 12:45 · launch</h3><button class="copy">Copy</button></div>
+  <p class="meta">Reuse the 40-second video. Quote-post X-1 so people who followed the countdown see the payoff. Put the Product Hunt link in the first reply only if you're comfortable asking for support there; never ask for upvotes directly.</p>
+<pre class="copytext">OwlEye is live.
+
+4 days ago I said I'd launch on Tuesday and share everything on the way. Here it is.
+
+→ Add click, form and scroll tracking from a dashboard, without a deploy
+→ No cookies or browser storage from the visitor script
+→ Free up to 10K events a month, $9 for 100K
+
+The first 10 Pro customers get me setting up their events personally.
+
+[video]
+
+(first reply: https://owleye.dev)</pre></div>
+
+  <div class="post"><div class="ph"><h3>X-17 · Profile · Tue 20 Oct 23:00 · launch-day numbers</h3><button class="copy">Copy</button></div>
+  <p class="meta">Post it even if the numbers are small. Quote-post X-11 so the launch thread and its result sit together.</p>
+<pre class="copytext">OwlEye launch day, real numbers:
+
+Visitors: {{n}}
+Signups: {{n}}
+Sites sending events: {{n}}
+Paid: {{n}}
+Product Hunt: {{rank / upvotes}}
+Show HN: {{points}}
+
+Best moment: {{one line}}
+Worst moment: {{one line, honestly}}
+
+Thank you to everyone who replied, tried it, and told me what broke. Sleeping now.</pre></div>
+
+  <div class="subhead"><span class="eyebrow">21–31 Oct</span><h2>Weeks 2 and 3 posts</h2><p class="muted">Evening posts for 21–31 Oct. Mornings come from the frontend and career section below: X-12 on Wednesday 21, then X-13 tips and X-14 takes on weekdays.</p></div>
+
+  <div class="post"><div class="ph"><h3>X-18 · Profile · Wed 21 Oct 19:30</h3><button class="copy">Copy</button></div>
+  <p class="meta">A relatable joke the day after launch. Add a photo of your desk if you're comfortable with it.</p>
+<pre class="copytext">Launch day me: replying to every comment, fixing bugs live, refreshing Product Hunt every 4 minutes
+
+Day after me: back at my day job, reviewing a PR, pretending I slept</pre></div>
+
+  <div class="post"><div class="ph"><h3>X-19 · Profile + Build in Public · Thu 22 Oct 20:30</h3><button class="copy">Copy</button></div>
+  <p class="meta">Ask the person before you tag them. A 20-second screen recording of the change beats any description.</p>
+<pre class="copytext">{{@handle}} asked for {{thing}} on launch day.
+
+It shipped tonight.
+
+[20s screen recording]
+
+The best part of being small: you ask, and it's built the same week.</pre></div>
+
+  <div class="post"><div class="ph"><h3>X-20 · Profile + Indie Hackers Community · Fri 23 Oct 20:00 · reply bait</h3><button class="copy">Copy</button></div>
+  <p class="meta">Same mechanics as X-5: every reply is a lead and a ranking signal. Be specific and kind; a roast that stings gets screenshotted for the wrong reasons.</p>
+<pre class="copytext">Roast my landing page Friday, but kind.
+
+Drop your URL. I'll reply with one specific thing I'd change, and the event I'd track to know whether it worked.
+
+8 years of frontend. I've looked at a lot of hero sections.</pre></div>
+
+  <div class="post"><div class="ph"><h3>X-21 · Profile + Build in Public · Sat 24 Oct 20:00 · thread</h3><button class="copy">Copy</button></div>
+  <p class="meta">The launch-lessons thread. Fill it from the scoreboard; the numbers are what make it worth bookmarking.</p>
+<pre class="copytext">I launched a SaaS with a full-time job.
+
+What actually happened, and what I'd do differently 🧵
+
+---
+
+2/ The plan: 4 days of building in public, launch on a Tuesday, about 2.5 hours a weekday.
+
+I stuck to it on {{n}} of 6 days.
+
+---
+
+3/ What brought visitors: {{channel}} ({{n}}), {{channel}} ({{n}}), {{channel}} ({{n}}).
+
+What brought paying users: {{answer}}. Not the same list.
+
+---
+
+4/ My best post wasn't about the product. It was {{which}}.
+
+---
+
+5/ Setup calls converted best. {{n}} calls, {{n}} installs, {{n}} paid.
+
+At this size, doing things that don't scale isn't a cliché. It's the strategy.
+
+---
+
+6/ Product Hunt brought {{…}}. Show HN brought {{…}}.
+
+---
+
+7/ What I'd change: {{one line}}.
+
+---
+
+8/ What I'd keep: posting real numbers, even small ones. People root for honest small accounts.
+
+---
+
+9/ Next: numbers every Sunday, and a frontend tip every weekday morning. Follow along if that's your thing.</pre></div>
+
+  <div class="post"><div class="ph"><h3>X-22 · Profile + Software Engineering Community · Wed 28 Oct 08:30 · thread</h3><button class="copy">Copy</button></div>
+  <p class="meta">Career and frontend threads travel furthest. Check every number against your own record, and fill in the fourth extension.</p>
+<pre class="copytext">I've shipped 4 Chrome extensions to the Web Store. 0 rejections.
+
+A wallet used by 750+ people, an encrypted-attachments extension, a privacy extension with its own proxy network, and {{the fourth}}.
+
+What I check before every submission 🧵
+
+---
+
+2/ Permissions. Each one needs a one-sentence reason. Prefer activeTab over &lt;all_urls&gt;. Broad host access is what slows reviews down most.
+
+---
+
+3/ One purpose. The listing, the description and the code should all describe the same single thing.
+
+---
+
+4/ No remote code. Manifest V3 means everything that runs ships in the zip. No eval, no scripts from your server.
+
+---
+
+5/ Privacy disclosures that match the code exactly. Reviewers check.
+
+---
+
+6/ Test the zip you upload, not the unpacked folder.
+
+---
+
+7/ Screenshots of the real UI. Mock-ups that don't match get flagged.
+
+---
+
+8/ The one that taught me most was the wallet. It injects into dApps like Aave and Uniswap, so every page is someone else's code, and you have to assume it's hostile.
+
+---
+
+9/ Building an extension and stuck in review? Reply with what's happening and I'll try to help.</pre></div>
+
+  <div class="post"><div class="ph"><h3>X-23 · Profile · Sat 31 Oct 20:00 · Halloween</h3><button class="copy">Copy</button></div>
+  <p class="meta">A list people want to add to. Reply to every addition.</p>
+<pre class="copytext">Scariest things I've seen in analytics setups this year 🎃
+
+1. A signup event that fires on click, not on success
+2. A GA4 property with zero conversions set up
+3. "We'll add tracking after launch"
+4. A tag manager container with 47 tags nobody remembers adding
+5. Pageviews. Only pageviews.
+
+Which one is haunting your site?</pre></div>
+
+  <h2>Frontend and career posts: your growth engine</h2>
+  <p class="muted">These reach far beyond indie hackers. Post one every morning at 08:30–10:00 IST from Wednesday 21 Oct. Only post lessons that are true for you, and edit anything that isn't.</p>
+
+  <div class="post"><div class="ph"><h3>X-12 · Profile · Wed 21 Oct 09:00 · career thread</h3><button class="copy">Copy</button></div>
+  <p class="meta">Career threads from senior engineers travel well, especially on Indian tech Twitter. Swap in your own lessons wherever one doesn't match your experience. If it takes off, reply to it a few hours later with "I'm also building OwlEye…" and a link.</p>
+<pre class="copytext">8+ years of frontend. Now a Senior Staff Engineer.
+
+10 things I'd tell myself in year one: 🧵
+
+---
+
+1/ Learn the browser, not just the framework. Frameworks change every 3 years. The event loop, layout and the network tab haven't changed in 15.
+
+---
+
+2/ Read other people's PRs. You learn more from reviewing 10 PRs than from writing 1.
+
+---
+
+3/ The senior skill is saying "we don't need to build that."
+
+---
+
+4/ Write the doc before the code. A one-page doc saves a week of rewrites.
+
+---
+
+5/ Performance is a feature that nobody asks for until it's missing.
+
+---
+
+6/ Learn to debug without console.log: breakpoints, the performance panel, network throttling.
+
+---
+
+7/ Your career grows when you make your team faster, not when you're the fastest.
+
+---
+
+8/ Accessibility isn't extra work if you do it from day one. It's a lot of work if you do it in year three.
+
+---
+
+9/ Build something outside work. I learned more about backends, billing and legal from one side project than from years at work.
+
+---
+
+10/ Ship, then polish. Unshipped polish is worth zero.
+
+{{Swap any line that isn't true for you.}}</pre></div>
+
+  <div class="post"><div class="ph"><h3>X-13 · Profile · daily series "Senior Staff frontend tip"</h3><button class="copy">Copy</button></div>
+  <p class="meta">A numbered daily series gives people a reason to follow: they want tip #6. Add a small code screenshot (Ray.so or Carbon) to each. Here are five to start, one per morning.</p>
+<pre class="copytext">Senior Staff frontend tip #1
+
+Cancel stale requests with AbortController.
+
+User types "rea", then "react". If the "rea" response comes back last, your UI shows the wrong results.
+
+Abort the previous request each time a new one starts. One line of code, one whole class of bugs gone.
+
+---
+
+Senior Staff frontend tip #2
+
+Long list rendering slowly? Try CSS before reaching for a virtualisation library:
+
+content-visibility: auto;
+contain-intrinsic-size: auto 80px;
+
+The browser skips rendering offscreen items. No JavaScript involved.
+
+---
+
+Senior Staff frontend tip #3
+
+Building a modal? Put the inert attribute on everything behind it.
+
+Focus can't escape, screen readers skip it, clicks don't go through. It replaces a lot of focus-trap code.
+
+---
+
+Senior Staff frontend tip #4
+
+Stop deep-cloning with JSON.parse(JSON.stringify(x)).
+
+Use structuredClone(x). It handles Dates, Maps, Sets and circular references, and it's built into every modern browser.
+
+---
+
+Senior Staff frontend tip #5
+
+Set a bundle size budget in CI, not a goal in a doc.
+
+My analytics SDK's core has a 4.6 KB gzip limit. Any PR that goes over it fails the build. Goals drift, budgets don't.</pre></div>
+
+  <div class="post"><div class="ph"><h3>X-14 · Profile · frontend hot takes · one every 2–3 days</h3><button class="copy">Copy</button></div>
+  <p class="meta">Opinions people want to argue with. Reply to the people who disagree with a real reason. Never be dismissive; a long civil argument is how these spread.</p>
+<pre class="copytext">Most React performance problems are data-fetching problems wearing a re-render costume.
+
+---
+
+You don't need a state management library. You need fewer pieces of state.
+
+---
+
+The best frontend engineers I've worked with spend more time in the network tab than in the framework docs.
+
+---
+
+"It works on my machine" in frontend means "it works on my M-series Mac with fibre internet". Throttle to slow 4G once a week.
+
+---
+
+A design system with 200 components that nobody uses is worse than 20 that everybody does.</pre></div>
+
+  <div class="post"><div class="ph"><h3>X-15 · Profile + Build in Public · every Sunday after launch</h3><button class="copy">Copy</button></div>
+  <p class="meta">This weekly series is what keeps followers after launch week. Post the same format every Sunday, with a screenshot of the OwlEye dashboard showing your own traffic.</p>
+<pre class="copytext">OwlEye, week {{N}} after launch:
+
+MRR: ${{n}} ({{+/-}})
+Paying customers: {{n}}
+Free accounts: {{n}}
+Events tracked this week: {{n}}
+
+Shipped: {{1–2 things}}
+Broke: {{1 thing, honestly}}
+Learned: {{1 line}}
+
+Next week: {{1 goal}}</pre></div>
+
+  <div class="post"><div class="ph"><h3>X-16 · Profile · X Space invite · Mon 26 Oct, then every other week</h3><button class="copy">Copy</button></div>
+  <p class="meta">The first one is Thu 29 Oct at 21:00 IST (11:30am ET); the run sheet is in the After launch tab. Co-host with 1–2 builders your size so all your audiences overlap. 30 minutes is enough. Pin the Space post for its last hour. Everyone who speaks tends to follow each other afterwards.</p>
+<pre class="copytext">Hosting a 30-min Space on {{day}} at {{time IST}} / {{time ET}}:
+
+"Launching with a day job: what actually worked"
+
+With {{@cohost1}} and {{@cohost2}}. Bring your launch questions and your own numbers.
+
+Set a reminder 👇</pre></div>
+
+  <div class="box">
+    <h3>Replies that earn followers</h3>
+    <p>Replies are where most of your growth comes from. A reply has to be worth reading on its own, without anyone knowing who you are.</p>
+    <ol>
+      <li><strong>Add something the post is missing:</strong> a number, a step, an edge case, or what happened when you tried it.</li>
+      <li><strong>Keep it to one to three sentences.</strong> Short replies get liked, and likes push your reply up.</li>
+      <li><strong>Disagree with a reason, or agree with a story.</strong> Both get answered. "Great post 🔥" gets ignored.</li>
+    </ol>
+    <div class="tablewrap" style="border:0">
+    <table>
+      <thead><tr><th>They post</th><th>Weak reply</th><th>Reply that earns follows</th></tr></thead>
+      <tbody>
+        <tr><td>"Hit $1K MRR today 🎉"</td><td>"Congrats!"</td><td>"Congrats. What was the channel that got you from $500 to $1K? Curious whether it was the same one that got the first $500."</td></tr>
+        <tr><td>"Why is my Next.js app slow?"</td><td>"Use React Server Components"</td><td>"Check the network waterfall first. 9 times out of 10 it's a client-side fetch that runs after hydration. Move it to the server or start it earlier."</td></tr>
+        <tr><td>"GA4 is fine, people just don't learn it"</td><td>"GA4 sucks lol"</td><td>"Fair for marketing teams with time. For a solo founder who wants one button click tracked, the learning cost is the problem, not the tool."</td></tr>
+        <tr><td>"Shipped dark mode today"</td><td>"Nice"</td><td>"Did you go with prefers-color-scheme plus a manual toggle? The tricky bit is avoiding the flash of the wrong theme on load."</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="muted">Don't drop your own link in replies unless someone asks. Your profile already does that job.</p>
+  </div>
+
+  <div class="box">
+    <h3>Who to reply to</h3>
+    <p>Turn on notifications for 10 of these and reply within 15 minutes of their posts.</p>
+    <p><strong>Big indie accounts:</strong> @levelsio, @marc_louvion, @jonathan_wilke, @thekitze, @tdinh_me, @dannypostmaa, @arvidkahl, @tibo_maker, @csallen, @yongfook</p>
+    <p><strong>Web dev:</strong> @t3dotgg, @rauchg, @leeerob, @steventey</p>
+    <p><strong>Indian tech Twitter</strong>, a big audience for your career posts: @kirat_tw, @Prathkum, and the people who reply on their posts.</p>
+    <p><strong>Analytics, where you know the subject best:</strong> @plausiblehq, @PostHog, and anyone posting about GA4</p>
+    <p><strong>Mid-size accounts (2K–30K):</strong> these matter most, because your reply stays visible there. Build a private X List of about 50 of them and work through it each evening.</p>
+  </div>
+
+  <div class="box">
+    <h3>Communities</h3>
+    <p>Search the Communities tab and join 4 or 5. Read each one's rules first. Post there only when the post fits the Community, never more than one Community per post, and reply to other members' posts too.</p>
+    <div class="tablewrap" style="border:0">
+    <table>
+      <thead><tr><th>Search for</th><th>What to post there</th></tr></thead>
+      <tbody>
+        <tr><td>"Build in Public"</td><td>X-1, X-3 day-N posts, X-4, X-9, X-15</td></tr>
+        <tr><td>"Indie Hackers"</td><td>X-5 "drop your URL", X-6</td></tr>
+        <tr><td>"SaaS"</td><td>X-6, X-15</td></tr>
+        <tr><td>"Software Engineering" or "Web Developers"</td><td>X-7, X-12, X-13 tips</td></tr>
+        <tr><td>"React" or "Frontend"</td><td>X-13 tips, X-14 takes</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="box">
+    <h3>Weekly rhythm after launch (21 Oct – 30 Nov)</h3>
+    <div class="tablewrap" style="border:0">
+    <table>
+      <thead><tr><th>Day</th><th>Morning (08:30–10:00 IST)</th><th>Evening (19:30–23:00 IST)</th></tr></thead>
+      <tbody>
+        <tr><td>Mon</td><td>Frontend tip (X-13)</td><td>OwlEye: one thing you shipped, with a screenshot</td></tr>
+        <tr><td>Tue</td><td>Frontend take (X-14)</td><td>Reply block only</td></tr>
+        <tr><td>Wed</td><td>Career or frontend thread (X-12 style)</td><td>Something funny about building</td></tr>
+        <tr><td>Thu</td><td>Frontend tip</td><td>Short OwlEye feature video</td></tr>
+        <tr><td>Fri</td><td>Frontend take</td><td>Reply bait: "drop your URL", "what's your stack?", "roast my page"</td></tr>
+        <tr><td>Sat</td><td>Long thread or X Article</td><td>X Space, every other week</td></tr>
+        <tr><td>Sun</td><td>Rest</td><td>Weekly numbers (X-15)</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="muted">Every day: 60 replies. Whichever post did best that week, write a follow-up to it the next week.</p>
+  </div>
+
+  <div class="grid2">
+    <div class="box">
+      <h3>Do</h3>
+      <ul class="do">
+        <li>Reply to every reply in the first hour.</li>
+        <li>Repeat formats that worked. A series beats one-off posts.</li>
+        <li>Turn your best Reddit and LinkedIn posts into X posts a few days later.</li>
+        <li>Thank and quote-post people who try OwlEye.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>Don't</h3>
+      <ul class="dont">
+        <li>Buy followers, join engagement pods, or run follow-for-follow.</li>
+        <li>Run "follow + RT to win" giveaways. They bring followers who never engage.</li>
+        <li>Post links in main posts, except as the punchline (X-8).</li>
+        <li>Make product claims that aren't in the claim register.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LINKEDIN ============ -->
+<section class="panel" id="linkedin" role="tabpanel" hidden>
+  <div class="box amber">
+    <h3>How LinkedIn works this week</h3>
+    <ul>
+      <li>The first two lines decide everything. They're all people see before "…see more".</li>
+      <li>Put links in the first comment, not in the post.</li>
+      <li>Reply to every comment in the first hour, with a question back where you can. Comment threads are what spread a post.</li>
+      <li>Spend 15 minutes a day writing real comments on posts by founders, engineering leaders and Indian startup people. Profile visits come from there.</li>
+    </ul>
+  </div>
+
+  <div class="post"><div class="ph"><h3>LI-1 · Nights and weekends · Thu lunch</h3><button class="copy">Copy</button></div>
+<pre class="copytext">I've been a frontend engineer for 8+ years. Today I'm a Senior Staff Engineer.
+
+For the last {{N}} months, my nights and weekends went into something else.
+
+It's called OwlEye. Web analytics without cookies, where you change what you track from a dashboard instead of shipping new code.
+
+Why I built it:
+Every "can we track that button?" request turned into a code change, a review, a deploy and a wait. For one click.
+
+What building it alone taught me:
+
+→ Being senior at work doesn't make you good at building a product. At work, someone else decides what's worth building.
+
+→ I rebuilt the backend once and renamed the product once. Both were right. Both hurt.
+
+→ Legal, privacy and billing took longer than the features.
+
+→ Building is maybe 30% of the work. Telling people is the rest, and I've been avoiding it.
+
+So this week I'm practising in public. OwlEye launches next Tuesday.
+
+If you run a website or a SaaS and want to try it early, comment "owl" and I'll send you access. I'll set up your first events with you.
+
+#buildinpublic #saas #webdev</pre></div>
+
+  <div class="post"><div class="ph"><h3>LI-2 · 5 events · Fri 09:00</h3><button class="copy">Copy</button></div>
+<pre class="copytext">Your landing page probably tracks the wrong thing.
+
+Most teams I've worked with track pageviews and stop there. Then a launch underperforms and nobody can say why.
+
+These are the 5 events I set up first on every site:
+
+1. Hero button click: is the headline working?
+2. Pricing plan click: which plan do people consider?
+3. Signup started: did they even try?
+4. Signup completed: track it where it succeeds, not on the button
+5. First key action: did they get any value?
+
+Put them in that order as a funnel and fix only the biggest drop. Ignore everything else for two weeks.
+
+Any analytics tool can do this. I'm building one (OwlEye) where you add events like these from a dashboard without a deploy, and it launches Tuesday. But the list works with whatever you use today.
+
+Which of these five does your product not track yet?</pre></div>
+
+  <div class="post"><div class="ph"><h3>LI-3 · Why Rust and ClickHouse · Sat 10:00</h3><button class="copy">Copy</button></div>
+<pre class="copytext">I'm a frontend engineer. So why is my product's backend written in Rust?
+
+Short version: analytics is a write-heavy problem, and I wanted the part that receives every event to be boring, fast and cheap to run.
+
+What I chose:
+→ Rust + Axum for the API that receives events
+→ ClickHouse for the events themselves
+→ SQLite for users, sites and sessions
+→ Nuxt for the dashboard, Astro for the website
+
+What surprised me:
+→ The Rust compiler felt like a strict senior reviewer. Annoying for a week, then a relief.
+→ Two databases sounded like overkill. It made the hot path simpler, not harder.
+→ The hardest bugs were in rate limiting, not in queries. One shared limit let public traffic crowd out logins. Each traffic type now has its own pool.
+
+The first version was Bun + MongoDB. {{One honest line on why you rebuilt.}}
+
+If you're a frontend engineer curious about Rust: build one real service with it, not a tutorial.
+
+OwlEye launches Tuesday. The self-hostable version is open source (MIT), link in the comments.</pre></div>
+
+  <div class="post"><div class="ph"><h3>LI-4 · Launching Tuesday · Sun 20:00 or Mon 09:00</h3><button class="copy">Copy</button></div>
+<pre class="copytext">On Tuesday I launch something I've built for {{N}} months, outside my full-time job.
+
+This week I tried marketing it in public for the first time:
+→ {{X}} new followers on X
+→ {{N}} people asked for early access
+→ {{N}} founders sent me their sites to review
+→ {{lesson in one line}}
+
+OwlEye is web analytics for small product teams:
+→ No cookies or browser storage from the visitor script
+→ Add click, form and scroll tracking from a dashboard, without a deploy
+→ Free up to 10K events a month, $9 for 100K
+
+Three ways to help, if you'd like to:
+1. Try it on any site you own and tell me what's confusing
+2. Send it to one founder or freelancer who'd care
+3. Comment "owl" and I'll send the link on Tuesday
+
+Thank you to everyone who replied this week.</pre></div>
+
+  <div class="subhead"><span class="eyebrow">21–31 Oct</span><h2>Weeks 2 and 3 posts</h2><p class="muted">Three posts a week after launch: Monday, Wednesday and Friday at 09:00. Comment on others on the days in between.</p></div>
+
+  <div class="post"><div class="ph"><h3>LI-5 · What launch day taught me · Wed 21 Oct 09:00</h3><button class="copy">Copy</button></div>
+  <p class="meta">Swap in what actually happened. A specific thank-you in the post gets more comments than a general one.</p>
+<pre class="copytext">Yesterday I launched OwlEye, the product I've built on nights and weekends for {{N}} months.
+
+The numbers: {{visitors}} visitors, {{signups}} signups, {{paid}} paying customers.
+
+What launch day taught me:
+
+→ {{e.g. The people who paid weren't the ones who upvoted. They were the ones I'd talked to the week before.}}
+
+→ {{lesson 2}}
+
+→ Being a senior engineer helped exactly once: when something broke at 2pm, I fixed it in ten minutes. Everything else was new to me.
+
+→ {{A specific thank-you: a person or a moment.}}
+
+If you tried it yesterday, tell me one thing that confused you. That's the list I'm working through this week.
+
+Link in the comments.</pre></div>
+
+  <div class="post"><div class="ph"><h3>LI-6 · For agencies and freelancers · Mon 26 Oct 09:00</h3><button class="copy">Copy</button></div>
+  <p class="meta">Written for segment 5 in Leads. Send D-5 notes the same day, so the people you contact see this post on your profile.</p>
+<pre class="copytext">If you build websites for clients, you've had this conversation:
+
+Client: "How many people clicked Book a call last month?"
+You: "…let me set that up."
+
+Then it's GTM, a code change or a plugin, and a redeploy on a site you handed over months ago.
+
+I built OwlEye to make that conversation shorter. Install the script once when you build the site. After that, tracking "Book a call" clicks is: pick the button in the dashboard, name it, save. No redeploy.
+
+For agencies and freelancers:
+→ The visitor script sets no cookies and uses no browser storage
+→ Business ($29/month) covers 50 projects
+→ Guides for WordPress, React/Next.js and Nuxt, plus a plain script tag for everything else
+
+If you build on Webflow, Framer or WordPress and want to try it on one client site, comment "owl" and I'll help you set it up.</pre></div>
+
+  <div class="post"><div class="ph"><h3>LI-7 · 4 Chrome extensions · Wed 28 Oct 09:00</h3><button class="copy">Copy</button></div>
+  <p class="meta">The LinkedIn version of X-22. Career stories from senior engineers do well here.</p>
+<pre class="copytext">4 Chrome extensions shipped. 0 rejections from the Chrome Web Store.
+
+People assume extension review is a lottery. In my experience it's mostly about being boring in the right places:
+
+→ The fewest permissions possible, each with a one-sentence reason
+→ One clear purpose, described the same way in the listing and in the code
+→ No remote code, ever
+→ Privacy disclosures that match exactly what the code does
+
+The one I learned most from was a non-custodial wallet: 10+ chains, injected into dApps like Aave and Uniswap. Every page you inject into is someone else's code, and you have to assume it's hostile. It made me a better frontend engineer than any framework did.
+
+I use the same habits in OwlEye's tracking script: small, no dependencies, no cookies, and a size budget in CI.
+
+Building an extension and stuck in review? Comment and I'll try to help.</pre></div>
+
+  <div class="post"><div class="ph"><h3>LI-8 · October in numbers · Fri 30 Oct 09:00</h3><button class="copy">Copy</button></div>
+  <p class="meta">Honest numbers, small or not. This is the post that makes the next 30 days believable.</p>
+<pre class="copytext">October, in numbers, for a product I build outside my full-time job:
+
+→ X followers: 635 → {{n}}
+→ Reddit karma: 80 → {{n}}
+→ OwlEye signups: {{n}}
+→ Paying customers: {{n}} (MRR ${{n}})
+→ Setup calls: {{n}}
+→ Hours slept: {{fewer than I'd like}}
+
+What moved the numbers: {{one line}}
+What didn't: {{one line}}
+What I'm doing in November: {{one line}}
+
+Thank you to everyone who commented "owl", sent me their site, or got on a call. {{One name or moment, with their permission.}}</pre></div>
+
+  <div class="box">
+    <h3>Profile, before the first post</h3>
+    <p><strong>Headline:</strong> Senior Staff Frontend Engineer | Building OwlEye, cookie-free web analytics for small product teams | lowkey.tools</p>
+    <p><strong>Featured:</strong> owleye.dev (demo first), shrinath.me, lowkey.tools</p>
+    <p><strong>Banner:</strong> a dashboard screenshot with "Launching Tue 20 Oct · owleye.dev"</p>
+  </div>
+</section>
+
+<!-- ============ LEADS ============ -->
+<section class="panel" id="leads" role="tabpanel" hidden>
+  <div class="box hero">
+    <h2>Who buys a $9 analytics plan</h2>
+    <p>Someone with a <strong>live site that already gets traffic</strong>, who wants to know <strong>what visitors do</strong>, and who <strong>hates touching code or GTM for each new event</strong>. They upgrade when they need a second project, more than 60 days of history, more than 10K events, AI questions or the API. Pre-launch projects with no visitors make fine testers, but they won't pay yet.</p>
+    <p>Daily rhythm: find 10, contact 5, follow up once after 4–7 days, then stop. Help in public first, message in private second.</p>
+  </div>
+
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>Segment</th><th>Why they'd pay</th><th>Where to find them</th><th>Opener</th></tr></thead>
+    <tbody>
+      <tr><td><strong>1. People who already know you</strong> (warmest)</td><td>They signed up or liked your work before.</td><td>The old useoutline.xyz early-access list (the "From Outline to OwlEye" email in <code>emails/</code>). OwlEye Free accounts that never upgraded (query production). Everyone who liked or replied to yesterday's FuseLLM launch.</td><td>D-1, D-6</td></tr>
+      <tr><td><strong>2. Founders who just launched</strong></td><td>A live product and fresh traffic, with no idea which page loses people.</td><td>Product Hunt launches from the last 14 days. <a href="https://www.reddit.com/r/SideProject/new/">r/SideProject new</a>. <a href="https://x.com/search?q=%22just%20launched%22%20(saas%20OR%20%22side%20project%22)%20-filter%3Areplies&amp;f=live">X: "just launched"</a>. View their page source: <code>gtag</code> or nothing at all is a good sign.</td><td>D-2</td></tr>
+      <tr><td><strong>3. GA4-frustrated</strong></td><td>Actively looking for something simpler.</td><td><a href="https://www.reddit.com/r/GoogleAnalytics/new/">r/GoogleAnalytics new</a>. <a href="https://x.com/search?q=(GA4%20OR%20%22google%20analytics%22)%20(confusing%20OR%20hate%20OR%20nightmare%20OR%20annoying)&amp;f=live">X: GA4 frustration</a>. <a href="https://x.com/search?q=(%22which%20analytics%22%20OR%20%22analytics%20tool%22)%20(indie%20OR%20saas%20OR%20%22side%20project%22)&amp;f=live">X: "which analytics"</a>.</td><td>D-3</td></tr>
+      <tr><td><strong>4. Plausible and Umami users who want click tracking</strong></td><td>Their custom events need HTML attributes or code changes. Yours don't, after setup.</td><td><a href="https://x.com/search?q=(plausible%20OR%20umami%20OR%20fathom)%20(%22custom%20events%22%20OR%20%22click%20tracking%22)&amp;f=live">X search</a>. Discussions in the plausible/analytics and umami-software/umami GitHub repos about click or custom events. <a href="https://www.reddit.com/r/webdev/search/?q=plausible%20OR%20umami&amp;sort=new">r/webdev search</a>.</td><td>D-4</td></tr>
+      <tr><td><strong>5. Framer, Webflow and WordPress freelancers and small agencies</strong></td><td>Clients ask "how many people clicked Book a call?" They can't easily ship code. Business ($29) covers 50 projects.</td><td>LinkedIn search: "Webflow developer", "Framer designer", "WordPress agency" (India, EU, US). The Framer Experts and Webflow Experts directories.</td><td>D-5</td></tr>
+      <tr><td><strong>6. Indie hackers with revenue</strong></td><td>$500–$10K MRR. $9 is nothing, and conversion is everything.</td><td><a href="https://trustmrr.com">TrustMRR</a> listings, <a href="https://www.indiehackers.com">Indie Hackers</a> product pages, <a href="https://www.reddit.com/r/SaaS/search/?q=analytics&amp;sort=new">r/SaaS "analytics"</a>.</td><td>D-2 or D-3</td></tr>
+      <tr><td><strong>7. Web3 and dApp front-end teams</strong> (your network)</td><td>Privacy-sensitive users block trackers. A cookie-free script is an easier sell to them.</td><td>Your personal contacts from 8 years in the space. Use your own network only, not your employer's partner list, unless you have permission.</td><td>D-2, adapted</td></tr>
+      <tr><td><strong>8. Indian SaaS and dev-tool startups</strong></td><td>Small teams, privacy questions coming with DPDP, and a price that doesn't need approval.</td><td>Your LinkedIn first-degree connections who are founders or CTOs. People who comment on LI-1 to LI-4.</td><td>D-5, adapted</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="box note">
+    <p><strong>A note on cold email.</strong> A public address isn't consent to marketing everywhere. Use X DMs, LinkedIn notes and public replies first. For email, follow the rules in <code>prelaunch-and-launch/06-cold-outreach.md</code>: say who you are, say why you're writing to them, and honour any "no thanks" right away. On Reddit, comment publicly, and DM only when someone asks.</p>
+  </div>
+
+  <div class="post"><div class="ph"><h3>D-1 · Old early-access list · email, Sun evening or launch day</h3><button class="copy">Copy</button></div>
+<pre class="copytext">Subject: The thing you signed up for is launching Tuesday
+
+Hi {{first name}},
+
+You joined the early-access list for Outline a while back. It's now called OwlEye, it's live, and the public launch is this Tuesday.
+
+What it does: cookie-free web analytics where you add click, form and scroll tracking from a dashboard after a one-time install. No new deploy for each event.
+
+Since you were early, I'll set up your first 3 events with you on a 15-minute call if you'd like. Just reply with a time.
+
+Live demo, no signup: https://owleye.dev/demo/
+Start free (10K events/month): https://owleye.dev
+
+Shrinath
+{{your required sender details and an unsubscribe line}}</pre></div>
+
+  <div class="post"><div class="ph"><h3>D-2 · Founder who just launched · X DM after a public reply</h3><button class="copy">Copy</button></div>
+<pre class="copytext">Public reply first:
+Congrats on the launch! One thing I'd track from day one: {{specific button on their site}} clicks vs. completed signups. That gap tells you whether the page or the form is losing people.
+
+DM, only if they engage:
+Hey {{name}}, glad that was useful. I build OwlEye, analytics where you can add events like that from a dashboard without a deploy. Happy to set it up on {{their site}} with you in 15 minutes, free tier is plenty for launch traffic. Want to try it?</pre></div>
+
+  <div class="post"><div class="ph"><h3>D-3 · GA4-frustrated · public reply</h3><button class="copy">Copy</button></div>
+<pre class="copytext">For what you're describing, {{actual answer to their GA4 problem}}.
+
+If you'd rather not fight GA4 at all: Plausible, Umami and Fathom are simpler. I build one too (OwlEye), where button clicks are set up from a dashboard instead of GTM. Happy to help either way.</pre></div>
+
+  <div class="post"><div class="ph"><h3>D-4 · Plausible or Umami user · reply or DM</h3><button class="copy">Copy</button></div>
+<pre class="copytext">{{Plausible / Umami}} is great. Keep it for traffic. The part I kept hitting was that every new custom event meant editing HTML and redeploying.
+
+That's the one thing I built OwlEye around: install once, then add click, form and visibility events from the dashboard. If you want, run it next to {{tool}} on the free plan for two weeks and see if it saves you anything. No need to switch.</pre></div>
+
+  <div class="post"><div class="ph"><h3>D-5 · Agency or freelancer · LinkedIn connection note (under 300 characters)</h3><button class="copy">Copy</button></div>
+<pre class="copytext">Hi {{name}}, saw your {{Webflow/Framer}} work for {{client}}. I build OwlEye: clients get "who clicked Book a call?" tracking that you set up from a dashboard, no code edits, no cookies from the visitor script. Would a 10-min demo be useful?</pre></div>
+
+  <div class="post"><div class="ph"><h3>D-6 · Free signup who never upgraded · email or DM</h3><button class="copy">Copy</button></div>
+<pre class="copytext">Hi {{name}}, Shrinath here, I build OwlEye. I saw you created an account for {{site}}. {{"Events are coming in, nice." / "I don't see events yet, so the install may have gotten stuck."}}
+
+Want me to set up your first 3 events with you? 15 minutes, any evening this week. I'm doing this personally for everyone during launch week.</pre></div>
+
+  <div class="post"><div class="ph"><h3>D-7 · Week-one changelog · email to Free accounts · Mon 26 Oct</h3><button class="copy">Copy</button></div>
+  <p class="meta">A product update to people who signed up. Keep it short, keep the sender details and the unsubscribe line, and pick one of the two endings per person.</p>
+<pre class="copytext">Subject: OwlEye, week one: what changed because of you
+
+Hi {{first name}},
+
+You signed up for OwlEye around launch day. Thank you. Here's what changed in the first week, mostly because people told me what was missing:
+
+- {{change 1}}
+- {{change 2}}
+- {{fix}}
+
+{{No events yet:}} I don't see events from your site yet. If the install got stuck, reply and I'll set it up with you in 15 minutes.
+
+{{Events coming in:}} Your site is sending events. Want me to suggest the 3 I'd add next?
+
+Shrinath
+{{your required sender details and an unsubscribe line}}</pre></div>
+
+  <div class="post"><div class="ph"><h3>D-8 · Quiet lead, last follow-up · DM · Fri 23 Oct</h3><button class="copy">Copy</button></div>
+  <p class="meta">One follow-up, 4–7 days after the last message, then stop. Make it easy to say no.</p>
+<pre class="copytext">Hey {{name}}, last note from me on this. You mentioned {{their problem}} last week. If it's still on your list, I can set up the events on {{site}} with you in 15 minutes, any evening. If not, no worries at all, and good luck with {{their product}}.</pre></div>
+
+  <div class="box">
+    <h3>Turning interest into $9</h3>
+    <ol>
+      <li><strong>Qualify:</strong> "What would you most like to know about your visitors?" and "What's your stack?" Live site plus a concrete question means a real lead.</li>
+      <li><strong>Get them to a first event, live:</strong> a 15-minute call, install together, create 3 rules, reload, watch the events arrive. People who see their own data stay.</li>
+      <li><strong>Find the upgrade trigger honestly:</strong> a second site, more than 60 days of history, more than 10K events, AI questions or the API. If Free covers them, say so. They'll remember that, and they'll refer people.</li>
+      <li><strong>Make the ask:</strong> "Pro is $9 a month and your first paid plan has a 14-day trial. You'd be one of the Founding 10: I set things up with you and your requests go first. Want me to send the link?"</li>
+      <li><strong>After they pay:</strong> ask for one sentence you can quote on launch day.</li>
+    </ol>
+  </div>
+
+  <div class="box">
+    <h3>Objections</h3>
+    <div class="tablewrap" style="border:0">
+    <table>
+      <thead><tr><th>They say</th><th>You say</th></tr></thead>
+      <tbody>
+        <tr><td>"I already use Plausible / Umami."</td><td>"Keep it. The different part is dashboard-managed click and form events. Run both on Free for two weeks and see if it saves you a deploy."</td></tr>
+        <tr><td>"Free is enough for me."</td><td>"Then stay on Free, it's meant to be useful. If you add a second site or want more than 60 days of history, Pro is $9."</td></tr>
+        <tr><td>"You're a solo founder. What if you disappear?"</td><td>"The self-host version is MIT on GitHub, and you can export your account data. You'd never be stuck."</td></tr>
+        <tr><td>"Does this mean I don't need a cookie banner?"</td><td>"I can't promise that. It depends on your setup and your country. The visitor script uses no cookies or browser storage, and the privacy docs explain exactly what's collected."</td></tr>
+        <tr><td>"Can you add X?"</td><td>"Tell me more about what you'd use it for." If it's small and fits, ship it this week and tell them publicly. That's the levelsio move.</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GROWTH ============ -->
+<section class="panel" id="growth" role="tabpanel" hidden>
+  <div class="grid2">
+    <div class="box">
+      <h2>X: 635 → 2,000 by 30 Nov</h2>
+      <ul>
+        <li><strong>60 replies a day</strong> (40 in launch week) to accounts larger than you, within 15 minutes of their posts. Most of your growth comes from these.</li>
+        <li><strong>Frontend and career posts every morning</strong> from 21 Oct. They reach far more people than analytics posts.</li>
+        <li><strong>A reply-bait post every week</strong> that people answer genuinely: "drop your URL", "what's your stack", "roast my landing page".</li>
+        <li><strong>Two series:</strong> "Senior Staff frontend tip #N" and the Sunday OwlEye numbers. A series is why people follow.</li>
+        <li><strong>An X Space every other week</strong>, co-hosted with builders your size.</li>
+      </ul>
+      <p>Checkpoints: 800 by 18 Oct, 1,050 by 25 Oct, 1,200 by 30 Oct, 1,600 by 15 Nov, 2,000 by 30 Nov. The full plan, posts and reply examples are in the X posts tab.</p>
+    </div>
+    <div class="box">
+      <h2>Reddit: 80 → 280 karma, cleanly</h2>
+      <ul>
+        <li><strong>10–15 comments a day</strong> using the three-part pattern, on posts less than 2 hours old. Most give 1–5 karma, and one in twenty takes off.</li>
+        <li><strong>One useful post a day</strong> in a big sub with no link. A single hit in r/developersIndia, r/SaaS or r/webdev can bring 100+.</li>
+        <li><strong>Games and tools</strong> from lowkey.tools in r/WebGames and similar subs, one a week, following each sub's rules. SpotFast went out on 15 Oct, MathMagician goes out on 27 Oct.</li>
+        <li><strong>One original meme a week</strong> in r/ProgrammerHumor.</li>
+        <li>Keep promotional posts and comments under 10% of what you post.</li>
+      </ul>
+      <p><strong>Bio:</strong> Frontend engineer (8 yrs). I build OwlEye (cookie-free analytics) and lowkey.tools (free browser tools). shrinath.me</p>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="box">
+      <h3>Do</h3>
+      <ul class="do">
+        <li>Say you built it, every time it comes up.</li>
+        <li>Post real numbers, including zero.</li>
+        <li>Name competitors fairly. Plausible and Umami do custom events too; your difference is setting them up from a dashboard.</li>
+        <li>Answer every comment and reply in the first hour.</li>
+        <li>Use the claim register (<code>prelaunch-and-launch/08-claim-register.md</code>) and the live pricing page before stating any fact.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>Don't</h3>
+      <ul class="dont">
+        <li>Use alt accounts, vote rings, upvote requests or "engagement pods".</li>
+        <li>Buy followers. It's against X's rules and the followers never buy anything.</li>
+        <li>Say "GDPR compliant", "no banner needed", "anonymous", "smallest" or "track anything".</li>
+        <li>Paste the same post into several subs the same day.</li>
+        <li>Delete and repost a removed post, or argue with mods.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LAUNCH ============ -->
+<section class="panel" id="launch" role="tabpanel" hidden>
+  <div class="box hero">
+    <h2>Tuesday 20 October</h2>
+    <p>Tuesday beats Monday: it gives you Monday to test the full flow and run setup calls, and the countdown has a clean end date. Product Hunt's day starts at 12:01am Pacific, which is 12:30pm IST.</p>
+  </div>
+  <div class="slots" data-day="20">
+    <div class="slot"><time>12:30</time><label><input type="checkbox" id="tue1"><span><span class="chip c-ops">PH</span>Product Hunt goes live. Post the maker comment straight away: who you are, the problem, the 40s video, the Founding 10 offer.</span></label></div>
+    <div class="slot"><time>12:45</time><label><input type="checkbox" id="tue2"><span><span class="chip c-x">X</span>Post <strong>X-11</strong> with the video and pin it. It quote-posts your countdown thread. DM everyone who replied "owl".</span></label></div>
+    <div class="slot"><time>13:00</time><label><input type="checkbox" id="tue3"><span><span class="chip c-li">LinkedIn</span>Launch post, with a thank-you to the people who helped this week. Message everyone who commented "owl".</span></label></div>
+    <div class="slot"><time>13:30</time><label><input type="checkbox" id="tue4"><span><span class="chip c-lead">email</span>Send D-1 to the old early-access list and D-6 to Free accounts.</span></label></div>
+    <div class="slot"><time>18:30</time><label><input type="checkbox" id="tue5"><span><span class="chip c-ops">HN</span>"Show HN: OwlEye – cookie-free analytics with click tracking you set up from a dashboard". Link to the GitHub repo or demo, and write a plain first comment about how it works.</span></label></div>
+    <div class="slot"><time>19:00</time><label><input type="checkbox" id="tue6"><span><span class="chip c-r">Reddit</span>r/SideProject launch post (with the X video link if video uploads are off). Optionally r/microsaas or r/alphaandbetausers, if their rules allow.</span></label></div>
+    <div class="slot"><time>All day</time><label><input type="checkbox" id="tue7"><span><span class="chip c-ops">ops</span>Answer everything. Fix anything small that people report, and say so publicly ("fixed, thanks @…").</span></label></div>
+    <div class="slot"><time>23:00</time><label><input type="checkbox" id="tue8"><span><span class="chip c-x">X</span>Post <strong>X-17</strong>, the launch-day numbers, honest as always. Then sleep.</span></label></div>
+  </div>
+
+  <div class="post"><div class="ph"><h3>Product Hunt tagline and maker comment</h3><button class="copy">Copy</button></div>
+<pre class="copytext">Tagline (60 characters max): Cookie-free analytics. Add click tracking without a deploy.
+
+Maker comment:
+Hey Product Hunt 👋 I'm Shrinath, a Senior Staff frontend engineer who builds OwlEye on nights and weekends.
+
+The problem: every "can we track that button?" meant a code change, a review and a deploy. For one event.
+
+OwlEye: install the SDK once. Then pick any button, form or section in the dashboard, name the event, and the next page load tracks it.
+
+→ No cookies, localStorage or sessionStorage from the visitor script
+→ Funnels, referrers, performance timing, and AI questions on paid plans
+→ Free for 10K events/month, Pro $9 for 100K
+→ MIT-licensed self-host version on GitHub
+
+Founding 10: the first 10 Pro customers get me setting up their events personally, and their feature requests go first.
+
+What would you track first?</pre></div>
+</section>
+
+<!-- ============ AFTER LAUNCH ============ -->
+<section class="panel" id="after" role="tabpanel" hidden>
+  <div class="box hero">
+    <h2>21–31 October</h2>
+    <p>Launch is a spike, and the spike is gone in about 72 hours. Weeks 2 and 3 are where the plan turns attention into habits: a post every weekday morning, OwlEye every evening, numbers every Sunday, and new audiences instead of the same ones again. The daily checklists are in Day by day. This tab holds the pieces that aren't posts.</p>
+  </div>
+
+  <div class="grid3">
+    <div class="box goal"><span class="eyebrow">By 25 Oct</span><span class="num">1,050 <small>X followers</small></span><p class="muted">Plus the first X-15 Sunday numbers post and 10 people who have sent events.</p></div>
+    <div class="box goal"><span class="eyebrow">By 30 Oct</span><span class="num">1,200 · 280 <small>X · karma</small></span><p class="muted">Checked in the 22:30 review on Friday 30. Drop what didn't move the numbers.</p></div>
+    <div class="box hero goal"><span class="eyebrow">By 31 Oct</span><span class="num">3 <small>paying customers</small></span><p class="muted">5 within 30 days of launch (by 19 Nov). Setup calls are the fastest path.</p></div>
+  </div>
+
+  <div class="box">
+    <h3>Directories · Tue 27 Oct</h3>
+    <p class="muted">Each one is a backlink and a slow trickle of people comparing tools, which is exactly the buyer you want. Read the rules before submitting, use the same 60-character tagline as Product Hunt, and skip anything that charges for a basic listing.</p>
+    <div class="tablewrap bare">
+    <table>
+      <thead><tr><th>Where</th><th>List it as</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>AlternativeTo</td><td>An alternative to Google Analytics, Plausible and Umami</td><td>People land there while looking for a way out of GA4.</td></tr>
+        <tr><td>OpenAlternative</td><td>The MIT-licensed self-host version</td><td>Open-source alternatives to paid tools. The repo qualifies; the hosted plan is the upsell.</td></tr>
+        <tr><td>SaaSHub</td><td>Web analytics</td><td>Comparison pages that rank in search.</td></tr>
+        <tr><td>Peerlist</td><td>Project page, and Launchpad if the week's slot is open</td><td>An Indian developer and founder audience, close to segment 8.</td></tr>
+        <tr><td>DevHunt</td><td>Developer tools</td><td>Launches for dev tools, voted on by developers.</td></tr>
+        <tr><td>Indie Hackers</td><td>Product page with revenue</td><td>Your recap posts there can link to it. Update the revenue honestly.</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+
+  <div class="post"><div class="ph"><h3>B-1 · shrinath.me blog post · draft Mon 26, publish Tue 27 Oct</h3><button class="copy">Copy</button></div>
+  <p class="meta">A long version of X-21 that lives on your own site and keeps sending traffic after the posts fade. Cross-post to dev.to and Hashnode with the canonical URL set to shrinath.me.</p>
+<pre class="copytext">Title: Launching OwlEye with a full-time job: the first week
+
+Description (for SEO, about 155 characters): What happened when a Senior Staff frontend engineer launched an analytics SaaS on nights and weekends, with every number from the first week.
+
+1. The setup (2 paragraphs)
+   Who you are, what OwlEye does in one sentence, the 2.5-hours-a-weekday constraint.
+
+2. The plan
+   Four days of countdown, a Tuesday launch, the three channels. Link to /launch-plan/ so people can steal it.
+
+3. The numbers
+   The scoreboard as a table: start, launch day, 25 Oct. Visitors, signups, installs, paying, X, Reddit.
+
+4. What worked (3 items, each with a number)
+   {{e.g. "drop your URL": n replies, n leads, n customers}}
+
+5. What flopped (2 items, honestly)
+   {{…}}
+
+6. Doing it alongside a job
+   Time blocks, sleep, what you said no to. One line on checking your contract.
+
+7. What's next
+   Weekly numbers on X, the November plan, a link to owleye.dev/demo/.
+
+Image: the dashboard screenshot from the X-15 post, 1200×630, for the og:image.</pre></div>
+
+  <div class="box">
+    <h3>X Space run sheet · Thu 29 Oct, 21:00 IST (11:30am ET)</h3>
+    <p><strong>Title:</strong> "Launching with a day job: what actually worked". <strong>Length:</strong> 30 minutes. <strong>Co-hosts:</strong> 1–2 builders your size who launched recently; confirm them by Monday 26.</p>
+    <div class="tablewrap bare">
+    <table>
+      <thead><tr><th>Minutes</th><th>Segment</th></tr></thead>
+      <tbody>
+        <tr><td>0–3</td><td>Wait for people to arrive. Intros: who you are and what you launched, in one sentence each.</td></tr>
+        <tr><td>3–10</td><td>Each host's launch in one number: "the number I'm proudest of, and the one I'm least proud of".</td></tr>
+        <tr><td>10–20</td><td>What worked and what flopped. Keep everyone specific: channels, posts, numbers.</td></tr>
+        <tr><td>20–28</td><td>Bring up listeners with questions. Prioritise people who are about to launch.</td></tr>
+        <tr><td>28–30</td><td>Wrap: one takeaway each, and where to follow. Mention the next Space (Thu 12 Nov).</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="muted">Before: X-16 on Monday 26, pinned for the last hour before it starts, a reminder post at 20:00. After: follow everyone who spoke, and post 3 takeaways as a short thread.</p>
+  </div>
+
+  <div class="box">
+    <h3>Into November</h3>
+    <ul>
+      <li><strong>Every weekday:</strong> the weekly rhythm from the X tab, 60 replies, 10 Reddit comments.</li>
+      <li><strong>Every Sunday:</strong> X-15 numbers (1, 8, 15, 22 and 29 Nov).</li>
+      <li><strong>Every other Friday:</strong> "drop your URL" (13 and 27 Nov). Change the opening line each time.</li>
+      <li><strong>Every other Thursday:</strong> X Space (12 and 26 Nov).</li>
+      <li><strong>Every other Saturday:</strong> Showoff Saturday in r/webdev, alternating OwlEye and lowkey.tools.</li>
+      <li><strong>Goals:</strong> 5 paying customers by 19 Nov, 2,000 X followers by 30 Nov.</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="foot">Built from OwlEye's live pricing page, the public repo and the claim register, checked 15 Oct 2026. Recheck pricing and features on the day you post. Ticks and scoreboard numbers are saved in your browser only. <a href="https://owleye.dev">owleye.dev</a> · <a href="/">shrinath.me</a></footer>
+
+</div>
+{% endraw %}
+</div>
+
+<script src="/js/launch-plan.js?v={{ '/js/launch-plan.js' | rev }}" defer></script>

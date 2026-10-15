@@ -71,3 +71,5 @@
   Cache-Control: public, max-age=0, must-revalidate
 /uses/
   Cache-Control: public, max-age=0, must-revalidate
+/launch-plan/
+  Cache-Control: public, max-age=0, must-revalidate

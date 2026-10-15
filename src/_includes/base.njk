@@ -28,6 +28,13 @@
       {% endif %}
     {% endif %}
 
+    {# ── Per-page stylesheet file, inlined (path relative to _includes) ── #}
+    {% if inlineStylesheet %}
+    <style>
+      {% include inlineStylesheet %}
+    </style>
+    {% endif %}
+
     {# ── Per-page inline CSS ── #}
     {% if extraCSS %}
     <style>

@@ -191,6 +191,9 @@ export default function (eleventyConfig) {
     return array.slice(0, n);
   });
 
+  // Cache-buster for files under src/ (/*.js is cached as immutable)
+  eleventyConfig.addFilter("rev", (path) => fileHash(join("src", path)));
+
   eleventyConfig.addFilter("dump", (obj) => {
     return JSON.stringify(obj);
   });
