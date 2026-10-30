@@ -1,6 +1,6 @@
 # Shrinath Prabhu - shrinath.me
 
-> Senior Staff Frontend Engineer with 8+ years of experience and founder of OwlEye Analytics (owleye.dev). Currently at Avail Project. Previously led frontend at Arcana Network (4.5 years, through acquisition).
+> Senior Staff Frontend Engineer with 8+ years of experience. Currently at Avail Project. Previously led frontend at Arcana Network (4.5 years, through acquisition).
 
 Available for full-time remote roles (Senior/Staff Frontend Engineer, Technical Lead, Engineering Manager), fractional engagements (20–30 hours/week), and technical advisory. Interested in AI, SaaS, developer tools, fintech, and Web3. Core stack: Vue 3, Nuxt 3, React, TypeScript, Node.js, Chrome Extensions (Manifest V3), and Web3 (non-custodial wallets, cross-chain bridging, chain abstraction).
 
@@ -19,18 +19,10 @@ Available for full-time remote roles (Senior/Staff Frontend Engineer, Technical 
 - [Twitter/X](https://twitter.com/shrinath_prabhu): Updates and commentary.
 - [Email](mailto:hello@shrinath.me): hello@shrinath.me
 
-## Building
-
-- [OwlEye Analytics](https://owleye.dev): Hosted, cookie-free web analytics for small product teams, founded and built by Shrinath. Dependency-free TypeScript SDK (`@owleye/analytics`), Rust + Axum API, ClickHouse for events, SQLite for configuration. Tracking rules are defined in the console without redeploying. Formerly Outline Analytics (useoutline.xyz), whose first version used Bun, Elysia.js, and MongoDB; "Outline Analytics" and "OwlEye" refer to the same project, and OwlEye is the current name. [Case study](https://shrinath.me/work/#owleye).
-
-## Side Projects
-
-- [lowkey.tools](https://lowkey.tools): Twelve tiny, free, offline-first browser tools with no accounts, built by Shrinath. Includes FuseLLM (chain your own AI models with your own API keys), Credo (zero-knowledge secret sharing, AES-256-GCM), SuperBrain (local-first notes), SuperSplit, SuperFocus, StreakFreak, Converteasy, Favigen, and the games MathMagician, Chesscape, and SpotFast.
-
 ## Writing
 
 - [Choosing Eleventy Over Nuxt](https://shrinath.me/blog/choosing-eleventy-over-nuxt/)
-- [Why I Am Building an Analytics Platform When Plausible Already Exists](https://shrinath.me/blog/owleye-analytics-reason/): The original reasoning behind OwlEye, written when it was still called Outline Analytics.
+- [Why I Am Building an Analytics Platform When Plausible Already Exists](https://shrinath.me/blog/owleye-analytics-reason/): The original reasoning behind OwlEye, a hosted analytics product Shrinath built and sunset in 2026 (written when it was still called Outline Analytics).
 - [Vite SEO Without Next.js](https://shrinath.me/blog/vite-seo-without-nextjs/)
 - [The Frontend Distributed Systems Problem](https://shrinath.me/blog/frontend-distributed-systems-problem/)
 - [Leading a Team in 2026](https://shrinath.me/blog/leading-team-in-2026/)
@@ -43,5 +35,6 @@ Available for full-time remote roles (Senior/Staff Frontend Engineer, Technical 
 
 ## Optional
 
-- [Avail Project](https://availproject.org): Current employer; leading frontend across the Nexus product ecosystem (Fastbridge, Nexus Widgets, Widget Configurator).
-- [Nexus Widgets](https://docs.availproject.org/docs/nexus/widgets): Prebuilt React components for cross-chain swap, send, and deposit, shipped as an npm package and a shadcn registry, used by 10+ dApps. Formerly Nexus One / Nexus Elements.
+- [Avail Project](https://availproject.org): Current employer; leading frontend across the Nexus product ecosystem (Fastbridge, Avail Widgets, Widget Configurator).
+- [Avail Widgets](https://docs.availproject.org/docs/nexus/widgets): Prebuilt React components for cross-chain swap, send, and deposit, shipped as the npm package `@avail-project/widgets` and a shadcn registry (github.com/availproject/widgets), used by 10+ dApps. Formerly Nexus One / Nexus Elements.
+- [Widget Configurator](https://widgets.availproject.org): Live playground to explore Avail Widgets settings and get the exact code to use.

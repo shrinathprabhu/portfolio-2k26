@@ -164,7 +164,7 @@
         if (score > best) best = score;
         scoreEl.textContent = `Score: ${score}  ·  Best: ${best}`;
         promptEl.style.opacity = 1;
-        // Picked up by /js/analytics.js
+        // Other scripts can listen for this
         document.dispatchEvent(
           new CustomEvent("game:over", { detail: { score, best } }),
         );

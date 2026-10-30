@@ -1,9 +1,9 @@
 ---
 layout: page.njk
 title: "Work - Shrinath Prabhu | Case Studies & Projects"
-description: "Case studies of products Shrinath Prabhu has architected and shipped - Chrome Extension wallets, cross-chain transfer apps (65K+ users), encrypted email tools, OwlEye cookie-free analytics, and developer platforms."
+description: "Case studies of products Shrinath Prabhu has architected and shipped - Avail Widgets and Fastbridge, Chrome Extension wallets, cross-chain transfer apps (65K+ users), encrypted email tools, and developer platforms."
 ogTitle: "Work - Shrinath Prabhu | Projects & Case Studies"
-ogDescription: "Case studies of products shipped over 8 years - Chrome Extension wallets, cross-chain transfers (65K+ users), encrypted email, OwlEye cookie-free analytics, and developer platforms."
+ogDescription: "Case studies of products shipped over 8 years - Avail Widgets and Fastbridge, Chrome Extension wallets, cross-chain transfers (65K+ users), encrypted email, and developer platforms."
 ogType: website
 ogImageAlt: "Shrinath Prabhu - Work & Case Studies"
 jsonLd: |
@@ -22,14 +22,14 @@ jsonLd: |
     "mainEntity": {
       "@type": "ItemList",
       "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "OwlEye Analytics", "description": "Hosted, cookie-free web analytics for small product teams. Dependency-free TypeScript SDK, Rust and Axum API, ClickHouse event store. Rebuilt from its first version, Outline Analytics.", "url": "https://shrinath.me/work/#owleye" },
-        { "@type": "ListItem", "position": 2, "name": "Arcana Chrome Extension Wallet", "description": "Non-custodial sidebar wallet supporting 10+ blockchains with dApp injection, unified balance management, and 4.7-star rating on Chrome Web Store.", "url": "https://shrinath.me/work/#wallet" },
-        { "@type": "ListItem", "position": 3, "name": "SendIt", "description": "Gamified cross-chain token transfer app replacing wallet addresses with email, X handles, and ENS domains. Scaled to 65K+ accounts and 20K+ peak DAU.", "url": "https://shrinath.me/work/#sendit" },
-        { "@type": "ListItem", "position": 4, "name": "Skizzle - E2E Encrypted Email Attachments", "description": "Chrome and Firefox extension for end-to-end encrypted email attachments using RSA keys via Web3Auth and decentralized storage. Approximately 1,000 users with 4.2-star rating.", "url": "https://shrinath.me/work/#skizzle" },
-        { "@type": "ListItem", "position": 5, "name": "Nexus Fastbridge", "description": "Cross-rollup bridge UI live on 15 EVM chains with ~$100K monthly volume, with custom Vite-based SEO solution generating per-chain HTML pages at build time without Next.js.", "url": "https://shrinath.me/work/#fastbridge" },
-        { "@type": "ListItem", "position": 6, "name": "Nexus Widgets", "description": "Prebuilt React components for cross-chain swap, send, and deposit, shipped as an npm package and a shadcn registry, with a live configurator and fiat onramping. Used by 10+ dApps.", "url": "https://shrinath.me/work/#widgets" },
+        { "@type": "ListItem", "position": 1, "name": "Avail Widgets", "description": "Prebuilt React components (formerly Nexus One and Nexus Elements) for cross-chain swap, send, and deposit, shipped as an npm package and a shadcn registry, with a live configurator and fiat onramping. Used by 10+ dApps.", "url": "https://shrinath.me/work/#widgets" },
+        { "@type": "ListItem", "position": 2, "name": "Nexus Fastbridge", "description": "Cross-rollup bridge UI live on 15 EVM chains with ~$100K monthly volume, with custom Vite-based SEO solution generating per-chain HTML pages at build time without Next.js.", "url": "https://shrinath.me/work/#fastbridge" },
+        { "@type": "ListItem", "position": 3, "name": "Arcana Chrome Extension Wallet", "description": "Non-custodial sidebar wallet supporting 10+ blockchains with dApp injection, unified balance management, and 4.7-star rating on Chrome Web Store.", "url": "https://shrinath.me/work/#wallet" },
+        { "@type": "ListItem", "position": 4, "name": "SendIt", "description": "Gamified cross-chain token transfer app replacing wallet addresses with email, X handles, and ENS domains. Scaled to 65K+ accounts and 20K+ peak DAU.", "url": "https://shrinath.me/work/#sendit" },
+        { "@type": "ListItem", "position": 5, "name": "Skizzle - E2E Encrypted Email Attachments", "description": "Chrome and Firefox extension for end-to-end encrypted email attachments using RSA keys via Web3Auth and decentralized storage. Approximately 1,000 users with 4.2-star rating.", "url": "https://shrinath.me/work/#skizzle" },
+        { "@type": "ListItem", "position": 6, "name": "Arcana Developer Dashboard", "description": "Primary interface for Web3 developers to register dApps, configure authentication providers, and manage wallet settings. Built with Vue 3 and TypeScript.", "url": "https://shrinath.me/work/#dashboard" },
         { "@type": "ListItem", "position": 7, "name": "Pricinger - Privacy-Focused Pricing Tool", "description": "Chrome Extension with multi-region VPN proxies, automated per-site optimization crawler, and privacy controls. 1,000+ users with 4-star rating.", "url": "https://shrinath.me/work/#pricinger" },
-        { "@type": "ListItem", "position": 8, "name": "Arcana Developer Dashboard", "description": "Primary interface for Web3 developers to register dApps, configure authentication providers, and manage wallet settings. Built with Vue 3 and TypeScript.", "url": "https://shrinath.me/work/#dashboard" },
+        { "@type": "ListItem", "position": 8, "name": "OwlEye Analytics", "description": "Sunset in 2026: hosted, cookie-free web analytics for small product teams. Dependency-free TypeScript SDK, Rust and Axum API, ClickHouse event store. Rebuilt from its first version, Outline Analytics.", "url": "https://shrinath.me/work/#owleye" },
         { "@type": "ListItem", "position": 9, "name": "lowkey.tools", "description": "A collection of twelve tiny, free, offline-first browser tools with no accounts, including FuseLLM (bring-your-own-key AI workflows) and Credo (zero-knowledge secret sharing). Open source.", "url": "https://shrinath.me/work/#lowkeytools" }
       ]
     }
@@ -44,104 +44,139 @@ jsonLd: |
   </p>
 </div>
 
-<!-- OwlEye Analytics -->
-<article class="case-study fade-in" id="owleye">
+<!-- Avail Widgets -->
+<article class="case-study fade-in" id="widgets">
   <div class="case-study__header">
-    <h2 class="case-study__title brand-title">
-      <img src="/images/owleye-mark.svg" alt="" width="36" height="36" />
-      OwlEye Analytics
-    </h2>
+    <h2 class="case-study__title">Avail Widgets</h2>
     <div class="case-study__meta">
-      <span class="case-study__meta-item">Independent • 2023 – Present</span>
-      <span class="case-study__meta-item">Founder & sole developer</span>
-      <span class="case-study__meta-item">Rust • Axum • ClickHouse • SQLite • TypeScript</span>
+      <span class="case-study__meta-item">Avail Project • 2025 – Present</span>
+      <span class="case-study__meta-item">Conceived & led frontend</span>
+      <span class="case-study__meta-item">React • TypeScript • shadcn/ui • Nexus SDK</span>
     </div>
     <div class="tags">
-      <span class="tag">Founder</span>
-      <span class="tag">Cookie-free</span>
-      <span class="tag">Hosted</span>
+      <span class="tag">10+ dApps</span>
+      <span class="tag">npm package</span>
+      <span class="tag">shadcn registry</span>
+      <span class="tag">Fiat onramp</span>
       <span class="tag">Open Source</span>
     </div>
   </div>
   <div class="case-study__body">
-    <h3>Why It Exists</h3>
+    <h3>The Challenge</h3>
     <p>
-      In every team I have worked on, a new tracking question ("does the
-      new button get clicked?") turned into a ticket, a code change, a
-      review, and a deploy. Google Tag Manager removes the deploy but
-      brings a privacy liability with it. Privacy-first tools like
-      Plausible and Fathom keep the privacy but stop at page views and
-      hand-written events. OwlEye is the gap between them: install the
-      SDK once, then define click, form, and visibility rules from the
-      console and see the events on the next page load.
+      Avail's Nexus SDK lets an app spend a user's balance across chains
+      as if it were one balance, but every team integrating it had to
+      build the same swap, send, and deposit interfaces from scratch. I
+      proposed a single configurable component that any app could drop
+      in, originally pitched as Nexus One, later shipped as
+      <code>nexus-elements</code>, and now renamed Avail Widgets.
     </p>
-    <h3 id="outline">From Outline to OwlEye</h3>
+    <h3>The Approach</h3>
     <p>
-      The first version shipped as Outline Analytics: a TypeScript SDK, a
-      Bun and Elysia.js ingestion API, and MongoDB timeseries collections.
-      It worked, but aggregating events for dashboards and funnels was the
-      wrong job for that stack, and the plan to make it a single
-      self-hosted binary meant every user would inherit the operations
-      work. I rebuilt it from scratch as a hosted service on Rust and
-      ClickHouse and renamed it OwlEye.
-    </p>
-    <h3>Architecture Decisions</h3>
-    <p>
-      One Rust and Axum backend serves three clients: the browser SDK, the
-      team console, and scoped server-to-server APIs. Storage is split by
-      job. High-volume analytics facts (page views, custom events, rule
-      events, performance measurements) go to ClickHouse. Users, sites,
-      rules, keys, and billing state stay in SQLite. Ingestion runs
-      through a bounded in-process queue that batches writes into
-      ClickHouse and returns a 503 when full instead of growing without
-      limit, and the API only acknowledges events after the insert
-      succeeds.
+      Different teams want different amounts of control, so Widgets ship
+      two ways from one codebase. Teams that only need basic configuration
+      install the npm package. Teams that want to own every line pull the
+      components from a shadcn registry and edit the source in their own
+      repo. The npm package is
+      <a href="https://www.npmjs.com/package/@avail-project/widgets" target="_blank" rel="noopener"><code>@avail-project/widgets</code></a>.
     </p>
     <p>
-      The browser SDK has no runtime dependencies and is split into three
-      entrypoints: visitor analytics, rule tracking, and performance
-      timing. A site that only needs page views and custom events never
-      downloads the rule engine or the performance collector.
+      To make the configuration discoverable I built the Widget
+      Configurator, live at
+      <a href="https://widgets.availproject.org/" target="_blank" rel="noopener">widgets.availproject.org</a>.
+      It runs the real widget in the browser with ready-made presets (for
+      example, a deposit into Aave on Arbitrum), lets you explore
+      different settings such as branding, funding options, and
+      destination, and gives you the exact code to use in your app.
     </p>
-    <h3>Privacy Boundaries</h3>
     <p>
-      The public SDK writes no cookies, no <code>localStorage</code>, and
-      no <code>sessionStorage</code>. URL query strings and fragments are
-      excluded by default, request credentials are omitted, and Global
-      Privacy Control is respected by default. Visitors are counted with
-      site-scoped pseudonyms derived on the server; the client address is
-      used transiently and never stored as an analytics column. The
-      <a
-        href="https://owleye.dev/docs/architecture/"
-        target="_blank"
-        rel="noopener"
-        >architecture docs</a
-      >
-      publish exactly what is collected and what is not.
+      I also added fiat onramping to the Deposit Widget through Meld, so
+      a user can fund a deposit from a card or bank transfer instead of
+      needing crypto in a wallet first.
     </p>
     <div class="case-study__outcome">
       <p>
-        SDK published on npm as <code>@owleye/analytics</code> (MIT).
-        Hosted beta in preparation. This site runs on OwlEye, so every
-        page view here is one of its production events.
+        Open source and live in production, used by 10+ dApps to power
+        swap, send, and deposit flows from one component. A developer dashboard for API
+        keys, onramp onboarding, and observability is in planning.
       </p>
     </div>
     <div style="display: flex; gap: 16px; margin-top: 16px; flex-wrap: wrap">
       <a
-        href="https://owleye.dev"
+        href="https://widgets.availproject.org/"
         target="_blank"
         rel="noopener"
         class="case-study__link"
-        >Visit owleye.dev →</a>
+        >Try the configurator →</a>
       <a
-        href="https://github.com/shrinathprabhu/owleye"
+        href="https://docs.availproject.org/docs/nexus/widgets"
+        target="_blank"
+        rel="noopener"
+        class="case-study__link"
+        >Docs →</a>
+      <a
+        href="https://github.com/availproject/widgets"
         target="_blank"
         rel="noopener"
         class="case-study__link"
         >GitHub →</a>
-      <a href="/blog/owleye-analytics-reason/" class="case-study__link"
-        >Why I started it →</a>
     </div>
+  </div>
+</article>
+
+<!-- Fastbridge -->
+<article class="case-study fade-in" id="fastbridge">
+  <div class="case-study__header">
+    <h2 class="case-study__title">Nexus Fastbridge</h2>
+    <div class="case-study__meta">
+      <span class="case-study__meta-item">Avail Project • 2026</span>
+      <span class="case-study__meta-item">Sole frontend architect</span>
+      <span class="case-study__meta-item">React • TypeScript • Vite</span>
+    </div>
+    <div class="tags">
+      <span class="tag">15 EVM chains</span>
+      <span class="tag">~$100K monthly volume</span>
+      <span class="tag">Custom SEO</span>
+      <span class="tag">Vite SPA</span>
+      <span class="tag">No Next.js</span>
+    </div>
+  </div>
+  <div class="case-study__body">
+    <h3>The Challenge</h3>
+    <p>
+      Build a cross-rollup bridge UI that handles high-frequency state
+      updates (transaction status polling, balance refreshes, chain
+      switching) while maintaining SEO discoverability for individual
+      chain pages, without the complexity and overhead of Next.js.
+    </p>
+    <h3>The Approach</h3>
+    <p>
+      I engineered a custom build-time SEO solution, during the Vite build
+      process, the system generates individual HTML pages for each
+      supported chain with proper meta tags, Open Graph data, and
+      structured markup. When a user or crawler hits a chain-specific URL,
+      Vercel serves the pre-built HTML page first (satisfying SEO
+      requirements), then hydrates the full React SPA. This achieves the
+      SEO benefits of server-side rendering with the simplicity and
+      performance of a Vite SPA.
+    </p>
+    <div class="case-study__outcome">
+      <p>
+        Full SEO capability without Next.js. Clean, fast bridge UI that
+        handles high-frequency state updates seamlessly. Live in
+        production and scaled to 15 EVM chains, each with its own
+        indexable page, with about $100K swapped and bridged through it every
+        month. Next up is Opportunities: depositing a combined
+        balance across every chain and token straight into yield apps
+        like Aave and Compound without leaving Fastbridge.
+      </p>
+    </div>
+    <a
+      href="https://fastbridge.availproject.org/"
+      target="_blank"
+      rel="noopener"
+      class="case-study__link"
+      >View Fastbridge →</a>
   </div>
 </article>
 
@@ -324,135 +359,49 @@ jsonLd: |
   </div>
 </article>
 
-<!-- Fastbridge -->
-<article class="case-study fade-in" id="fastbridge">
+<!-- Dashboard -->
+<article class="case-study fade-in" id="dashboard">
   <div class="case-study__header">
-    <h2 class="case-study__title">Nexus Fastbridge</h2>
+    <h2 class="case-study__title">Arcana Developer Dashboard</h2>
     <div class="case-study__meta">
-      <span class="case-study__meta-item">Avail Project • 2026</span>
+      <span class="case-study__meta-item">Arcana Network • 2021 – 2024</span>
       <span class="case-study__meta-item">Sole frontend architect</span>
-      <span class="case-study__meta-item">React • TypeScript • Vite</span>
+      <span class="case-study__meta-item">Vue 3 • TypeScript • Chart.js • Tailwind CSS</span>
     </div>
     <div class="tags">
-      <span class="tag">15 EVM chains</span>
-      <span class="tag">~$100K monthly volume</span>
-      <span class="tag">Custom SEO</span>
-      <span class="tag">Vite SPA</span>
-      <span class="tag">No Next.js</span>
+      <span class="tag">Developer Platform</span>
+      <span class="tag">Auth Config</span>
+      <span class="tag">3+ year evolution</span>
     </div>
   </div>
   <div class="case-study__body">
     <h3>The Challenge</h3>
     <p>
-      Build a cross-rollup bridge UI that handles high-frequency state
-      updates (transaction status polling, balance refreshes, chain
-      switching) while maintaining SEO discoverability for individual
-      chain pages, without the complexity and overhead of Next.js.
+      Build the primary interface for Web3 developers using Arcana's
+      platform, where they register dApps, obtain access keys, and
+      configure authentication, storage, and wallet settings.
     </p>
     <h3>The Approach</h3>
     <p>
-      I engineered a custom build-time SEO solution, during the Vite build
-      process, the system generates individual HTML pages for each
-      supported chain with proper meta tags, Open Graph data, and
-      structured markup. When a user or crawler hits a chain-specific URL,
-      Vercel serves the pre-built HTML page first (satisfying SEO
-      requirements), then hydrates the full React SPA. This achieves the
-      SEO benefits of server-side rendering with the simplicity and
-      performance of a Vite SPA.
+      Developers use the dashboard to register dApps, configure settings
+      for authentication (adding social login providers like Google,
+      Twitter, GitHub, or custom Cognito configurations), decentralized
+      storage (location preferences, storage limits), and the embedded
+      wallet (appearance, behavior, supported chains). Built from scratch
+      with Vue 3, TypeScript, and Chart.js for usage analytics.
+    </p>
+    <p>
+      The dashboard evolved over 3+ years alongside the protocol, adapting
+      through multiple pivots (storage + access → auth-only → chain
+      abstraction) while maintaining backward compatibility and a
+      consistent developer experience.
     </p>
     <div class="case-study__outcome">
       <p>
-        Full SEO capability without Next.js. Clean, fast bridge UI that
-        handles high-frequency state updates seamlessly. Live in
-        production and scaled to 15 EVM chains, each with its own
-        indexable page, with about $100K swapped and bridged through it every
-        month. Next up is Opportunities: depositing a combined
-        balance across every chain and token straight into yield apps
-        like Aave and Compound without leaving Fastbridge.
+        Primary developer facing product for the entire Arcana ecosystem.
+        Adapted through three major protocol pivots while maintaining
+        backward compatibility.
       </p>
-    </div>
-    <a
-      href="https://fastbridge.availproject.org/"
-      target="_blank"
-      rel="noopener"
-      class="case-study__link"
-      >View Fastbridge →</a>
-  </div>
-</article>
-
-<!-- Nexus Widgets -->
-<article class="case-study fade-in" id="widgets">
-  <div class="case-study__header">
-    <h2 class="case-study__title">Nexus Widgets</h2>
-    <div class="case-study__meta">
-      <span class="case-study__meta-item">Avail Project • 2025 – Present</span>
-      <span class="case-study__meta-item">Conceived & led frontend</span>
-      <span class="case-study__meta-item">React • TypeScript • shadcn/ui • Nexus SDK</span>
-    </div>
-    <div class="tags">
-      <span class="tag">10+ dApps</span>
-      <span class="tag">npm package</span>
-      <span class="tag">shadcn registry</span>
-      <span class="tag">Fiat onramp</span>
-      <span class="tag">Open Source</span>
-    </div>
-  </div>
-  <div class="case-study__body">
-    <h3>The Challenge</h3>
-    <p>
-      Avail's Nexus SDK lets an app spend a user's balance across chains
-      as if it were one balance, but every team integrating it had to
-      build the same swap, send, and deposit interfaces from scratch. I
-      proposed a single configurable component that any app could drop
-      in, originally pitched as Nexus One, later shipped as Nexus
-      Elements, and now called Widgets.
-    </p>
-    <h3>The Approach</h3>
-    <p>
-      Different teams want different amounts of control, so Widgets ship
-      two ways from one codebase. Teams that only need basic configuration
-      install the npm package. Teams that want to own every line pull the
-      components from a shadcn registry and edit the source in their own
-      repo.
-    </p>
-    <p>
-      To make the configuration discoverable I built the Widget
-      Configurator: it runs the real widget in the browser with ready-made
-      presets (for example, a deposit into Aave on Arbitrum), lets you
-      change branding, funding options, and destination, and exports the
-      resulting config to paste into your app.
-    </p>
-    <p>
-      I also added fiat onramping to the Deposit Widget through Meld, so
-      a user can fund a deposit from a card or bank transfer instead of
-      needing crypto in a wallet first.
-    </p>
-    <div class="case-study__outcome">
-      <p>
-        Open source and live in production, used by 10+ dApps to power
-        swap, send, and deposit flows from one component. A developer dashboard for API
-        keys, onramp onboarding, and observability is in planning.
-      </p>
-    </div>
-    <div style="display: flex; gap: 16px; margin-top: 16px; flex-wrap: wrap">
-      <a
-        href="https://widgets.availproject.org/"
-        target="_blank"
-        rel="noopener"
-        class="case-study__link"
-        >Try the configurator →</a>
-      <a
-        href="https://docs.availproject.org/docs/nexus/widgets"
-        target="_blank"
-        rel="noopener"
-        class="case-study__link"
-        >Docs →</a>
-      <a
-        href="https://github.com/availproject/widgets"
-        target="_blank"
-        rel="noopener"
-        class="case-study__link"
-        >GitHub →</a>
     </div>
   </div>
 </article>
@@ -511,49 +460,109 @@ jsonLd: |
   </div>
 </article>
 
-<!-- Dashboard -->
-<article class="case-study fade-in" id="dashboard">
+<div class="page-header fade-in" id="independent" style="padding-top: 24px">
+  <h2>Independent projects</h2>
+  <p>
+    Things I built on my own, outside of a job. Both are on pause while I
+    work out what to build next.
+  </p>
+</div>
+
+<!-- OwlEye Analytics -->
+<article class="case-study fade-in" id="owleye">
   <div class="case-study__header">
-    <h2 class="case-study__title">Arcana Developer Dashboard</h2>
+    <h2 class="case-study__title brand-title">
+      <img src="/images/owleye-mark.svg" alt="" width="36" height="36" />
+      OwlEye Analytics
+    </h2>
     <div class="case-study__meta">
-      <span class="case-study__meta-item">Arcana Network • 2021 – 2024</span>
-      <span class="case-study__meta-item">Sole frontend architect</span>
-      <span class="case-study__meta-item">Vue 3 • TypeScript • Chart.js • Tailwind CSS</span>
+      <span class="case-study__meta-item">Independent • 2023 – 2026</span>
+      <span class="case-study__meta-item">Founder & sole developer</span>
+      <span class="case-study__meta-item">Rust • Axum • ClickHouse • SQLite • TypeScript</span>
     </div>
     <div class="tags">
-      <span class="tag">Developer Platform</span>
-      <span class="tag">Auth Config</span>
-      <span class="tag">3+ year evolution</span>
+      <span class="tag">Founder</span>
+      <span class="tag">Cookie-free</span>
+      <span class="tag">Sunset 2026</span>
+      <span class="tag">Open Source</span>
     </div>
   </div>
   <div class="case-study__body">
-    <h3>The Challenge</h3>
+    <h3>Why It Exists</h3>
     <p>
-      Build the primary interface for Web3 developers using Arcana's
-      platform, where they register dApps, obtain access keys, and
-      configure authentication, storage, and wallet settings.
+      In every team I have worked on, a new tracking question ("does the
+      new button get clicked?") turned into a ticket, a code change, a
+      review, and a deploy. Google Tag Manager removes the deploy but
+      brings a privacy liability with it. Privacy-first tools like
+      Plausible and Fathom keep the privacy but stop at page views and
+      hand-written events. OwlEye is the gap between them: install the
+      SDK once, then define click, form, and visibility rules from the
+      console and see the events on the next page load.
     </p>
-    <h3>The Approach</h3>
+    <h3 id="outline">From Outline to OwlEye</h3>
     <p>
-      Developers use the dashboard to register dApps, configure settings
-      for authentication (adding social login providers like Google,
-      Twitter, GitHub, or custom Cognito configurations), decentralized
-      storage (location preferences, storage limits), and the embedded
-      wallet (appearance, behavior, supported chains). Built from scratch
-      with Vue 3, TypeScript, and Chart.js for usage analytics.
+      The first version shipped as Outline Analytics: a TypeScript SDK, a
+      Bun and Elysia.js ingestion API, and MongoDB timeseries collections.
+      It worked, but aggregating events for dashboards and funnels was the
+      wrong job for that stack, and the plan to make it a single
+      self-hosted binary meant every user would inherit the operations
+      work. I rebuilt it from scratch as a hosted service on Rust and
+      ClickHouse and renamed it OwlEye.
+    </p>
+    <h3>Architecture Decisions</h3>
+    <p>
+      One Rust and Axum backend serves three clients: the browser SDK, the
+      team console, and scoped server-to-server APIs. Storage is split by
+      job. High-volume analytics facts (page views, custom events, rule
+      events, performance measurements) go to ClickHouse. Users, sites,
+      rules, keys, and billing state stay in SQLite. Ingestion runs
+      through a bounded in-process queue that batches writes into
+      ClickHouse and returns a 503 when full instead of growing without
+      limit, and the API only acknowledges events after the insert
+      succeeds.
     </p>
     <p>
-      The dashboard evolved over 3+ years alongside the protocol, adapting
-      through multiple pivots (storage + access → auth-only → chain
-      abstraction) while maintaining backward compatibility and a
-      consistent developer experience.
+      The browser SDK has no runtime dependencies and is split into three
+      entrypoints: visitor analytics, rule tracking, and performance
+      timing. A site that only needs page views and custom events never
+      downloads the rule engine or the performance collector.
+    </p>
+    <h3>Privacy Boundaries</h3>
+    <p>
+      The public SDK writes no cookies, no <code>localStorage</code>, and
+      no <code>sessionStorage</code>. URL query strings and fragments are
+      excluded by default, request credentials are omitted, and Global
+      Privacy Control is respected by default. Visitors are counted with
+      site-scoped pseudonyms derived on the server; the client address is
+      used transiently and never stored as an analytics column. The
+      <a
+        href="https://owleye.dev/docs/architecture/"
+        target="_blank"
+        rel="noopener"
+        >architecture docs</a
+      >
+      publish exactly what is collected and what is not.
     </p>
     <div class="case-study__outcome">
       <p>
-        Primary developer facing product for the entire Arcana ecosystem.
-        Adapted through three major protocol pivots while maintaining
-        backward compatibility.
+        SDK published on npm as <code>@owleye/analytics</code> (MIT).
+        I sunset OwlEye in October 2026. Analytics is getting harder to
+        sell as a product: developers now deploy their own copy to
+        Cloudflare in one tap, and pay Cloudflare a few dollars a month
+        for millions of events, so a hosted tool is competing with
+        close to free. The code and what I learned building it stay
+        public, and the name will come back with a different direction.
       </p>
+    </div>
+    <div style="display: flex; gap: 16px; margin-top: 16px; flex-wrap: wrap">
+      <a
+        href="https://github.com/shrinathprabhu/owleye"
+        target="_blank"
+        rel="noopener"
+        class="case-study__link"
+        >GitHub →</a>
+      <a href="/blog/owleye-analytics-reason/" class="case-study__link"
+        >Why I started it →</a>
     </div>
   </div>
 </article>

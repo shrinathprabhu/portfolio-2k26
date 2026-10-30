@@ -12,19 +12,13 @@ For detailed case studies on each project, visit [shrinath.me/work](https://shri
 
 **SendIt** - Cross-chain token transfer app replacing wallet addresses with email/X handles/ENS. Scaled to 65K+ accounts and 20K+ peak DAU. Frontend traffic exceeded Netlify Pro limits despite aggressive caching, migrated to self-managed AWS infrastructure.
 
-**OwlEye Analytics** - Hosted, cookie-free web analytics I'm building as founder. Dependency-free TypeScript SDK, Rust + Axum API, ClickHouse event store. Tracking rules are set up in the console, no redeploys. Rebuilt from the first version (Outline Analytics, Bun + MongoDB). [owleye.dev →](https://owleye.dev) • [GitHub →](https://github.com/shrinathprabhu/owleye)
-
 **Skizzle** - Chrome + Firefox extension for encrypted email attachments using RSA keys via Web3Auth (Torus) and decentralized storage. ~1,000 users, 4.2 stars. Shipped in my first month at the company.
 
 **Pricinger** - Privacy-focused pricing extension with multi-region VPN proxy system, automated site-specific optimization, geolocation blocking, and user agent spoofing. ~1,000 users, 4 star rating.
 
-**lowkey.tools** - Twelve tiny, free, offline-first browser tools with no accounts and nothing to install, including FuseLLM (bring-your-own-key AI workflows) and Credo (zero-knowledge secret sharing with AES-256-GCM). Plain HTML, CSS, and JavaScript on Cloudflare Workers. [lowkey.tools →](https://lowkey.tools)
-
 ## Currently
 
-🏗️ **Senior Staff Engineer** at [Avail Project](https://availproject.org) - leading frontend architecture across the Nexus product ecosystem. Shipped [Fastbridge](https://fastbridge.availproject.org) (15 EVM chains, ~$100K monthly volume), [Nexus Widgets](https://docs.availproject.org/docs/nexus/widgets) (formerly Nexus One / Elements, npm package + shadcn registry, used by 10+ dApps), and the [Widget Configurator](https://widgets.availproject.org).
-
-🔬 **Building** [OwlEye Analytics](https://owleye.dev) - hosted, cookie-free web analytics (Rust + Axum, ClickHouse, dependency-free TypeScript SDK)
+🏗️ **Senior Staff Engineer** at [Avail Project](https://availproject.org) - leading frontend architecture across the Nexus product ecosystem. Shipped [Fastbridge](https://fastbridge.availproject.org) (15 EVM chains, ~$100K monthly volume), [Avail Widgets](https://github.com/availproject/widgets) (formerly Nexus One / Elements, [`@avail-project/widgets`](https://www.npmjs.com/package/@avail-project/widgets) + shadcn registry, used by 10+ dApps), and the [Widget Configurator](https://widgets.availproject.org).
 
 ## Previously
 

@@ -1,7 +1,7 @@
 {
   "subject": "Shrinath Prabhu",
   "subjectType": "Person",
-  "description": "Senior Staff Frontend Engineer with 8+ years of experience, based in Mumbai, India. Founder of OwlEye Analytics (owleye.dev). Currently at Avail Project leading frontend architecture. Previously led frontend at Arcana Network for 4.5 years through acquisition. Shipped 4 Chrome Extensions with 100% approval rate. Built SendIt (65K+ accounts, 20K+ peak DAU).",
+  "description": "Senior Staff Frontend Engineer with 8+ years of experience, based in Mumbai, India. Currently at Avail Project leading frontend architecture. Previously led frontend at Arcana Network for 4.5 years through acquisition. Shipped 4 Chrome Extensions with 100% approval rate. Built SendIt (65K+ accounts, 20K+ peak DAU).",
   "url": "https://shrinath.me",
   "contact": {
     "email": "hello@shrinath.me",
@@ -18,10 +18,14 @@
     "Frontend Architecture",
     "Web3 / DeFi",
     "AI-augmented Development",
-    "Cross-chain Bridging",
-    "Privacy-first Analytics"
+    "Cross-chain Bridging"
   ],
   "notableWork": [
+    {
+      "name": "Avail Widgets",
+      "description": "Prebuilt React components for cross-chain swap, send, and deposit (npm package and shadcn registry), used by 10+ dApps, with a live configurator",
+      "url": "https://widgets.availproject.org"
+    },
     {
       "name": "Arcana Chrome Extension Wallet",
       "description": "Non-custodial sidebar wallet supporting 10+ blockchains, 750+ users, 4.7★ rating",
@@ -35,11 +39,6 @@
       "name": "Nexus Fastbridge",
       "description": "Cross-rollup bridge UI with custom Vite SEO solution, no Next.js",
       "url": "https://fastbridge.availproject.org"
-    },
-    {
-      "name": "OwlEye Analytics",
-      "description": "Hosted, cookie-free web analytics built with Rust and ClickHouse. Founder. Formerly Outline Analytics.",
-      "url": "https://owleye.dev"
     }
   ],
   "availability": "Open to full-time remote roles, fractional engagements, and technical advisory"
