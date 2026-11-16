@@ -139,24 +139,34 @@
 .voice-transcript summary:hover { color: var(--accent); }
 .voice-transcript p { margin-top: 10px; max-width: 70ch; font-size: 0.95rem; line-height: 1.7; }
 
-/* ── Stats ── */
+/* ── Stats ──
+   Four equal columns with no inner padding offsets, so each stat starts on a
+   quarter line. The work rows below start their description on the same
+   quarter line. */
 .stats {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   margin-top: 40px;
+  padding: 24px 0;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
 }
-.stats > div { padding: 22px 24px; border-left: 1px solid var(--border); }
-.stats > div:first-child { border-left: none; padding-left: 0; }
+.stats > div { padding-right: 24px; }
 .stats dt {
   font-size: 1.6rem;
   font-weight: 650;
   letter-spacing: -0.03em;
   line-height: 1.2;
   color: var(--text-primary);
+  white-space: nowrap;
 }
-.stats dd { font-size: 0.925rem; color: var(--text-secondary); margin-top: 2px; }
+.stats dd {
+  font-size: 0.925rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+  margin-top: 4px;
+  text-wrap: balance;
+}
 
 /* ── Section heading with a link on the right ── */
 .section-head {
@@ -177,11 +187,12 @@
 .rows li:last-child { border-bottom: none; }
 .row {
   display: grid;
-  /* Each row is its own grid: fixed outer tracks keep the columns aligned across rows */
-  grid-template-columns: 15rem minmax(0, 1fr) 9.5rem;
+  /* Each row is its own grid, so tracks are fixed. The first track plus the
+     32px gap equals one quarter, matching the stats columns above. */
+  grid-template-columns: calc(25% - 32px) minmax(0, 1fr) 9.5rem;
   gap: 8px 32px;
-  align-items: baseline;
-  padding: 18px 0;
+  align-items: first baseline;
+  padding: 20px 0;
   color: inherit;
 }
 .row:hover { color: inherit; }
@@ -243,9 +254,7 @@
 @media (max-width: 860px) {
   .voice { flex-direction: column; align-items: stretch; gap: 20px; }
   .voice__caption { padding-left: 0; border-left: none; }
-  .stats { grid-template-columns: repeat(2, 1fr); }
-  .stats > div:nth-child(odd) { border-left: none; padding-left: 0; }
-  .stats > div:nth-child(n + 3) { border-top: 1px solid var(--border); }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 20px; }
   .about { grid-template-columns: 1fr; gap: 28px; }
   .row, .row--post { grid-template-columns: minmax(0, 1fr) auto; }
   .row__desc { grid-column: 1 / -1; grid-row: 2; }
@@ -254,9 +263,8 @@
   .hero { padding-top: 28px; }
   .hero__eyebrow { font-size: 0.925rem; }
   .hero__lead { font-size: 1.05rem; }
-  .stats > div { padding: 16px 16px 16px 0; }
-  .stats > div:nth-child(even) { padding-left: 16px; }
-  .stats dt { font-size: 1.35rem; }
+  .stats > div { padding-right: 16px; }
+  .stats dt { font-size: 1.3rem; }
   .section-head h2 { font-size: 1.5rem; }
   .row { padding: 16px 0; }
   .row__title { font-size: 1.1rem; }
