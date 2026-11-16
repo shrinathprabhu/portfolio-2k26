@@ -1,99 +1,130 @@
 ---
-title: "How to Ship Products in 2027: Building Got Cheap, Everything Else Did Not"
-description: "AI has made writing software dramatically faster, so building is no longer the bottleneck. A practical playbook for shipping in 2027: narrow scope, a demo path first, distribution before code, and quality as the differentiator."
-date: 2026-11-08
-postTags: ["posts", "shipping", "product", "ai"]
-category: "Shipping"
+title: "Building Got Cheap. Everything Else Did Not: How to Ship in 2027"
+description: "When anyone can generate a working app in a weekend, building is no longer the hard part or the advantage. What decides whether a product succeeds in 2027: the problem you pick, distribution, trust, and the judgment to cut scope."
+date: 2026-11-16
+postTags: ["posts", "product", "ai", "shipping"]
+category: "Product & Architecture"
 keywords:
   [
     "how to ship products",
-    "shipping software 2027",
-    "product engineering",
-    "MVP",
-    "zero to one",
-    "AI product development",
-    "indie product launch",
-    "scope management",
+    "shipping products in 2027",
+    "building products with AI",
+    "product strategy AI era",
+    "MVP in 2027",
+    "distribution for startups",
   ]
 # image: "/images/ship-products-2027.png"
+faq:
+  - q: "What is the hardest part of shipping a product now?"
+    a: "Getting anyone to notice, trust and pay for it. AI tools have reduced the cost of building a working product dramatically, so the bottleneck has moved to choosing a real problem, reaching the people who have it, and earning enough trust that they try your product over the alternatives."
+  - q: "Is an MVP still relevant when AI can build a full product quickly?"
+    a: "Yes, but its purpose changed. An MVP was a way to save engineering time. Now it is a way to save the user's attention and your own focus. A product with one job done very well is easier to explain, sell and support than one with twenty generated features."
+  - q: "How do you compete when anyone can copy your product with AI?"
+    a: "With things that cannot be generated: an audience that trusts you, proprietary data, integrations and partnerships, a reputation for reliability and security, and deep understanding of a specific customer."
 ---
 
-For most of my career, the hard part of shipping a product was building it. That has changed. With current AI tools a capable engineer can produce a working version of most ideas in days. Building is no longer the bottleneck, which means it is no longer the advantage either.
+A few years ago, "I have an app idea" was the start of a long and expensive story. You needed a technical co-founder, or savings, or six months of evenings.
 
-I have taken products from zero to real users for over eight years: a Chrome extension shipped in my first month at a company, an MVP delivered in a week, an app that grew to 65K+ accounts. This is how I would approach shipping going into 2027.
+Today someone has the idea at breakfast and a working version by dinner. It has a login, a database, payments and a dark mode. It looks good.
 
-## 1. Assume everyone can build what you can build
+It also has no users. And the next morning, eleven other people launch the same thing.
 
-If a working version takes you a week, it takes your competitors a week too. "We built it" is not a moat any more. Before writing code, the question to answer is: what do we have that is not code?
+That is the situation going into 2027. The question "can we build it" is almost always answered with "yes, by Thursday". The questions that decide whether a product lives are different now: should it exist, who is it for, how will they hear about it, and why would they trust it.
 
-Usually it is one of these:
+I have shipped products for eight years, including a learning platform delivered in a week, a browser extension released in my first month at a company, and a consumer app that reached over sixty-five thousand accounts. The building part of each would take a fraction of the time today. The parts that would take just as long are what this post is about.
 
-- **Access.** You can reach the people with the problem.
-- **Insight.** You understand the problem better than others, typically because you have lived it.
-- **Trust.** People already believe you will do it properly.
-- **Taste.** You know what good looks like in this category and will not ship less.
+## What changed
 
-If the answer is none of them, a faster build will not help.
+**Building is no longer scarce.** A single person with a coding agent can produce in days what took a small team a quarter. Lovable, one of the AI app builders, publicly reported going from launch to tens of millions in annual revenue within months, which tells you how many people are now generating software who never wrote any before.
 
-## 2. Find the buyer before the build
+**So the supply of software exploded.** Every category now has dozens of similar products. Your competitor is not one well-funded startup. It is fifty weekend projects, and one of them is good.
 
-Engineers fall into the same trap again and again, and I am not immune to it. Building is the part we are good at, so we do more of it. Talking to the people who would pay is the part we are not good at, so we put it off. With cheap implementation this trap gets worse, because the comfortable activity is now also the fast one.
+**Attention did not grow.** Your customer has the same number of hours and less patience. The cost of building dropped. The cost of being noticed went up.
 
-A rule I now hold myself to: talk to five people who have the problem before the first commit, and ask what they use today and what it costs them. If I cannot find five, that is the result, and it is a cheap one.
+## What did not change
 
-## 3. Scope is still the main lever
+- People pay to have a problem solved, not for features.
+- Trust takes time and is lost quickly.
+- Someone has to be responsible when the product breaks.
+- Reaching the first hundred customers is manual, slow and unglamorous.
 
-Faster building tempts you to build more. Resist it. Every feature you ship is one you must explain, support, secure, and keep working.
+Every durable advantage in 2027 comes from this second list.
 
-When I delivered a multilingual learning platform in a week, the reason it worked was the list of things it did not have: no search, no recommendations, no offline mode. The question I asked of each request was whether the user needed it to do the core task on day one.
+## 1. Pick a problem with a buyer, not an idea with a demo
 
-AI lowers the cost of adding a feature. It does not lower the cost of having one.
+Because building is cheap, it is tempting to build first and look for users afterwards. This is the most common way to waste the new speed.
 
-## 4. Build the demo path first
+Before writing anything, I want to be able to answer:
 
-Whoever evaluates your product, a customer, an investor, your own manager, will judge it by using it, not by reading the code. So build in the order they will experience it: the first screen, the core action, the result. Make that path solid before any edge case.
+- Who exactly has this problem? A named kind of person, not "small businesses".
+- What do they do about it today, and what does that cost them?
+- Where do these people already gather?
+- Have I spoken to five of them?
 
-Then harden it. A demo path that works gets you a second conversation. One that breaks does not.
+If I cannot answer these, a faster build only gets me to the wrong place sooner.
 
-## 5. Quality is the differentiator again
+## 2. Scope by subtraction
 
-When anyone can generate a functional product, functional is the floor. What people notice is everything generated software tends to skip:
+When features cost nothing to add, products become bloated. The discipline has reversed: the skill is no longer building enough, it is refusing to build more.
 
-- It loads fast.
-- Empty, loading, and error states are designed, not left over.
-- It works with a keyboard and a screen reader.
-- The words are clear.
-- It does not lose your work.
+When I delivered a multilingual learning platform for farmers in under a week, the speed came from cutting, not from typing fast. One user journey, done properly, in the languages people needed. Everything else waited.
 
-None of this is glamorous, and that is the point. I rebuilt my own site around this idea: one variable font, no framework runtime, images a fraction of their former size, and one carefully finished interaction instead of ten effects. Polish is how a small team signals that it will sweat the details of your problem too.
+A product that does one thing clearly can be explained in a sentence, and a product that can be explained in a sentence can be sold.
 
-## 6. Ship small, in public, often
+## 3. Build the path to the user before the product is finished
 
-A launch is not one day. The products I have seen grow did it through a steady series of small releases, each one a reason to tell people something. Short cycles also keep you honest: a week is long enough to build something real and too short to hide from feedback.
+Distribution is now the main constraint, so it deserves the first week, not the last.
 
-## 7. Treat security and trust as features
+- Start writing or posting about the problem before launch.
+- Collect a list of interested people, even a small one.
+- Decide the one channel you will be good at. One channel done well beats five done badly.
+- Make sure the product can be found and understood by search engines and AI assistants. I cover that in [improving AI discoverability with AEO and GEO](/blog/aeo-geo-ai-discoverability/).
 
-AI features bring new ways to fail: leaked keys, injected instructions, private data in the wrong place. A small product that loses a customer's data does not get a second chance. Decide early what data you will not collect, keep secrets off the client, and be clear about what your product does with what it sees.
+The companies that grew fastest in the last few years mostly had an audience or a community before they had a polished product. I look at several of them in [how startups get their first customers](/blog/how-startups-get-their-first-customers/).
 
-## 8. Measure one thing
+## 4. Treat quality and trust as the product
 
-Pick the number that proves someone got value: a completed task, a returning user, a payment. Not signups, not page views. If that number is not moving, more features are rarely the answer.
+When everything is easy to generate, the things that are hard to generate become the differentiators.
 
-## A checklist to start from
+- **Reliability.** It works every time, including on a slow phone.
+- **Speed.** Fast pages are a visible signal of care.
+- **Security.** Generated apps frequently ship with exposed keys and missing access checks. Being the product that does not is a real advantage. See [security practices every company needs](/blog/security-practices-every-company-needs/).
+- **Support.** A human who replies.
+- **Taste.** Hundreds of small decisions that make something feel considered.
 
-1. Who has this problem, and can I reach five of them this week?
-2. What do they use today, and what does it cost them?
-3. What is the smallest version that solves it end to end?
-4. What am I deliberately not building?
-5. What is the demo path, screen by screen?
-6. What would make this feel finished, not merely working?
-7. What is the one number that shows it is working?
-8. When is the first release, and the one after it?
+Users cannot evaluate your code. They can feel all five of these.
 
-## The summary
+## 5. Keep a human accountable for every part
 
-In 2027 the speed of building is a given. The products that win will be the ones that chose the right problem, reached the people who have it, kept the scope small, and finished the details. Those were always the hard parts. They are now the only parts left to compete on.
+Speed creates a new risk: shipping a system nobody on the team fully understands. It works until the first incident.
 
----
+My rule is that every part of the product has a named person who can explain how it works and what happens when it fails. Agents can write it. A person must own it. I explain why in [is tech debt still debt in the age of AI](/blog/is-tech-debt-still-debt-in-the-age-of-ai/).
 
-_Written by [Shrinath Prabhu](https://shrinath.me), Senior Staff Frontend Engineer. Related: [delivering an MVP in a week](/blog/delivering-mvp-in-a-week/) and [shipping a Chrome extension in your first month](/blog/shipping-chrome-extension-in-first-month/)._
+## 6. Charge early
+
+Free users tell you what is interesting. Paying users tell you what is valuable. With so many free alternatives, a willingness to pay is the clearest signal you can get, and the sooner you ask for it, the sooner you learn whether the problem is real.
+
+## 7. Build what cannot be copied in a weekend
+
+If a competitor can reproduce your product with a few prompts, the product is not your moat. Something else has to be:
+
+- An audience that trusts you
+- Data that only you have
+- Integrations and partnerships that took months to arrange
+- A reputation in one specific niche
+- Deep knowledge of one kind of customer
+
+These take time, which is precisely why they are worth having.
+
+## The 2027 shipping checklist
+
+- One specific customer, named
+- Five real conversations before the first commit
+- One job the product does, stated in one sentence
+- One distribution channel chosen and started before launch
+- A price from day one
+- A named owner for every part of the system
+- Basic security in place before the first user, not after the first incident
+- A way to hear from users within a day
+
+Building got cheap. Judgment, trust and reach did not, and those are where a product is won now.

@@ -1,5 +1,5 @@
 ---
-title: "How I Built a Chrome Extension Wallet for 10+ Blockchains"
+title: "Making Aave Think We Were MetaMask: The Architecture Decisions Behind a 10-Chain Wallet"
 description: "Architecture decisions behind building a non-custodial sidebar wallet, provider injection, MetaMask compatibility, Manifest V3 constraints, content script communication, and unified balance management across 10+ chains."
 date: 2026-05-02
 category: "Chrome Extensions"
@@ -52,83 +52,13 @@ I chose the second option. This meant studying MetaMask's open-source codebase t
 
 ### How provider injection works
 
+Explain it like I am five: a web page and a wallet are not allowed to talk to each other directly, for good security reasons. So the message is passed along a chain, like a note handed down a row of classmates, and the answer comes back the same way. Each classmate only knows their neighbours.
+
 The injection chain has four components:
 
 **1. Content script.** This runs in the context of the web page. It injects a script tag into the page that creates the `window.ethereum` provider object. The content script also acts as a relay between the injected provider and the extension's background service worker.
 
-```ts
-// content-script.js (simplified)
-const script = document.createElement("script");
-script.src = chrome.runtime.getURL("injected-provider.js");
-document.head.appendChild(script);
-
-// Relay messages between the page and the background
-window.addEventListener("message", (event) => {
-  if (event.data.target === "arcana-wallet-contentscript") {
-    chrome.runtime.sendMessage(event.data.payload);
-  }
-});
-
-chrome.runtime.onMessage.addListener((message) => {
-  window.postMessage(
-    {
-      target: "arcana-wallet-page",
-      payload: message,
-    },
-    "*",
-  );
-});
-```
-
 **2. Injected provider script.** This runs in the page's JavaScript context (not the extension context). It creates the `window.ethereum` object that dApps interact with. Every method call on this object sends a message to the content script, which relays it to the background service worker.
-
-```ts
-// injected-provider.js (simplified)
-class ArcanaProvider {
-  async request({ method, params }) {
-    return new Promise((resolve, reject) => {
-      const id = crypto.randomUUID();
-
-      window.addEventListener("message", function handler(event) {
-        if (
-          event.data.target === "arcana-wallet-page" &&
-          event.data.payload.id === id
-        ) {
-          window.removeEventListener("message", handler);
-          if (event.data.payload.error) {
-            reject(event.data.payload.error);
-          } else {
-            resolve(event.data.payload.result);
-          }
-        }
-      });
-
-      window.postMessage(
-        {
-          target: "arcana-wallet-contentscript",
-          payload: { id, method, params },
-        },
-        "*",
-      );
-    });
-  }
-
-  // MetaMask compatibility: legacy methods
-  async enable() {
-    return this.request({ method: "eth_requestAccounts" });
-  }
-
-  get selectedAddress() {
-    return this._selectedAddress;
-  }
-
-  get chainId() {
-    return this._chainId;
-  }
-}
-
-window.ethereum = new ArcanaProvider();
-```
 
 **3. Background service worker.** This is the brain of the extension. It receives RPC requests from the content script, processes them (signing transactions, managing keys, connecting to chain RPC endpoints), and sends responses back. Under Manifest V3, this must be a service worker, not a persistent background page.
 

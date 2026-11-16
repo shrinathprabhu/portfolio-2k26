@@ -1,5 +1,5 @@
 ---
-title: "Delivering an MVP in a Week: A Multilingual Farmer Learning Platform"
+title: "A Week Later, the VP Was Using the App: What Shipping an MVP in Seven Days Taught Me About Scope"
 description: "How I built a production mobile-first webapp supporting 5 Indian languages with auto-switching video in under a week, and what I learned about scoping, speed, and the difference between fast and reckless."
 date: 2026-05-01
 postTags: ["posts", "career", "frontend", "startup"]

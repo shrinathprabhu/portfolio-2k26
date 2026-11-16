@@ -1,6 +1,6 @@
 # Blog cover image prompts
 
-Not published (this file lives outside `src/`). One shared style so all 29 covers read as a series and match the aqua site theme.
+Not published (this file lives outside `src/`). One shared style so all 27 covers read as a series and match the aqua site theme.
 
 ## How to use
 
@@ -38,40 +38,38 @@ Keep a 6% safe margin on all sides so nothing is cut off when cropped to 16:9.
 
 | File (`src/images/`) | Post | Headline (aqua word in **bold**) | Illustration |
 | --- | --- | --- | --- |
-| `audio-captions-sync.png` | Syncing captions to audio | Captions in **sync** | A row of vertical waveform bars, the left third aqua and the rest pale blue-grey, with a short caption line beneath where one word has a soft-aqua highlight. |
-| `responsive-webp-images.png` | 1 MB blog images | 12.6 MB to **184 KB** | A large outlined picture frame shrinking through three steps into a small aqua one, joined by thin arrows. |
-| `sitemap-lastmod-seo-bugs.png` | Sitemap lastmod and SEO bugs | Your sitemap is **lying** | A simple site-tree diagram of boxes joined by lines; each box has a tiny calendar icon and one calendar is aqua with a question mark. |
-| `cache-busting-immutable.png` | Immutable caching | Cache it **forever** | A file icon with a padlock, and a short hash-like tag `?v=3f9a1c` drawn as a small aqua label attached to it. |
-| `strict-csp-static-site.png` | Strict CSP | Deny by **default** | A browser window outline with a shield in the centre; several small arrows approach from outside and stop at the edge, one aqua arrow passes through a small gate. |
-| `cloudflare-worker-static-site.png` | Cloudflare Worker | 36 lines at the **edge** | A small aqua diamond node in front of a stack of three flat page sheets; two arrows enter the node and merge into one. |
-| `404-canvas-game.png` | 404 runner game | A game on my **404** | A tiny blocky pixel character mid-jump over a small rectangular obstacle on a single ground line, with two flat clouds. |
-| `eleventy-code-blocks.png` | Eleventy code blocks | Better code **blocks** | A rounded code window with a filename tab on top; the lines inside are short bars of varying length, a few of them aqua. |
-| `llms-txt-ai-discoverability.png` | llms.txt and AI discoverability | Readable by **machines** | A document sheet with a few text lines, a magnifying glass over it, and three thin lines connecting the sheet to three small circles. |
-| `mermaid-on-demand.png` | Loading Mermaid on demand | Load it when **needed** | A simple three-box flowchart with arrows; one box is aqua, and a small dashed outline of a package sits to the side with an arrow pointing into the chart. |
-| `blur-placeholders.png` | Blur placeholders | Blur first, then **sharp** | Two picture frames side by side: the left one filled with large soft-aqua mosaic squares, the right one a clean outlined mountain-and-sun icon. |
-| `securing-frontends-ai.png` | Securing frontends in the age of AI | Never trust the **output** | A chat bubble with a small warning triangle inside, and a shield standing between the bubble and a browser window outline. |
-| `reducing-attack-surface.png` | Reducing attack surface | Ship **less** surface | A large outlined cube with several faces drawn as dashed, faded lines, leaving a small solid aqua cube at its core. |
-| `extension-wallet-security.png` | Extension wallet security model | Know your **boundaries** | Four nested rounded rectangles, the innermost aqua with a small key icon; a thin arrow from outside stops at the second boundary. |
-| `chain-abstraction-frontend.png` | Chain abstraction | One **balance** | Four small circles on the left, each a different outline pattern, with lines converging into one large aqua circle on the right. |
-| `developers-vs-engineers-ai.png` | Developers vs engineers | Developers, not **engineers** | Two simple desks seen from the front: on the left a keyboard with a stream of small code bars, on the right a blueprint sheet with a compass and one aqua decision arrow. |
-| `adapting-to-ai-engineer.png` | Adapting to AI | Work with the **machine** | A pencil and a small four-point sparkle side by side, joined by a looping arrow that forms a circle between them. |
-| `web3-spark-agentic.png` | Web3 losing its spark | Where did the **spark** go | A single aqua spark shape on the left; to the right, a row of five identical pale label tags, all blank and the same size. |
-| `ship-products-2027.png` | Shipping products in 2027 | Ship in **2027** | A small paper plane on a dotted flight path that passes three milestone dots, the last dot aqua. |
+| `choosing-a-tech-stack.png` | I pick the tech stack last | Pick the stack **last** | A row of five simple blocks; the first four are outlined decisions (person, calendar, shield, door), the last is a small aqua stack of three layers. |
+| `nobody-cares-about-your-stack.png` | Nobody cancelled because of PHP | Nobody cares about your **stack** | A tall, complicated tower of many small boxes faded pale on the left; on the right one single aqua box with a small coin above it. |
+| `technical-decisions.png` | Decisions made at the wrong speed | Right decision, wrong **speed** | Two doors side by side: one a swing door with a two-way arrow, the other a solid aqua door with a padlock. |
+| `coders-vs-engineers.png` | AI is coming for the coders | Coders out, **engineers** in | A simple robot arm laying a row of bricks on the left; on the right a blueprint sheet with a compass and one aqua line. |
+| `tech-debt-ai.png` | Tech debt in the age of AI | A new kind of **debt** | A cupboard with its door ajar and neat boxes inside, next to a second cupboard overflowing with identical pale boxes. |
+| `prompting-guide.png` | Bad at briefing, not prompting | Brief it like a **colleague** | A clipboard with five short checklist lines, the first ticked in aqua, and a small four-point sparkle beside it. |
+| `ship-products-2027.png` | How to ship in 2027 | Building got **cheap** | A small paper plane on a dotted path over a crowd of many identical pale paper planes on the ground. |
+| `first-customers.png` | Your first customer | Customer number **one** | A row of ten empty circles with the first one filled aqua, and a small handshake icon above it. |
+| `cold-email-2026.png` | Cold email is not dead | Send **fewer** emails | A large pile of identical pale envelopes on the left; on the right a single aqua envelope with a small reply arrow. |
+| `aeo-geo.png` | Will ChatGPT mention you | Be the **answer** | A chat bubble containing three short lines, the middle line aqua, with a thin line connecting it to a small page sheet. |
+| `writing-in-public.png` | Your best work is invisible | Make the work **visible** | A closed box on the left with a dotted outline; on the right the same box open, with a page sheet rising out of it in aqua. |
+| `devrel-product-function.png` | DevRel is a product job | Unblock the **developer** | A simple path of five steps with a gap at step two; a small aqua plank bridges the gap. |
+| `web3-agentic.png` | Web3 found a new word | The new word is **agentic** | A row of five identical pale label tags, each blank, with a sixth tag in aqua being attached on top of the others. |
+| `web3-ux-step-count.png` | The step count problem | Eleven steps is too **many** | A staircase of eleven small steps descending left to right, each step with fewer tiny dots on it than the last; the final step has one aqua dot. |
+| `bybit-frontend-hack.png` | The $1.5 billion frontend hack | They changed the **screen** | A browser window outline showing a tick mark, with a second offset window behind it in aqua showing a different shape. |
+| `security-bare-minimum.png` | The security bare minimum | Twelve **no-brainers** | A simple checklist of twelve short lines in two columns with a key icon at the top; three ticks are aqua. |
+| `delete-key-security.png` | The delete key | Delete it **first** | A large keyboard key outline labelled with a small bin icon, with several small pale boxes fading away beside it. |
+| `ai-intern-security.png` | The intern who believes everything | It believes **everything** | A sheet of paper with a few lines and one aqua line marked with a small warning triangle; a simple desk lamp over it. |
+| `step-3-of-5.png` | Laptop closed at step 3 of 5 | Stuck at step **three** | A horizontal progress track of five dots; the first two filled ink, the third aqua with a small pause mark, the last two empty. |
+| `stop-nodding.png` | Stop nodding in meetings | Stop **nodding** | A simple table seen from the side with five identical round heads as circles; one circle is aqua with a small speech bubble. |
+| `senior-vs-staff.png` | Senior vs staff | A different **job** | Two ladders side by side, the second starting where the first ends, the second ladder in aqua. |
+| `hiring-ai-era.png` | Everyone passes the coding test | Hire for **judgment** | A stack of identical pale document sheets, with one sheet pulled out and marked with an aqua magnifying glass. |
 
 ## Existing posts (regenerate into the same filenames)
 
 | File (`src/images/`) | Post | Headline (aqua word in **bold**) | Illustration |
 | --- | --- | --- | --- |
-| `eleventy-over-nuxt.png` | Why I chose Eleventy over Nuxt | Simple **wins** | A large empty framework-style box on the left with many small gears faded pale, and a single clean HTML page sheet on the right in aqua outline. |
-| `vite-seo.png` | SEO for Vite SPAs without Next.js | SEO without **Next.js** | One page sheet fanning out into five smaller sheets, each with a tiny tag icon, a magnifying glass over the fan. |
 | `frontend-distributed-systems.png` | Frontend is a distributed systems problem | Frontend is **distributed** | A central aqua node connected by thin lines to a phone, a laptop, a tablet and a watch outline, the lines of different lengths. |
 | `ai-lead.png` | Leading a team in 2026 | Lead the **humans** | Five simple circles in a loose group, one aqua and slightly forward, with a small sparkle icon floating beside the group. |
-| `chrome-extension-wallet.png` | Chrome extension wallet for 10+ blockchains | A wallet in the **sidebar** | A browser window outline with a tall narrow panel docked on its right side filled aqua, a small wallet icon inside the panel. |
+| `chrome-extension-wallet.png` | Architecture decisions behind a 10-chain wallet | A wallet in the **sidebar** | A browser window outline with a tall narrow panel docked on its right side filled aqua, a small wallet icon inside the panel. |
 | `agrostar-mvp.png` | Delivering an MVP in a week | An MVP in a **week** | A row of seven small calendar squares, the seventh aqua with a check mark, and a small sprouting plant beside it. |
-| `pricinger.png` | Privacy-first extension with VPN proxies | Fair prices, **private** | A price tag with a small globe behind it and four thin lines leading from the globe to four location pins, one pin aqua. |
 | `shipping-skizzle.png` | Shipping an extension in your first month | Shipped in month **one** | An envelope with a paperclip and a small padlock on the clip, a short dotted trail behind it suggesting motion. |
-| `vue-3-composition-api.png` | Vue 3 Composition API | Composition **API** | Three interlocking rounded blocks stacking into one shape, the middle block aqua. Do not draw the Vue logo. |
-| `credenstore.png` | Zero-knowledge encrypted storage | Zero **knowledge** | A closed vault door outline with a key beside it, and a cloud above the vault filled with small unreadable squares. |
 
 ## Social preview images (JPG, 1200×630)
 

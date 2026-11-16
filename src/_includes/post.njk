@@ -36,6 +36,15 @@ ogType: article
 
     <div class="blog-post__body">
       {{ content | safe }}
+      {% if faq %}
+      <section class="post-faq" aria-labelledby="post-faq-title">
+        <h2 id="post-faq-title">Questions people ask</h2>
+        {% for item in faq %}
+        <h3>{{ item.q }}</h3>
+        <p>{{ item.a }}</p>
+        {% endfor %}
+      </section>
+      {% endif %}
     </div>
   </article>
 
@@ -77,6 +86,21 @@ ogType: article
     },
     "publisher": { "@id": "https://shrinath.me/#person" }
   },
+  {% if faq %}
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {% for item in faq %}
+      {
+        "@type": "Question",
+        "name": {{ item.q | dump | safe }},
+        "acceptedAnswer": { "@type": "Answer", "text": {{ item.a | dump | safe }} }
+      }{% if not loop.last %},{% endif %}
+      {% endfor %}
+    ]
+  },
+  {% endif %}
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
