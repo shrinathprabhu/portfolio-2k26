@@ -20,10 +20,10 @@
   ).matches;
   const COL = {
     ground: isDark ? "#444" : "#d4d4d4",
-    player: isDark ? "#e0e0e0" : "#1a1a19",
+    player: isDark ? "#e7eff1" : "#172b33",
     obstacle: isDark ? "#ef4444" : "#dc2626",
     text: isDark ? "#a0a0a0" : "#6b6b68",
-    accent: isDark ? "#6d8cff" : "#2d5be3",
+    accent: isDark ? "#4cc9cf" : "#007f87",
     cloud: isDark ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.03)",
   };
 
@@ -299,7 +299,7 @@
     // Dead state
     if (state === "dead") {
       ctx.fillStyle = COL.accent;
-      ctx.font = 'bold 18px "Outfit", sans-serif';
+      ctx.font = 'bold 18px "DM Sans Variable", sans-serif';
       ctx.textAlign = "center";
       ctx.fillText("CRASH!", W / 2, H / 2 - 8);
       ctx.fillStyle = COL.text;

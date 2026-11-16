@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Why I Am Building an Analytics Platform When Plausible Already Exists"
 description: "There are already privacy-first analytics tools. Here is why I am building another one, what I think the market is missing, and an honest assessment of whether this is a good idea."
 date: 2026-05-05
@@ -23,7 +24,6 @@ keywords:
     "rule-based tracking",
   ]
 image: "/images/building-analytics.png"
-featured: true
 ---
 
 Plausible exists. Fathom exists. Umami exists. Simple Analytics exists. PostHog exists. The privacy-first analytics market has strong incumbents with real revenue, real users, and years of development behind them.

@@ -22,7 +22,7 @@ document.querySelectorAll(".blog-post__body pre").forEach((pre) => {
 // Mermaid diagram rendering
 const mermaidBlocks = document.querySelectorAll('pre > code.language-mermaid');
 if (mermaidBlocks.length > 0) {
-  import('/js/mermaid.esm.min.mjs').then(({ default: mermaid }) => {
+  import(document.querySelector('.blog-post').dataset.mermaid).then(({ default: mermaid }) => {
     mermaid.initialize({
       startOnLoad: false,
       theme: 'dark',
@@ -30,7 +30,7 @@ if (mermaidBlocks.length > 0) {
         primaryColor: '#2a2a3e',
         primaryTextColor: '#d4d4d4',
         primaryBorderColor: '#3a3a4e',
-        lineColor: '#6b8aff',
+        lineColor: '#4cc9cf',
         secondaryColor: '#1e1e2e',
         tertiaryColor: '#16161e',
         actorBorder: '#3a3a4e',

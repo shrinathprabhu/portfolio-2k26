@@ -22,10 +22,6 @@ In 2020, I needed a way to share secrets: API keys, passwords, private notes, wi
 
 So I built Credenstore, a zero-knowledge encrypted storage application that runs entirely in the browser, requires no login, no backend server, and stores only ciphertext that nobody (including me) can decrypt without the password.
 
-> **Update, October 2026:** Credenstore has since been rebuilt as Credo, part of [lowkey.tools](https://lowkey.tools). The zero-knowledge design is the same; the encryption is now AES-256-GCM with an Argon2id key stretch.
-
-[Try Credo →](https://credo.lowkey.tools)
-
 ## How it works
 
 The entire security model rests on one principle: **the encryption key never leaves the client.**

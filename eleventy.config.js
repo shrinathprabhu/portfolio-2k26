@@ -7,8 +7,9 @@ import {
   existsSync,
   mkdirSync,
   statSync,
+  copyFileSync,
 } from "fs";
-import { join } from "path";
+import { join, basename, extname } from "path";
 import { createHash } from "crypto";
 
 // ── Blur placeholder cache (LQIP) ──
@@ -26,6 +27,56 @@ try {
 
 function fileHash(path) {
   return createHash("sha256").update(readFileSync(path)).digest("hex").slice(0, 10);
+}
+
+// ── Responsive WebP variants for raster images ──
+// Sources stay as PNG/JPG in src/images (still used for Open Graph).
+// Variants are content-hashed, so the immutable cache header is safe.
+const IMG_DIR = "img";
+const variantCache = new Map();
+
+async function imageVariants(src, widths) {
+  const key = `${src}:${widths.join(",")}`;
+  if (variantCache.has(key)) return variantCache.get(key);
+
+  const full = join("src", src);
+  const sharp = (await import("sharp")).default;
+  const meta = await sharp(full).metadata();
+  const hash = fileHash(full);
+  const name = basename(src, extname(src));
+  const usable = widths.filter((w) => w <= meta.width);
+  if (usable.length === 0) usable.push(meta.width);
+
+  const variants = [];
+  for (const w of usable) {
+    const file = `${name}-${hash}-${w}.webp`;
+    const cached = join(CACHE_DIR, IMG_DIR, file);
+    if (!existsSync(cached)) {
+      mkdirSync(join(CACHE_DIR, IMG_DIR), { recursive: true });
+      await sharp(full).resize(w).webp({ quality: 76 }).toFile(cached);
+    }
+    mkdirSync(join("_site", IMG_DIR), { recursive: true });
+    copyFileSync(cached, join("_site", IMG_DIR, file));
+    variants.push({
+      url: `/${IMG_DIR}/${file}`,
+      width: w,
+      height: Math.round((meta.height * w) / meta.width),
+    });
+  }
+  variantCache.set(key, variants);
+  return variants;
+}
+
+const IMG_PRESETS = {
+  card: { widths: [480, 960], sizes: "(max-width: 640px) 100vw, 500px" },
+  cover: { widths: [720, 1440], sizes: "(max-width: 720px) 100vw, 672px" },
+};
+
+function escapeAttr(value) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;");
 }
 
 function savePlaceholderCache() {
@@ -85,6 +136,27 @@ export default function (eleventyConfig) {
     },
   );
 
+  // ── Responsive image shortcode ──
+  // {% img "/images/foo.png", "Alt text", "card" | "cover", eager %}
+  eleventyConfig.addAsyncShortcode(
+    "img",
+    async function (src, alt, preset = "card", eager = false) {
+      if (!src) return "";
+      const { widths, sizes } = IMG_PRESETS[preset] || IMG_PRESETS.card;
+      try {
+        const variants = await imageVariants(src, widths);
+        const fallback = variants[0];
+        const srcset = variants.map((v) => `${v.url} ${v.width}w`).join(", ");
+        const priority = eager
+          ? 'loading="eager" fetchpriority="high"'
+          : 'loading="lazy"';
+        return `<img src="${fallback.url}" srcset="${srcset}" sizes="${sizes}" width="${fallback.width}" height="${fallback.height}" alt="${escapeAttr(alt)}" ${priority} decoding="async" />`;
+      } catch {
+        return `<img src="${src}" alt="${escapeAttr(alt)}" loading="lazy" decoding="async" />`;
+      }
+    },
+  );
+
   // Save placeholder cache after build completes
   eleventyConfig.on("eleventy.after", () => {
     savePlaceholderCache();
@@ -95,15 +167,14 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/blog.css");
   eleventyConfig.addPassthroughCopy("src/favicon.svg");
   eleventyConfig.addPassthroughCopy("src/favicon.ico");
-  // Fontsource self-hosted fonts
-  eleventyConfig.addPassthroughCopy({
-    "node_modules/@fontsource-variable/outfit/files": "fonts/outfit",
-  });
-  eleventyConfig.addPassthroughCopy({
-    "node_modules/@fontsource-variable/dm-sans/files": "fonts/dm-sans",
-  });
+  // Fontsource self-hosted font: only the two files the CSS references
+  for (const style of ["normal", "italic"]) {
+    const file = `dm-sans-latin-wght-${style}.woff2`;
+    eleventyConfig.addPassthroughCopy({
+      [`node_modules/@fontsource-variable/dm-sans/files/${file}`]: `fonts/dm-sans/${file}`,
+    });
+  }
   eleventyConfig.addPassthroughCopy("src/robots.txt");
-  eleventyConfig.addPassthroughCopy("src/llms.txt");
   eleventyConfig.addPassthroughCopy("src/humans.json");
   eleventyConfig.addPassthroughCopy({ "src/.well-known": ".well-known" });
   eleventyConfig.addPassthroughCopy({
@@ -118,11 +189,23 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/blog/**/*.gif");
   eleventyConfig.addPassthroughCopy("src/blog/**/*.webp");
   eleventyConfig.addPassthroughCopy("src/images");
+  eleventyConfig.addPassthroughCopy("src/audio");
   eleventyConfig.addPassthroughCopy("src/js");
+  // Mermaid is served from a versioned folder. Its files are cached as
+  // immutable, and the entry imports chunks whose names change per release,
+  // so an upgrade must change the URL or returning visitors keep a stale entry.
+  const mermaidVersion = JSON.parse(
+    readFileSync("node_modules/mermaid/package.json", "utf-8"),
+  ).version;
+  const mermaidBase = `js/mermaid/${mermaidVersion}`;
   eleventyConfig.addPassthroughCopy({
-    "node_modules/mermaid/dist/mermaid.esm.min.mjs": "js/mermaid.esm.min.mjs",
+    "node_modules/mermaid/dist/mermaid.esm.min.mjs": `${mermaidBase}/mermaid.esm.min.mjs`,
+  });
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/mermaid/dist/chunks/mermaid.esm.min": `${mermaidBase}/chunks/mermaid.esm.min`,
   });
   // ── Global data ──
+  eleventyConfig.addGlobalData("mermaidUrl", `/${mermaidBase}/mermaid.esm.min.mjs`);
   // ── Collections ──
   eleventyConfig.addCollection("posts", function (collectionApi) {
     return collectionApi
@@ -167,8 +250,14 @@ export default function (eleventyConfig) {
   // Cache-buster for files under src/ (/*.js is cached as immutable)
   eleventyConfig.addFilter("rev", (path) => fileHash(join("src", path)));
 
+  // JSON.stringify that is also safe inside a <script> block
   eleventyConfig.addFilter("dump", (obj) => {
-    return JSON.stringify(obj);
+    return JSON.stringify(obj ?? null).replace(/</g, "\\u003c");
+  });
+
+  // YYYY-MM-DD, for sitemap <lastmod>
+  eleventyConfig.addFilter("ymd", (dateObj) => {
+    return new Date(dateObj).toISOString().slice(0, 10);
   });
 
   eleventyConfig.addFilter("readingTime", (content) => {
@@ -185,6 +274,17 @@ export default function (eleventyConfig) {
   });
 
   // ── Shortcodes ──
+  // Inline a stylesheet from src/, minified. Comments and layout whitespace
+  // are dropped; selectors and values are left untouched.
+  eleventyConfig.addShortcode("inlineCss", function (file) {
+    return readFileSync(join("src", file), "utf-8")
+      .replace(/\/\*[\s\S]*?\*\//g, "")
+      .replace(/\s+/g, " ")
+      .replace(/\s*([{};,])\s*/g, "$1")
+      .replace(/;}/g, "}")
+      .trim();
+  });
+
   eleventyConfig.addPairedShortcode(
     "callout",
     function (content, type = "info") {

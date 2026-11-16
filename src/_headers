@@ -2,11 +2,11 @@
   # Security headers
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
-  X-XSS-Protection: 1; mode=block
+  X-XSS-Protection: 0
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
   Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-  Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
+  Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self'; manifest-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'
   X-Permitted-Cross-Domain-Policies: none
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Resource-Policy: same-site
@@ -24,6 +24,12 @@
 /*.woff
   Cache-Control: public, max-age=31536000, immutable
 /*.mjs
+  Cache-Control: public, max-age=31536000, immutable
+
+# ── Audio: immutable, 1 year (URLs carry a content hash) ──
+/*.mp3
+  Cache-Control: public, max-age=31536000, immutable
+/audio/*.json
   Cache-Control: public, max-age=31536000, immutable
 
 # ── Images: immutable, 1 year ──
@@ -70,6 +76,4 @@
 /contact/
   Cache-Control: public, max-age=0, must-revalidate
 /uses/
-  Cache-Control: public, max-age=0, must-revalidate
-/launch-plan/
   Cache-Control: public, max-age=0, must-revalidate

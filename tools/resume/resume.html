@@ -32,7 +32,9 @@ h1 { font-size: 22pt; font-weight: 600; letter-spacing: -0.01em; line-height: 1.
 hr { border: 0; border-top: 1pt solid #999; margin: 10pt 0 11pt; }
 h2 { font-size: 13pt; font-weight: 500; color: #333; margin: 12pt 0 4pt; }
 h2:first-of-type { margin-top: 0; }
-.job { margin-top: 7pt; break-inside: avoid-page; }
+/* A job may continue onto the next page, but its heading never sits alone at the bottom of one */
+.job { margin-top: 7pt; }
+.job__head, .job__note, .job__role, h2 { break-after: avoid; }
 .job:first-of-type { margin-top: 0; }
 .job__head { font-size: 10.6pt; }
 .job__head b { font-weight: 500; }
@@ -109,7 +111,7 @@ b { font-weight: 600; }
   <li><b>AI-Augmented Development:</b> Claude Code, OpenAI Codex, Google Gemini, Antigravity, AI-assisted code review, prompt engineering for development workflows</li>
   <li><b>Backend &amp; Data:</b> Node.js, Bun, Rust (Axum), Express, Fastify, Nest.js, Elysia.js, MongoDB, PostgreSQL, ClickHouse, SQLite, Firebase/Firestore, REST API Design</li>
   <li><b>Infrastructure:</b> AWS (EC2, S3, CloudFront, Route53), Vercel, Netlify, Cloudflare Workers, GitHub Actions, CI/CD Pipelines</li>
-  <li><b>Domain:</b> Web3 (non-custodial wallets, cross-chain bridging, chain abstraction, dApp injection, EIP-7702, fiat onramping; EVM, Solana, NEAR, Fuel, Tron, Starknet), Client-Side Encryption (AES-GCM, Argon2id, RSA, zero-knowledge patterns), Privacy-First Analytics</li>
+  <li><b>Domain:</b> Web3 (non-custodial wallets, cross-chain bridging, chain abstraction, dApp injection, EIP-7702, fiat onramping; EVM, Solana, NEAR, Fuel, Tron, Starknet), Client-Side Encryption (AES-GCM, Argon2id, RSA, zero-knowledge patterns)</li>
 </ul>
 
 <h2>NOTABLE ACHIEVEMENTS</h2>

@@ -8,11 +8,14 @@ ogType: website
 ogImage: "https://shrinath.me/images/meta.jpg"
 ogImageAlt: "Shrinath Prabhu - Senior Staff Frontend Engineer portfolio"
 ogLocale: en_US
+bodyClass: home
+inlineStylesheet: "home.css"
 jsonLd: |
   [
     {
       "@context": "https://schema.org",
       "@type": "Person",
+      "@id": "https://shrinath.me/#person",
       "name": "Shrinath Prabhu",
       "url": "https://shrinath.me",
       "image": "https://shrinath.me/images/meta.jpg",
@@ -26,7 +29,6 @@ jsonLd: |
         "addressCountry": "IN"
       },
       "alumniOf": [
-        { "@type": "Organization", "name": "Avail Project", "url": "https://availproject.org" },
         { "@type": "Organization", "name": "Arcana Network", "url": "https://arcana.network" },
         { "@type": "Organization", "name": "Hashbinary Services", "url": "https://hashbinary.com" },
         { "@type": "Organization", "name": "Agrostar", "url": "https://agrostar.in" }
@@ -35,19 +37,38 @@ jsonLd: |
       "sameAs": [
         "https://github.com/shrinathprabhu",
         "https://linkedin.com/in/shrinath-prabhu",
-        "https://twitter.com/shrinath_prabhu",
+        "https://x.com/shrinath",
         "https://codepen.io/shrinathprabhu"
       ],
       "knowsAbout": [
         "Vue.js", "React", "TypeScript", "Node.js", "Chrome Extensions", "Web3",
         "Frontend Architecture", "Cross-chain bridging", "Chrome Extension Wallet",
         "AI-augmented development", "Claude Code", "OpenAI Codex", "Google Gemini"
-      ]
+      ],
+      "subjectOf": {
+        "@type": "AudioObject",
+        "name": "Shrinath Prabhu: a 43-second introduction",
+        "description": "A short spoken introduction covering eight years of building products from zero to one.",
+        "contentUrl": "https://shrinath.me/audio/intro.mp3",
+        "encodingFormat": "audio/mpeg",
+        "duration": "PT43S",
+        "inLanguage": "en",
+        "transcript": "Hi, I'm Shrinath Prabhu, a software engineer based out of Mumbai. So for the last eight years or so, I've been building products from zero to one. Front-end architecture, browser extensions, developer tools, and growth products that actually reach tens of thousands of users. Right now, I'm a senior staff engineer at Avail and I've also built a few products of my own. What I really like is taking messy ideas and turning them into fast, polished products that people actually enjoy using. So yeah, if you're building something ambitious and need someone who can lead it end-to-end, let's talk."
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "url": "https://shrinath.me/",
+      "name": "Shrinath Prabhu - Senior Staff Frontend Engineer",
+      "mainEntity": { "@id": "https://shrinath.me/#person" }
     },
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
+      "@id": "https://shrinath.me/#website",
       "name": "Shrinath Prabhu",
+      "publisher": { "@id": "https://shrinath.me/#person" },
       "url": "https://shrinath.me",
       "description": "Portfolio of Shrinath Prabhu - Senior Staff Frontend Engineer at Avail Project, specializing in Vue, React, TypeScript, Chrome Extensions, and Web3 infrastructure."
     }
@@ -55,71 +76,183 @@ jsonLd: |
 ---
 
 <!-- Hero -->
-<section class="hero container--wide">
-  <div class="hero__content fade-in">
-    <div>
-      <div class="hero__label">
-        Senior Staff Frontend Engineer • Avail Project
-      </div>
-      <h1>Shrinath Prabhu</h1>
-      <a
-        class="status__badge"
-        href="https://widgets.availproject.org"
-        target="_blank"
-        rel="noopener"
-      >
-        <span class="status__dot"></span> Now shipping Avail Widgets →
-      </a>
-      <p class="hero__subtitle">
-        I build products from zero to real users. Four Chrome Extensions
-        shipped with 100% approval rate. One product scaled to 65K+
-        accounts. 4.5 years leading frontend through a company acquisition.
-        Now leading frontend at Avail on Avail Widgets and Fastbridge.
-      </p>
-      <div class="tags" style="margin-top: 16px">
-        <span class="tag">Vue</span>
-        <span class="tag">React</span>
-        <span class="tag">TypeScript</span>
-        <span class="tag">Node.js</span>
-        <span class="tag">Chrome Extensions</span>
-      </div>
-      <div class="hero__actions">
-        <a href="/work/" class="btn btn--primary">View My Work →</a>
-        <a href="/resume/" class="btn btn--secondary">View Resume</a>
-      </div>
-    </div>
-    <div class="hero__stats">
-      <div>
-        <div class="hero__stat-value">8+</div>
-        <div class="hero__stat-label">Years experience</div>
-      </div>
-      <div>
-        <div class="hero__stat-value">4</div>
-        <div class="hero__stat-label">Chrome Extensions shipped</div>
-      </div>
-      <div>
-        <div class="hero__stat-value">65K+</div>
-        <div class="hero__stat-label">Peak product users</div>
-      </div>
-      <div>
-        <div class="hero__stat-value">4.7★</div>
-        <div class="hero__stat-label">Chrome Store Rating</div>
-      </div>
-    </div>
+<section class="hero container--wide" aria-labelledby="hero-title">
+  <h1 class="hero__title fade-in" id="hero-title">
+    <span class="hero__eyebrow"
+      ><span class="hero__dot" aria-hidden="true"></span>Shrinath Prabhu ·
+      Senior Staff Engineer at Avail</span
+    >
+    I turn messy ideas into fast, polished products.
+  </h1>
+  <p class="hero__lead fade-in">
+    For over 8 years I've built products from zero to real users: four Chrome
+    Extensions shipped with a 100% approval rate, one product scaled to 65K+
+    accounts, and 4.5 years leading frontend through a company acquisition.
+    Now I lead frontend at Avail on Avail Widgets and Fastbridge.
+  </p>
+
+  <div class="hero__actions fade-in">
+    <a href="/work/" class="btn btn--primary"
+      >Explore my work
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8h11M9 3.5 13.5 8 9 12.5" /></svg>
+    </a>
+    {# Works as a plain link to the MP3 without JavaScript; voice.js upgrades it. #}
+    <a
+      href="/audio/intro.mp3?v={{ '/audio/intro.mp3' | rev }}"
+      class="btn btn--secondary voice-btn"
+      id="voice-toggle"
+      data-cues="/audio/intro.json?v={{ '/audio/intro.json' | rev }}"
+      aria-controls="voice"
+    >
+      <svg class="i-play" width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M3 1.6v10.8a.6.6 0 0 0 .92.5l8.3-5.4a.6.6 0 0 0 0-1L3.92 1.1A.6.6 0 0 0 3 1.6Z" /></svg>
+      <svg class="i-pause" width="14" height="14" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><rect x="2.5" y="1.5" width="3.2" height="11" rx="1" /><rect x="8.3" y="1.5" width="3.2" height="11" rx="1" /></svg>
+      <span class="voice-btn__label">Hear my intro · 0:43</span>
+    </a>
   </div>
+
+  <div class="voice" id="voice" role="group" aria-label="Voice introduction" hidden>
+    <div class="voice__player">
+      <button class="voice__play" type="button" aria-label="Pause introduction">
+        <svg class="i-play" width="18" height="18" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M3 1.6v10.8a.6.6 0 0 0 .92.5l8.3-5.4a.6.6 0 0 0 0-1L3.92 1.1A.6.6 0 0 0 3 1.6Z" /></svg>
+        <svg class="i-pause" width="18" height="18" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><rect x="2.5" y="1.5" width="3.2" height="11" rx="1" /><rect x="8.3" y="1.5" width="3.2" height="11" rx="1" /></svg>
+        <svg class="i-replay" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 8a5.5 5.5 0 1 0 1.7-4" /><path d="M2.5 2.5v3h3" /></svg>
+      </button>
+      <div class="voice__wave">
+        <div class="voice__bars" aria-hidden="true"></div>
+        <input class="voice__seek" type="range" min="0" max="43" step="0.1" value="0" aria-label="Seek within the introduction" />
+      </div>
+      <span class="voice__time">0:00 / 0:43</span>
+    </div>
+    {# Decorative live captions. The full text is in the transcript below. #}
+    <p class="voice__caption" aria-hidden="true"></p>
+  </div>
+
+  <details class="voice-transcript">
+    <summary>Read the transcript</summary>
+    <p>
+      Hi, I'm Shrinath Prabhu, a software engineer based out of Mumbai. So for
+      the last eight years or so, I've been building products from zero to
+      one. Front-end architecture, browser extensions, developer tools, and
+      growth products that actually reach tens of thousands of users. Right
+      now, I'm a senior staff engineer at Avail and I've also built a few
+      products of my own. What I really like is taking messy ideas and
+      turning them into fast, polished products that people actually enjoy
+      using. So yeah, if you're building something ambitious and need someone
+      who can lead it end-to-end, let's talk.
+    </p>
+  </details>
+
+  <dl class="stats">
+    <div>
+      <dt>8+ years</dt>
+      <dd>Building products</dd>
+    </div>
+    <div>
+      <dt>65K+ accounts</dt>
+      <dd>On SendIt, which I led frontend for</dd>
+    </div>
+    <div>
+      <dt>4 Chrome Extensions</dt>
+      <dd>Shipped, 100% approval rate</dd>
+    </div>
+    <div>
+      <dt>4.7★ rating</dt>
+      <dd>Arcana Wallet, Chrome Web Store</dd>
+    </div>
+  </dl>
+</section>
+
+<!-- Selected work -->
+<section class="section container--wide reveal" aria-labelledby="work-title">
+  <div class="section-head">
+    <h2 id="work-title">Selected work</h2>
+    <a href="/work/">All case studies →</a>
+  </div>
+  <ul class="rows">
+    <li>
+      <a class="row" href="/work/#widgets">
+        <h3 class="row__title">Avail Widgets</h3>
+        <p class="row__desc">
+          Drop-in React components for cross-chain swap, send, and deposit.
+          Shipped as an npm package and a shadcn registry, with a live
+          configurator that generates the exact code for your settings, and
+          card/bank onramping.
+        </p>
+        <span class="row__metric">10+ dApps</span>
+      </a>
+    </li>
+    <li>
+      <a class="row" href="/work/#fastbridge">
+        <h3 class="row__title">Nexus Fastbridge</h3>
+        <p class="row__desc">
+          Cross-rollup bridge UI handling about $100K in monthly swap and
+          bridge volume. Custom Vite based SEO, full search indexing without
+          Next.js.
+        </p>
+        <span class="row__metric">15 EVM chains</span>
+      </a>
+    </li>
+    <li>
+      <a class="row" href="/work/#sendit">
+        <h3 class="row__title">SendIt</h3>
+        <p class="row__desc">
+          Cross-chain transfers via email, X handles, and ENS. Reached 20K+
+          peak daily active users, exceeded Netlify Pro limits, and was
+          migrated to AWS.
+        </p>
+        <span class="row__metric">65K+ accounts</span>
+      </a>
+    </li>
+    <li>
+      <a class="row" href="/work/#wallet">
+        <h3 class="row__title">Arcana Wallet</h3>
+        <p class="row__desc">
+          Non-custodial sidebar wallet with runtime dApp injection, giving a
+          unified balance and chain abstraction on Aave, Uniswap, Lido, and
+          Jumper across 10+ networks. 750+ users.
+        </p>
+        <span class="row__metric">4.7★ rating</span>
+      </a>
+    </li>
+    <li>
+      <a class="row" href="/work/#skizzle">
+        <h3 class="row__title">Skizzle</h3>
+        <p class="row__desc">
+          End-to-end encrypted email attachments for Chrome and Firefox. RSA
+          keys via Web3Auth, decentralized storage. Shipped in my first
+          month. 4.2★ rating.
+        </p>
+        <span class="row__metric">~1,000 users</span>
+      </a>
+    </li>
+    <li>
+      <a class="row" href="/work/#pricinger">
+        <h3 class="row__title">Pricinger</h3>
+        <p class="row__desc">
+          Privacy focused Chrome Extension with multi-region VPN proxies, an
+          automated per site optimization crawler, and one click privacy
+          controls. 4.0★ rating.
+        </p>
+        <span class="row__metric">~1,000 users</span>
+      </a>
+    </li>
+  </ul>
 </section>
 
 <!-- Experience -->
-<section class="section container--wide" aria-label="Work experience">
-  <h2 class="fade-in" style="margin-bottom: 8px">Experience</h2>
+<section class="section container--wide reveal" aria-labelledby="exp-title">
+  <div class="section-head">
+    <h2 id="exp-title">Experience</h2>
+    <a href="/resume/">Full resume →</a>
+  </div>
 
-  <div class="exp-item fade-in">
+  <div class="exp-item">
     <div class="exp-header">
-      <span class="exp-company">Avail Project</span>
+      <h3 class="exp-company">Avail Project</h3>
       <span class="exp-dates">2025 – Present</span>
     </div>
-    <div class="exp-role">Senior Staff Engineer • Remote (Dubai)</div>
-    <div class="exp-desc">
+    <div class="exp-role">Senior Staff Engineer · Remote (Dubai)</div>
+    <p class="exp-desc">
       Leading frontend architecture across the Nexus product ecosystem.
       Conceived and shipped Avail Widgets (formerly Nexus One / Elements),
       now used by 10+ dApps, with a live configurator at
@@ -127,196 +260,142 @@ jsonLd: |
       that generates the exact code to drop in. Also shipped Fastbridge, live
       on 15 EVM chains with about $100K in monthly volume, and added card and
       bank onramping to the Deposit Widget.
-    </div>
+    </p>
   </div>
 
-  <div class="exp-item fade-in">
+  <div class="exp-item">
     <div class="exp-header">
-      <span class="exp-company"
-        >Arcana Network
-        <span class="exp-badge">Acquired by Avail</span></span
-      >
+      <h3 class="exp-company">
+        Arcana Network <span class="exp-badge">Acquired by Avail</span>
+      </h3>
       <span class="exp-dates">2021 – 2025</span>
     </div>
-    <div class="exp-role">Lead Frontend Engineer • Remote (Dubai)</div>
-    <div class="exp-desc">
+    <div class="exp-role">Lead Frontend Engineer · Remote (Dubai)</div>
+    <p class="exp-desc">
       Built the Wallet, SendIt, Skizzle, Developer Dashboard, and Explorer.
       Led frontend from seed stage through acquisition. 4.5 year tenure.
-    </div>
+    </p>
   </div>
 
-  <div class="exp-item fade-in">
+  <div class="exp-item">
     <div class="exp-header">
-      <span class="exp-company">Hashbinary Services</span>
+      <h3 class="exp-company">Hashbinary Services</h3>
       <span class="exp-dates">2018 – 2021</span>
     </div>
-    <div class="exp-role">Full Stack Developer • Mumbai (Hybrid)</div>
-    <div class="exp-desc">
+    <div class="exp-role">Full Stack Developer · Mumbai (Hybrid)</div>
+    <p class="exp-desc">
       Pricinger, Jagran dashboard, QBuild, 8SQM, and Agrostar MVP (1 week
       delivery, 5 Indian languages supported).
+    </p>
+  </div>
+</section>
+
+<!-- About: visible, plain-language summary for people, search and answer engines -->
+<section class="section container--wide reveal" id="about" aria-labelledby="about-title">
+  <div class="section-head">
+    <h2 id="about-title">About</h2>
+  </div>
+  <div class="about">
+    <div class="about__body">
+      <p>
+        I'm Shrinath Prabhu, a Senior Staff Frontend Engineer based in
+        Mumbai, India, with over 8 years of professional experience. I work
+        at Avail Project, where I lead frontend architecture across the Nexus
+        product ecosystem.
+      </p>
+      <p>
+        At Avail I conceived and shipped Avail Widgets (formerly Nexus One and
+        Nexus Elements): React components for cross-chain swap, send, and
+        deposit, distributed as the npm package
+        <code>@avail-project/widgets</code> and a shadcn registry, and used
+        by more than 10 dApps. I built the Widget Configurator, where
+        developers explore settings and get the exact code to use, added fiat
+        onramping via Meld to the Deposit Widget, and built Nexus Fastbridge,
+        now live on 15 EVM chains with about $100,000 in monthly swap and
+        bridge volume.
+      </p>
+      <p>
+        Before that I led frontend engineering at Arcana Network for 4.5
+        years, from seed stage through its acquisition by Avail in 2025. I
+        have shipped 4 Chrome Extensions to the Chrome Web Store with a 100%
+        approval rate, including a non-custodial multi-chain wallet
+        supporting 10+ blockchains (4.7 star rating, 750+ users).
+      </p>
+      <p>
+        My highest-traction product, SendIt, grew to over 65,000 registered
+        accounts and over 20,000 peak daily active users. The traffic
+        exhausted Netlify Pro plan limits, so I migrated the frontend to
+        self-managed AWS infrastructure.
+      </p>
+      <p>
+        Earlier, at Hashbinary Services, I built Pricinger (a privacy Chrome
+        Extension with about 1,000 users) and delivered a farmer learning
+        platform MVP for Agrostar within a week.
+      </p>
+    </div>
+    <dl class="facts">
+      <div>
+        <dt>Role</dt>
+        <dd>Senior Staff Engineer, Avail Project</dd>
+      </div>
+      <div>
+        <dt>Based in</dt>
+        <dd>Mumbai, India</dd>
+      </div>
+      <div>
+        <dt>Focus</dt>
+        <dd>Frontend architecture, Chrome Extensions (Manifest V3), developer tools, Web3 and DeFi</dd>
+      </div>
+      <div>
+        <dt>Stack</dt>
+        <dd>Vue 3, Nuxt 3, React, TypeScript, Node.js, Vite, Bun, Elysia.js, Express.js, PostgreSQL, MongoDB, AWS, Docker, plus Rust (Axum) and ClickHouse</dd>
+      </div>
+      <div>
+        <dt>AI tools</dt>
+        <dd>Claude Code, OpenAI Codex, Google Gemini</dd>
+      </div>
+      <div>
+        <dt>Contact</dt>
+        <dd><a href="mailto:hello@shrinath.me">hello@shrinath.me</a></dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- Writing -->
+<section class="section container--wide reveal" aria-labelledby="writing-title">
+  <div class="section-head">
+    <h2 id="writing-title">Recent writing</h2>
+    <a href="/blog/">All posts →</a>
+  </div>
+  <ul class="rows">
+    {%- for post in collections.posts | head(4) %}
+    <li>
+      <a class="row row--post" href="{{ post.url }}">
+        <h3 class="row__title">{{ post.data.title }}</h3>
+        <span class="row__metric">{{ post.data.category }}</span>
+      </a>
+    </li>
+    {%- endfor %}
+  </ul>
+</section>
+
+<!-- Contact -->
+<section class="section container--wide reveal" aria-labelledby="cta-title">
+  <div class="cta" id="contact-cta">
+    <div>
+      <h2 id="cta-title">Building something ambitious?</h2>
+      <p>
+        I'm open to full-time remote roles, fractional engagements, and
+        technical advisory. If you need someone who can lead it end-to-end,
+        let's talk.
+      </p>
+    </div>
+    <div class="hero__actions">
+      <a href="/contact/" class="btn btn--primary">Let's talk →</a>
+      <a href="/resume/" class="btn btn--secondary">View resume</a>
     </div>
   </div>
 </section>
 
-<!-- Projects -->
-<section class="section container--wide" aria-label="Featured projects">
-  <h2 class="fade-in" style="margin-bottom: 24px">What I've Shipped</h2>
-  <div class="projects-grid">
-    <article class="project-card fade-in">
-      <h3 class="project-card__title">Avail Widgets</h3>
-      <div class="project-card__desc">
-        Drop-in React components for cross-chain swap, send, and deposit.
-        <strong
-          >Shipped as an npm package and a shadcn registry</strong
-        >, with a live configurator that generates the exact code for
-        your settings, and card/bank onramping. Used by 10+ dApps.
-        <a class="project-card__link" href="/work/#widgets">Read More →</a>
-      </div>
-      <div class="project-card__meta">
-        <span>10+ dApps</span>•
-        <span>npm + shadcn registry</span>
-      </div>
-    </article>
-
-    <article class="project-card fade-in">
-      <h3 class="project-card__title">Nexus Fastbridge</h3>
-      <div class="project-card__desc">
-        Cross-rollup bridge UI live on 15 EVM chains, handling about $100K in
-        monthly swap and bridge volume.
-        <strong
-          >Custom Vite based SEO, full search indexing without
-          Next.js.</strong
-        >
-        <a class="project-card__link" href="/work/#fastbridge"
-          >Read More →</a
-        >
-      </div>
-      <div class="project-card__meta">
-        <span>15 EVM chains</span>•
-        <span>~$100K monthly volume</span>
-      </div>
-    </article>
-
-    <article class="project-card fade-in">
-      <h3 class="project-card__title">Arcana Wallet</h3>
-      <div class="project-card__desc">
-        Non-custodial sidebar wallet featuring runtime dApp injection to
-        provide a <strong>unified balance and chain abstraction</strong> on
-        Aave, Uniswap, Lido, Jumper and many such DeFi apps
-        <strong
-          >enabling seamless cross-chain transactions across 10+
-          networks.</strong
-        >
-        <a class="project-card__link" href="/work/#wallet">Read More →</a>
-      </div>
-      <div class="project-card__meta">
-        <span class="project-card__stat"
-          ><span class="star">★</span> 4.7</span
-        >• <span>750+ users</span>•
-        <span>10+ chains</span>
-      </div>
-    </article>
-
-    <article class="project-card fade-in">
-      <h3 class="project-card__title">SendIt</h3>
-      <div class="project-card__desc">
-        Cross-chain transfers via email, X handles, and ENS.
-        <strong
-          >Scaled to 65K+ accounts and 20K+ peak DAU. Exceeded Netlify Pro
-          limits</strong
-        >, migrated to AWS.
-        <a class="project-card__link" href="/work/#sendit">Read More →</a>
-      </div>
-      <div class="project-card__meta">
-        <span>65K+ accounts</span>•
-        <span>20K+ peak DAU</span>
-      </div>
-    </article>
-
-    <article class="project-card fade-in">
-      <h3 class="project-card__title">Skizzle</h3>
-      <div class="project-card__desc">
-        E2E encrypted email attachments via Chrome & Firefox extension. RSA
-        keys via Web3Auth, decentralized storage.
-        <strong>Shipped in my first month</strong>.
-        <a class="project-card__link" href="/work/#skizzle">Read More →</a>
-      </div>
-      <div class="project-card__meta">
-        <span class="project-card__stat"
-          ><span class="star">★</span> 4.2</span
-        >• <span>~1,000 users</span>
-      </div>
-    </article>
-
-    <article class="project-card fade-in">
-      <h3 class="project-card__title">Pricinger</h3>
-      <div class="project-card__desc">
-        Privacy focused Chrome Extension with multi-region VPN proxies,
-        automated per site optimization crawler, and one click privacy
-        controls.
-        <a class="project-card__link" href="/work/#pricinger"
-          >Read More →</a
-        >
-      </div>
-      <div class="project-card__meta">
-        <span class="project-card__stat"
-          ><span class="star">★</span> 4.0</span
-        >• <span>~1,000 users</span>
-      </div>
-    </article>
-  </div>
-</section>
-
-<!-- Structured summary for LLM, assistive technologies and machine readers -->
-<section class="visually-hidden">
-  <h2>About Shrinath Prabhu</h2>
-  <p>
-    Shrinath Prabhu is a Senior Staff Frontend Engineer based in Mumbai,
-    India, with over 8 years of professional experience. He currently works
-    at Avail Project (availproject.org), where he leads frontend
-    architecture across the Nexus product ecosystem. At Avail he conceived
-    and shipped Avail Widgets (formerly Nexus One and Nexus Elements), a
-    set of React components for cross-chain swap, send, and deposit
-    distributed as the npm package @avail-project/widgets and a shadcn
-    registry (github.com/availproject/widgets) and used by more than 10
-    dApps, along with the Widget Configurator (widgets.availproject.org),
-    where developers explore widget settings and get the exact code to use. He built Nexus
-    Fastbridge and scaled it to 15 EVM chains and about $100,000 in
-    monthly swap and bridge volume, and added fiat onramping
-    via Meld to the Deposit Widget.
-  </p>
-  <p>
-    Previously, Shrinath led frontend engineering at Arcana Network for 4.5
-    years, from seed stage through the company's acquisition by Avail
-    Project in 2025. He has shipped 4 Chrome Extensions to the Chrome Web
-    Store with a 100% approval rate, including a non-custodial multi-chain
-    wallet supporting 10+ blockchains (4.7 star rating, 750+ users).
-  </p>
-  <p>
-    His highest-traction product, SendIt, scaled to over 65,000 registered
-    accounts and over 20,000 peak daily active users. The frontend traffic
-    was significant enough to exhaust Netlify Pro plan limits, requiring
-    migration to self-managed AWS infrastructure.
-  </p>
-  <p>
-    Core technology stack: Vue 3, Nuxt 3, React, TypeScript, Node.js, Chrome
-    Extension Architecture (Manifest V3), Web3 & DeFi integrations, Vite,
-    Bun, Elysia.js, Express.js, PostgreSQL, MongoDB, AWS, Docker, and
-    he also works in Rust (Axum) and ClickHouse.
-  </p>
-  <p>
-    Before Arcana, he worked at Hashbinary Services as a Full Stack
-    Developer, building Pricinger (privacy Chrome Extension, ~1,000 users),
-    and was a dedicated resource for Agrostar where he delivered a farmer
-    learning platform MVP within a week.
-  </p>
-  <p>
-    He uses AI-augmented development workflows including Claude Code,
-    OpenAI Codex, and Google Gemini.
-  </p>
-  <p>
-    Contact: hello@shrinath.me | Website: shrinath.me | GitHub:
-    github.com/shrinathprabhu | LinkedIn: linkedin.com/in/shrinath-prabhu |
-    Twitter/X: @shrinath_prabhu
-  </p>
-</section>
+<script src="/js/voice.js?v={{ '/js/voice.js' | rev }}" defer></script>

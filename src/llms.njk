@@ -1,3 +1,7 @@
+---
+permalink: /llms.txt
+eleventyExcludeFromCollections: true
+---
 # Shrinath Prabhu - shrinath.me
 
 > Senior Staff Frontend Engineer with 8+ years of experience. Currently at Avail Project. Previously led frontend at Arcana Network (4.5 years, through acquisition).
@@ -6,35 +10,28 @@ Available for full-time remote roles (Senior/Staff Frontend Engineer, Technical 
 
 ## Pages
 
-- [Home](https://shrinath.me/): Overview and introduction.
+- [Home](https://shrinath.me/): Overview, selected work, experience, and a 43-second voice introduction with a full transcript.
 - [Work](https://shrinath.me/work/): Case studies and shipped products.
 - [Blog](https://shrinath.me/blog/): Technical and career writing.
 - [Resume](https://shrinath.me/resume/): Full experience and skills.
 - [Contact](https://shrinath.me/contact/): Get in touch.
+- [Uses](https://shrinath.me/uses/): Tools and setup.
 
 ## Profiles
 
 - [GitHub](https://github.com/shrinathprabhu): Open-source work and side projects.
 - [LinkedIn](https://linkedin.com/in/shrinath-prabhu): Professional history.
-- [Twitter/X](https://twitter.com/shrinath_prabhu): Updates and commentary.
+- [Twitter/X](https://x.com/shrinath): Updates and commentary.
 - [Email](mailto:hello@shrinath.me): hello@shrinath.me
 
 ## Writing
-
-- [Choosing Eleventy Over Nuxt](https://shrinath.me/blog/choosing-eleventy-over-nuxt/)
-- [Why I Am Building an Analytics Platform When Plausible Already Exists](https://shrinath.me/blog/owleye-analytics-reason/): The original reasoning behind OwlEye, a hosted analytics product Shrinath built and sunset in 2026 (written when it was still called Outline Analytics).
-- [Vite SEO Without Next.js](https://shrinath.me/blog/vite-seo-without-nextjs/)
-- [The Frontend Distributed Systems Problem](https://shrinath.me/blog/frontend-distributed-systems-problem/)
-- [Leading a Team in 2026](https://shrinath.me/blog/leading-team-in-2026/)
-- [Building a Chrome Extension Wallet](https://shrinath.me/blog/chrome-extension-wallet/)
-- [Delivering an MVP in a Week](https://shrinath.me/blog/delivering-mvp-in-a-week/)
-- [A Privacy-First Chrome Extension with VPN](https://shrinath.me/blog/privacy-first-chrome-extension-with-vpn/)
-- [Shipping a Chrome Extension in My First Month](https://shrinath.me/blog/shipping-chrome-extension-in-first-month/)
-- [Zero-Knowledge Encrypted Storage](https://shrinath.me/blog/zero-knowledge-encrypted-storage/)
-- [Vue 3 Composition API: Basics and Patterns](https://shrinath.me/blog/vue-3-composition-api-basics-and-patterns/)
+{% for post in collections.posts %}
+- [{{ post.data.title | safe }}](https://shrinath.me{{ post.url }}): {{ post.data.description | safe }}
+{%- endfor %}
 
 ## Optional
 
 - [Avail Project](https://availproject.org): Current employer; leading frontend across the Nexus product ecosystem (Fastbridge, Avail Widgets, Widget Configurator).
 - [Avail Widgets](https://docs.availproject.org/docs/nexus/widgets): Prebuilt React components for cross-chain swap, send, and deposit, shipped as the npm package `@avail-project/widgets` and a shadcn registry (github.com/availproject/widgets), used by 10+ dApps. Formerly Nexus One / Nexus Elements.
 - [Widget Configurator](https://widgets.availproject.org): Live playground to explore Avail Widgets settings and get the exact code to use.
+- [RSS feed](https://shrinath.me/feed.xml): Atom feed of the blog.
