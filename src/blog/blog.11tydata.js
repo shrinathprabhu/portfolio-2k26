@@ -1,8 +1,14 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
+
+const imageExists = (path) => Boolean(path) && existsSync(join("src", path));
+
 export default {
   layout: "post.njk",
   tags: ["posts"],
   ogType: "article",
   author: "Shrinath Prabhu",
+  authorRole: "Senior Staff Engineer at Avail",
   eleventyComputed: {
     permalink: (data) => {
       if (data.draft) {
@@ -15,6 +21,13 @@ export default {
         return true;
       }
       return false;
+    },
+    // Covers live at /images/blog/<slug>.png. Until that file is added, fall
+    // back to the post's previous cover (imageFallback) or to no cover at all.
+    image: (data) => {
+      if (imageExists(data.image)) return data.image;
+      if (imageExists(data.imageFallback)) return data.imageFallback;
+      return undefined;
     },
     ogImage: (data) => {
       if (data.image) {

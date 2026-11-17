@@ -15,7 +15,7 @@ keywords:
     "crypto narrative",
     "future of web3",
   ]
-# image: "/images/web3-agentic.png"
+image: "/images/blog/why-web3-is-shifting-to-agentic.png"
 faq:
   - q: "Why are Web3 companies pivoting to AI agents?"
     a: "Three reasons. Capital and attention moved to AI, so projects follow the funding. Many crypto products never found mainstream users, and agents offer a new customer who does not mind bad UX. And there is a real technical fit: software agents need a way to hold and move money without a bank account."
@@ -25,7 +25,7 @@ faq:
     a: "x402 is an open protocol, introduced by Coinbase, that lets software pay for an API request with stablecoins using the HTTP 402 status code. ERC-8004 is an Ethereum standard for agent identity and reputation, so agents can discover and assess each other without a central registry."
 ---
 
-Open any Web3 project's homepage from two years ago and then today. The product is often the same. The headline is not. "Decentralised" and "trustless" have been replaced by "agentic". I have spent most of my career building in this industry: wallets, bridges, chain abstraction, a consumer app with tens of thousands of users. I think the shift deserves a more honest explanation than either the believers or the cynics usually give it.
+Open any Web3 project's homepage from two years ago and then today. The product is often the same. The headline is not. "Decentralized" and "trustless" have been replaced by "agentic". I have spent most of my career building in this industry: wallets, bridges, chain abstraction, a consumer app with tens of thousands of users. I think the shift deserves a more honest explanation than either the believers or the cynics usually give it.
 
 My view: about a fifth of it is a real technical fit, and the rest is an industry that did not find enough users going where the money went.
 
@@ -33,7 +33,7 @@ My view: about a fifth of it is a real technical fit, and the rest is an industr
 
 Crypto has always run on narratives, because narratives raise funding and move tokens. DeFi, NFTs, the metaverse, layer 2s, restaking: each was the word every pitch had to include for about eighteen months.
 
-When the centre of gravity in technology moved to AI, the investors, the engineers and the attention moved with it. A project that needs to raise or hold a token price has a strong incentive to describe itself in the vocabulary that is being funded. That is not a conspiracy. It is how markets behave.
+When the center of gravity in technology moved to AI, the investors, the engineers and the attention moved with it. A project that needs to raise or hold a token price has a strong incentive to describe itself in the vocabulary that is being funded. That is not a conspiracy. It is how markets behave.
 
 ## Reason two: the users never came
 
@@ -80,6 +80,8 @@ It is entirely possible that agents do need programmable money and that most of 
 What bothers me is not that projects are adopting AI. It is what they are dropping to do it.
 
 The original promise was specific: you hold your own assets, nobody can freeze them, and the rules are open for anyone to verify. That is a real and unusual property. It took years of difficult engineering to make it usable.
+
+We sold decentralization. Now the talks are about who governs the bots.
 
 An agent with authority over a wallet runs straight into that promise. If a model can be manipulated by text it reads, and it can, then giving it signing power creates a new way to lose funds. Self-custody now includes "and the software acting for you cannot be talked into draining it". I cover the mechanics in [securing AI features](/blog/securing-ai-features-prompt-injection/). The teams treating that as the central design problem are the ones doing real work.
 

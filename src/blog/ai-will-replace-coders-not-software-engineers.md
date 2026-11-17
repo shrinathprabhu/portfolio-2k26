@@ -13,7 +13,7 @@ keywords:
     "AI coding agents",
     "software engineering career 2026",
   ]
-# image: "/images/coders-vs-engineers.png"
+image: "/images/blog/ai-will-replace-coders-not-software-engineers.png"
 faq:
   - q: "Will AI replace software engineers?"
     a: "AI is replacing the task of translating a clear specification into code. It is not replacing the work of deciding what to build, weighing trade-offs, managing risk and being accountable for a system in production. People whose whole job is the first task are exposed. People who do the second are becoming more valuable."
@@ -53,21 +53,11 @@ For decades these two jobs were bundled, because the only way to get code was to
 
 AI unbundled them. The first list is now cheap. The second list is where all the remaining difficulty lives, and there is more of it than before, because so much more code is being produced.
 
-## Explain it like I am five
-
-Building a house needs a bricklayer and an architect.
-
-The bricklayer puts bricks where the drawing says. The architect decides where the walls go, makes sure the roof will not fall in, and is the one who gets the phone call if it does.
-
-Now imagine a robot that lays bricks perfectly, all night, for almost nothing. Wonderful. You still need someone to decide what to build, check the robot did not wall up the front door, and answer for the result.
-
-AI is the brick robot. If laying bricks is all you do, it is time to learn some architecture.
-
 ## What AI is good at, stated plainly
 
-I use coding agents every day, and so does the team I lead. It would be dishonest to pretend they are a toy.
+It would be dishonest to pretend these tools are a toy. My AI subscriptions now cost more than my salary. Technically I pay monthly to be replaced, with auto-renew on.
 
-They are excellent at boilerplate, at translating between languages and frameworks, at writing tests for existing behaviour, at explaining unfamiliar code, and at producing a working first version of something well understood. Work that took me a day now takes an hour. For a prototype, the improvement is larger.
+They are excellent at boilerplate, at translating between languages and frameworks, at writing tests for existing behavior, at explaining unfamiliar code, and at producing a working first version of something well understood. Work that took me a day now takes an hour. For a prototype, the improvement is larger.
 
 A lot of that work was what junior developers used to do to learn. That is the uncomfortable part, and I will come back to it.
 
@@ -77,9 +67,9 @@ The limits are just as consistent.
 
 **It does not know what you did not tell it.** A model works from the prompt and the files it can see. It does not know that the payments team is mid-migration, that this endpoint is called by a partner who cannot change their integration, or that the last time someone touched this module it caused an outage. Most real engineering mistakes come from missing context, not missing syntax.
 
-**It optimises for plausible, not for correct.** Generated code compiles, reads well and passes the tests it wrote for itself. It can still do the wrong thing in a confident way. A well-known 2025 study by METR found that experienced open-source developers working in their own mature codebases were about 19 percent slower with AI tools, while believing they were faster. The tools have improved since, but the gap between feeling productive and being productive is real, and noticing it is an engineering skill.
+**It optimizes for plausible, not for correct.** Generated code compiles, reads well and passes the tests it wrote for itself. It can still do the wrong thing in a confident way. A well-known 2025 study by METR found that experienced open-source developers working in their own mature codebases were about 19 percent slower with AI tools, while believing they were faster. The tools have improved since, but the gap between feeling productive and being productive is real, and noticing it is an engineering skill.
 
-**It cannot be accountable.** When the system loses customer data at 3 a.m., a person answers for it. Accountability is not a technical capability. It is a social and legal one, and organisations will keep attaching it to humans.
+**It cannot be accountable.** When the system loses customer data at 3 a.m., a person answers for it. Accountability is not a technical capability. It is a social and legal one, and organizations will keep attaching it to humans.
 
 **It does not say no.** Ask a model for a feature and it will build it. A good engineer's most valuable sentence is often "we should not build this" or "there is a much smaller version that gets us the same result".
 
@@ -96,12 +86,22 @@ The first group is being automated. The second is the job that remains. If most 
 
 Cheaper code means more code, and more code means more of everything around it.
 
-- **Specification.** The clearer the brief, the better the output. Writing a precise brief is engineering. I wrote a [prompting guide for engineers](/blog/prompting-guide-for-engineers/) on this.
+- **Specification.** The clearer the brief, the better the output. Writing a precise brief is engineering. I wrote about it in [my brief was wrong](/blog/prompting-guide-for-engineers/).
 - **Review.** Someone has to decide whether generated code belongs in the system. That requires more architectural understanding than writing it did.
 - **System design.** Agents build components well. Deciding how components fit together, and where the boundaries and failure points are, is still a human call.
 - **Security.** Generated code inherits common vulnerabilities, and AI features add new ones such as [prompt injection](/blog/securing-ai-features-prompt-injection/).
 - **Debugging in production.** Incidents involve partial information, time pressure and several systems interacting. This is where experience counts most.
 - **Deciding what matters.** Understanding the user and the business well enough to choose the right problem.
+
+## What changed for me as a lead
+
+Two things changed in how I run a team, and neither is about typing speed.
+
+**Code review got harder.** When someone writes code by hand, you can see their thinking in it: the naming, the error handling, the instincts. Generated code arrives syntactically correct and often architecturally misaligned. It compiles, passes its tests and does the wrong thing elegantly. The review question moves from "does this work" to "does this belong here", which needs more context and is harder to judge from a diff.
+
+**Mentoring moved from syntax to decisions.** A junior engineer with a coding agent can produce code that looks senior. What they cannot yet do is tell whether the suggestion is right for this particular system. So I spend less time correcting syntax and more time on why one approach fits and another does not.
+
+What did not change: someone still has to set direction, and someone still has to own the incident.
 
 ## The honest problem: how juniors become seniors
 
@@ -111,9 +111,9 @@ I do not think the answer is to stop juniors using AI. It is to change what we a
 
 ## What I would tell an engineer early in their career
 
-- Learn fundamentals that outlast tools: networking, data modelling, how browsers and databases actually work, security basics.
+- Learn fundamentals that outlast tools: networking, data modeling, how browsers and databases actually work, security basics.
 - Get close to users and to the business. Know why the thing you are building matters.
-- Practise explaining trade-offs in plain language to people who are not engineers.
+- Practice explaining trade-offs in plain language to people who are not engineers.
 - Own something in production and stay with it through at least one bad incident.
 - Use AI heavily, and never submit what you cannot explain.
 

@@ -10,6 +10,8 @@ const REDIRECTS = {
   "/blog/vue-3-composition-api-basics-and-patterns": "/blog/",
   "/blog/privacy-first-chrome-extension-with-vpn": "/blog/",
   "/blog/zero-knowledge-encrypted-storage": "/blog/",
+  "/blog/leading-team-in-2026":
+    "/blog/ai-will-replace-coders-not-software-engineers/",
   "/launch-plan": "/",
   "/resume/SHRINATH_PRABHU_UPDATED_RESUME_2026.pdf":
     "/resume/SHRINATH_PRABHU_RESUME.pdf",

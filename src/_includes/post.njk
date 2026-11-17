@@ -16,7 +16,7 @@ ogType: article
       <p class="blog-post__lede">{{ description }}</p>
       {% endif %}
       <div class="blog-post__meta">
-        <span>By <a href="/" rel="author">{{ author or 'Shrinath Prabhu' }}</a></span>
+        <span>By <a href="/" rel="author">{{ author or 'Shrinath Prabhu' }}</a>{% if authorRole %}, {{ authorRole }}{% endif %}</span>
         <span aria-hidden="true">·</span>
         <time datetime="{{ date | ymd }}">{{ date | readableDate }}</time>
         <span aria-hidden="true">·</span>

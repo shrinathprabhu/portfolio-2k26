@@ -1,114 +1,83 @@
 ---
-title: "You Are Not Bad at Prompting. You Are Bad at Briefing"
-description: "Good prompting is not a bag of magic phrases. It is the same skill as writing a clear ticket or briefing a new team member: context, goal, constraints, and a definition of done. A practical guide with the structure I use every day."
+title: "I Don't Suck at Prompting. My Brief Was Wrong"
+description: "Briefing an AI agent is delegation, and delegation is a skill I learned from leading people, mostly by getting it wrong. What a lead already knows about handing over work, and why it transfers almost unchanged to a coding agent."
 date: 2026-11-08
-postTags: ["posts", "ai", "productivity", "engineering"]
+postTags: ["posts", "ai", "leadership", "engineering"]
 category: "AI & Engineering"
 keywords:
   [
-    "prompting guide",
-    "prompt engineering for developers",
-    "how to write better prompts",
-    "AI coding agent prompts",
+    "prompting for engineers",
+    "briefing an AI agent",
+    "delegation",
     "context engineering",
-    "Claude Code prompts",
+    "AI coding agent prompts",
+    "engineering leadership",
   ]
-# image: "/images/prompting-guide.png"
-faq:
-  - q: "What makes a good prompt?"
-    a: "A good prompt gives the model what a capable new colleague would need: the goal and why it matters, the relevant context, the constraints, what done looks like, and what to do when something is unclear. Most poor results come from missing context, not from poor wording."
-  - q: "Do prompt tricks like 'act as an expert' still work?"
-    a: "They matter far less with current models. Role statements and emphatic capital letters add little. Specific context, clear success criteria and concrete examples of what you want add a lot."
-  - q: "What is context engineering?"
-    a: "Deciding what information the model has in front of it when it works: project instruction files, relevant code, documentation, examples and tool access. For coding agents it matters more than the wording of any single prompt."
+image: "/images/blog/prompting-guide-for-engineers.png"
 ---
 
-You type "make the login page better" into an AI tool. It returns a purple gradient, three new animations and a mascot. You sigh, close the tab, and tell a colleague that AI is overhyped.
+Type "make the login page better" into an AI tool and you get a purple gradient, three animations and possibly a mascot. The usual conclusion is that the model is overhyped.
 
-Now imagine saying the same five words to a human contractor on their first day. You would get the same purple gradient. The only difference is that the human would invoice you for it.
+Give the same five words to a contractor on their first morning and you get the same purple gradient, plus an invoice.
 
-The problem was never the model. It was the brief.
+So the model is not the problem, and neither is my prompting technique. The brief is. And writing a brief is a skill I did not learn from AI. I learned it from leading a team.
 
-The best prompt is the one you would give a smart colleague who joined the company this morning. They are capable, they will work hard, and they know absolutely nothing about your project. Almost every disappointing AI result I see comes from forgetting that last part.
+## Delegation is the skill
 
-This guide is the structure I use every day with coding agents and general assistants. There are no magic phrases in it.
+When you hand work to a person, you are transferring context. They are capable and willing, and they know nothing about what is in your head: why this matters, what was tried last quarter, which module nobody should touch, what the customer said on the call.
 
-## The mental model
+A new lead usually discovers this the expensive way. You assign something in one sentence, the result comes back technically correct and practically wrong, and your first instinct is to blame the person. It takes a while to accept that they built exactly what you asked for.
 
-A language model has broad knowledge and no knowledge of your situation. It does not know your codebase's conventions, what you tried yesterday, who the audience is, or which of five reasonable interpretations you meant. Where the brief is silent, it guesses, and it guesses the most generic answer.
+[TODO: a real example from your team. A task you delegated in one line that came back wrong, what was missing from the brief, and what you changed afterward.]
 
-So the job is not to "trick" the model into being smart. It is to transfer the context that is in your head and not on the page.
+An AI agent is that situation with the feedback loop shortened from a week to a minute. It is the most literal new joiner you will ever work with. Where the brief is silent, it guesses, and it guesses the most generic answer available.
 
-A useful check before sending: if I handed this exact text to a contractor, would they have to come back with questions? If yes, answer those questions in the prompt.
+## What a good lead hands over
 
-## The five parts of a good brief
+Nobody needs a framework for this. It is what you would say to a strong engineer who joined this morning.
 
-**1. The goal, and the reason behind it.**
-"Add rate limiting to the login endpoint" is a task. "Add rate limiting to the login endpoint because we saw credential-stuffing attempts last week" is a goal. The second version lets the model make sensible choices you did not specify, such as limiting by account as well as by IP.
+**Why, not only what.** "Add rate limiting to the login endpoint" is a task. "We saw credential-stuffing attempts last week, so add rate limiting to the login endpoint" is a goal. With the reason, a person or a model makes sensible choices you did not specify, such as limiting per account as well as per IP.
 
-**2. The context.**
-What already exists, what you have tried and ruled out, and which files or documents matter. If a previous attempt failed, say how. This saves the model from rediscovering it.
+**What already exists and what failed.** If you tried something and it did not work, say so. Otherwise they will rediscover it, on your time.
 
-**3. The constraints.**
-What must not change. Which libraries to use or avoid. Performance limits, style conventions, backwards compatibility. Constraints are where your experience enters the result.
+**What must not change.** The public interface another team depends on. The library you have standardized on. Constraints are where your experience gets into someone else's work.
 
-**4. What done looks like.**
-Without a finish line, a model either stops too early or keeps going. "Done means the existing tests pass, there is a new test for the lockout case, and no public function signatures changed."
+**What done looks like.** Without a finish line, a junior stops too early and an agent never stops. "Existing tests pass unmodified, one new test for the lockout case, no public signatures changed."
 
-**5. What to do when unsure.**
-"If the requirement is ambiguous, ask before writing code" or "make a reasonable assumption and list it at the end". Pick one. Otherwise the model decides for you.
+**What to do when unsure.** "Ask me first" or "assume, and list your assumptions at the end". Pick one. If you do not, they pick for you.
 
-## A before and after
+My check before sending anything: would a contractor have to come back with questions? If yes, the answers belong in the brief.
 
-A weak brief:
+## 30 lines of context beats 3 model switches
 
-> Refactor the checkout module to be cleaner.
+The common reaction to a bad result is to try a different model. Then another. Then conclude that none of them is any good.
 
-A strong one:
+It is the same mistake as reassigning a task to a different engineer without changing the one-line description. You will get a different wrong answer.
 
-> The checkout module has grown to a point where adding a payment method means editing four files. I want to add two more methods next month, so the goal is to make that a one-file change. Keep the public interface used by the cart exactly as it is, since another team depends on it. Do not change behaviour: the existing tests must pass unmodified. Propose the structure first and wait for my approval before editing. If something in the current code looks like a bug, note it but do not fix it in this change.
+Thirty lines of context beats three model switches. For an agent working across a repository, that context is mostly not in the prompt at all. It is in what the agent can see and check:
 
-The second takes ninety seconds longer to write. It removes an hour of correcting a result that was technically responsive and practically useless.
+- A short project instruction file with the things you would otherwise repeat: how to run the tests, the conventions, what never to touch.
+- A plan before code, for anything non-trivial. Correcting a plan costs a minute. Correcting an implementation costs an hour.
+- A way to verify its own work: tests, a type checker, a running preview. An agent that can check converges. One that cannot will tell you it is finished.
+
+This is onboarding. A team with good onboarding documents gets useful work from a new hire in week one, and a team without them gets it in month three. The agent starts over every session, so the documents matter even more.
 
 ## Explain, do not shout
 
-Older advice said to write rules in capitals: NEVER do this, ALWAYS do that. With current models this tends to backfire. They follow emphasised rules too rigidly, including in cases where the rule was never meant to apply.
+Older advice said to write rules in capitals. NEVER do this. ALWAYS do that.
 
-A reason works better than a command. "Do not use ellipses, because this text is read aloud by a speech engine that cannot pronounce them" produces better behaviour than "NEVER use ellipses", because the model can generalise from the purpose.
+It works about as well on models as it does on people. A rule with no reason gets applied rigidly, including in cases it was never meant for. "Do not use ellipses, because this text is read aloud by a speech engine that cannot pronounce them" produces better behavior than the capitalized version, because the purpose can be generalized.
 
-## Examples are powerful, so use them carefully
+People work the same way. The rules a team actually follows are the ones it can explain.
 
-Showing the model an example of what you want is one of the strongest signals you can give. It is also the easiest to overdo. Give one example and you will get back something very close to that example, including details you did not intend as requirements.
+## Review it like work from someone new
 
-If you want a pattern rather than a copy, give two or three examples that differ from each other, and say what they have in common. Or describe the qualities you want in plain language and skip examples entirely.
+A good brief raises the quality of what comes back. It does not make it correct.
 
-## For coding agents: context beats phrasing
+I read generated code the way I read a pull request from a capable new colleague: assume competence, verify everything. I ask what could be wrong with it, because models, like people, are better at criticizing a draft than at getting it right the first time. And I do not paste secrets or customer data into a prompt, for the same reason I would not email them to a contractor. What agents can be tricked into doing with content they read is its own subject, in [your AI feature is an intern who believes everything it reads](/blog/securing-ai-features-prompt-injection/).
 
-When an agent works across a repository for many steps, the wording of one message matters less than what it has access to.
+## Why this is good news for some engineers
 
-- **A project instruction file.** Most agents read a file at the root of the repository on every session. Put the things you would otherwise repeat there: how to run tests, conventions, what never to touch. Keep it short and specific to what the agent gets wrong.
-- **Plan before code.** For anything non-trivial, ask for a plan and review it. Correcting a plan costs a minute. Correcting an implementation costs an hour.
-- **Give it a way to check its own work.** Tests, a type checker, a linter, a running preview. An agent that can verify converges on a correct result. One that cannot will tell you it is done.
-- **Small, reviewable steps.** A change you can read in five minutes is a change you can trust.
-- **Start fresh when the thread is confused.** A long conversation full of abandoned approaches degrades results. A new session with a clean summary is often faster.
+The engineers getting the most from these tools are not the ones with the cleverest prompts. They are the ones who were already good at writing a ticket, a design note, a handover.
 
-## Ask for the right shape of answer
-
-Say what format you want and who it is for. "Give me the recommendation first, then the reasoning, in under 200 words, for a manager who is not technical" gets a usable answer. Leaving it open gets a long one.
-
-For decisions, ask for options with trade-offs, not a single answer. For reviews, ask it to report everything it finds and rank by severity. For research, ask it to separate what it verified from what it inferred.
-
-## Treat the output as a draft from a capable stranger
-
-A good brief raises the quality of what comes back. It does not remove the need to check it.
-
-- Read generated code as you would a pull request from someone new: assume competence, verify correctness.
-- Ask "what could be wrong with this" as a follow-up. Models are better at criticising a draft than at getting it perfect the first time.
-- Never paste secrets, customer data or private keys into a prompt.
-- Be careful with content the model reads from outside sources. Text in a web page or document can contain instructions aimed at the model. I cover this risk in [securing AI features](/blog/securing-ai-features-prompt-injection/).
-
-## The short version
-
-Write the goal and why. Give the context you have and it lacks. State the constraints. Define done. Say what to do when unsure. Then review the result as if a person wrote it.
-
-This is the same skill as writing a good ticket or a good design note. Engineers who were already good at that are finding AI tools far more useful than those who were not, which says a lot about [which skills are being replaced and which are not](/blog/ai-will-replace-coders-not-software-engineers/).
+That was always a senior skill, and for years it was optional, because you could do the work yourself instead of explaining it. It is not optional now. It is most of [what remains of the job](/blog/ai-will-replace-coders-not-software-engineers/).

@@ -14,10 +14,10 @@ keywords:
     "senior engineer communication",
     "how to say no to your manager",
   ]
-# image: "/images/stop-nodding.png"
+image: "/images/blog/how-to-disagree-with-leadership.png"
 faq:
   - q: "How do you disagree with your manager respectfully?"
-    a: "Start from the goal you share, state your concern as a specific risk with evidence, offer an alternative, and make clear you will support the final decision. Raise it early and directly with the person, not afterwards with colleagues."
+    a: "Start from the goal you share, state your concern as a specific risk with evidence, offer an alternative, and make clear you will support the final decision. Raise it early and directly with the person, not afterward with colleagues."
   - q: "What does disagree and commit mean?"
     a: "You state your disagreement clearly while the decision is open. Once it is made, you put full effort into making it work, even if it was not your choice. It only works if the disagreement was actually heard first."
   - q: "Is it risky to push back on senior leadership?"
@@ -32,7 +32,11 @@ Then the call ends, and the real meeting starts in a private chat: "This is neve
 
 Six weeks later it does not work, and the founder asks the most reasonable question in the world: "Why did nobody tell me?"
 
-I have been in that silence, on both sides of the table. This post is about getting out of it.
+I have been in that silence, on both sides of the table.
+
+[TODO: one real disagreement story. Either a time you stayed quiet and it cost something, or a time you spoke up: what the plan was, what you said, and what happened.]
+
+This post is about getting out of it.
 
 ## The bot problem
 
@@ -97,8 +101,8 @@ If you argue well and then commit well, something useful happens. People learn t
 
 - **Every hill.** If you object to everything, people stop listening. Save it for what matters.
 - **The ambush.** Raising a major objection for the first time in front of the whole company.
-- **The hallway campaign.** Agreeing in the room and lobbying against it afterwards. This destroys trust faster than anything.
-- **Making it personal.** Criticise the plan, never the person.
+- **The hallway campaign.** Agreeing in the room and lobbying against it afterward. This destroys trust faster than anything.
+- **Making it personal.** Criticize the plan, never the person.
 - **Complaint without a path.** A problem with no suggestion attached.
 - **Reopening settled decisions** without new information.
 

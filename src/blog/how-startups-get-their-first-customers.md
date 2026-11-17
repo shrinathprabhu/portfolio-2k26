@@ -15,7 +15,7 @@ keywords:
     "Lovable growth",
     "Clay go to market",
   ]
-# image: "/images/first-customers.png"
+image: "/images/blog/how-startups-get-their-first-customers.png"
 faq:
   - q: "How do you get your first paying customer?"
     a: "By talking directly to people who have the problem. Find where they already gather, help them in person or one to one, and ask them to pay once the product solves something for them. Almost every successful company's first customers came from manual, founder-led effort, not from marketing at scale."
@@ -27,7 +27,7 @@ faq:
 
 There is a fantasy every builder has. You launch. You post the link. You go to sleep. You wake up to a graph that goes up and to the right, and a notification that says "You have a new customer".
 
-Here is what actually happens. You launch. You post the link. Your mum likes it. A bot follows you. The graph is a flat line with one bump, and the bump is you checking the site from your phone.
+Here is what actually happens. You launch. You post the link. Your mom likes it. A bot follows you. The graph is a flat line with one bump, and the bump is you checking the site from your phone.
 
 The first sale almost never comes from marketing. It comes from a founder talking to one specific person with one specific problem, in a place that person already spends time. That was true for Airbnb fifteen years ago, and it is just as true for the companies that grew fastest in the last three.
 

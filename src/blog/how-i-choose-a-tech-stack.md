@@ -13,7 +13,7 @@ keywords:
     "boring technology",
     "software architecture decisions",
   ]
-# image: "/images/choosing-a-tech-stack.png"
+image: "/images/blog/how-i-choose-a-tech-stack.png"
 faq:
   - q: "What is the best tech stack for a new product?"
     a: "The one your team can ship and debug fastest today. For most products that means the language and framework you already know, one relational database, and a managed host. The stack matters far less than how quickly you can put a working product in front of users."
@@ -37,25 +37,17 @@ Most people start with the framework. I start further up.
 
 1. **What has to be true in ninety days?** A demo for investors, ten paying customers, or an internal tool that replaces a spreadsheet are three different products with three different stacks.
 2. **Who is going to build and maintain this?** A stack is a hiring decision and an on-call decision. If I am the only engineer, I choose what I can debug at 2 a.m. without documentation.
-3. **Where is the real risk?** If the risk is "will anyone want this", the stack should minimise time to a usable product. If the risk is technical, for example real-time sync or cryptography in the browser, the stack should be chosen around that one hard part.
+3. **Where is the real risk?** If the risk is "will anyone want this", the stack should minimize time to a usable product. If the risk is technical, for example real-time sync or cryptography in the browser, the stack should be chosen around that one hard part.
 4. **What is expensive to reverse?** I spend my thinking time here and almost none on the rest.
 5. **Only then: which tools?**
 
-## Explain it like I am five
-
-You are moving into a new flat. Some choices are easy to change: the curtains, the sofa, where the TV goes. Pick quickly. If you hate it, swap it on Saturday.
-
-Other choices are not: which city, which building, where the walls are. Get those wrong and you are living with it for years.
-
-A tech stack is the same. Most of it is curtains. A few parts are walls. The trick is knowing which is which, and spending your worry accordingly.
-
 ## Reversible and irreversible choices
 
-This is the single most useful lens I know for stack decisions, and it comes from how Amazon talks about one-way and two-way doors.
+I sort every choice by how expensive it is to undo. The reasoning behind that is in [most bad technical decisions were made at the wrong speed](/blog/how-i-make-technical-decisions/). Applied to a stack, the sort looks like this.
 
 **Hard to reverse, so decide slowly:**
 
-- **The data model.** Tables, relationships and what you treat as the source of truth. Every feature you build afterwards assumes it.
+- **The data model.** Tables, relationships and what you treat as the source of truth. Every feature you build afterward assumes it.
 - **Identity.** How users, teams and permissions relate. Adding multi-tenancy to a product that assumed one user per account is one of the most painful migrations there is.
 - **Where customer data lives.** A proprietary backend that holds your data in its own format is quick to start on and slow to leave.
 - **Public contracts.** API shapes, URL structures, SDK interfaces. Once other people depend on them, they are no longer yours to change freely.
@@ -63,7 +55,7 @@ This is the single most useful lens I know for stack decisions, and it comes fro
 **Easy to reverse, so decide in minutes:**
 
 - UI framework and component library
-- Hosting provider, as long as you deploy standard artefacts
+- Hosting provider, as long as you deploy standard artifacts
 - CSS approach, build tool, linting, state management library
 - Most third-party services behind a thin wrapper of your own
 
@@ -76,7 +68,7 @@ I do not start from zero each time. I keep defaults and only move off them with 
 - **One language across the product** if the team is small. Context switching costs more than any performance difference.
 - **One relational database.** Postgres handles relational data, JSON documents, full-text search and queues well enough for a very long time. A second datastore has to earn its place.
 - **A monolith.** One repository, one deploy. Splitting later is a known, well-documented exercise. Merging a distributed system back together is not.
-- **Managed everything** until the bill or a hard limit forces a change. On SendIt, a consumer app I led the frontend for, we stayed on a managed host until real traffic exhausted the plan limits, and only then moved to our own AWS setup. That was the right order. Doing it earlier would have cost weeks we needed for the product.
+- **Managed everything** until the bill or a hard limit forces a change. The SendIt hosting migration in the decisions post is the example.
 - **Static where possible.** If a page does not change per user, it should not need a server to render it. This site is plain static HTML for that reason.
 
 ## The questions that override a default
@@ -106,4 +98,4 @@ Before I commit to a stack I write down answers to these:
 - Which single component would fail first under ten times the load, and do we know what we would do about it?
 - Is there anything here that only one person understands?
 
-If the answers are comfortable, the stack is good enough. The rest of the energy belongs to the product. I have written separately about [why nobody cares about your tech stack](/blog/nobody-cares-about-your-tech-stack/) and about [how I make technical decisions in general](/blog/how-i-make-technical-decisions/).
+If the answers are comfortable, the stack is good enough. The rest of the energy belongs to the product. The less polite version of this argument is [nobody has ever canceled a subscription because you used PHP](/blog/nobody-cares-about-your-tech-stack/).

@@ -14,7 +14,7 @@ keywords:
     "designing transaction flows",
     "failure handling system design",
   ]
-# image: "/images/step-3-of-5.png"
+image: "/images/blog/designing-multi-step-flows-that-survive-failure.png"
 faq:
   - q: "How do you design a flow that can fail halfway?"
     a: "Write down every state the flow can be in, including the in-between ones. Save progress on the server after each step, make every step safe to retry, and decide in advance what happens at each point of failure: retry, resume, or undo. Then show the user exactly which state they are in."
@@ -32,21 +32,9 @@ That user is now having the worst five minutes of their week. And nothing actual
 
 I build cross-chain interfaces for a living, where this scenario is a normal Tuesday. But the same problem lives in every checkout, sign-up, file upload, booking and payout. Anything with more than one step can stop in the middle.
 
-## Explain it like I am five
+Three ideas cover most of it. The steps in between are real and deserve names. Progress is remembered somewhere safer than the user's browser. And asking twice never does the thing twice. The rest of this post is those three ideas in detail.
 
-You order a pizza. You do not just want to know "ordered" and "delivered". You want the bit in between: being made, in the oven, on the bike, two streets away.
-
-And if the delivery rider's phone dies, the pizza should not vanish from existence. The shop still knows about your order. When you call, they can say "it left ten minutes ago".
-
-Three ideas are hiding in that pizza:
-
-- **The steps in between are real** and deserve names.
-- **The shop remembers**, not the rider. Progress is stored somewhere safe.
-- **Calling twice does not get you two pizzas.**
-
-That is most of system design for multi-step flows. The rest is detail.
-
-## 1. Draw every state, especially the awkward ones
+## Draw every state, especially the awkward ones
 
 The first thing I do is list every state the flow can be in. Not the three on the designer's mockup. All of them.
 
@@ -62,7 +50,7 @@ The bugs are always in the states nobody drew. "Step two succeeded and step thre
 
 This is all a **state machine** is: a list of states and the allowed moves between them. It sounds academic. In practice it is a table on a whiteboard that saves you months.
 
-## 2. The browser is not where the truth lives
+## The browser is not where the truth lives
 
 Early versions of flows often keep progress in the page's memory. Refresh the tab, and the app forgets everything.
 
@@ -72,17 +60,17 @@ So after each step, progress is recorded somewhere durable. When the user return
 
 A good test: open the flow, get halfway, kill the browser, reopen it. If you see an empty form, the design is not finished.
 
-## 3. Make every step safe to repeat
+## Make every step safe to repeat
 
 Networks fail in an annoying way. You send a request, and you get no reply. Did it fail on the way there, or succeed with the answer lost on the way back? You cannot know.
 
-The only safe response is to try again, which is only safe if repeating the step does no harm. That property is called **idempotency**. A lift button is idempotent: press it five times, one lift arrives. A "pay" button must behave the same way.
+The only safe response is to try again, which is only safe if repeating the step does no harm. That property is called **idempotency**. An elevator button is idempotent: press it five times, one elevator arrives. A "pay" button must behave the same way.
 
 The usual technique is to attach a unique key to each attempt. If the server sees the same key twice, it returns the first result and does not act again.
 
 And yes, also disable the button after the first click. Users double-click. Impatient users triple-click. I have been that user.
 
-## 4. Decide what "undo" means before you need it
+## Decide what "undo" means before you need it
 
 With one database, a failed operation rolls back cleanly. Across several systems, a payment provider, a blockchain, an email service, there is no global undo.
 
@@ -90,11 +78,11 @@ So for each step I decide in advance: if a later step fails, what do we do about
 
 - **Retry** the failed step, if it is likely temporary.
 - **Compensate**, meaning run a reverse action, such as a refund.
-- **Park it** in a clearly labelled state for a human to resolve.
+- **Park it** in a clearly labeled state for a human to resolve.
 
 This pattern has a name, a saga, but the important thing is the habit. Never design a step without knowing what happens if the next one fails.
 
-## 5. Tell the truth in the interface
+## Tell the truth in the interface
 
 This is where frontend work becomes system design.
 
@@ -107,28 +95,19 @@ This is where frontend work becomes system design.
 
 On a bridge interface, status changes arrive constantly. Getting those updates to render smoothly without lying about the current state was a large part of the engineering.
 
-## 6. Plan for the slow failure
+[TODO: one real Fastbridge number, for example how many states a transfer can be in, or the share of transfers that get stuck.]
+
+## Plan for the slow failure
 
 Outright errors are easy. The hard one is the step that just never finishes.
 
 Every waiting state needs a time limit and a decision about what happens when it passes. Otherwise the user sits on "pending" forever. After a reasonable wait, move to a state that says "this is taking longer than normal, here is what we are doing".
 
-## 7. Be able to see it from the inside
+## Be able to see it from the inside
 
 When a user writes in to say "my transfer is stuck", support should be able to look up that flow and see exactly which state it is in and why. That requires logging each move between states with a shared identifier.
 
 If you cannot answer "where is this user's transaction right now" in under a minute, the flow is not production-ready, however good it looks.
-
-## The checklist I use
-
-- Every state listed, including partial and failed ones
-- Progress stored outside the browser
-- Refresh, back button and a second tab all handled
-- Each step safe to retry
-- A defined reaction to failure at every step
-- Timeouts on every waiting state
-- Honest, specific progress shown to the user
-- A way for support to look up any flow
 
 ## Why this is the senior part of the job
 

@@ -13,7 +13,7 @@ keywords:
     "MVP in 2027",
     "distribution for startups",
   ]
-# image: "/images/ship-products-2027.png"
+image: "/images/blog/how-to-ship-products-in-2027.png"
 faq:
   - q: "What is the hardest part of shipping a product now?"
     a: "Getting anyone to notice, trust and pay for it. AI tools have reduced the cost of building a working product dramatically, so the bottleneck has moved to choosing a real problem, reaching the people who have it, and earning enough trust that they try your product over the alternatives."
@@ -50,9 +50,9 @@ I have shipped products for eight years, including a learning platform delivered
 
 Every durable advantage in 2027 comes from this second list.
 
-## 1. Pick a problem with a buyer, not an idea with a demo
+## Pick a problem with a buyer, not an idea with a demo
 
-Because building is cheap, it is tempting to build first and look for users afterwards. This is the most common way to waste the new speed.
+Because building is cheap, it is tempting to build first and look for users afterward. This is the most common way to waste the new speed.
 
 Before writing anything, I want to be able to answer:
 
@@ -63,15 +63,15 @@ Before writing anything, I want to be able to answer:
 
 If I cannot answer these, a faster build only gets me to the wrong place sooner.
 
-## 2. Scope by subtraction
+## Scope by subtraction
 
 When features cost nothing to add, products become bloated. The discipline has reversed: the skill is no longer building enough, it is refusing to build more.
 
-When I delivered a multilingual learning platform for farmers in under a week, the speed came from cutting, not from typing fast. One user journey, done properly, in the languages people needed. Everything else waited.
+The clearest case I have is a learning app I shipped in a week, where all of the speed came from cutting. That story is in [scope is the only speed hack](/blog/delivering-mvp-in-a-week/).
 
 A product that does one thing clearly can be explained in a sentence, and a product that can be explained in a sentence can be sold.
 
-## 3. Build the path to the user before the product is finished
+## Build the path to the user before the product is finished
 
 Distribution is now the main constraint, so it deserves the first week, not the last.
 
@@ -82,7 +82,7 @@ Distribution is now the main constraint, so it deserves the first week, not the 
 
 The companies that grew fastest in the last few years mostly had an audience or a community before they had a polished product. I look at several of them in [how startups get their first customers](/blog/how-startups-get-their-first-customers/).
 
-## 4. Treat quality and trust as the product
+## Treat quality and trust as the product
 
 When everything is easy to generate, the things that are hard to generate become the differentiators.
 
@@ -94,17 +94,19 @@ When everything is easy to generate, the things that are hard to generate become
 
 Users cannot evaluate your code. They can feel all five of these.
 
-## 5. Keep a human accountable for every part
+The security one deserves a second look. Vibe coding: anyone can ship a product in a weekend. Cybersecurity: anyone can hack it in a weekend. Equality achieved.
+
+## Keep a human accountable for every part
 
 Speed creates a new risk: shipping a system nobody on the team fully understands. It works until the first incident.
 
 My rule is that every part of the product has a named person who can explain how it works and what happens when it fails. Agents can write it. A person must own it. I explain why in [is tech debt still debt in the age of AI](/blog/is-tech-debt-still-debt-in-the-age-of-ai/).
 
-## 6. Charge early
+## Charge early
 
 Free users tell you what is interesting. Paying users tell you what is valuable. With so many free alternatives, a willingness to pay is the clearest signal you can get, and the sooner you ask for it, the sooner you learn whether the problem is real.
 
-## 7. Build what cannot be copied in a weekend
+## Build what cannot be copied in a weekend
 
 If a competitor can reproduce your product with a few prompts, the product is not your moat. Something else has to be:
 
@@ -115,16 +117,5 @@ If a competitor can reproduce your product with a few prompts, the product is no
 - Deep knowledge of one kind of customer
 
 These take time, which is precisely why they are worth having.
-
-## The 2027 shipping checklist
-
-- One specific customer, named
-- Five real conversations before the first commit
-- One job the product does, stated in one sentence
-- One distribution channel chosen and started before launch
-- A price from day one
-- A named owner for every part of the system
-- Basic security in place before the first user, not after the first incident
-- A way to hear from users within a day
 
 Building got cheap. Judgment, trust and reach did not, and those are where a product is won now.

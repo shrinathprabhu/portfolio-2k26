@@ -1,75 +1,74 @@
 ---
-title: "A Week Later, the VP Was Using the App: What Shipping an MVP in Seven Days Taught Me About Scope"
-description: "How I built a production mobile-first webapp supporting 5 Indian languages with auto-switching video in under a week, and what I learned about scoping, speed, and the difference between fast and reckless."
+title: "The VP Used It on Friday: Scope Is the Only Speed Hack"
+description: "A production learning app for farmers, in several Indian languages, built in one week. None of the speed came from typing faster. It came from four decisions about scope, made before and during the build."
 date: 2026-05-01
-postTags: ["posts", "career", "frontend", "startup"]
+postTags: ["posts", "shipping", "product", "decision-making"]
 category: "Shipping"
 keywords:
   [
-    "MVP",
-    "rapid prototyping",
-    "multilingual",
-    "i18n",
-    "Indian languages",
-    "React",
-    "Nest.js",
-    "Firestore",
-    "Video.js",
+    "MVP in a week",
+    "scoping an MVP",
+    "how to ship fast",
+    "scope discipline",
+    "multilingual web app",
     "startup engineering",
   ]
-image: "/images/agrostar-mvp.png"
+image: "/images/blog/delivering-mvp-in-a-week.png"
+imageFallback: "/images/agrostar-mvp.png"
 ---
 
-As soon as I joined the company as a tempory resource, I received the requirements. A week later, the VP was using the app. He offered me a full-time retainer role based on what he saw.
+I joined [AgroStar](https://agrostar.in), an Indian agtech company, as a temporary resource [TODO: confirm the company name as you want it shown, the year, and the engagement type. The earlier draft said both "temporary resource" and "full-time retainer role", which contradict each other]. The requirements arrived on day one. On Friday the VP was using the app, and he offered to keep me on.
 
-This is the story of building a production mobile-first learning platform for [Agrostar](https://agrostar.in) ([Agrostar Gold](https://gold.agrostar.in)), an Indian agtech company, in a week. The app allowed farmers to log in, attend live or recorded sessions on modern farming techniques, and access content in 5 Indian languages with auto-switching audio and subtitles.
+The app was a mobile-first learning platform, AgroStar Gold. Farmers sign in, watch live or recorded sessions on farming techniques, and get the content in their own language, with audio and subtitles switching to match.
 
-## The constraints
+It is the fastest I have ever shipped anything to production, and none of the speed came from working harder. It came from scope.
 
-The designs were already ready. The user database already existed (the sales team handled farmer registration, I just needed to sync from their database). The scope was genuinely narrow: sign in, browse sessions, watch videos, like, and comment. No search, no recommendations, no social features, no offline mode.
+## Most of the week was saved before it started
 
-The tight scope was not laziness, it was the reason the project succeeded. Every feature that was not in that list was a feature I did not build. No search meant no search indexing. No recommendations meant no ML pipeline. No offline mode meant no service worker caching strategy. Each missing feature saved half a day to a full day of work.
+Two things were already true when I arrived, and I had nothing to do with either.
 
-## The stack decisions
+The designs were finished and approved. When an engineer designs and builds at the same time, every component carries a design decision, a review and a revision. With approved designs, I was translating, not inventing.
 
-Every stack decision optimized for one variable: how fast can I ship something I already know?
+The users already existed. The sales team handled farmer registration, so there was no sign-up flow, no verification and no onboarding to build. The app synced farmer records from [TODO: one source. The earlier draft said both "their database" and "marketing sheets". State which].
 
-React for the frontend, I knew it, the designs mapped cleanly to components, and mobile-first responsive layouts are straightforward in React.
+If you want something built in a week, this is where to spend your effort: settle the design and the data before the engineer starts the clock.
 
-Nest.js with Express and TypeScript for the backend, I had used this exact combination before at [Hashbinary](https://hashbinary.com). No learning curve, no surprises.
+## The list of things I did not build
 
-Firestore for the database, the farmer data was synced from Agrostar's marketing sheets to Firestore daily. Firestore's real-time listeners meant the app automatically reflected new data without polling. The schema was pre-decided by the lead engineer, I just consumed it.
+The scope was sign in, browse sessions, watch a video, like, comment.
 
-Video.js for pre-recorded sessions, battle-tested, well-documented, and handles multi-track audio and subtitle switching natively.
+Not in it: search, recommendations, social features, offline mode. Each of those is a system, not a feature. Search means indexing. Recommendations mean a model and the data to feed it. Offline means a caching strategy and a sync problem. Every absence saved between half a day and a day.
 
-There was no architectural novelty in this stack. That was the point.
+When the conversation drifted toward "what if we also added", I asked one question: does a farmer need this to watch a video in their language on Friday? If the answer was no, it went on a list for later. It helps that the question is about the farmer and not about my workload.
 
-## The multilingual challenge
+## Nothing new in the stack
 
-The app supported 5 Indian languages beyond English and Hindi, each with its own script. Every label, button, and piece of UI text needed to render correctly in each script, which meant testing not just translation accuracy but layout integrity.
+React, Nest.js and Firestore, all of which I had used before, and Video.js for playback because it handles multiple audio and subtitle tracks natively.
 
-The video content was the harder problem. Each recorded session had multiple audio tracks and subtitle files. When a user switched their language preference, the app needed to switch the video's audio track and subtitle track simultaneously without restarting playback. Video.js handles this through its TextTrack and AudioTrack APIs, but wiring it to a global language preference that persists across sessions (stored in Firestore, so it syncs if the user logs in on a different device) required careful state management.
+Nothing about the architecture was novel, and I meant it that way. A one-week project is the wrong place to try the framework you have been curious about. New tools are for timelines with slack in them.
 
-Most videos were available in only one or two languages. The UI needed to filter these correctly, showing only videos available in the user's selected language, while still allowing discovery of content in other languages.
+## The demo path first
 
-## What I learned about speed
+The VP was going to judge the app by using it, not by reading the code. So I built in the order he would experience it: sign in, browse, play, switch language.
 
-Building fast and building recklessly are different things. The week long timeline worked because of four deliberate decisions, not because I cut corners.
+Error states, validation and rate limiting came after that path was solid. They did get built. This was about sequence. If the week had gone badly, I wanted to be short an edge case, not short the product.
 
-First, I used tools I already knew. Zero learning curve meant zero wasted time on documentation and tutorials. This is the opposite of the typical developer instinct ("this is a great opportunity to try that new framework"). New tools are for projects with flexible timelines.
+## The one hard part
 
-Second, I built the demoable surface first. The VP was going to evaluate the app by using it, not by reading the code. So I built the screens and flows in the order he would experience them: login → browse sessions → play a video → switch language. The backend edge cases (error states, rate limiting, data validation) came after the demo path was solid.
+Language was the only real engineering problem.
 
-Third, I killed the scope aggressively. When the conversation drifted toward "what if we also added..." I asked "does a farmer need this to watch a video in Marathi on Friday?" If the answer was no, it went to the backlog.
+The app supported [TODO: the actual list of languages, so this post and the frontend post agree. The earlier drafts said "5 Indian languages", then "5 beyond English and Hindi", and the other post named Devanagari, Tamil, Telugu, Kannada and Gurmukhi scripts].
 
-Fourth, the designs were ready before I started. This is the single biggest accelerator for frontend development. When a developer has to design and build simultaneously, the build takes 3-5x longer because every component involves a design decision, a stakeholder review, and a revision cycle. Pre-approved designs meant I was translating Figma to code, not inventing interfaces.
+Every label had to render correctly in each script, which is a layout problem as much as a translation problem: a short English button label can be twice as long in another language. And each recorded session had several audio tracks and subtitle files. When a farmer changed language, the video had to switch both without restarting, and the preference had to follow them to another device.
 
-## The outcome
+Most videos existed in only one or two languages, so the catalog also had to filter by what was actually available without hiding everything else.
 
-The VP saw the app on Friday, used it for sometime, and offered me a full-time retainer role. That validation was meaningful, a senior executive at a well-funded agtech company saw few days of my work and decided he wanted me permanently.
+This is the part I would not have cut, and the part that took the most care. Scope discipline does not mean every feature gets less time. It means one thing gets most of it.
 
-The app was the fastest I have ever shipped anything to production. It was not the most architecturally interesting thing I have built, and it was not the most technically challenging. But it was the project that taught me the most about what actually matters when you are shipping: scope discipline, tool familiarity, and the ability to say no to everything that does not serve the immediate goal.
+## What I took from it
 
----
+The outcome was simple. The VP opened the app on Friday, used it for a while, and offered to keep me on.
 
-_Written by [Shrinath Prabhu](https://shrinath.me), Senior Staff Frontend Engineer. More at [shrinath.me/work](https://shrinath.me/work/)._
+The project was neither architecturally interesting nor technically difficult. It still taught me more about shipping than harder projects did, because it removed every excuse. With designs done, data ready and a familiar stack, the only variable left was what I agreed to build.
+
+Years later, with coding agents that can produce a week of code in an afternoon, that variable is the only one left for everyone. I come back to it in [how to ship in 2027](/blog/how-to-ship-products-in-2027/).

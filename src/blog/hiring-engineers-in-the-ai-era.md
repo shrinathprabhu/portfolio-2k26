@@ -13,7 +13,7 @@ keywords:
     "hiring first engineer startup",
     "engineering interview process 2026",
   ]
-# image: "/images/hiring-ai-era.png"
+image: "/images/blog/hiring-engineers-in-the-ai-era.png"
 faq:
   - q: "How do you interview software engineers when they can use AI?"
     a: "Let them use it, and assess what AI cannot provide: how they break down an unclear problem, the questions they ask, how they judge and correct generated code, how they explain trade-offs, and how they have handled real projects and failures in the past."
@@ -57,7 +57,7 @@ The things worth paying for are the ones AI does not supply. I have argued elsew
 
 **Let them use AI.** Banning it tests a way of working that no longer exists. Watching someone use it tells you a great deal: do they read what it produces, question it, catch its mistakes, or accept the first answer?
 
-**Give a vague problem on purpose.** "Users are complaining the dashboard is slow. What do you do?" The strong candidate asks questions. Slow for whom? Since when? How do we know? The weak one starts optimising something at random.
+**Give a vague problem on purpose.** "Users are complaining the dashboard is slow. What do you do?" The strong candidate asks questions. Slow for whom? Since when? How do we know? The weak one starts optimizing something at random.
 
 **Review code together.** Show them a pull request with a subtle problem. Not a syntax error, a design one: it works today and will hurt in six months. This is the job now, since much of an engineer's day is judging code they did not write.
 
@@ -73,16 +73,16 @@ The things worth paying for are the ones AI does not supply. I have argued elsew
 
 - **Cannot explain their own submission.** The clearest sign there is.
 - **Never asks why.** Takes every requirement as given.
-- **No scars.** Everything they built went perfectly. Nobody's has.
+- **No scars.** Everything they built went perfectly. Nobody's has. Mine include almost nine years of saying "it works on my machine" with a straight face.
 - **Tool worship.** Describes themselves entirely by a framework.
 - **Blames others** for every project that went badly.
-- **Agrees with everything you say.** Pleasant in an interview, expensive afterwards.
+- **Agrees with everything you say.** Pleasant in an interview, expensive afterward.
 
 ## Green flags
 
 - Asks about your users and your business before the tech stack
 - Says "it depends", and then says on what
-- Volunteers a mistake and what they changed afterwards
+- Volunteers a mistake and what they changed afterward
 - Pushes back on something in the interview, politely
 - Simplifies the problem before solving it
 - Has opinions and holds them loosely

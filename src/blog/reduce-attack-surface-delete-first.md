@@ -14,7 +14,7 @@ keywords:
     "frontend security",
     "supply chain security",
   ]
-# image: "/images/delete-key-security.png"
+image: "/images/blog/reduce-attack-surface-delete-first.png"
 faq:
   - q: "What is an attack surface?"
     a: "Everything an attacker could possibly touch: your pages, APIs, dependencies, third-party scripts, cloud accounts, employee logins and forgotten test servers. The larger it is, the more places there are for something to go wrong."
@@ -34,17 +34,15 @@ In 2024, the domain was sold to a new owner. Shortly after, the script began sen
 
 Nobody broke in. The door had been left open by a line of HTML that no one remembered writing.
 
-## Explain it like I am five
+## What attack surface means
 
-Your house has doors and windows. Each one is a way in for you, and also for a burglar. A house with two doors is easier to guard than a house with forty windows, a cat flap, and a spare key under every plant pot.
+**Attack surface** is everything an attacker could possibly touch. Every dependency, every third-party script, every API endpoint, every admin login and every "temporary" test server adds to it.
 
-**Attack surface** is the count of your doors and windows. Every dependency, every third-party script, every API endpoint, every admin login and every "temporary" test server is one more.
-
-Most security advice is about better locks. This post is about bricking up the windows you forgot you had.
+Most security advice is about adding protection. This post is about having less to protect.
 
 ## Why adding is the instinct, and why it is backwards
 
-When a team gets serious about security, it usually buys something: a scanner, a firewall, a monitoring service. Each of these is useful. Each is also more software, with its own access, its own bugs and its own login. You have added a guard and a door at the same time.
+When a team gets serious about security, it usually buys something: a scanner, a firewall, a monitoring service. Each of these is useful. Each is also more software, with its own access, its own bugs and its own login. You have added a guard and a new way in at the same time.
 
 Deleting has none of those costs. Code that is not there has no vulnerabilities. A dependency you removed cannot be hijacked. An account you closed cannot be phished. It is the only security measure that also makes your product faster and your bills smaller.
 
@@ -58,7 +56,7 @@ So my order is always the same: **remove, then restrict, then monitor.**
 
 **Old endpoints.** Version one of the API, still running "in case someone uses it". Debug routes. The export feature for a customer who left.
 
-**Forgotten infrastructure.** Staging servers with production data. Subdomains pointing at services you cancelled, which an attacker can claim. Storage buckets from a migration.
+**Forgotten infrastructure.** Staging servers with production data. Subdomains pointing at services you canceled, which an attacker can claim. Storage buckets from a migration.
 
 **Stale access.** Accounts of people who left. API keys for integrations that ended. Admin rights granted during an emergency eighteen months ago.
 
@@ -81,7 +79,7 @@ This site is a small example. It loads no third-party scripts at all, and its se
 
 ## Monitor: last, and smallest
 
-Monitoring matters, and it is third for a reason. Watching forty windows is expensive. Watching two is manageable.
+Monitoring matters, and it is third for a reason. Watching everything is expensive. Watching what is left after a clean-up is manageable.
 
 - Alerts when production files change outside a release
 - Dependency alerts for known vulnerabilities

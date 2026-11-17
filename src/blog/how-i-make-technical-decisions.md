@@ -13,7 +13,7 @@ keywords:
     "staff engineer decisions",
     "design doc",
   ]
-# image: "/images/technical-decisions.png"
+image: "/images/blog/how-i-make-technical-decisions.png"
 faq:
   - q: "What is an architecture decision record?"
     a: "A short document, usually under a page, that records one significant technical decision: the context, the options considered, the choice made and its consequences. Its value is that a year later anyone can see why the decision was made, not just what it was."
@@ -42,7 +42,7 @@ The first question is never "which option is better". It is "how expensive is it
 - **Two-way doors** are cheap to reverse: a library, a folder structure, a hosting provider, a UI pattern. Decide in minutes. The person closest to the work decides. Being wrong costs a day or two.
 - **One-way doors** are expensive to reverse: the data model, the identity model, a public API, a pricing structure baked into code, a cryptographic scheme. Decide slowly, in writing, with more than one person.
 
-The most common failure I see in teams is treating everything as a one-way door. Every choice gets a meeting, nothing ships, and the team concludes it needs more process. The second most common failure is the reverse: a one-way door walked through casually on a Tuesday because nobody labelled it.
+The most common failure I see in teams is treating everything as a one-way door. Every choice gets a meeting, nothing ships, and the team concludes it needs more process. The second most common failure is the reverse: a one-way door walked through casually on a Tuesday because nobody labeled it.
 
 Classifying takes thirty seconds and removes most of the argument.
 
@@ -71,9 +71,7 @@ Writing does two jobs. It forces clear thinking: a decision that cannot be expla
 
 Every option costs something. If a proposal lists only benefits, it is a sales pitch.
 
-When I designed the Arcana wallet as a browser sidebar instead of the usual popup, the benefit was clear: users could see the dApp and the wallet at the same time, which matters when you are confirming a complex DeFi transaction. The cost was also clear: more screen space to design for, a less familiar pattern, and more work to remain compatible with sites built around MetaMask's behaviour. We accepted that cost knowingly, so nobody was surprised by it later.
-
-The same applied when I proposed a single configurable widget at Avail instead of every team building its own swap and deposit screens. The trade was flexibility for consistency. We resolved it by shipping two ways from one codebase: an npm package for teams that want configuration, and source components for teams that want full control. That answer only appeared because the cost was stated out loud.
+Two examples from my own work have their own posts: choosing a sidebar over a popup for [the Arcana wallet](/blog/chrome-extension-wallet/), and shipping Avail's widgets as both a package and source components in [the DevRel post](/blog/devrel-is-a-product-function/). In both, the useful answer only appeared after the cost was stated out loud.
 
 ## Step 4: Set a tripwire
 
@@ -96,6 +94,10 @@ Jeff Bezos has written that most decisions should be made with around 70 percent
 Once the decision is made, the team commits, including the people who argued against it. "Disagree and commit" only works if the disagreement was genuinely heard first, which is why the written options matter. People will commit to a decision they lost if they can see their argument was considered.
 
 What I will not do is pretend to agree in the meeting and reopen the question in a hallway. That is worse than either choice. I have written more about [how to disagree with leadership properly](/blog/how-to-disagree-with-leadership/).
+
+## A decision I got wrong
+
+[TODO: a real story. A decision you made that turned out wrong: what you chose, at what speed, what the tripwire should have been, and what it cost to reverse.]
 
 ## The traps I watch for in myself
 

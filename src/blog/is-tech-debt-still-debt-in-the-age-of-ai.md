@@ -13,14 +13,14 @@ keywords:
     "comprehension debt",
     "code maintainability",
   ]
-# image: "/images/tech-debt-ai.png"
+image: "/images/blog/is-tech-debt-still-debt-in-the-age-of-ai.png"
 faq:
   - q: "Does AI eliminate technical debt?"
     a: "No. AI makes local, mechanical debt cheap to fix: outdated syntax, missing tests, duplicated helpers, dependency upgrades. It does not fix structural debt such as a wrong data model or unclear system boundaries, and it creates a new kind, code that nobody on the team actually understands."
   - q: "What is comprehension debt?"
     a: "The gap between the code a team has shipped and the code the team understands. It grows when generated code is merged without anyone building a mental model of it. It is paid back during incidents, when someone has to reason about unfamiliar code under time pressure."
   - q: "Should you still refactor now that AI can rewrite code?"
-    a: "Yes, but prioritise differently. Spend little effort polishing code inside a well-defined module, because that is cheap to regenerate later. Spend real effort on boundaries, data models, contracts and tests, because those decide whether regeneration is safe."
+    a: "Yes, but prioritize differently. Spend little effort polishing code inside a well-defined module, because that is cheap to regenerate later. Spend real effort on boundaries, data models, contracts and tests, because those decide whether regeneration is safe."
 ---
 
 Every engineering team has the list. "Upgrade the framework." "Add tests to the billing module." "Remove the old API." It sits at the bottom of the backlog, grows a little each quarter, and gets discussed with the enthusiasm normally reserved for dental appointments.
@@ -30,14 +30,6 @@ Then coding agents arrived, and something odd happened. A migration that had bee
 So is tech debt over?
 
 Partly. AI changed the interest rate on technical debt, and it changed it in both directions. Some debt that used to take a quarter to repay now takes an afternoon. Other debt is being created faster than any team has ever created it. And there is a brand new kind that barely existed three years ago. Treating all of it as one number, which most teams still do, leads to the wrong decisions.
-
-## Explain it like I am five
-
-You are late, so you shove everything into the cupboard and shut the door. The room looks tidy. That is tech debt: a shortcut now that costs you later, every time you need to find a sock.
-
-AI is like a robot that can tidy the cupboard in a minute. Great news for socks.
-
-But the robot cannot fix the fact that your house has no kitchen. And if you let it fill ten more cupboards while you are out, you now own a house full of things you have never seen and cannot find.
 
 ## Tech debt was always a metaphor about interest
 
@@ -52,7 +44,7 @@ AI changes the cost of repayment for some debts and the rate of borrowing for ot
 A large class of debt is mechanical: tedious, well-defined and easy to verify. Coding agents are very good at it.
 
 - **Framework and dependency upgrades.** Migrating an API across hundreds of call sites.
-- **Missing tests.** Writing characterisation tests around existing behaviour before changing it.
+- **Missing tests.** Writing characterization tests around existing behavior before changing it.
 - **Inconsistent patterns.** Converting three ways of fetching data into one.
 - **Dead code and duplication.** Finding and removing it.
 - **Documentation.** Describing what a module does and how to run it.
@@ -79,6 +71,8 @@ This is the kind I worry about most, and it barely existed three years ago.
 When a person writes code, the team gains two things: the code and someone who understands it. When an agent writes code and a human approves it after a quick read, the team gains the code only. Repeat that for a year and you have a system that works, passes its tests, and that nobody can reason about.
 
 Some people call this **comprehension debt**. It carries no interest on normal days. The whole bill arrives during an incident, when someone has to work out why a system is misbehaving while reading it for the first time.
+
+Vibe coding is fine right up until someone has to debug it at 2 a.m. and the vibe was never written down.
 
 There is supporting evidence that this is not just a feeling. Google's DORA research has reported that higher AI adoption was associated with lower delivery stability, and code-analysis firms have reported rising duplication and churn, meaning code rewritten shortly after being written. The exact numbers vary by study. The direction is consistent: more code, produced faster, with less of it understood.
 

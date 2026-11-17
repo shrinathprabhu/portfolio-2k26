@@ -1,8 +1,8 @@
 ---
-title: "Your Next Customer Will Ask ChatGPT, Not Google. Will It Mention You?"
-description: "People now ask ChatGPT, Perplexity, Gemini and Google's AI Overviews before they click anything. A practical guide to answer engine optimisation and generative engine optimisation: what the research supports, what is hype, and what to do first."
+title: "AEO Is SEO With Better PR. Here's What I Actually Did"
+description: "Answer engine optimization and generative engine optimization are mostly good publishing with new names. A first-hand account of how this site is built to be read by AI crawlers, what I skipped, and the part no build step can do for you."
 date: 2026-11-13
-postTags: ["posts", "seo", "ai", "growth"]
+postTags: ["posts", "seo", "ai", "architecture"]
 category: "Sales & Growth"
 keywords:
   [
@@ -11,138 +11,82 @@ keywords:
     "answer engine optimization",
     "generative engine optimization",
     "AI discoverability",
-    "how to rank in ChatGPT",
-    "AI search optimization",
     "llms.txt",
+    "static site SEO",
   ]
-# image: "/images/aeo-geo.png"
-faq:
-  - q: "What is the difference between SEO, AEO and GEO?"
-    a: "SEO is about ranking pages in a list of search results. AEO, answer engine optimisation, is about being the source of a direct answer. GEO, generative engine optimisation, is about being cited or mentioned when an AI model writes a response. In practice they overlap heavily and share the same foundations."
-  - q: "How do you get cited by ChatGPT or Perplexity?"
-    a: "Publish clear, specific, well-structured answers to questions people actually ask, support them with data and named sources, make sure AI crawlers can access your pages, and earn mentions on other reputable sites. Engines cite content that is easy to extract and that other sources corroborate."
-  - q: "Does llms.txt improve AI visibility?"
-    a: "There is no solid public evidence that it changes how often AI engines cite a site, and major providers have not committed to using it. It is cheap to add and harmless, but it should be the last item on the list, well after content quality, crawlability and off-site mentions."
+image: "/images/blog/aeo-geo-ai-discoverability.png"
 ---
 
-Watch how someone under thirty looks for a product now. They do not type three keywords into a search box and open ten tabs. They ask a full question to an AI assistant, "what is the best tool for X if I am a small team with no budget", and they read one answer.
+Somewhere in the last two years, SEO hired a publicist. The work is now called AEO, answer engine optimization, or GEO, generative engine optimization, and it comes with new tools, new consultants and new invoices.
 
-That answer names three or four options. If you are one of them, you are in the running. If you are not, you do not exist, and no amount of being on page one of Google helps, because nobody went to page one.
+The underlying shift is real. People ask an assistant a full question and read one answer that names three or four options. If you are not one of them, ranking on page one does not help, because nobody visited page one.
 
-That shift is what the acronyms are about. **AEO** is answer engine optimisation. **GEO** is generative engine optimisation. Both mean roughly the same thing: getting AI systems to find you, understand you and mention you.
+What you do about it is less new than the vocabulary. An assistant with web access runs a search, fetches a handful of pages, pulls out the passages that answer the question, and cites some of them. So you need to be fetchable, easy to extract from, and credible enough to keep. Two of those three are things you build. This is what I built on this site, with each item checked against the repository and not against a guide.
 
-The short version of how: answer real questions clearly and early in the page, back your claims with specifics that can be checked, and be mentioned by sources other than yourself. Most of the rest is detail, and a fair amount of what is sold as "GEO" is ordinary good publishing with a new name.
+## The page is finished before it leaves the server
 
-I rebuilt my own site with this in mind, so this guide separates what the evidence supports from what is speculation.
+This site is static HTML, generated at build time by Eleventy and served as files. There is no client-side rendering of content. A crawler that does not run JavaScript, which describes many AI crawlers, receives the same article a browser does.
 
-## The terms, briefly
+I did not choose this for AEO. I chose it because a blog post does not change per visitor, so nothing needs to compute it per request. It turns out that the cheapest architecture is also the most readable one for a machine.
 
-- **SEO, search engine optimisation:** ranking in a list of links.
-- **AEO, answer engine optimisation:** being the direct answer, in a featured snippet, a voice reply or an AI summary.
-- **GEO, generative engine optimisation:** being cited or mentioned when a language model composes a response, in ChatGPT, Perplexity, Gemini, Claude or Google's AI Overviews.
+The same rule applied on a harder project. Nexus Fastbridge is a React single-page app, and each chain needed a page that search engines could index. I did not move the app to a server-rendering framework. I wrote a build step that generates static HTML for each chain, and the app hydrates on top of it.
 
-They are less different than the vocabulary suggests. AI engines with web access usually run a search, retrieve a handful of pages, and write from those. If you are not retrievable, you cannot be cited. Classic SEO is the foundation of the other two.
+If your content only exists after a script runs, fix that before anything else in this post.
 
-## How answer engines choose what to cite
+## Crawlers are allowed in
 
-A simplified version of what happens when someone asks a question:
+The `robots.txt` here allows everything except the error page and points to the sitemap. That sounds too obvious to mention. It is worth checking anyway, because the usual way sites block AI crawlers is by accident, through a bot-protection setting somebody enabled once.
 
-1. The engine turns the question into one or more searches.
-2. It retrieves candidate pages.
-3. It extracts the passages that answer the question.
-4. It writes a response and cites some of the sources.
+The sitemap only includes a last-modified date for pages where a real edit date is known. Stamping every URL with the build time teaches crawlers to ignore the field.
 
-Each step is a place where you can drop out. You need to be found in step 2, be easy to extract from in step 3, and be credible enough to keep in step 4.
+## A strict security policy and no third-party scripts
 
-### Explain it like I am five
+Every page is served with a Content Security Policy that starts from `default-src 'none'` and allows scripts, fonts, images and requests only from this origin. Fonts are self-hosted. There is no analytics tag, no chat widget and no embed from anyone else's domain.
 
-Think of the AI as a student writing an essay the night before it is due. They grab a few books, flip to the pages that answer the question, copy the clearest sentences, and list the books at the end.
+This is a security decision first, and I explain the reasoning in [the cheapest security tool you own is the delete key](/blog/reduce-attack-surface-delete-first/). It has two side effects that matter here. The pages are small and fast, because nothing loads that I did not write. And nothing on the page can rewrite the content after it loads, so what a crawler reads is what I published.
 
-Which books get used? The ones that were on the shelf, that answered the question on the first page, and that sounded like they knew what they were talking about.
+The honest cost: with no analytics script, I cannot see referral traffic from AI products in a dashboard. I am choosing not to know, and the choice is deliberate.
 
-Your job is to be that book.
+## Structured data that matches the visible page
 
-## What the research supports
+Each post carries JSON-LD describing the article: title, dates, author and section. Posts with a questions section also carry FAQ markup, generated from the same data that renders the visible questions, so the markup cannot say something the page does not.
 
-The most cited study is from researchers at Princeton and collaborators, published at KDD in 2024, which coined the term GEO. In controlled tests it found that certain changes increased how visible a source was in generated answers, by up to around 40 percent in their benchmark:
+I do not expect this to raise citations by itself. Industry studies so far suggest structured data alone has little measurable effect. What it does is help a machine work out who is speaking, which is why every post also has a named author, a role and a link to work that can be checked.
 
-- **Adding relevant statistics**
-- **Adding quotations from credible sources**
-- **Citing sources**
-- **Writing fluently and clearly**
+## llms.txt, with low expectations
 
-Keyword stuffing, the old SEO habit, did not help and sometimes hurt.
+There is an `llms.txt` at the root. It is generated at build time and lists the main pages and every post with its description.
 
-Treat the numbers as directional. They come from an experiment, not a guarantee for your site. But the direction matches common sense: models prefer content that is specific, attributable and easy to quote.
+It took a few lines of template. There is no solid public evidence that it changes how often an assistant cites a site, and the major providers have not committed to reading it. I added it because it was nearly free, and I would not have spent an afternoon on it.
 
-Later industry studies add two points worth knowing. Most citations for a brand point to pages the brand does not own, such as reviews, forums and articles. And adding structured data on its own has shown little measurable effect on citations. Both suggest that what others say about you matters more than markup.
+## Writing so a passage can be lifted
 
-## The practical playbook
+The build makes the site readable. It does not make it worth quoting.
 
-### 1. Answer the question in the first paragraph
+The most cited research here is a paper from Princeton and collaborators, presented at KDD in 2024, which coined the term GEO. In their benchmark, adding statistics, quotations from credible sources and citations made a source more visible in generated answers, by up to around 40 percent. Keyword stuffing did not help. Treat the number as directional. It is an experiment, not a promise.
 
-Engines extract passages. A page that takes 300 words to reach the point is harder to quote than one that opens with the answer. State the conclusion, then explain.
+What I took from it for my own writing:
 
-### 2. Write for one question per section
+- Get to the point early. An engine extracts passages, and a page that takes 300 words to arrive is harder to quote.
+- Make each section stand alone, with no "as mentioned above".
+- Prefer a specific that can be checked over an adjective.
+- Say whose experience it is. First-hand experience is the one thing a model cannot generate for itself.
 
-Use headings that match how people ask: "How much does X cost", "What is the difference between X and Y". Each section should make sense if lifted out of the page alone, without "as mentioned above".
+That last point is the reason this post is a case study and not a playbook. The earlier draft was a playbook. It said nothing a model did not already have.
 
-### 3. Be specific
+## What I skipped
 
-Numbers, dates, names, steps, comparisons. "Reduces load time" is not quotable. "Cut image weight from 12.6 MB to under 200 KB" is. Specifics are what a model can reuse, and they are what distinguishes you from generic generated text.
+- Buying a visibility tool before fixing the basics
+- Mass-producing pages for long-tail questions
+- Hidden text and stuffed question blocks written for a model and not a reader
+- Treating `llms.txt` as a ranking factor
 
-### 4. Show who is speaking and why they should be trusted
+## The part a build step cannot do
 
-Named author, role, experience, and a way to verify it. First-hand experience is the one thing a model cannot produce for itself, so it is the most valuable thing you can publish.
+Everything above happens on my own domain, and that is the smaller half.
 
-### 5. Keep facts in visible text
+Models learn about a person or a product from the whole web. Studies of brand citations keep finding that most of them point to pages the brand does not own: reviews, forums, articles, other people's posts. No template fixes that. It comes from doing work that other people mention, and from being present where your subject is discussed.
 
-Do not hide key information in images, in scripts that need to run, or in interface elements that require a click. If a plain text extraction of your page would miss it, assume the engine misses it.
+So I will not claim more than I can show. [TODO: any result you can honestly report, such as an assistant citing this site for a named query, or a line saying it is too early to tell.]
 
-### 6. Make the site technically easy to read
-
-- Server-rendered or static HTML for content. Many AI crawlers do not run JavaScript.
-- Check `robots.txt`. A surprising number of sites block AI crawlers by accident through a firewall or bot-protection setting.
-- Fast responses, clean URLs, an accurate sitemap with honest modification dates.
-- Structured data that matches what is visible on the page. It helps machines disambiguate who you are, even if it does not directly raise citations.
-
-### 7. Earn mentions elsewhere
-
-This is the part most guides skip, because it cannot be done on your own site. Models learn about entities from the whole web.
-
-- Be present where your topic is discussed: communities, forums, industry publications.
-- Get listed on comparison and review sites relevant to your field.
-- Publish original data or opinions that others reference.
-- Keep your name, role and description consistent across profiles, so the model connects them as one entity.
-
-### 8. Keep content current
-
-Engines with live search favour recent pages for questions where freshness matters. Update important pages and show the real date you did so.
-
-## What I would not spend time on
-
-- **Chasing llms.txt as a ranking factor.** I publish one because it is a few lines of work. There is no good evidence it affects citations.
-- **Writing for the model in a way you would not write for a person.** Hidden text and stuffed FAQ blocks are the same mistake people made with search engines.
-- **Mass-producing AI-generated pages.** They add nothing a model does not already have, so there is nothing to cite.
-- **Buying a tool before fixing basics.** If your key pages do not answer a question in the first paragraph, no dashboard will help.
-
-## How to measure it
-
-Measurement is still immature, so keep it simple.
-
-- Ask the engines the questions your customers ask, on a schedule, and record whether you appear and what is said.
-- Watch referral traffic from AI products in your analytics.
-- Track branded search volume. People who hear about you from an AI answer often search your name next.
-- Ask new customers how they found you. "ChatGPT recommended you" is now a common answer.
-
-Expect fewer clicks than search used to send, and better-qualified ones. Someone who arrives after an AI has already explained what you do is further along than someone skimming ten blue links.
-
-## The order I would do it in
-
-1. Make sure crawlers can reach and read your pages.
-2. Rewrite your ten most important pages to answer one clear question each, starting with the answer.
-3. Add specifics and named authorship.
-4. Fix structured data and keep it truthful.
-5. Spend the rest of your effort on being mentioned elsewhere.
-
-None of this is a trick. The engines are trying to find the clearest trustworthy answer, so the reliable strategy is to be that. It is the same reasoning behind [why engineers should write in public](/blog/why-engineers-should-write-in-public/).
+What I can say is that none of this was a trick, and most of it I would have done anyway. Static pages, a strict policy, visible authorship and specific writing are just a well-built site. AEO is the reason people are finally willing to pay for one. The rest of the answer is [writing in public](/blog/why-engineers-should-write-in-public/) for long enough that other people mention you.

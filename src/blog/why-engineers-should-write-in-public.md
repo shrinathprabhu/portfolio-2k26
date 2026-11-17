@@ -14,7 +14,7 @@ keywords:
     "LinkedIn for engineers",
     "developer personal brand",
   ]
-# image: "/images/writing-in-public.png"
+image: "/images/blog/why-engineers-should-write-in-public.png"
 faq:
   - q: "Should software engineers post on social media?"
     a: "If they want opportunities to find them, yes. Hiring managers, founders and clients look people up before reaching out. A small body of public writing that shows how you think is stronger evidence than a resume, and it works while you are busy doing other things."
@@ -88,6 +88,18 @@ Pick one home and one or two distribution channels.
 
 Write the full piece once on your site. Then post the main idea natively on each platform, in that platform's style, with a link for people who want more. Do not paste a link and leave.
 
+## The contradiction I should own
+
+I am recommending all of this without a large audience to show for it, and my own accounts do not follow the tidy advice above.
+
+My split is simple: LinkedIn gets the judgment, X gets the jokes. Two of the jokes, for the record:
+
+> tried being myself. the algorithm said "who"
+
+> guess my replies were the only thing ive ever shipped that reached its target audience
+
+I am fine with that. The case I am making here does not depend on reach. It depends on findability. When someone looks me up before a call, there is something to read that shows how I think, and the jokes tell them I am a person.
+
 ## How to keep it going
 
 - **Keep a running note** of things that surprised you at work. Almost every good post starts as "that was not what I expected".
@@ -103,7 +115,7 @@ Being public does not mean being careless.
 - Never share confidential business information, customer data, unreleased plans or security details of systems you work on.
 - Describe the shape of a problem without identifying a client or colleague, unless you have permission.
 - Check your employment agreement and, if in doubt, ask. Most employers are happy when engineers write well about general lessons.
-- Criticise ideas and decisions, not people.
+- Criticize ideas and decisions, not people.
 
 ## The compounding effect
 

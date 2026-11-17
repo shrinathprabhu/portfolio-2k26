@@ -14,7 +14,7 @@ keywords:
     "SDK adoption",
     "DevRel metrics",
   ]
-# image: "/images/devrel-product-function.png"
+image: "/images/blog/devrel-is-a-product-function.png"
 faq:
   - q: "What does developer relations actually do?"
     a: "Good DevRel makes it easy for developers to succeed with a product: clear documentation, working examples, fast onboarding, and a channel that carries developer feedback back to the engineering team. Events and content are tools for that goal, not the goal itself."
@@ -75,6 +75,8 @@ The best thing I built for developer adoption was not documentation. It was a co
 
 It works because it reverses the usual order. The developer sees the product working first, then decides it is worth integrating, and only then reads anything. A playground, a live demo with editable code or a one-click starter project all do the same job.
 
+[TODO: one Nexus Widgets configurator number, for example integrations that started from it, or time to a first working widget.]
+
 ## Meet different developers where they are
 
 Developers do not all want the same thing. When we shipped Avail's widgets, some teams wanted to install a package, set a few options and move on. Others wanted to own every line of the interface. We shipped both from one codebase: an npm package for the first group, and source components that the second group could copy into their own repository and edit.
@@ -107,10 +109,10 @@ Reach still matters for awareness. It is an input. If it is the only thing repor
 
 ## Where budgets are commonly wasted
 
-- **Hackathons with no follow-through.** Hundreds of projects started, almost none maintained a month later. They are worth running only if you treat them as user research and stay in touch with the teams afterwards.
+- **Hackathons with no follow-through.** Hundreds of projects started, almost none maintained a month later. They are worth running only if you treat them as user research and stay in touch with the teams afterward.
 - **Content for the algorithm.** Tutorials written to rank, not to help.
 - **Community for its own sake.** A large Discord where questions go unanswered is worse than a small one where they are answered in an hour.
-- **Swag.** Nobody adopted a database because of a T-shirt.
+- **Swag.** Nobody adopted a database because of a T-shirt. I have been to events where the tote-bag TVL was definitely higher than most booths' user counts.
 
 ## Who should do it
 

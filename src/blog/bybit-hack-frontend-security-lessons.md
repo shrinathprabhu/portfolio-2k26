@@ -14,7 +14,7 @@ keywords:
     "web3 security",
     "multisig security",
   ]
-# image: "/images/bybit-frontend-hack.png"
+image: "/images/blog/bybit-hack-frontend-security-lessons.png"
 faq:
   - q: "How was Bybit hacked?"
     a: "Attackers compromised a developer machine at Safe, the multisig wallet provider Bybit used, and replaced JavaScript served by Safe's web interface. The altered code showed Bybit's signers a normal-looking transfer while actually asking them to sign a transaction that handed control of the wallet to the attackers."
@@ -30,16 +30,16 @@ The attackers changed what was on the screen. As a frontend engineer who has bui
 
 ## What happened, in plain terms
 
-Bybit kept the funds in a multisig wallet built on Safe, a widely used and respected product. Moving money required several authorised people to approve the same transaction, each using a hardware wallet. That is close to best practice.
+Bybit kept the funds in a multisig wallet built on Safe, a widely used and respected product. Moving money required several authorized people to approve the same transaction, each using a hardware wallet. That is close to best practice.
 
-According to the investigations published afterwards:
+According to the investigations published afterward:
 
 1. Attackers compromised the machine of a developer at Safe.
 2. Using that access, they modified a JavaScript file served from Safe's cloud storage to users of its web application.
 3. The malicious code was targeted. It stayed dormant for everyone except Bybit's specific wallet.
 4. When Bybit's signers opened the interface to approve a routine transfer, the screen showed the routine transfer. The data sent to their hardware wallets was a different transaction, one that changed who controlled the wallet.
 5. The hardware wallets could not display that transaction in readable form, so the signers approved what they believed they were seeing.
-6. With control transferred, the attackers emptied the wallet. The malicious code was removed shortly afterwards.
+6. With control transferred, the attackers emptied the wallet. The malicious code was removed shortly afterward.
 
 Every individual control did its job. The multisig required several signatures and got them. The hardware wallets signed exactly what they were given. The system failed at the one layer everyone had treated as presentation.
 
@@ -66,13 +66,13 @@ A release process where one developer's credentials can alter production assets 
 
 ## Lesson three: verify what you serve
 
-There are established defences against a file being swapped.
+There are established defenses against a file being swapped.
 
 - **Subresource Integrity:** the page declares the expected hash of each script, and the browser refuses to run one that does not match.
 - **A strict Content Security Policy:** limits where code can load from and where data can be sent.
 - **Immutable, content-addressed assets:** files named by their hash, so a changed file is a different file.
 - **Monitoring served assets:** an external check that compares what is live against what was built and alerts on any difference.
-- **Reproducible builds and signed releases,** so there is a known-good artefact to compare with.
+- **Reproducible builds and signed releases,** so there is a known-good artifact to compare with.
 
 None of these is exotic. Most teams skip them because nothing has gone wrong yet.
 

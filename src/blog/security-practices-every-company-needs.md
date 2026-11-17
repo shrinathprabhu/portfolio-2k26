@@ -1,140 +1,104 @@
 ---
-title: "The Security Bare Minimum: 12 No-Brainers Before You Hire a Security Team"
-description: "Most breaches do not involve brilliant hacking. They involve a missing second factor, a leaked key or a help desk that reset a password for a stranger. The twelve practices every company should have in place, in priority order, with the incidents that prove each one."
+title: "What I'd Lock Down on Day One as a Startup's First Senior Engineer"
+description: "Most breaches involve a missing second factor, a leaked key or a help desk that reset a password for a stranger. If I joined a ten-person startup tomorrow, this is the order I would work in, and what I would leave for later."
 date: 2026-11-05
 postTags: ["posts", "security", "startups", "leadership"]
 category: "Security"
 keywords:
   [
-    "security best practices for startups",
-    "security checklist for companies",
-    "basic cybersecurity practices",
     "startup security",
+    "security for early stage startups",
+    "first engineer security checklist",
     "MFA passkeys",
     "secrets management",
-    "supply chain security",
+    "least privilege",
+    "incident response plan",
   ]
-# image: "/images/security-bare-minimum.png"
+image: "/images/blog/security-practices-every-company-needs.png"
 faq:
   - q: "What are the most important security practices for a small company?"
-    a: "Phishing-resistant multi-factor authentication on every account, a password manager, secrets kept out of code, least-privilege access, automatic updates, tested backups and a simple incident plan. These seven address the causes of the large majority of real breaches."
+    a: "Phishing-resistant multi-factor authentication on every account, a password manager, secrets kept out of code, least-privilege access, automatic updates, tested backups and a one-page incident plan. These address the causes of the large majority of real breaches."
   - q: "When should a startup start thinking about security?"
-    a: "Before the first customer. The basics cost little when the company is five people and a great deal when it is fifty. Retrofitting access controls and secret handling into a grown organisation is much harder than starting with them."
+    a: "Before the first customer. The basics cost little when the company is five people and a great deal when it is fifty. Retrofitting access controls and secret handling into a grown organization is much harder than starting with them."
   - q: "Is multi-factor authentication enough?"
     a: "It is the single most effective control, but the type matters. Codes sent by SMS or typed from an app can be phished. Passkeys and hardware security keys cannot be, because they are bound to the real website. Use those for email, code hosting, cloud and finance accounts."
 ---
 
-Most companies are not breached by a clever exploit. They are breached through a password reused from another site, an account with no second factor, an API key committed to a repository, or a support agent who was talked into resetting someone's access. The fixes are well known, cheap, and frequently skipped.
+Suppose I join a ten-person startup tomorrow as the first senior engineer. There is no security team and there will not be one for two years. Nobody has asked me to do security. It is mine anyway, because I am now the person who would be asked what happened.
 
-This is the list I would put in place at any company, in this order, before buying a single security product. I have ordered it by how much risk each one removes for the effort involved.
+Most companies are not breached by a clever exploit. They are breached through a reused password, an account with no second factor, a key in a repository, or a support agent who was talked into a reset. So the first week is not about buying anything. It is about closing the doors that are known to be open, in order of how much risk each closes for the effort.
 
-## 1. Phishing-resistant MFA everywhere
+## Day one: who can log in to what
 
-If you do one thing, do this. Stolen credentials are consistently among the top ways attackers get in, year after year, in Verizon's breach reports.
+Before anything else I want a list: every system that matters, and every person and machine that can get into it. Email, code hosting, cloud console, domain registrar, payments, the bank.
 
-In 2024, attackers used stolen passwords to access customer accounts on the Snowflake data platform that did not have multi-factor authentication turned on. Data from very large companies, including Ticketmaster and AT&T, was taken. That same year, the attack on Change Healthcare, which disrupted US healthcare payments for weeks, began through a remote access portal without MFA, as the parent company's CEO told the US Congress.
+It takes a few hours and it always turns up surprises. A contractor who left in spring. A shared login in a spreadsheet. An admin role granted during an outage and never removed.
 
-Use passkeys or hardware security keys, not SMS codes, for email, code hosting, cloud consoles, domain registrars and banking. Enforce it centrally. Do not leave it to each person.
+Then I close what should be closed that same day. No tool is needed, and nothing else I do matters while a former contractor can still deploy.
 
-## 2. A password manager and single sign-on
+## Week one: logins that cannot be phished
 
-People reuse passwords because they cannot remember two hundred of them. A password manager removes the reason. Single sign-on means that when someone leaves, one switch removes their access to everything.
+If I could do only one thing, it would be this.
 
-## 3. Secrets never live in code
+In 2024, attackers used stolen passwords to get into customer accounts on the Snowflake data platform that did not have multi-factor authentication turned on, and data from companies including Ticketmaster and AT&T was taken. The same year, the attack on Change Healthcare, which disrupted US healthcare payments for weeks, began through a remote access portal without MFA, as the parent company's CEO told the US Congress.
 
-API keys and credentials end up in repositories, chat messages, screenshots and, now, AI prompts. Automated scanners find leaked keys in public repositories within minutes.
+So: passkeys or hardware keys, not SMS codes, on email, code hosting, cloud, the registrar and banking. Enforced centrally, not left to each person's good intentions. A password manager for everyone, so that reuse stops being the path of least resistance. Single sign-on where the plan allows it, so that one switch removes a leaver from everything.
 
-- Keep secrets in a secrets manager or your platform's encrypted settings.
-- Turn on secret scanning with push protection in your code host.
-- Use short-lived credentials wherever possible.
-- When a secret leaks, rotate it. Deleting the commit is not enough.
-- Never put a secret in frontend code. Anything shipped to a browser is public.
+## Week one: secrets out of the code
 
-## 4. Least privilege, reviewed regularly
+Keys end up in repositories, chat messages, screenshots and now AI prompts. Automated scanners find leaked keys in public repositories within minutes.
 
-Everyone gets the access they need and no more. Access granted "temporarily" is the kind that stays for years.
+- Secrets live in a secrets manager or the platform's encrypted settings.
+- Secret scanning with push protection is on in the code host.
+- Credentials are short-lived wherever possible.
+- Nothing secret ships to a browser. Anything in frontend code is public.
 
-- No shared accounts.
-- Admin rights are the exception, and time-limited where possible.
-- Review access every quarter and on every role change.
-- Remove access the day someone leaves.
+When a secret leaks, it gets rotated. Deleting the commit does not undo anything. And rotation has to be possible before the bad day: if the rotation path is broken or undocumented, asking the team to rotate is like a bank saying "change your PIN" while the ATM is down.
 
-## 5. Protect the people who can be talked into things
+## Month one: the path to production
 
-In 2023, attackers reportedly got into MGM Resorts by phoning the IT help desk and impersonating an employee. The disruption cost the company around $100 million by its own estimate. With voice cloning now cheap, this is easier than it was.
+This is the part most startups have never looked at. Who, and which laptops, can change what customers are served?
 
-- Identity checks for password and MFA resets that do not rely on information an attacker could find online.
-- A callback rule for any request involving money or access.
-- A culture where "let me verify that" is normal, including when the request appears to come from the CEO.
+I want protected branches, a second person on anything that reaches production, and CI credentials that are scoped and short-lived. The Bybit theft is the case study for why, and I go through it in [the $1.5 billion lesson](/blog/bybit-hack-frontend-security-lessons/). Along the same lines, every dependency and third-party script is code from a stranger running with your permissions. The cheapest fix there is to remove things, which is its own post: [the delete key](/blog/reduce-attack-surface-delete-first/).
 
-## 6. Patch automatically
+## Month one: the people who can be talked into things
 
-Most exploited vulnerabilities already have a fix available. Turn on automatic updates for operating systems, browsers and dependencies, and treat critical security updates as urgent work.
+In 2023, attackers reportedly got into MGM Resorts by phoning the IT help desk and impersonating an employee. The company put the cost at around $100 million. With cheap voice cloning, this is easier than it was.
 
-## 7. Take your software supply chain seriously
+A ten-person startup has no help desk, which means everyone is the help desk. Two rules cover most of it. A request involving money or access gets confirmed on a second channel. And "let me verify that" is a normal thing to say, including when the request appears to come from the founder.
 
-You run far more code written by strangers than by your own team.
+## Month one: being able to recover
 
-In September 2025, a maintainer of widely used npm packages, including `chalk` and `debug`, was phished, and malicious versions of packages with billions of weekly downloads were published. In 2024, a backdoor was found in the `xz` compression library after a patient, multi-year effort to gain a maintainer's trust.
+**Backups you have restored.** A backup that has never been restored is a hope. I want one copy that ransomware cannot reach from the main systems, and one rehearsed restore.
 
-- Commit lockfiles and install from them.
-- Do not adopt brand-new package versions the hour they are published.
-- Remove dependencies you do not need. I go deeper on this in [the cheapest security control is the delete key](/blog/reduce-attack-surface-delete-first/).
-- Limit what build scripts and CI jobs can access.
+**Logs you can read.** After an incident the first question is "what did they access". Without logs the honest answer is "we do not know", which is the worst thing to tell a customer. Sign-ins, permission changes, admin actions and access to sensitive data, kept somewhere an intruder cannot easily wipe.
 
-## 8. Secure the path to production
+**A one-page plan.** Who decides. Who to call: legal, hosting, insurer. How to talk if email and chat are compromised. How to revoke and rotate quickly. Who tells customers, and when. It is one page, and it needs to be written before the incident, not during it.
 
-The 2025 Bybit theft, about $1.5 billion, began with one compromised developer machine that could change files served to users. I wrote up [what that incident teaches](/blog/bybit-hack-frontend-security-lessons/).
+**Automatic updates.** Most exploited vulnerabilities already had a fix available. Operating systems, browsers and dependencies update themselves, and critical patches are treated as urgent work.
 
-- Protected branches and required review.
-- No single person or laptop able to publish to production alone.
-- CI credentials that are scoped and short-lived.
-- Alerts when production assets change outside a release.
+## The new one: rules for AI tools
 
-## 9. Backups that you have actually restored
+Most small companies have no policy here, and their engineers are pasting things into prompts all day.
 
-A backup you have never restored is a hope. Keep copies that ransomware cannot reach from your main systems, and rehearse a restore at least twice a year.
+- Decide which tools are approved and what data may go into them.
+- No secrets, customer data or private keys in a prompt.
+- Generated code is reviewed as carefully as human code. It reproduces common vulnerabilities.
+- Agents with access to email, files or production get treated with suspicion, because content they read can contain instructions. See [your AI feature is an intern who believes everything it reads](/blog/securing-ai-features-prompt-injection/).
 
-## 10. Logging you can use
+## What I would not do yet
 
-When something goes wrong, the first question is "what did they access". Without logs, the honest answer is "we do not know", which is the worst thing to tell customers and regulators.
+- Buy a security product before the list above is done
+- Start a compliance certification before a customer asks for one
+- Commission a penetration test of a system with no MFA
+- Write a forty-page policy nobody will open
 
-Record sign-ins, permission changes, administrative actions and access to sensitive data. Keep the logs somewhere an intruder cannot easily delete them.
+All of these have their time. For a ten-person company, that time comes after the basics are in place.
 
-## 11. A one-page incident plan
+## Why it gets skipped, and the fix
 
-It does not need to be elaborate. It needs to exist before the bad day.
+Nothing has happened yet, so it never feels urgent. It adds friction, and friction is easy to argue against in a planning meeting. It is invisible when it works: nobody is thanked for the breach that did not happen.
 
-- Who decides
-- Who to call: legal, hosting provider, insurer
-- How to communicate if email and chat are compromised
-- How to revoke access and rotate secrets quickly
-- Who tells customers, and when
+Mostly, though, nobody owns it. The fix is one named person, not necessarily a specialist, who is responsible for this list and reports on it. In a ten-person startup that is the first senior engineer, whether or not anyone said so in the interview.
 
-## 12. Rules for AI tools
-
-This one is new, and most companies have no policy.
-
-- Decide which AI tools are approved and what data may be entered into them.
-- Never paste secrets, customer data or private keys into a prompt.
-- Review generated code as carefully as human code. It reproduces common vulnerabilities.
-- Be cautious with agents that have access to email, files or production systems. Content they read can contain instructions. See [securing AI features](/blog/securing-ai-features-prompt-injection/).
-
-## Why these are skipped
-
-- **Nothing has happened yet**, so it does not feel urgent.
-- **Nobody owns it.** Security is assumed to be someone else's job.
-- **It adds friction**, and friction is easy to argue against in a planning meeting.
-- **It is invisible when it works.** Nobody is praised for the breach that did not happen.
-
-The fix is ownership. One named person, not necessarily a security specialist, who is responsible for this list and reports on it.
-
-## Where to start this week
-
-1. Turn on enforced MFA with passkeys or security keys for email and code hosting.
-2. Roll out a password manager.
-3. Enable secret scanning and rotate anything it finds.
-4. List who has admin access to what, and remove what is not needed.
-5. Write the one-page incident plan.
-
-That is a few days of work for a small company. It will not make you unbreakable, since nothing does, but it removes you from the large group of easy targets, which is where most attackers spend their time.
+None of this makes a company unbreakable. It moves it out of the large group of easy targets, which is where most attackers spend their time.

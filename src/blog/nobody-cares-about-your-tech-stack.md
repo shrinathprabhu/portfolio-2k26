@@ -1,6 +1,6 @@
 ---
-title: "Nobody Has Ever Cancelled a Subscription Because You Used PHP"
-description: "Customers buy outcomes, not frameworks. Pieter Levels runs million-dollar products on PHP and SQLite, and Marc Lou's story shows that even a product built around a stack lives or dies on distribution. What that means for how you build."
+title: "Nobody Has Ever Canceled a Subscription Because You Used PHP"
+description: "Customers buy outcomes, not frameworks. Pieter Levels runs million-dollar products on PHP and SQLite, and Marc Lou's best-known product was a stack, and even that sold because of who was selling it. What that means for how you build."
 date: 2026-11-14
 postTags: ["posts", "product", "indie-hacking", "architecture"]
 category: "Product & Architecture"
@@ -14,7 +14,7 @@ keywords:
     "boring technology",
     "overengineering",
   ]
-# image: "/images/nobody-cares-about-your-stack.png"
+image: "/images/blog/nobody-cares-about-your-tech-stack.png"
 faq:
   - q: "Does your tech stack matter for a startup?"
     a: "Much less than founders think. Customers never see it. The stack matters only where it limits how fast you can ship, how reliably the product runs, and who you can hire. Most early products fail on demand and distribution long before they hit a technical limit."
@@ -32,7 +32,7 @@ The second puts a single PHP file on a cheap server, writes the database to one 
 
 The second founder is real. His name is Pieter Levels, and the internet has been arguing about his stack for a decade while he keeps earning from it.
 
-No customer has ever cancelled because of the language a product was written in. They cancel because it is slow, confusing, broken or useless to them. The stack is invisible to the people who pay you, so the only question worth asking about it is whether it lets you ship useful things quickly and keep them running.
+No customer has ever canceled because of the language a product was written in. They cancel because it is slow, confusing, broken or useless to them. The stack is invisible to the people who pay you, so the only question worth asking about it is whether it lets you ship useful things quickly and keep them running.
 
 I say this as someone who enjoys the craft and has spent years on frontend architecture. The craft matters. It is just not what the market pays for.
 
@@ -42,11 +42,11 @@ Indie founders are the cleanest test of this idea, because they share revenue pu
 
 **Pieter Levels** is the standard example for a reason. By his own descriptions, his products, including Nomad List, Remote OK and Photo AI, run on plain PHP, jQuery and SQLite on a single server. No React, no Kubernetes, no microservices. He started Nomad List as a public spreadsheet before writing any code. His portfolio is widely reported to earn in the millions of dollars a year with no employees. Whatever the exact figure, it is more than most venture-funded teams with a far more fashionable architecture.
 
-What he optimised instead: speed of shipping, an audience built over a decade of posting in public, and picking problems people already pay for.
+What he optimized instead: speed of shipping, an audience built over a decade of posting in public, and picking problems people already pay for.
 
 **Marc Lou** is the more interesting case, because his best-known product is a tech stack. ShipFast is a Next.js boilerplate. He has said he built more than a dozen products in two years before it, most of which went nowhere, and that he expected ShipFast to make almost nothing. It became a business that he reports has made over a million dollars.
 
-But look at why people bought it. Not because Next.js is special. They bought it from a person they followed, who promised to save them weeks of setup. And in 2026 he publicly shared that ShipFast's monthly revenue had fallen sharply, which he attributed mainly to AI: when a coding agent can scaffold authentication and payments in an afternoon, a boilerplate is worth less. His analytics product, a recurring-revenue business solving an ongoing problem, kept growing.
+But look at why people bought it. Not because Next.js is special. They bought it from a person they followed, who promised to save them weeks of setup. Then the numbers moved. By the figures he shares publicly, ShipFast went from about $126,000 a month in 2024 to about $2,000 a month in 2026. His own post about it gave no reason. Other people attribute the drop to AI tools: when a coding agent can scaffold authentication and payments in an afternoon, a boilerplate is worth less. That is a reasonable guess, and it is still a guess. Over the same period his newer products, including DataFast, an analytics tool that solves an ongoing problem for a recurring fee, grew and more than covered the gap.
 
 That is the lesson stated twice. The stack was never the asset. The audience and the problem were.
 

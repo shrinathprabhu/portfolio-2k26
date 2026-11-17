@@ -14,7 +14,7 @@ keywords:
     "crypto user experience",
     "account abstraction UX",
   ]
-# image: "/images/web3-ux-step-count.png"
+image: "/images/blog/why-web3-ux-still-loses-users.png"
 faq:
   - q: "Why is Web3 user experience so difficult?"
     a: "Because the user is asked to do the system's work: install a wallet, protect a seed phrase, hold the right gas token on the right chain, bridge assets and approve transactions they cannot read. Each step loses a share of users, and the losses multiply."
@@ -24,13 +24,13 @@ faq:
     a: "Count the steps between arriving and getting value, then remove them. Let people start with an email or social login, sponsor or hide gas where you can, remove manual bridging, and write confirmation screens in plain language that states what will leave the wallet and what will arrive."
 ---
 
-When a Web3 product struggles to grow, the team usually reaches for marketing: a points programme, an airdrop, a campaign. In my experience the problem is nearly always earlier and simpler. Count the steps between a new person arriving and that person getting any value. The number is usually above ten. Every one of those steps is a place where people leave.
+When a Web3 product struggles to grow, the team usually reaches for marketing: a points program, an airdrop, a campaign. In my experience the problem is nearly always earlier and simpler. Count the steps between a new person arriving and that person getting any value. The number is usually above ten. Every one of those steps is a place where people leave.
 
 I have worked on this problem from three sides: a non-custodial browser wallet at Arcana, SendIt, a transfer app that reached over 65,000 accounts, and the cross-chain widgets I lead at Avail. This is what I have learned about where users are lost and what brings them back.
 
 ## The funnel nobody draws
 
-Here is what a newcomer faces to use a typical decentralised application:
+Here is what a newcomer faces to use a typical decentralized application:
 
 1. Learn that they need a wallet
 2. Choose one and install it
@@ -39,14 +39,14 @@ Here is what a newcomer faces to use a typical decentralised application:
 5. Withdraw to the wallet, on the correct network
 6. Discover the app is on a different chain
 7. Find a bridge and trust it
-8. Realise they need a different token to pay gas
+8. Realize they need a different token to pay gas
 9. Connect the wallet to the app
 10. Approve a token allowance they do not understand
 11. Finally sign the transaction they came for
 
 If a generous 80 percent of people get through each step, about 9 percent reach the end. No campaign fixes that. Removing three steps does more than doubling the marketing budget.
 
-## Lesson one: stop asking users to speak the system's language
+## Stop asking users to speak the system's language
 
 SendIt started from a plain observation: nobody wants to copy a 42-character hexadecimal address. So we let people send tokens to an email address, an X username or an ENS name, and resolved the address behind the scenes.
 
@@ -54,7 +54,7 @@ Nothing about the blockchain changed. We changed what the person had to know. Th
 
 The general rule: any time the interface shows a concept the user did not have before they arrived, such as chain IDs, gas, nonces or allowances, ask whether the system could handle it for them.
 
-## Lesson two: the user should not know which chain they are on
+## The user should not know which chain they are on
 
 A person with funds spread across five networks does not think "I have 40 USDC on Arbitrum and 60 on Base". They think "I have 100 dollars". The interface should agree with them.
 
@@ -62,7 +62,7 @@ That is the idea behind chain abstraction, and it is what I work on at Avail: sh
 
 When it works, three of the eleven steps above disappear: finding the right chain, bridging, and sourcing the gas token.
 
-## Lesson three: the confirmation screen is the most important screen
+## The confirmation screen is the most important screen
 
 Every Web3 flow ends with a moment where the user must approve something irreversible. Most products present that moment as a wall of data.
 
@@ -74,9 +74,9 @@ A confirmation screen should answer three questions in plain words:
 
 This is usability, and it is also security. Many of the largest thefts in this industry happened because someone approved a transaction they could not read. I go through one of them in [what the Bybit hack teaches about frontend security](/blog/bybit-hack-frontend-security-lessons/).
 
-We built the Arcana wallet as a sidebar and not a popup for this reason. A popup hides the application behind it. A sidebar lets the user see the application and the wallet together and check one against the other.
+It is also why the Arcana wallet was a sidebar and not a popup, a decision I cover in [the wallet post](/blog/chrome-extension-wallet/).
 
-## Lesson four: design for the in-between state
+## Design for the in-between state
 
 Web2 actions mostly succeed or fail at once. Web3 actions have a long middle: submitted, pending, confirmed on one chain, waiting on another. Cross-chain actions can succeed halfway.
 
@@ -84,13 +84,13 @@ Most interfaces show a spinner and hope. A good one tells the user exactly where
 
 People forgive slow. They do not forgive uncertain, especially about money.
 
-## Lesson five: incentives bring users, they do not keep them
+## Incentives bring users, they do not keep them
 
 SendIt had a gamification layer: points for transactions, leaderboards, rewards for the top users. It drove real growth. It also taught me to design against abuse from the first day, with caps on what counted, because any rewarded action will be farmed.
 
-Incentives are an acquisition tool. They get someone through the door once. Whether that person returns depends on whether the product was easy and useful when the reward was gone. Many Web3 products have large incentive-driven numbers that vanish with the programme.
+Incentives are an acquisition tool. They get someone through the door once. Whether that person returns depends on whether the product was easy and useful when the reward was gone. Many Web3 products have large incentive-driven numbers that vanish with the program.
 
-## Lesson six: meet developers halfway too
+## Meet developers halfway too
 
 Bad UX is often inherited. Each team integrating cross-chain functionality rebuilds the same swap, send and deposit screens, with different mistakes each time.
 

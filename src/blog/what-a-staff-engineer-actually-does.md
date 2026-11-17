@@ -13,10 +13,10 @@ keywords:
     "engineering career ladder",
     "technical leadership without management",
   ]
-# image: "/images/senior-vs-staff.png"
+image: "/images/blog/what-a-staff-engineer-actually-does.png"
 faq:
   - q: "What is the difference between a senior and a staff engineer?"
-    a: "A senior engineer is trusted to deliver complex work well within a team. A staff engineer is responsible for outcomes across teams: choosing the right problems, setting technical direction, and making other engineers more effective. The scope changes from your own output to the organisation's."
+    a: "A senior engineer is trusted to deliver complex work well within a team. A staff engineer is responsible for outcomes across teams: choosing the right problems, setting technical direction, and making other engineers more effective. The scope changes from your own output to the organization's."
   - q: "What does a staff engineer do day to day?"
     a: "Less coding than you might expect. Typical work includes writing proposals and design documents, reviewing designs across teams, removing ambiguity from unclear projects, mentoring, representing engineering in product and business decisions, and still writing code where it matters most."
   - q: "Do you have to become a manager to keep growing as an engineer?"
@@ -29,9 +29,7 @@ Then you aim for the next level, do more of the same, and nothing happens.
 
 It took me a while to understand why. Senior is the top of one ladder. Staff is the first rung of a different one. You do not get there by being a faster senior engineer, in the same way that being an excellent player does not make you the coach.
 
-## Explain it like I am five
-
-A senior engineer is the best cook in the kitchen. Hand them any order and it comes out perfect.
+Think of a kitchen. A senior engineer is the best cook in it. Hand them any order and it comes out perfect.
 
 A staff engineer is the person who notices the kitchen is laid out badly, so every cook walks twice as far as they need to. They redesign it, persuade the owner it is worth closing for a day, and then every cook gets faster.
 
@@ -75,11 +73,11 @@ When I proposed a single shared widget at Avail, so that teams would stop rebuil
 
 **It can be lonely.** There are few peers at this level in most companies.
 
-**You have to let go.** The hardest habit to break is fixing it yourself because it is quicker. It is quicker once. It does not scale, and it takes the learning away from someone else.
+**You have to let go.** The hardest habit to break is fixing it yourself because it is quicker. It is quicker once. It does not scale, and it takes the learning away from someone else. A mistake I made early in my career was saying yes to every "quick fix". Learn to say "after Friday".
 
 ## Staff and principal
 
-Titles differ between companies, so do not over-read them. Roughly: a staff engineer's scope is a group of teams or a large product area. A principal's scope is the whole engineering organisation, and sometimes the industry. The work is similar. The blast radius grows.
+Titles differ between companies, so do not over-read them. Roughly: a staff engineer's scope is a group of teams or a large product area. A principal's scope is the whole engineering organization, and sometimes the industry. The work is similar. The blast radius grows.
 
 In a small startup, these titles often mean "the most experienced engineer, who does everything". That is fine. The work described here still needs doing, whatever it is called.
 

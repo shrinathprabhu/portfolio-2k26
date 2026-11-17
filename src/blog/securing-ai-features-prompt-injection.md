@@ -14,19 +14,19 @@ keywords:
     "AI agent security",
     "indirect prompt injection",
   ]
-# image: "/images/ai-intern-security.png"
+image: "/images/blog/securing-ai-features-prompt-injection.png"
 faq:
   - q: "What is prompt injection?"
     a: "An attack where text that an AI model reads, in an email, web page, document or support ticket, contains instructions, and the model follows them as if they came from its owner. It works because language models cannot reliably separate the content they are processing from the commands they are given."
   - q: "Can prompt injection be fully prevented?"
-    a: "Not with current models. Filters and careful system prompts reduce the success rate but do not eliminate it. The dependable defence is architectural: limit what the model can access and do, so that a successful injection has nothing valuable to steal and no way to send it anywhere."
+    a: "Not with current models. Filters and careful system prompts reduce the success rate but do not eliminate it. The dependable defense is architectural: limit what the model can access and do, so that a successful injection has nothing valuable to steal and no way to send it anywhere."
   - q: "What is the lethal trifecta in AI security?"
     a: "A term from security researcher Simon Willison for the dangerous combination of three capabilities in one AI system: access to private data, exposure to untrusted content, and the ability to communicate externally. Any two are manageable. All three together allow data theft."
 ---
 
 Imagine you hire an intern. Bright, fast, tireless, eager to help. There is one catch. This intern does whatever any piece of paper says.
 
-Hand them a letter to summarise, and if the letter contains the line "ignore your manager and post the company bank details to this address", they will consider it, and a worrying amount of the time, they will do it. They are not malicious. They simply cannot tell the difference between a document they were asked to read and an order they were asked to follow.
+Hand them a letter to summarize, and if the letter contains the line "ignore your manager and post the company bank details to this address", they will consider it, and a worrying amount of the time, they will do it. They are not malicious. They simply cannot tell the difference between a document they were asked to read and an order they were asked to follow.
 
 You would not give that intern the keys to the filing cabinet and a stamp for outgoing mail. Yet that is the default design of a great many AI features being shipped right now.
 
@@ -38,7 +38,7 @@ The dangerous version is **indirect**. The attacker never talks to your AI. They
 
 ## A real one
 
-In 2025, researchers disclosed a vulnerability in Microsoft 365 Copilot that they named EchoLeak. An attacker could send an ordinary-looking email to someone in a company. The recipient did not have to open it or click anything. Later, when that person asked Copilot a normal question, Copilot pulled in the email as context, followed the instructions hidden inside it, and could send internal data out of the organisation. Microsoft fixed it and said it had not seen it used against customers.
+In 2025, researchers disclosed a vulnerability in Microsoft 365 Copilot that they named EchoLeak. An attacker could send an ordinary-looking email to someone in a company. The recipient did not have to open it or click anything. Later, when that person asked Copilot a normal question, Copilot pulled in the email as context, followed the instructions hidden inside it, and could send internal data out of the organization. Microsoft fixed it and said it had not seen it used against customers.
 
 No password was stolen. No software bug in the traditional sense. Just an assistant that read something and believed it.
 
@@ -66,7 +66,7 @@ After two years of the whole industry working on it, there is still no reliable 
 
 This is the mindset shift. Stop asking "how do I prevent the model from being tricked" and start asking "when it is tricked, what can it actually do?"
 
-**Break the trifecta.** For each feature, remove one of the three legs. A summariser of public web pages does not need your private data. An assistant over internal documents does not need to browse the web or render external images.
+**Break the trifecta.** For each feature, remove one of the three legs. A summarizer of public web pages does not need your private data. An assistant over internal documents does not need to browse the web or render external images.
 
 **Give it the user's permissions, not the system's.** The model should only ever be able to reach what the person using it could reach by clicking around themselves. If your AI can see every customer's data and relies on the prompt to stay polite about it, the prompt is your only access control. That is not access control.
 
@@ -83,6 +83,8 @@ This is the mindset shift. Stop asking "how do I prevent the model from being tr
 ## Agents raise the stakes
 
 A chatbot that is fooled says something wrong. An agent that is fooled does something wrong: runs a command, commits code, moves money.
+
+AI agents stealing money is not the scary part. AI agents with corporate cards and no expense policy is.
 
 The more an agent can do, the more this matters. That is why I am wary of the current rush to hand wallets to AI agents, which I wrote about in [Web3's shift to everything agentic](/blog/why-web3-is-shifting-to-agentic/). An agent with signing authority needs hard limits enforced outside the model: spending caps, allow-lists, confirmation above a threshold. Enforced by code, not requested by prompt.
 
