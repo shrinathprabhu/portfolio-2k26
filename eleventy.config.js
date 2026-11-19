@@ -68,7 +68,7 @@ async function imageVariants(src, widths) {
 }
 
 const IMG_PRESETS = {
-  card: { widths: [480, 960], sizes: "(max-width: 640px) 100vw, 500px" },
+  card: { widths: [480, 960], sizes: "(max-width: 640px) 100vw, (max-width: 1023px) 50vw, 360px" },
   cover: { widths: [720, 1440], sizes: "(max-width: 720px) 100vw, 672px" },
 };
 
