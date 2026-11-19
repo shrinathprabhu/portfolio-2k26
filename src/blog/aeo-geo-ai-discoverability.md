@@ -87,6 +87,4 @@ Everything above happens on my own domain, and that is the smaller half.
 
 Models learn about a person or a product from the whole web. Studies of brand citations keep finding that most of them point to pages the brand does not own: reviews, forums, articles, other people's posts. No template fixes that. It comes from doing work that other people mention, and from being present where your subject is discussed.
 
-So I will not claim more than I can show. [TODO: any result you can honestly report, such as an assistant citing this site for a named query, or a line saying it is too early to tell.]
-
-What I can say is that none of this was a trick, and most of it I would have done anyway. Static pages, a strict policy, visible authorship and specific writing are just a well-built site. AEO is the reason people are finally willing to pay for one. The rest of the answer is [writing in public](/blog/why-engineers-should-write-in-public/) for long enough that other people mention you.
+So I am not going to claim results here. What I can say is that none of this was a trick, and most of it I would have done anyway. Static pages, a strict policy, visible authorship and specific writing are just a well-built site. AEO is the reason people are finally willing to pay for one. The rest of the answer is [writing in public](/blog/why-engineers-should-write-in-public/) for long enough that other people mention you.

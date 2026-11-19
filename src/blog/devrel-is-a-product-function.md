@@ -75,8 +75,6 @@ The best thing I built for developer adoption was not documentation. It was a co
 
 It works because it reverses the usual order. The developer sees the product working first, then decides it is worth integrating, and only then reads anything. A playground, a live demo with editable code or a one-click starter project all do the same job.
 
-[TODO: one Nexus Widgets configurator number, for example integrations that started from it, or time to a first working widget.]
-
 ## Meet different developers where they are
 
 Developers do not all want the same thing. When we shipped Avail's widgets, some teams wanted to install a package, set a few options and move on. Others wanted to own every line of the interface. We shipped both from one codebase: an npm package for the first group, and source components that the second group could copy into their own repository and edit.

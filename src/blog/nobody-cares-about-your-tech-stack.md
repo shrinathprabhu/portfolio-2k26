@@ -1,6 +1,6 @@
 ---
 title: "Nobody Has Ever Canceled a Subscription Because You Used PHP"
-description: "Customers buy outcomes, not frameworks. Pieter Levels runs million-dollar products on PHP and SQLite, and Marc Lou's best-known product was a stack, and even that sold because of who was selling it. What that means for how you build."
+description: "Customers buy outcomes, not frameworks. Solo founders run profitable products on PHP and a single server, and even a product that is literally a tech stack sells because of who is selling it. What that means for how you build."
 date: 2026-11-14
 postTags: ["posts", "product", "indie-hacking", "architecture"]
 category: "Product & Architecture"
@@ -8,8 +8,8 @@ keywords:
   [
     "simple tech stack",
     "does tech stack matter",
-    "Pieter Levels tech stack",
-    "Marc Lou ShipFast",
+    "solo founder tech stack",
+    "boilerplate startup",
     "indie hacker tech stack",
     "boring technology",
     "overengineering",
@@ -18,8 +18,8 @@ image: "/images/blog/nobody-cares-about-your-tech-stack.png"
 faq:
   - q: "Does your tech stack matter for a startup?"
     a: "Much less than founders think. Customers never see it. The stack matters only where it limits how fast you can ship, how reliably the product runs, and who you can hire. Most early products fail on demand and distribution long before they hit a technical limit."
-  - q: "What tech stack does Pieter Levels use?"
-    a: "By his own public accounts, plain PHP, jQuery and SQLite on a single VPS, with no frontend framework. He has run products such as Nomad List, Remote OK and Photo AI this way, reportedly earning millions of dollars a year with no employees."
+  - q: "Can you build a profitable product on a simple stack?"
+    a: "Yes. Several well-known solo founders publicly run profitable products on plain PHP, jQuery and a file-based database on one server, with no frontend framework and no employees. What they optimize is shipping speed, audience and problem choice, not architecture."
   - q: "When does a simple stack stop being enough?"
     a: "When you can name a specific, measured limit: a query that cannot be made fast, a deploy that blocks several teams, a compliance requirement. Until you can name it, the complexity you add is a cost with no matching benefit."
 ---
@@ -30,7 +30,7 @@ The first spends three months on the perfect setup. Microservices, a message que
 
 The second puts a single PHP file on a cheap server, writes the database to one file on the same machine, and launches on a Tuesday. It makes money by Friday.
 
-The second founder is real. His name is Pieter Levels, and the internet has been arguing about his stack for a decade while he keeps earning from it.
+The second founder is not hypothetical. There are solo founders running exactly this setup, and the internet has argued about their stacks for years while they keep earning from them.
 
 No customer has ever canceled because of the language a product was written in. They cancel because it is slow, confusing, broken or useless to them. The stack is invisible to the people who pay you, so the only question worth asking about it is whether it lets you ship useful things quickly and keep them running.
 
@@ -40,13 +40,13 @@ I say this as someone who enjoys the craft and has spent years on frontend archi
 
 Indie founders are the cleanest test of this idea, because they share revenue publicly and have no team to hide behind.
 
-**Pieter Levels** is the standard example for a reason. By his own descriptions, his products, including Nomad List, Remote OK and Photo AI, run on plain PHP, jQuery and SQLite on a single server. No React, no Kubernetes, no microservices. He started Nomad List as a public spreadsheet before writing any code. His portfolio is widely reported to earn in the millions of dollars a year with no employees. Whatever the exact figure, it is more than most venture-funded teams with a far more fashionable architecture.
+**The PHP founder.** Some of the most profitable solo businesses on the internet run on plain PHP, jQuery and a database that is a single file, on one server. No React, no Kubernetes, no microservices. Some of them started as a public spreadsheet before any code existed. They earn more than plenty of venture-funded teams with a far more fashionable architecture.
 
-What he optimized instead: speed of shipping, an audience built over a decade of posting in public, and picking problems people already pay for.
+What these founders optimize instead: speed of shipping, an audience built over years of posting in public, and problems people already pay to solve.
 
-**Marc Lou** is the more interesting case, because his best-known product is a tech stack. ShipFast is a Next.js boilerplate. He has said he built more than a dozen products in two years before it, most of which went nowhere, and that he expected ShipFast to make almost nothing. It became a business that he reports has made over a million dollars.
+**The boilerplate founder** is the more interesting case, because the product is a tech stack. A starter kit: authentication, payments and email wired together in a popular framework, sold to people who want to skip the setup. The pattern is common. Ship a dozen small products that go nowhere, then one of them, the starter kit, takes off.
 
-But look at why people bought it. Not because Next.js is special. They bought it from a person they followed, who promised to save them weeks of setup. Then the numbers moved. By the figures he shares publicly, ShipFast went from about $126,000 a month in 2024 to about $2,000 a month in 2026. His own post about it gave no reason. Other people attribute the drop to AI tools: when a coding agent can scaffold authentication and payments in an afternoon, a boilerplate is worth less. That is a reasonable guess, and it is still a guess. Over the same period his newer products, including DataFast, an analytics tool that solves an ongoing problem for a recurring fee, grew and more than covered the gap.
+But look at why people buy it. Not because the framework is special. They buy it from a person they already follow, who promises to save them weeks. And the market can move fast. At least one well-known starter kit went, by its founder's public numbers, from six figures a month to four figures a month within two years. The founder gave no reason. The common guess is AI: when a coding agent can scaffold authentication and payments in an afternoon, a boilerplate is worth less. It is a reasonable guess, and it is still a guess. Meanwhile the same founder's newer products, which solve an ongoing problem for a recurring fee, grew enough to cover the gap.
 
 That is the lesson stated twice. The stack was never the asset. The audience and the problem were.
 

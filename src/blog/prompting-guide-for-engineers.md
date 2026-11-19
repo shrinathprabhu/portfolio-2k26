@@ -28,8 +28,6 @@ When you hand work to a person, you are transferring context. They are capable a
 
 A new lead usually discovers this the expensive way. You assign something in one sentence, the result comes back technically correct and practically wrong, and your first instinct is to blame the person. It takes a while to accept that they built exactly what you asked for.
 
-[TODO: a real example from your team. A task you delegated in one line that came back wrong, what was missing from the brief, and what you changed afterward.]
-
 An AI agent is that situation with the feedback loop shortened from a week to a minute. It is the most literal new joiner you will ever work with. Where the brief is silent, it guesses, and it guesses the most generic answer available.
 
 ## What a good lead hands over

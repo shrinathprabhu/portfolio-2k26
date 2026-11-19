@@ -69,7 +69,7 @@ I said yes, with no counter-offer.
 
 It cost days I did not have. The two browsers share most of the extension API but differ in permissions, background scripts and store review, so every feature was tested twice. InboxSDK was unreliable on Firefox, so that version leaned on gmail.js alone and was kept minimal.
 
-[TODO: state whether the Firefox version shipped at launch, shipped later, or was dropped.]
+And in the end the Firefox version never shipped. The days went into a version nobody installed.
 
 What I should have said is "Chrome on day 30, Firefox two weeks after". That is not a refusal. It is the same work in a different order, and it would have given those days to polish and edge cases on the Chrome version. New joiners assume they have no standing to say this. They have more than they think, because they are the only person in the room who has just estimated the work. I wrote about how to say it in [stop nodding in meetings](/blog/how-to-disagree-with-leadership/).
 

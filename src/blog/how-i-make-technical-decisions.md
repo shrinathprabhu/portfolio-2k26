@@ -95,10 +95,6 @@ Once the decision is made, the team commits, including the people who argued aga
 
 What I will not do is pretend to agree in the meeting and reopen the question in a hallway. That is worse than either choice. I have written more about [how to disagree with leadership properly](/blog/how-to-disagree-with-leadership/).
 
-## A decision I got wrong
-
-[TODO: a real story. A decision you made that turned out wrong: what you chose, at what speed, what the tripwire should have been, and what it cost to reverse.]
-
 ## The traps I watch for in myself
 
 - **Deciding by familiarity.** Preferring what I know and calling it judgment.

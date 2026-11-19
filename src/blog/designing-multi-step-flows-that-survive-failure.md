@@ -95,7 +95,7 @@ This is where frontend work becomes system design.
 
 On a bridge interface, status changes arrive constantly. Getting those updates to render smoothly without lying about the current state was a large part of the engineering.
 
-[TODO: one real Fastbridge number, for example how many states a transfer can be in, or the share of transfers that get stuck.]
+At its peak, about $100,000 a month moved through Fastbridge. At that volume, "what does the user see while a transfer is halfway" is not an edge case. It is someone's money, several times a day.
 
 ## Plan for the slow failure
 

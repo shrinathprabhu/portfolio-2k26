@@ -17,7 +17,7 @@ image: "/images/blog/delivering-mvp-in-a-week.png"
 imageFallback: "/images/agrostar-mvp.png"
 ---
 
-I joined [AgroStar](https://agrostar.in), an Indian agtech company, as a temporary resource [TODO: confirm the company name as you want it shown, the year, and the engagement type. The earlier draft said both "temporary resource" and "full-time retainer role", which contradict each other]. The requirements arrived on day one. On Friday the VP was using the app, and he offered to keep me on.
+I joined [AgroStar](https://agrostar.in), an Indian agtech company, as a temporary resource. The requirements arrived on day one. On Friday the VP was using the app, and he offered to keep me on.
 
 The app was a mobile-first learning platform, AgroStar Gold. Farmers sign in, watch live or recorded sessions on farming techniques, and get the content in their own language, with audio and subtitles switching to match.
 
@@ -29,7 +29,7 @@ Two things were already true when I arrived, and I had nothing to do with either
 
 The designs were finished and approved. When an engineer designs and builds at the same time, every component carries a design decision, a review and a revision. With approved designs, I was translating, not inventing.
 
-The users already existed. The sales team handled farmer registration, so there was no sign-up flow, no verification and no onboarding to build. The app synced farmer records from [TODO: one source. The earlier draft said both "their database" and "marketing sheets". State which].
+The users already existed. The sales team handled farmer registration, so there was no sign-up flow, no verification and no onboarding to build. The app only had to sync the farmer records the sales team already kept.
 
 If you want something built in a week, this is where to spend your effort: settle the design and the data before the engineer starts the clock.
 
@@ -57,7 +57,7 @@ Error states, validation and rate limiting came after that path was solid. They 
 
 Language was the only real engineering problem.
 
-The app supported [TODO: the actual list of languages, so this post and the frontend post agree. The earlier drafts said "5 Indian languages", then "5 beyond English and Hindi", and the other post named Devanagari, Tamil, Telugu, Kannada and Gurmukhi scripts].
+The app supported several Indian languages, each with its own script.
 
 Every label had to render correctly in each script, which is a layout problem as much as a translation problem: a short English button label can be twice as long in another language. And each recorded session had several audio tracks and subtitle files. When a farmer changed language, the video had to switch both without restarting, and the preference had to follow them to another device.
 

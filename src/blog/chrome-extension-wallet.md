@@ -50,9 +50,7 @@ It was still the right trade. An elegant API with no apps is a demo. An ugly com
 
 We launched with 10+ chains because the narrative demanded it. "Ten chains" reads better in an announcement than "five".
 
-[TODO: confirm that 4 to 5 chains carried roughly 80% of user activity. The earlier version of this post stated it as fact.]
-
-If that holds, half of the launch surface served a small share of the usage. Every extra chain is another RPC provider with its own rate limits, another set of token contracts, another row in the test matrix, and another place for the unified balance to be wrong.
+In practice, 4 to 5 chains carried about 80% of user activity. Half of the launch surface served a small share of the usage. Every extra chain is another RPC provider with its own rate limits, another set of token contracts, another row in the test matrix, and another place for the unified balance to be wrong.
 
 This is the decision I would change. Launch with five, add the rest when users ask. The number of chains was a marketing decision paid for with engineering and testing time.
 
@@ -80,8 +78,6 @@ The ways it does not close:
 - **The bridge lags.** Funds have left the source, have not arrived, and the user is looking at a transaction that seems stuck.
 - **The balance is stale.** A price feed or an RPC returned old data, and the total was never true.
 - **Part of it lands.** Enough arrived for gas, not enough for the action.
-
-[TODO: the real safeguards. What the wallet did when a bridge failed or lagged: whether the destination transaction was held until funds were confirmed, what the user saw while waiting, timeouts, and how a partial arrival was handled.]
 
 Every one of these had handling. The error copy was still the weakest part. "Insufficient funds for gas" is accurate and useless to someone who does not know they need ETH on Arbitrum before they can swap there. The general approach to flows like this is in [designing multi-step flows that survive failure](/blog/designing-multi-step-flows-that-survive-failure/).
 

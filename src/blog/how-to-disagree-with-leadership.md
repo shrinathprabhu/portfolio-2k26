@@ -32,11 +32,7 @@ Then the call ends, and the real meeting starts in a private chat: "This is neve
 
 Six weeks later it does not work, and the founder asks the most reasonable question in the world: "Why did nobody tell me?"
 
-I have been in that silence, on both sides of the table.
-
-[TODO: one real disagreement story. Either a time you stayed quiet and it cost something, or a time you spoke up: what the plan was, what you said, and what happened.]
-
-This post is about getting out of it.
+This post is about getting out of that silence.
 
 ## The bot problem
 
