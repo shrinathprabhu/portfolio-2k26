@@ -3,27 +3,15 @@ import pluginRss from "@11ty/eleventy-plugin-rss";
 import mila from "markdown-it-link-attributes";
 import {
   readFileSync,
-  writeFileSync,
   existsSync,
   mkdirSync,
-  statSync,
   copyFileSync,
 } from "fs";
 import { join, basename, extname } from "path";
 import { createHash } from "crypto";
 
-// ── Blur placeholder cache (LQIP) ──
+// Build cache for generated WebP variants.
 const CACHE_DIR = ".cache";
-const CACHE_FILE = join(CACHE_DIR, "blur-placeholders.json");
-let placeholderCache = {};
-
-try {
-  if (existsSync(CACHE_FILE)) {
-    placeholderCache = JSON.parse(readFileSync(CACHE_FILE, "utf-8"));
-  }
-} catch {
-  placeholderCache = {};
-}
 
 function fileHash(path) {
   return createHash("sha256").update(readFileSync(path)).digest("hex").slice(0, 10);
@@ -33,6 +21,8 @@ function fileHash(path) {
 // Sources stay as PNG/JPG in src/images (still used for Open Graph).
 // Variants are content-hashed, so the immutable cache header is safe.
 const IMG_DIR = "img";
+// High enough that cover text and soft gradients stay crisp (no banding).
+const WEBP_QUALITY = 88;
 const variantCache = new Map();
 
 async function imageVariants(src, widths) {
@@ -45,15 +35,22 @@ async function imageVariants(src, widths) {
   const hash = fileHash(full);
   const name = basename(src, extname(src));
   const usable = widths.filter((w) => w <= meta.width);
-  if (usable.length === 0) usable.push(meta.width);
+  // A requested width larger than the source falls back to the source's own
+  // width, so high-density screens still get the sharpest version available.
+  if (usable.length < widths.length && !usable.includes(meta.width)) {
+    usable.push(meta.width);
+  }
 
   const variants = [];
   for (const w of usable) {
-    const file = `${name}-${hash}-${w}.webp`;
+    const file = `${name}-${hash}-${w}-q${WEBP_QUALITY}.webp`;
     const cached = join(CACHE_DIR, IMG_DIR, file);
     if (!existsSync(cached)) {
       mkdirSync(join(CACHE_DIR, IMG_DIR), { recursive: true });
-      await sharp(full).resize(w).webp({ quality: 76 }).toFile(cached);
+      await sharp(full)
+        .resize(w, null, { kernel: "lanczos3" })
+        .webp({ quality: WEBP_QUALITY, smartSubsample: true, effort: 6 })
+        .toFile(cached);
     }
     mkdirSync(join("_site", IMG_DIR), { recursive: true });
     copyFileSync(cached, join("_site", IMG_DIR, file));
@@ -79,15 +76,6 @@ function escapeAttr(value) {
     .replace(/</g, "&lt;");
 }
 
-function savePlaceholderCache() {
-  try {
-    mkdirSync(CACHE_DIR, { recursive: true });
-    writeFileSync(CACHE_FILE, JSON.stringify(placeholderCache));
-  } catch {
-    // Silent fail — cache is optional
-  }
-}
-
 export default function (eleventyConfig) {
   // ── Plugins ──
   eleventyConfig.addPlugin(syntaxHighlight, {
@@ -105,36 +93,8 @@ export default function (eleventyConfig) {
   });
   eleventyConfig.addPlugin(pluginRss);
 
-  // ── LQIP: build-time blur placeholders for blog images ──
-  eleventyConfig.addAsyncFilter(
-    "blurPlaceholder",
-    async function (imagePath) {
-      if (!imagePath) return "";
-
-      const fullPath = join("src", imagePath);
-
-      try {
-        const mtime = statSync(fullPath).mtimeMs.toString();
-        const cacheKey = `${imagePath}:${mtime}`;
-
-        if (placeholderCache[cacheKey]) {
-          return placeholderCache[cacheKey];
-        }
-
-        const sharp = (await import("sharp")).default;
-        const buffer = await sharp(fullPath)
-          .resize(20) // 20px wide — produces ~300-500 byte JPEG
-          .jpeg({ quality: 20 })
-          .toBuffer();
-
-        const dataUri = `data:image/jpeg;base64,${buffer.toString("base64")}`;
-        placeholderCache[cacheKey] = dataUri;
-        return dataUri;
-      } catch {
-        return "";
-      }
-    },
-  );
+  // Blur placeholders (LQIP) are made by `npm run images` and read from
+  // src/_data/blogImages.json; see scripts/blog-images.js.
 
   // ── Responsive image shortcode ──
   // {% img "/images/foo.png", "Alt text", "card" | "cover", eager %}
@@ -156,11 +116,6 @@ export default function (eleventyConfig) {
       }
     },
   );
-
-  // Save placeholder cache after build completes
-  eleventyConfig.on("eleventy.after", () => {
-    savePlaceholderCache();
-  });
 
   // ── Passthrough copy ──
   eleventyConfig.addPassthroughCopy("src/styles.css");

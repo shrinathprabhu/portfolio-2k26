@@ -12,6 +12,8 @@ const REDIRECTS = {
   "/blog/zero-knowledge-encrypted-storage": "/blog/",
   "/blog/leading-team-in-2026":
     "/blog/ai-will-replace-coders-not-software-engineers/",
+  "/blog/is-cold-email-still-worth-it-in-2026":
+    "/blog/is-cold-email-still-worth-it/",
   "/launch-plan": "/",
   "/resume/SHRINATH_PRABHU_UPDATED_RESUME_2026.pdf":
     "/resume/SHRINATH_PRABHU_RESUME.pdf",

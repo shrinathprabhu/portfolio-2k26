@@ -1,14 +1,16 @@
 {
   "name": "shrinath-portfolio",
   "version": "1.0.0",
-  "description": "Portfolio of Shrinath Prabhu — Senior Staff Frontend Engineer",
+  "description": "Portfolio of Shrinath Prabhu \u2014 Senior Staff Frontend Engineer",
   "type": "module",
   "scripts": {
     "dev": "npx @11ty/eleventy --serve",
     "build": "npx @11ty/eleventy",
     "clean": "rm -rf _site",
-    "preview": "npm run build && wrangler dev",
-    "deploy": "npm run build && wrangler deploy"
+    "preview": "npm run images && npm run build && wrangler dev",
+    "deploy": "npm run images && npm run build && wrangler deploy",
+    "images": "node scripts/blog-images.js",
+    "images:check": "node scripts/blog-images.js --check"
   },
   "devDependencies": {
     "@11ty/eleventy": "3.1.8",

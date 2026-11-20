@@ -7,16 +7,16 @@ category: "Sales & Growth"
 keywords:
   [
     "is cold email still worth it",
-    "cold email 2026",
+    "cold email 2027",
     "cold outreach",
     "cold email reply rate",
     "email deliverability",
     "B2B outbound",
     "founder-led sales",
   ]
-image: "/images/blog/is-cold-email-still-worth-it-in-2026.png"
+image: "/images/blog/is-cold-email-still-worth-it.png"
 faq:
-  - q: "Does cold email still work in 2026?"
+  - q: "Does cold email still work in 2027?"
     a: "It works for small, well-targeted campaigns where each message is relevant to the recipient. High-volume templated outreach performs poorly and risks damaging your domain, because mailbox providers enforce authentication and spam-complaint limits and recipients have learned to ignore generic messages."
   - q: "What is a good cold email reply rate?"
     a: "Vendor benchmarks commonly put the average around 3 to 4 percent, with strong campaigns above 5 percent. Small, carefully researched campaigns to a well-chosen list can do considerably better, which is why list quality matters more than volume."
@@ -32,7 +32,7 @@ And yet. Every so often an email arrives from a stranger who has clearly looked 
 
 Both of those are "cold email". Only one of them is dead.
 
-So yes, cold email is still worth it in 2026, on one condition: it has to be worth receiving. The cheap, high-volume version was killed by two things at once. Mailbox providers got strict, and AI made generic outreach so abundant that people stopped reading it. The careful, low-volume version works as well as ever, possibly better, because so little of it exists.
+So yes, cold email is still worth it in 2027, on one condition: it has to be worth receiving. The cheap, high-volume version was killed by two things at once. Mailbox providers got strict, and AI made generic outreach so abundant that people stopped reading it. The careful, low-volume version works as well as ever, possibly better, because so little of it exists.
 
 I am an engineer, not a salesperson, but I have been on both sides of this. The engineering view helps, because cold email today is partly a deliverability system with rules.
 
@@ -112,4 +112,4 @@ Cold email works best as one part of a small system:
 
 ## The verdict
 
-Cold email in 2026 rewards the opposite of what the tools encourage. Send fewer messages to better-chosen people, with a real reason, from a properly configured domain, written by someone who would be comfortable receiving the same message. That standard is easy to describe and takes real work to meet, which is exactly why it still gets replies.
+Cold email in 2027 rewards the opposite of what the tools encourage. Send fewer messages to better-chosen people, with a real reason, from a properly configured domain, written by someone who would be comfortable receiving the same message. That standard is easy to describe and takes real work to meet, which is exactly why it still gets replies.

@@ -121,4 +121,4 @@ Being public does not mean being careless.
 
 A year of steady writing produces a dozen or more pieces that describe how you think. A hiring manager reads two and already knows more about you than an interview loop would tell them. A founder searching for someone with your experience finds you directly. An AI assistant, asked who knows about your niche, has something of yours to cite.
 
-None of this replaces doing good work. It makes good work visible, which is the part most engineers skip. If outreach is part of your plan, public writing is also what makes [cold email](/blog/is-cold-email-still-worth-it-in-2026/) credible when the recipient looks you up.
+None of this replaces doing good work. It makes good work visible, which is the part most engineers skip. If outreach is part of your plan, public writing is also what makes [cold email](/blog/is-cold-email-still-worth-it/) credible when the recipient looks you up.

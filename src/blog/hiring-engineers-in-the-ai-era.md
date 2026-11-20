@@ -11,7 +11,7 @@ keywords:
     "technical interview with AI",
     "what to look for when hiring developers",
     "hiring first engineer startup",
-    "engineering interview process 2026",
+    "engineering interview process 2027",
   ]
 image: "/images/blog/hiring-engineers-in-the-ai-era.png"
 faq:

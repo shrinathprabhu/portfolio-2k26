@@ -95,7 +95,7 @@ You probably do not have fifty thousand GitHub stars. The same approach still wo
 4. **Offer to solve the problem by hand** for a few people. Use their words to shape the product.
 5. **Ask for money early.** A small payment is stronger evidence than a hundred compliments.
 6. **Ask every happy customer one question:** "Who else has this problem?"
-7. **Only then think about scale**, including [cold outreach](/blog/is-cold-email-still-worth-it-in-2026/), content and ads.
+7. **Only then think about scale**, including [cold outreach](/blog/is-cold-email-still-worth-it/), content and ads.
 
 ## A caution about these stories
 

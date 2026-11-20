@@ -39,7 +39,7 @@ ogType: article
     </header>
 
     {% if image %}
-    <div class="blog-post__cover">
+    <div class="blog-post__cover lqip"{% if coverPlaceholder %} style="--placeholder: url('{{ coverPlaceholder }}')"{% endif %}>
       {% img image, imageAlt or title, "cover", true %}
     </div>
     {% endif %}

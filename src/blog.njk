@@ -25,7 +25,7 @@ containerClass: "container--wide"
     class="blog-card{% if post.data.featured %} blog-card--featured{% endif %}"
   >
     {% if post.data.image %}
-    <div class="blog-card__image" style="--placeholder: url('{{ post.data.image | blurPlaceholder }}')">
+    <div class="blog-card__image lqip"{% if post.data.coverPlaceholder %} style="--placeholder: url('{{ post.data.coverPlaceholder }}')"{% endif %}>
       {% img post.data.image, "", "card", loop.index <= 2 %}
       {% if post.data.category %}
       <span class="blog-item__tag blog-item__tag--cover glass glass--frost">{{ post.data.category }}</span>

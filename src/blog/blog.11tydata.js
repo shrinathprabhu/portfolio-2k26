@@ -1,7 +1,7 @@
-import { existsSync } from "node:fs";
-import { join } from "node:path";
+import { resolveCover } from "../../lib/blog-cover.js";
 
-const imageExists = (path) => Boolean(path) && existsSync(join("src", path));
+// Open Graph copies and blur placeholders come from `npm run images`, which
+// records them in src/_data/blogImages.json (global data: blogImages).
 
 export default {
   layout: "post.njk",
@@ -22,19 +22,17 @@ export default {
       }
       return false;
     },
-    // Covers live at /images/blog/<slug>.png. Until that file is added, fall
-    // back to the post's previous cover (imageFallback) or to no cover at all.
-    image: (data) => {
-      if (imageExists(data.image)) return data.image;
-      if (imageExists(data.imageFallback)) return data.imageFallback;
-      return undefined;
-    },
+    // See lib/blog-cover.js for how a post's cover is chosen.
+    image: (data) => resolveCover(data.image, data.imageFallback),
+    // Social cards use the 1200x630 copy. If `npm run images` has not run for
+    // this cover yet, fall back to the master rather than to no image.
     ogImage: (data) => {
-      if (data.image) {
-        return `https://shrinath.me${data.image}`;
-      }
-      return undefined; // falls back to global meta.jpg
+      if (!data.image) return undefined; // falls back to global meta.jpg
+      const og = data.blogImages?.[data.image]?.og;
+      return `https://shrinath.me${og || data.image}`;
     },
+    coverPlaceholder: (data) =>
+      data.blogImages?.[data.image]?.placeholder || "",
     readingTime: (data) => {
       if (data.readingTime) return data.readingTime; // manual override
       const content = data.page?.rawInput || "";

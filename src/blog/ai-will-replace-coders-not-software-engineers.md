@@ -11,7 +11,7 @@ keywords:
     "developer vs engineer",
     "future of software engineering",
     "AI coding agents",
-    "software engineering career 2026",
+    "software engineering career 2027",
   ]
 image: "/images/blog/ai-will-replace-coders-not-software-engineers.png"
 faq:

@@ -114,3 +114,17 @@ document.addEventListener('pointerleave', clearLight);
 opticalMotion.addEventListener('change', syncOpticalMotion);
 reducedTransparency.addEventListener('change', syncOpticalMotion);
 syncOpticalMotion();
+
+// ── Blur-up covers ──
+// Lazy-loaded covers fade in over their blurred placeholder. Eager (above the
+// fold) covers are left alone so they paint as early as possible, and images
+// that are already loaded, or that fail, are never hidden.
+{
+  for (const img of document.querySelectorAll('.lqip img[loading="lazy"]')) {
+    if (img.complete) continue;
+    img.classList.add('is-loading');
+    const reveal = () => img.classList.remove('is-loading');
+    img.addEventListener('load', reveal, { once: true });
+    img.addEventListener('error', reveal, { once: true });
+  }
+}
