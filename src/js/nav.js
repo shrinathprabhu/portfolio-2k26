@@ -64,7 +64,7 @@ restoreHighlight();
 // Update only the control under the mouse, at most once per rendered frame.
 const opticalControls = '.nav__inner, .btn, .case-study__link, .section-head a, .reading-tools, .voice__play';
 const opticalMotion = matchMedia(
-  '(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) and (forced-colors: none)'
+  '(hover: hover) and (pointer: fine) and (forced-colors: none)'
 );
 const reducedTransparency = matchMedia('(prefers-reduced-transparency: reduce), (prefers-contrast: more)');
 let litControl;
@@ -105,12 +105,13 @@ function moveLight(event) {
 function syncOpticalMotion() {
   document.removeEventListener('pointermove', moveLight);
   clearLight();
-  if (opticalMotion.matches && !reducedTransparency.matches) {
+  if (document.documentElement.dataset.motion === 'enabled' && opticalMotion.matches && !reducedTransparency.matches) {
     document.addEventListener('pointermove', moveLight, { passive: true });
   }
 }
 
 document.addEventListener('pointerleave', clearLight);
+document.addEventListener('motionchange', syncOpticalMotion);
 opticalMotion.addEventListener('change', syncOpticalMotion);
 reducedTransparency.addEventListener('change', syncOpticalMotion);
 syncOpticalMotion();

@@ -2,6 +2,7 @@
 title: "The Cheapest Security Tool You Own Is the Delete Key"
 description: "In 2024, a tiny script that over a hundred thousand websites had forgotten they were loading started serving malware. Nobody was hacked in the usual sense. The story of Polyfill.io, and why the first move in security is to remove things, not add them."
 date: 2026-11-07
+dateModified: 2026-11-20
 postTags: ["posts", "security", "architecture", "frontend"]
 category: "Security"
 keywords:
@@ -75,7 +76,7 @@ Once you have deleted what you can, shrink what remains.
 - **Nothing sensitive in the frontend.** The browser is a public place.
 - **Browser permissions** switched off by default: camera, microphone, location.
 
-This site is a small example. It loads no third-party scripts at all, and its security policy denies everything by default. That was not hard. It only required deciding it at the start.
+This site is a small example. It loads one third-party script, cookie-free analytics from Cloudflare, the company that already serves the site, and its security policy denies everything else by default. That was not hard. It only required deciding it at the start.
 
 ## Monitor: last, and smallest
 

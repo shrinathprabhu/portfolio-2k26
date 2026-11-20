@@ -14,18 +14,23 @@
   canvas.height = H * dpr;
   ctx.scale(dpr, dpr);
 
-  // Colors (respect dark mode)
-  const isDark = window.matchMedia(
-    "(prefers-color-scheme: dark)",
-  ).matches;
-  const COL = {
-    ground: isDark ? "#444" : "#d4d4d4",
-    player: isDark ? "#e7eff1" : "#172b33",
-    obstacle: isDark ? "#ef4444" : "#dc2626",
-    text: isDark ? "#a0a0a0" : "#6b6b68",
-    accent: isDark ? "#4cc9cf" : "#007f87",
-    cloud: isDark ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.03)",
-  };
+  // Follow the site's resolved appearance, including manual changes.
+  let COL;
+  let isDark;
+  function syncColors() {
+    const styles = getComputedStyle(document.documentElement);
+    isDark = styles.colorScheme === "dark";
+    COL = {
+      ground: styles.getPropertyValue("--border").trim(),
+      player: styles.getPropertyValue("--text-primary").trim(),
+      obstacle: isDark ? "#ef4444" : "#dc2626",
+      text: styles.getPropertyValue("--text-secondary").trim(),
+      accent: styles.getPropertyValue("--accent").trim(),
+      cloud: isDark ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.03)",
+    };
+  }
+  syncColors();
+  document.addEventListener("themechange", syncColors);
 
   const GROUND_Y = H - 30;
 
@@ -99,6 +104,7 @@
 
   // Controls
   document.addEventListener("keydown", (e) => {
+    if (e.target.closest("button, a, input, select, textarea, [contenteditable]")) return;
     if (e.code === "Space" || e.code === "ArrowUp") {
       e.preventDefault();
       jump();

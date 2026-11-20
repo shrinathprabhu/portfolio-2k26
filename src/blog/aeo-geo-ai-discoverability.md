@@ -2,6 +2,7 @@
 title: "AEO Is SEO With Better PR. Here's What I Actually Did"
 description: "Answer engine optimization and generative engine optimization are mostly good publishing with new names. A first-hand account of how this site is built to be read by AI crawlers, what I skipped, and the part no build step can do for you."
 date: 2026-11-13
+dateModified: 2026-11-20
 postTags: ["posts", "seo", "ai", "architecture"]
 category: "Sales & Growth"
 keywords:
@@ -39,13 +40,13 @@ The `robots.txt` here allows everything except the error page and points to the 
 
 The sitemap only includes a last-modified date for pages where a real edit date is known. Stamping every URL with the build time teaches crawlers to ignore the field.
 
-## A strict security policy and no third-party scripts
+## A strict security policy and one third-party script
 
-Every page is served with a Content Security Policy that starts from `default-src 'none'` and allows scripts, fonts, images and requests only from this origin. Fonts are self-hosted. There is no analytics tag, no chat widget and no embed from anyone else's domain.
+Every page is served with a Content Security Policy that starts from `default-src 'none'` and allows scripts, fonts, images and requests only from this origin, with one exception: cookie-free analytics from Cloudflare, which already serves the site. Fonts are self-hosted. There is no marketing tag, no chat widget and no embed from anyone else's domain.
 
-This is a security decision first, and I explain the reasoning in [the cheapest security tool you own is the delete key](/blog/reduce-attack-surface-delete-first/). It has two side effects that matter here. The pages are small and fast, because nothing loads that I did not write. And nothing on the page can rewrite the content after it loads, so what a crawler reads is what I published.
+This is a security decision first, and I explain the reasoning in [the cheapest security tool you own is the delete key](/blog/reduce-attack-surface-delete-first/). It has two side effects that matter here. The pages are small and fast, because almost nothing loads that I did not write. And nothing on the page rewrites the content after it loads, so what a crawler reads is what I published.
 
-The honest cost: with no analytics script, I cannot see referral traffic from AI products in a dashboard. I am choosing not to know, and the choice is deliberate.
+The analytics is deliberately small: page views, referrers and page speed, with no cookies and nothing that follows a person between visits. That is enough to see whether AI products send anyone here, without loading a full marketing tag.
 
 ## Structured data that matches the visible page
 

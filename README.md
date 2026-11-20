@@ -39,3 +39,7 @@ Led frontend engineering at **[Arcana Network](https://arcana.network)** for 4.5
 ## Let's connect
 
 📧 hello@shrinath.me • 🌐 [shrinath.me](https://shrinath.me) • [LinkedIn](https://linkedin.com/in/shrinath-prabhu) • [Twitter](https://x.com/shrinath)
+
+## UI credits
+
+The appearance selector's miniature previews and selection interaction are inspired by [Rare UI's theme selector](https://www.rareui.com/components/themeselector), implemented here in HTML, CSS, and JavaScript with Light, Dark, and System preferences.

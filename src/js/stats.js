@@ -1,7 +1,9 @@
 (() => {
   const stats = document.querySelector('.stats');
-  const allowRolling = matchMedia('(prefers-reduced-motion: no-preference) and (forced-colors: none)');
-  if (!stats || !allowRolling.matches || !window.IntersectionObserver || !Element.prototype.animate) return;
+  const allowRolling = matchMedia('(forced-colors: none)');
+  const canAnimate = () => document.documentElement.dataset.motion === 'enabled' && allowRolling.matches;
+  if (!stats || !window.IntersectionObserver || !Element.prototype.animate) return;
+  let played = false;
 
   const observer = new IntersectionObserver(([entry]) => {
     if (entry.intersectionRatio < 0.25) return;
@@ -13,7 +15,8 @@
   }, { threshold: 0.25 });
 
   function roll() {
-    if (!allowRolling.matches) return;
+    if (!canAnimate() || played) return;
+    played = true;
 
     const animations = Array.from(stats.querySelectorAll('.stat-digit'), (digit, index) => {
       const value = Number(digit.textContent);
@@ -52,13 +55,21 @@
     }).filter(Boolean);
 
     function stopIfNeeded() {
-      if (!allowRolling.matches) animations.forEach(animation => animation.cancel());
+      if (!canAnimate()) animations.forEach(animation => animation.cancel());
     }
     allowRolling.addEventListener('change', stopIfNeeded);
+    document.addEventListener('motionchange', stopIfNeeded);
     Promise.allSettled(animations.map(animation => animation.finished)).then(() => {
       allowRolling.removeEventListener('change', stopIfNeeded);
+      document.removeEventListener('motionchange', stopIfNeeded);
     });
   }
 
-  observer.observe(stats);
+  function syncObserver() {
+    if (canAnimate() && !played) observer.observe(stats);
+    else observer.disconnect();
+  }
+  document.addEventListener('motionchange', syncObserver);
+  allowRolling.addEventListener('change', syncObserver);
+  syncObserver();
 })();
