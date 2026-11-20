@@ -38,4 +38,4 @@ Led frontend engineering at **[Arcana Network](https://arcana.network)** for 4.5
 
 ## Let's connect
 
-📧 hello@shrinath.me • 🌐 [shrinath.me](https://shrinath.me) • [LinkedIn](https://linkedin.com/in/shrinath-prabhu) • [Twitter](https://twitter.com/shrinath_prabhu)
+📧 hello@shrinath.me • 🌐 [shrinath.me](https://shrinath.me) • [LinkedIn](https://linkedin.com/in/shrinath-prabhu) • [Twitter](https://x.com/shrinath)

@@ -1,20 +1,20 @@
 ---
 layout: page.njk
-title: "Blog - Shrinath Prabhu | Frontend Architecture & Chrome Extensions"
-description: "Technical writing by Shrinath Prabhu on frontend architecture, Chrome Extension development, Vue.js patterns, Vite SEO, and building products from zero to launch."
-ogTitle: "Blog - Shrinath Prabhu | Frontend Architecture & Chrome Extensions"
-ogDescription: "Technical writing on frontend architecture, Chrome Extension development, Vue.js patterns, and building products from zero to launch."
+title: "Blog - Shrinath Prabhu | Engineering, AI, Security and Shipping Products"
+description: "Essays by Shrinath Prabhu on engineering decisions, AI, security, Web3, system design, leadership and getting products in front of customers, from 8 years of building."
+ogTitle: "Blog - Shrinath Prabhu | Engineering, AI, Security and Shipping Products"
+ogDescription: "Essays on engineering decisions, AI, security, Web3, system design, leadership and shipping products."
 ogType: website
-ogImage: "https://shrinath.me/images/blog-meta.jpg"  
-ogImageAlt: "Shrinath Prabhu - Blog"
+ogImage: "https://shrinath.me/images/blog-og-image.jpg"
+ogImageAlt: "Shrinath Prabhu's blog: judgment, trade-offs and shipping"
 permalink: /blog/
+containerClass: "container--wide"
 ---
 
 <div class="page-header fade-in">
   <h1>Blog</h1>
   <p>
-    Technical writing on frontend architecture, Chrome Extensions, and
-    building products from zero to launch.
+    Lessons, opinions and case studies from 8 years of building products: engineering decisions, AI, security, Web3, leadership and getting customers.
   </p>
 </div>
 
@@ -22,61 +22,54 @@ permalink: /blog/
   {% for post in collections.posts %}
   <a
     href="{{ post.url }}"
-    class="blog-card fade-in{% if post.data.featured %} blog-card--featured{% endif %}{% if loop.index > 6 %} blog-card--hidden{% endif %}"
-    style="text-decoration: none; color: inherit"
-    data-blog-index="{{ loop.index }}"
+    class="blog-card{% if post.data.featured %} blog-card--featured{% endif %}"
   >
     {% if post.data.image %}
-    <div class="blog-card__image" style="--placeholder: url('{{ post.data.image | blurPlaceholder }}')">
-      <img
-        src="{{ post.data.image }}"
-        alt="{{ post.data.title }}"
-        loading="{% if loop.index <= 2 %}eager{% else %}lazy{% endif %}"
-        class="is-loading"
-      />
+    <div class="blog-card__image lqip"{% if post.data.coverPlaceholder %} style="--placeholder: url('{{ post.data.coverPlaceholder }}')"{% endif %}>
+      {% img post.data.image, "", "card", loop.index <= 2 %}
+      {% if post.data.category %}
+      <span class="blog-item__tag blog-item__tag--cover glass glass--frost">{{ post.data.category }}</span>
+      {% endif %}
     </div>
     {% endif %}
     <div class="blog-card__body">
       {% if post.data.featured %}
-      <span class="blog-card__featured">★ Featured</span>
+      <span class="blog-card__featured">Featured</span>
       {% endif %}
-      <div class="blog-card__title">{{ post.data.title }}</div>
-      <div class="blog-card__desc">{{ post.data.description }}</div>
+      <h2 class="blog-card__title">{{ post.data.title }}</h2>
+      <p class="blog-card__desc">{{ post.data.description }}</p>
       <div class="blog-card__footer">
-        {% if post.data.category %}
-        <div style="margin-bottom: 6px;">
-          <span class="blog-item__tag">{{ post.data.category }}</span>
-        </div>
+        {% if post.data.category and not post.data.image %}
+        <span class="blog-item__tag">{{ post.data.category }}</span>
         {% endif %}
-        <div class="blog-item__meta">
-          <span>{{ post.date | readableDate }}</span>
-          <span> · {{ post.data.readingTime }}</span>
-        </div>
+        <span class="blog-item__meta">
+          <time datetime="{{ post.date | ymd }}">{{ post.date | readableDate }}</time>
+          · {{ post.data.readingTime }}
+        </span>
       </div>
     </div>
   </a>
   {% endfor %}
 </div>
 
-{% if collections.posts.length > 6 %}
-<div class="blog-load-more" id="blog-load-more">
-  <button class="blog-load-more__btn" id="blog-load-more-btn" type="button">
-    Show More Posts
-    <span class="blog-load-more__count" id="blog-load-more-count"></span>
-  </button>
-</div>
-{% endif %}
+<aside class="post-next" aria-label="Case studies">
+  <p>Want to see the projects behind the posts?</p>
+  <div class="hero__actions">
+    <a href="/work/" class="btn btn--primary">View case studies →</a>
+  </div>
+</aside>
 
-<div
-  style="
-    text-align: center;
-    padding: 40px 0 16px;
-  "
->
-  <p style="margin-bottom: 16px">
-    Want to see the projects behind the posts?
-  </p>
-  <a href="/work/" class="btn btn--primary">View Case Studies →</a>
-</div>
-
-<script src="/js/blog-list.js" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Shrinath Prabhu - Blog",
+  "url": "https://shrinath.me/blog/",
+  "author": { "@type": "Person", "@id": "https://shrinath.me/#person", "name": "Shrinath Prabhu", "url": "https://shrinath.me" },
+  "blogPost": [
+    {%- for post in collections.posts %}
+    { "@type": "BlogPosting", "headline": {{ post.data.title | dump | safe }}, "url": "https://shrinath.me{{ post.url }}", "datePublished": "{{ post.date | isoDate }}" }{% if not loop.last %},{% endif %}
+    {%- endfor %}
+  ]
+}
+</script>

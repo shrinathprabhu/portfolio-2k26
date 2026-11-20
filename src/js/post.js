@@ -19,56 +19,82 @@ document.querySelectorAll(".blog-post__body pre").forEach((pre) => {
   });
 });
 
-// Mermaid diagram rendering
-const mermaidBlocks = document.querySelectorAll('pre > code.language-mermaid');
-if (mermaidBlocks.length > 0) {
-  import('/js/mermaid.esm.min.mjs').then(({ default: mermaid }) => {
-    mermaid.initialize({
-      startOnLoad: false,
-      theme: 'dark',
-      themeVariables: {
-        primaryColor: '#2a2a3e',
-        primaryTextColor: '#d4d4d4',
-        primaryBorderColor: '#3a3a4e',
-        lineColor: '#6b8aff',
-        secondaryColor: '#1e1e2e',
-        tertiaryColor: '#16161e',
-        actorBorder: '#3a3a4e',
-        actorBkg: '#1e1e2e',
-        actorTextColor: '#d4d4d4',
-        signalColor: '#d4d4d4',
-        signalTextColor: '#d4d4d4',
-        textColor: '#d4d4d4',
-        tertiaryTextColor: '#d4d4d4',
-        nodeBkg: '#2a2a3e',
-        nodeBorder: '#3a3a4e',
-        nodeTextColor: '#d4d4d4',
-        clusterBkg: '#16161e',
-        clusterBorder: '#3a3a4e',
-        edgeLabelBackground: '#1e1e2e',
-      },
-      themeCSS: `
-        .nodeLabel, .nodeLabel p { color: #d4d4d4 !important; fill: #d4d4d4 !important; }
-        .cluster-label text { fill: #d4d4d4 !important; }
-        .cluster-label span { color: #d4d4d4 !important; }
-        .edgeLabel, .edgeLabel p { color: #d4d4d4cc !important; background-color: #2f2f47 !important; }
-      `,
-      sequence: {
-        actorMargin: 60,
-        messageMargin: 30,
-      },
-    });
+const outline = document.querySelector('.post-outline');
+if (outline) {
+  const desktopLinks = [...outline.querySelectorAll('.post-outline__desktop a')];
+  const mobileLinks = [...outline.querySelectorAll('.post-outline__mobile a')];
+  const headings = desktopLinks.map(link => document.getElementById(decodeURIComponent(link.hash.slice(1))));
+  const details = outline.querySelector('details');
+  const lists = [desktopLinks, mobileLinks].map(links => ({
+    links,
+    element: links[0].closest('ol'),
+  }));
+  let sectionTops = [];
+  let currentIndex = -1;
 
-    for (const codeEl of mermaidBlocks) {
-      const pre = codeEl.parentElement;
-      const container = document.createElement('div');
-      container.className = 'mermaid';
-      // Strip any HTML tags Prism may have added and decode entities
-      const source = codeEl.textContent;
-      container.textContent = source;
-      pre.replaceWith(container);
+  function markSection() {
+    const index = sectionTops.findLastIndex(top => top <= window.scrollY + 110);
+    if (index === currentIndex) return;
+    for (const { links, element } of lists) {
+      links[currentIndex]?.removeAttribute('aria-current');
+      links[index]?.setAttribute('aria-current', 'location');
+      positionRail(element, 'active', links[index]);
     }
+    currentIndex = index;
+  }
 
-    mermaid.run({ querySelector: '.mermaid' });
+  function measureOutline() {
+    sectionTops = headings.map(heading => heading.getBoundingClientRect().top + window.scrollY);
+    markSection();
+  }
+
+  mobileLinks.forEach((link, index) => {
+    link.addEventListener('click', () => {
+      details.open = false;
+      headings[index].focus({ preventScroll: true });
+    });
   });
+  function positionRail(list, state, link) {
+    const visible = Boolean(link?.offsetHeight);
+    if (visible) {
+      const center = link.offsetTop + link.offsetHeight / 2;
+      list.style.setProperty(`--outline-${state}`, `${center}px`);
+    }
+    list.style.setProperty(`--outline-${state}-visible`, Number(visible));
+  }
+
+  const outlineResize = new ResizeObserver(measureOutline);
+  outlineResize.observe(document.querySelector('.blog-post'));
+  for (const { links, element } of lists) {
+    const resizeRail = new ResizeObserver(() => {
+      positionRail(element, 'active', links[currentIndex]);
+    });
+    resizeRail.observe(element);
+
+    let hoveredLink;
+    let focusedLink;
+    const updatePreview = () => positionRail(element, 'preview', hoveredLink || focusedLink);
+
+    element.addEventListener('pointerover', (event) => {
+      if (event.pointerType !== 'mouse') return;
+      hoveredLink = event.target.closest('a');
+      updatePreview();
+    });
+    element.addEventListener('pointerleave', () => {
+      hoveredLink = null;
+      updatePreview();
+    });
+    element.addEventListener('focusin', (event) => {
+      focusedLink = event.target.closest('a:focus-visible');
+      updatePreview();
+    });
+    element.addEventListener('focusout', () => {
+      focusedLink = null;
+      updatePreview();
+    });
+  }
+
+  measureOutline();
+  window.addEventListener('scroll', markSection, { passive: true });
+  window.addEventListener('resize', markSection, { passive: true });
 }

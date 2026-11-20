@@ -2,8 +2,19 @@ const CANONICAL_HOST = "shrinath.me";
 
 // Old paths → current paths, permanent
 const REDIRECTS = {
-  // Outline Analytics was renamed OwlEye
-  "/blog/outline-analytics-reason": "/blog/owleye-analytics-reason/",
+  // Retired posts go to the blog index instead of a 404
+  "/blog/outline-analytics-reason": "/blog/",
+  "/blog/owleye-analytics-reason": "/blog/",
+  "/blog/choosing-eleventy-over-nuxt": "/blog/how-i-choose-a-tech-stack/",
+  "/blog/vite-seo-without-nextjs": "/blog/aeo-geo-ai-discoverability/",
+  "/blog/vue-3-composition-api-basics-and-patterns": "/blog/",
+  "/blog/privacy-first-chrome-extension-with-vpn": "/blog/",
+  "/blog/zero-knowledge-encrypted-storage": "/blog/",
+  "/blog/leading-team-in-2026":
+    "/blog/ai-will-replace-coders-not-software-engineers/",
+  "/blog/is-cold-email-still-worth-it-in-2026":
+    "/blog/is-cold-email-still-worth-it/",
+  "/launch-plan": "/",
   "/resume/SHRINATH_PRABHU_UPDATED_RESUME_2026.pdf":
     "/resume/SHRINATH_PRABHU_RESUME.pdf",
 };

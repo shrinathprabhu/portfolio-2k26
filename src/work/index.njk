@@ -26,11 +26,9 @@ jsonLd: |
         { "@type": "ListItem", "position": 2, "name": "Nexus Fastbridge", "description": "Cross-rollup bridge UI live on 15 EVM chains with ~$100K monthly volume, with custom Vite-based SEO solution generating per-chain HTML pages at build time without Next.js.", "url": "https://shrinath.me/work/#fastbridge" },
         { "@type": "ListItem", "position": 3, "name": "Arcana Chrome Extension Wallet", "description": "Non-custodial sidebar wallet supporting 10+ blockchains with dApp injection, unified balance management, and 4.7-star rating on Chrome Web Store.", "url": "https://shrinath.me/work/#wallet" },
         { "@type": "ListItem", "position": 4, "name": "SendIt", "description": "Gamified cross-chain token transfer app replacing wallet addresses with email, X handles, and ENS domains. Scaled to 65K+ accounts and 20K+ peak DAU.", "url": "https://shrinath.me/work/#sendit" },
-        { "@type": "ListItem", "position": 5, "name": "Skizzle - E2E Encrypted Email Attachments", "description": "Chrome and Firefox extension for end-to-end encrypted email attachments using RSA keys via Web3Auth and decentralized storage. Approximately 1,000 users with 4.2-star rating.", "url": "https://shrinath.me/work/#skizzle" },
+        { "@type": "ListItem", "position": 5, "name": "Skizzle - E2E Encrypted Email Attachments", "description": "Chrome extension for end-to-end encrypted email attachments using RSA keys via Web3Auth and decentralized storage. Approximately 1,000 users with 4.2-star rating.", "url": "https://shrinath.me/work/#skizzle" },
         { "@type": "ListItem", "position": 6, "name": "Arcana Developer Dashboard", "description": "Primary interface for Web3 developers to register dApps, configure authentication providers, and manage wallet settings. Built with Vue 3 and TypeScript.", "url": "https://shrinath.me/work/#dashboard" },
-        { "@type": "ListItem", "position": 7, "name": "Pricinger - Privacy-Focused Pricing Tool", "description": "Chrome Extension with multi-region VPN proxies, automated per-site optimization crawler, and privacy controls. 1,000+ users with 4-star rating.", "url": "https://shrinath.me/work/#pricinger" },
-        { "@type": "ListItem", "position": 8, "name": "OwlEye Analytics", "description": "Sunset in 2026: hosted, cookie-free web analytics for small product teams. Dependency-free TypeScript SDK, Rust and Axum API, ClickHouse event store. Rebuilt from its first version, Outline Analytics.", "url": "https://shrinath.me/work/#owleye" },
-        { "@type": "ListItem", "position": 9, "name": "lowkey.tools", "description": "A collection of twelve tiny, free, offline-first browser tools with no accounts, including FuseLLM (bring-your-own-key AI workflows) and Credo (zero-knowledge secret sharing). Open source.", "url": "https://shrinath.me/work/#lowkeytools" }
+        { "@type": "ListItem", "position": 7, "name": "Pricinger - Privacy-Focused Pricing Tool", "description": "Chrome Extension with multi-region VPN proxies, automated per-site optimization crawler, and privacy controls. 1,000+ users with 4-star rating.", "url": "https://shrinath.me/work/#pricinger" }
       ]
     }
   }
@@ -312,7 +310,7 @@ jsonLd: |
       <span class="case-study__meta-item">Vue • InboxSDK • gmail.js • Web3Auth • Chrome APIs</span>
     </div>
     <div class="tags">
-      <span class="tag">Chrome + Firefox</span>
+      <span class="tag">Chrome extension</span>
       <span class="tag">~1,000 users</span>
       <span class="tag">4.2★</span>
       <span class="tag">Shipped in month 1</span>
@@ -344,8 +342,8 @@ jsonLd: |
       decrypts any attachments that were encrypted for the current user. I
       built a companion web application where users could log in and
       retrieve all their encrypted attachments directly from decentralized
-      storage, bypassing Gmail entirely. The extension was built for both
-      Chrome and Firefox from the same codebase.
+      storage, bypassing Gmail entirely. A Firefox version was started from the
+      same codebase but never shipped.
     </p>
     <div class="case-study__outcome">
       <p>
@@ -460,190 +458,11 @@ jsonLd: |
   </div>
 </article>
 
-<div class="page-header fade-in" id="independent" style="padding-top: 24px">
-  <h2>Independent projects</h2>
-  <p>
-    Things I built on my own, outside of a job. Both are on pause while I
-    work out what to build next.
-  </p>
-</div>
-
-<!-- OwlEye Analytics -->
-<article class="case-study fade-in" id="owleye">
-  <div class="case-study__header">
-    <h2 class="case-study__title brand-title">
-      <img src="/images/owleye-mark.svg" alt="" width="36" height="36" />
-      OwlEye Analytics
-    </h2>
-    <div class="case-study__meta">
-      <span class="case-study__meta-item">Independent • 2023 – 2026</span>
-      <span class="case-study__meta-item">Founder & sole developer</span>
-      <span class="case-study__meta-item">Rust • Axum • ClickHouse • SQLite • TypeScript</span>
-    </div>
-    <div class="tags">
-      <span class="tag">Founder</span>
-      <span class="tag">Cookie-free</span>
-      <span class="tag">Sunset 2026</span>
-      <span class="tag">Open Source</span>
-    </div>
-  </div>
-  <div class="case-study__body">
-    <h3>Why It Exists</h3>
-    <p>
-      In every team I have worked on, a new tracking question ("does the
-      new button get clicked?") turned into a ticket, a code change, a
-      review, and a deploy. Google Tag Manager removes the deploy but
-      brings a privacy liability with it. Privacy-first tools like
-      Plausible and Fathom keep the privacy but stop at page views and
-      hand-written events. OwlEye is the gap between them: install the
-      SDK once, then define click, form, and visibility rules from the
-      console and see the events on the next page load.
-    </p>
-    <h3 id="outline">From Outline to OwlEye</h3>
-    <p>
-      The first version shipped as Outline Analytics: a TypeScript SDK, a
-      Bun and Elysia.js ingestion API, and MongoDB timeseries collections.
-      It worked, but aggregating events for dashboards and funnels was the
-      wrong job for that stack, and the plan to make it a single
-      self-hosted binary meant every user would inherit the operations
-      work. I rebuilt it from scratch as a hosted service on Rust and
-      ClickHouse and renamed it OwlEye.
-    </p>
-    <h3>Architecture Decisions</h3>
-    <p>
-      One Rust and Axum backend serves three clients: the browser SDK, the
-      team console, and scoped server-to-server APIs. Storage is split by
-      job. High-volume analytics facts (page views, custom events, rule
-      events, performance measurements) go to ClickHouse. Users, sites,
-      rules, keys, and billing state stay in SQLite. Ingestion runs
-      through a bounded in-process queue that batches writes into
-      ClickHouse and returns a 503 when full instead of growing without
-      limit, and the API only acknowledges events after the insert
-      succeeds.
-    </p>
-    <p>
-      The browser SDK has no runtime dependencies and is split into three
-      entrypoints: visitor analytics, rule tracking, and performance
-      timing. A site that only needs page views and custom events never
-      downloads the rule engine or the performance collector.
-    </p>
-    <h3>Privacy Boundaries</h3>
-    <p>
-      The public SDK writes no cookies, no <code>localStorage</code>, and
-      no <code>sessionStorage</code>. URL query strings and fragments are
-      excluded by default, request credentials are omitted, and Global
-      Privacy Control is respected by default. Visitors are counted with
-      site-scoped pseudonyms derived on the server; the client address is
-      used transiently and never stored as an analytics column. The
-      <a
-        href="https://owleye.dev/docs/architecture/"
-        target="_blank"
-        rel="noopener"
-        >architecture docs</a
-      >
-      publish exactly what is collected and what is not.
-    </p>
-    <div class="case-study__outcome">
-      <p>
-        SDK published on npm as <code>@owleye/analytics</code> (MIT).
-        I sunset OwlEye in October 2026. Analytics is getting harder to
-        sell as a product: developers now deploy their own copy to
-        Cloudflare in one tap, and pay Cloudflare a few dollars a month
-        for millions of events, so a hosted tool is competing with
-        close to free. The code and what I learned building it stay
-        public, and the name will come back with a different direction.
-      </p>
-    </div>
-    <div style="display: flex; gap: 16px; margin-top: 16px; flex-wrap: wrap">
-      <a
-        href="https://github.com/shrinathprabhu/owleye"
-        target="_blank"
-        rel="noopener"
-        class="case-study__link"
-        >GitHub →</a>
-      <a href="/blog/owleye-analytics-reason/" class="case-study__link"
-        >Why I started it →</a>
-    </div>
-  </div>
-</article>
-
-<!-- lowkey.tools -->
-<article class="case-study fade-in" id="lowkeytools">
-  <div class="case-study__header">
-    <h2 class="case-study__title">lowkey.tools</h2>
-    <div class="case-study__meta">
-      <span class="case-study__meta-item">Independent • Ongoing</span>
-      <span class="case-study__meta-item">Sole developer</span>
-      <span class="case-study__meta-item">HTML • CSS • JavaScript • PWA • Cloudflare Workers</span>
-    </div>
-    <div class="tags">
-      <span class="tag">12 tools</span>
-      <span class="tag">No accounts</span>
-      <span class="tag">Offline-first</span>
-      <span class="tag">Open Source</span>
-    </div>
-  </div>
-  <div class="case-study__body">
-    <h3>The Idea</h3>
-    <p>
-      Most small utilities on the web ask for a signup, show ads, or send
-      your data to a server for a job the browser can do on its own.
-      lowkey.tools is my collection of tiny, free tools that skip all of
-      that: no accounts, nothing to install, and your data stays on your
-      device wherever the tool allows it.
-    </p>
-    <h3>What Is In It</h3>
-    <p>
-      Twelve tools so far. FuseLLM chains your own AI models into
-      workflows using your own API keys, with prompts going straight from
-      the browser to the provider. SuperBrain is local-first notes,
-      SuperSplit splits bills, SuperFocus and StreakFreak cover focus and
-      habits, Converteasy handles everyday conversions, and Favigen turns
-      one image into every favicon size. There are three quick games too:
-      MathMagician, Chesscape, and SpotFast. Several of the apps are
-      installable PWAs that keep working offline.
-    </p>
-    <p id="credenstore">
-      Credo is the security-minded one: paste a password, API key, or env
-      file and it is sealed in your browser with AES-256-GCM, using a key
-      stretched from your passphrase with Argon2id. Only ciphertext is
-      stored, the link expires on its own, and the passphrase never
-      leaves your device.
-    </p>
-    <h3>The Approach</h3>
-    <p>
-      The hub is plain HTML, CSS, and JavaScript on Cloudflare Workers,
-      with no framework, no third-party scripts, and no package
-      dependencies. A single tool inventory generates the static pages,
-      so adding a tool is one entry in one file. Each tool lives on its
-      own subdomain and ships independently.
-    </p>
-    <div class="case-study__outcome">
-      <p>
-        Twelve tools live, free, and open source. It is where I try
-        ideas quickly and keep my hand in on plain web platform work.
-      </p>
-    </div>
-    <div style="display: flex; gap: 16px; margin-top: 16px; flex-wrap: wrap">
-      <a
-        href="https://lowkey.tools"
-        target="_blank"
-        rel="noopener"
-        class="case-study__link"
-        >Visit lowkey.tools →</a>
-      <a
-        href="https://github.com/shrinathprabhu/lowkeytools"
-        target="_blank"
-        rel="noopener"
-        class="case-study__link"
-        >GitHub →</a>
-    </div>
-  </div>
-</article>
-
 <div class="fade-in" style="text-align: center; padding: 48px 0 16px">
   <p style="margin-bottom: 16px">Interested in working together?</p>
-  <a href="/resume/" class="btn btn--primary">View My Resume →</a>
-  <a href="/contact/" class="btn btn--secondary" style="margin-left: 8px"
-    >Get in Touch</a>
+  <div class="hero__actions hero__actions--centered">
+    <a href="/resume/" class="btn btn--primary">View My Resume →</a>
+    <a href="/contact/" class="btn btn--secondary"
+      >Get in Touch</a>
+  </div>
 </div>

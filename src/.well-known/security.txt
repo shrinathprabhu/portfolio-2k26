@@ -1,6 +1,6 @@
 # Contact Information
 Contact: mailto:hello@shrinath.me
-Contact: https://twitter.com/shrinath_prabhu
+Contact: https://x.com/shrinath
 Contact: https://linkedin.com/in/shrinath-prabhu
 
 # Expiration Date (RFC 9116 requires an RFC 3339 date-time in the future)

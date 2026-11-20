@@ -11,7 +11,7 @@ jsonLd: |
     "@context": "https://schema.org",
     "@type": "ProfilePage",
     "name": "Resume - Shrinath Prabhu",
-    "description": "Resume of Shrinath Prabhu, Senior Staff Frontend Engineer with 8+ years experience building Web3 products, Chrome Extensions, and analytics platforms.",
+    "description": "Resume of Shrinath Prabhu, Senior Staff Frontend Engineer with 8+ years experience building Web3 products, Chrome Extensions, and developer platforms.",
     "url": "https://shrinath.me/resume/",
     "mainEntity": {
       "@type": "Person",
@@ -20,7 +20,7 @@ jsonLd: |
       "email": "hello@shrinath.me",
       "jobTitle": "Senior Staff Frontend Engineer",
       "address": { "@type": "PostalAddress", "addressLocality": "Mumbai", "addressRegion": "Maharashtra", "addressCountry": "IN" },
-      "knowsAbout": ["Chrome Extension Development", "Vue.js", "Nuxt.js", "React", "TypeScript", "Node.js", "Web3 Wallet Architecture", "Frontend Architecture", "Cross-chain Bridging", "Chain Abstraction", "Privacy-First Analytics", "Client-Side Encryption", "AI-Augmented Development"],
+      "knowsAbout": ["Chrome Extension Development", "Vue.js", "Nuxt.js", "React", "TypeScript", "Node.js", "Web3 Wallet Architecture", "Frontend Architecture", "Cross-chain Bridging", "Chain Abstraction", "Client-Side Encryption", "AI-Augmented Development"],
       "hasOccupation": {
         "@type": "Occupation",
         "name": "Senior Staff Frontend Engineer",
@@ -35,7 +35,7 @@ jsonLd: |
         { "@type": "Organization", "name": "Hashbinary Services", "url": "https://hashbinary.com" },
         { "@type": "Organization", "name": "Agrostar", "url": "https://agrostar.in" }
       ],
-      "sameAs": ["https://github.com/shrinathprabhu", "https://linkedin.com/in/shrinath-prabhu", "https://twitter.com/shrinath_prabhu", "https://codepen.io/shrinathprabhu"]
+      "sameAs": ["https://github.com/shrinathprabhu", "https://linkedin.com/in/shrinath-prabhu", "https://x.com/shrinath", "https://codepen.io/shrinathprabhu"]
     }
   }
 ---
@@ -56,8 +56,8 @@ jsonLd: |
 </div>
 
 <section class="resume-section fade-in" aria-label="Professional summary">
-  <div class="resume-section__title">Summary</div>
-  <p style="font-size: 0.95rem; line-height: 1.75">
+  <h2 class="resume-section__title">Summary</h2>
+  <p style="font-size: var(--type-body); line-height: 1.75">
     Strategic frontend leader with 8+ years of experience architecting and
     scaling Web3 and SaaS infrastructure through a company acquisition.
     Four Chrome Extensions shipped to Chrome Web Store with 100% approval
@@ -70,16 +70,15 @@ jsonLd: |
 </section>
 
 <section class="resume-section fade-in" aria-label="Work experience">
-  <div class="resume-section__title">Experience</div>
+  <h2 class="resume-section__title">Experience</h2>
 
   <div class="resume-entry">
     <div class="resume-entry__header">
-      <span class="resume-entry__company"
+      <h3 class="resume-entry__company"
         >Avail Project -
         <a href="https://availproject.org" target="_blank" rel="noopener"
           >availproject.org</a
-        ></span
-      >
+        ></h3>
       <span class="resume-entry__dates">Aug 2025 – Present</span>
     </div>
     <div class="resume-entry__role">
@@ -138,13 +137,12 @@ jsonLd: |
 
   <div class="resume-entry">
     <div class="resume-entry__header">
-      <span class="resume-entry__company"
+      <h3 class="resume-entry__company"
         >Arcana Network -
         <a href="https://arcana.network" target="_blank" rel="noopener"
           >arcana.network</a
         >
-        <span class="exp-badge">Acquired by Avail</span></span
-      >
+        <span class="exp-badge">Acquired by Avail</span></h3>
       <span class="resume-entry__dates">Jan 2021 – Aug 2025</span>
     </div>
     <div class="resume-entry__role">
@@ -189,7 +187,7 @@ jsonLd: |
         3, TypeScript, Chart.js.
       </li>
       <li>
-        Shipped Skizzle within the first month, Chrome + Firefox extension
+        Shipped Skizzle within the first month, a Chrome extension
         for E2E encrypted email attachments using InboxSDK and gmail.js,
         RSA keys via Web3Auth (Torus), and decentralized storage. ~1,000
         users, 4.2★ on Chrome Web Store.
@@ -203,12 +201,11 @@ jsonLd: |
 
   <div class="resume-entry">
     <div class="resume-entry__header">
-      <span class="resume-entry__company"
+      <h3 class="resume-entry__company"
         >Hashbinary Services -
         <a href="https://hashbinary.com" target="_blank" rel="noopener"
           >hashbinary.com</a
-        ></span
-      >
+        ></h3>
       <span class="resume-entry__dates">Apr 2018 – Jan 2021</span>
     </div>
     <div class="resume-entry__role">
@@ -239,10 +236,10 @@ jsonLd: |
 </section>
 
 <section class="resume-section fade-in" aria-label="Technical skills">
-  <div class="resume-section__title">Skills</div>
+  <h2 class="resume-section__title">Skills</h2>
   <div class="skills-grid">
     <div class="skill-group">
-      <div class="skill-group__title">Architecture & Strategy</div>
+      <h3 class="skill-group__title">Architecture & Strategy</h3>
       <div class="skill-group__items">
         Vue 3, Nuxt 3, React, TypeScript, Chrome Extension Architecture
         (Manifest V3, content scripts, service workers, provider
@@ -250,7 +247,7 @@ jsonLd: |
       </div>
     </div>
     <div class="skill-group">
-      <div class="skill-group__title">AI-Augmented Development</div>
+      <h3 class="skill-group__title">AI-Augmented Development</h3>
       <div class="skill-group__items">
         Claude Code, OpenAI Codex, Google Gemini, Antigravity (Google),
         AI-assisted code review, prompt engineering for development
@@ -258,7 +255,7 @@ jsonLd: |
       </div>
     </div>
     <div class="skill-group">
-      <div class="skill-group__title">Backend & Data</div>
+      <h3 class="skill-group__title">Backend & Data</h3>
       <div class="skill-group__items">
         Node.js, Bun, Rust (Axum), Express, Fastify, Nest.js, Elysia.js,
         MongoDB, PostgreSQL, ClickHouse, SQLite, Firebase/Firestore, REST
@@ -266,26 +263,26 @@ jsonLd: |
       </div>
     </div>
     <div class="skill-group">
-      <div class="skill-group__title">Infrastructure</div>
+      <h3 class="skill-group__title">Infrastructure</h3>
       <div class="skill-group__items">
         AWS (EC2, S3, CloudFront, Route53), Vercel, Netlify, GitHub
         Actions, CI/CD Pipelines
       </div>
     </div>
     <div class="skill-group">
-      <div class="skill-group__title">Domain Expertise</div>
+      <h3 class="skill-group__title">Domain Expertise</h3>
       <div class="skill-group__items">
         Web3 (wallets, bridging, chain abstraction, dApp injection,
         EIP-7702, EVM, Solana, NEAR, Fuel, Tron, Starknet), Fiat
         Onramping, Client-Side Encryption (AES-GCM, Argon2id, RSA,
-        zero-knowledge), Privacy Analytics
+        zero-knowledge)
       </div>
     </div>
   </div>
 </section>
 
 <section class="resume-section fade-in" aria-label="Notable achievements">
-  <div class="resume-section__title">Notable Achievements</div>
+  <h2 class="resume-section__title">Notable Achievements</h2>
   <ul class="resume-bullets">
     <li>
       Led frontend engineering through a successful company acquisition
@@ -385,8 +382,10 @@ jsonLd: |
   <p style="margin-bottom: 16px">
     See detailed case studies for each project.
   </p>
-  <a href="/work/" class="btn btn--primary">View Case Studies →</a>
-  <a href="/contact/" class="btn btn--secondary" style="margin-left: 8px"
-    >Get in Touch</a
-  >
+  <div class="hero__actions hero__actions--centered">
+    <a href="/work/" class="btn btn--primary">View Case Studies →</a>
+    <a href="/contact/" class="btn btn--secondary"
+      >Get in Touch</a
+    >
+  </div>
 </div>

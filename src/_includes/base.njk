@@ -3,35 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7fafb" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b1417" media="(prefers-color-scheme: dark)" />
 
     {# ── SEO & Meta ── #}
     {% include "partials/seo.njk" %}
 
     {# ── Favicon ── #}
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico?v={{ '/favicon.ico' | rev }}" />
 
-    {# ── Font preloads (eliminate FOUT) ── #}
-    <link rel="preload" href="/fonts/outfit/outfit-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    {# ── Font preload: one variable family for the whole site ── #}
     <link rel="preload" href="/fonts/dm-sans/dm-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
 
-    {# ── Stylesheets ── #}
+    {# ── Stylesheets (inlined: no render-blocking requests) ── #}
     <style>
-      {% include "../styles.css" %}
+      {% inlineCss "styles.css" %}
     </style>
     {% if stylesheet %}
       {% if stylesheet == "/blog.css" %}
         <style>
-          {% include "../blog.css" %}
+          {% inlineCss "blog.css" %}
         </style>
       {% else %}
         <link rel="stylesheet" href="{{ stylesheet }}" />
       {% endif %}
     {% endif %}
 
-    {# ── Per-page stylesheet file, inlined (path relative to _includes) ── #}
+    {# ── Per-page stylesheet file, inlined (path relative to src) ── #}
     {% if inlineStylesheet %}
     <style>
-      {% include inlineStylesheet %}
+      {% inlineCss inlineStylesheet %}
     </style>
     {% endif %}
 
@@ -51,12 +52,14 @@
     <link rel="alternate" type="application/atom+xml" title="Shrinath Prabhu — Blog" href="/feed.xml" />
   </head>
   <body class="{{ bodyClass or '' }}">
+    <a class="skip-link" href="#main">Skip to content</a>
     {% include "partials/header.njk" %}
 
-    <main>
+    <main id="main">
       {{ content | safe }}
     </main>
 
     {% include "partials/footer.njk" %}
+    {% include "partials/reading-tools.njk" %}
   </body>
 </html>

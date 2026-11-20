@@ -1,17 +1,13 @@
 {# ── Navigation ── #}
 <nav class="nav" aria-label="Primary navigation">
   <div class="nav__inner">
-    <a href="/" class="nav__logo" aria-label="Shrinath Prabhu - Home"
-      ><img
-        src="/favicon.svg"
-        alt="Shrinath Prabhu Logo"
-        width="28"
-        height="28"
-        fetchpriority="high"
-    /></a>
+    <span class="nav__surface glass glass--liquid" aria-hidden="true"></span>
+    <a href="/" class="nav__logo"{% if page.url == "/" %} aria-current="page"{% endif %}>Shrinath Prabhu</a>
     <button
       class="nav__toggle"
       aria-label="Toggle navigation menu"
+      aria-expanded="false"
+      aria-controls="nav-links"
     >
       <svg
         class="hamburger-icon"
@@ -21,20 +17,21 @@
         fill="none"
         stroke="currentColor"
         stroke-width="1.8"
+        aria-hidden="true"
       >
         <line x1="3" y1="5" x2="17" y2="5" class="line-1" />
         <line x1="3" y1="10" x2="17" y2="10" class="line-2" />
         <line x1="3" y1="15" x2="17" y2="15" class="line-3" />
       </svg>
     </button>
-    <div class="nav__links">
-      <a href="/"{% if page.url == "/" %} class="active"{% endif %}>Home</a>
-      <a href="/work/"{% if page.url == "/work/" %} class="active"{% endif %}>Work</a>
-      <a href="/blog/"{% if page.url and page.url.startsWith("/blog/") %} class="active"{% endif %}>Blog</a>
-      <a href="/resume/"{% if page.url == "/resume/" %} class="active"{% endif %}>Resume</a>
-      <a href="/contact/"{% if page.url == "/contact/" %} class="active"{% endif %}>Contact</a>
+    <div class="nav__links glass glass--frost" id="nav-links">
+      <span class="nav__indicator" aria-hidden="true"></span>
+      <a href="/work/"{% if page.url == "/work/" %} class="active" aria-current="page"{% endif %}>Work</a>
+      <a href="/blog/"{% if page.url and page.url.startsWith("/blog/") %} class="active"{% endif %}{% if page.url == "/blog/" %} aria-current="page"{% endif %}>Blog</a>
+      <a href="/resume/"{% if page.url == "/resume/" %} class="active" aria-current="page"{% endif %}>Resume</a>
+      <a href="/contact/"{% if page.url == "/contact/" %} class="active" aria-current="page"{% endif %}>Contact</a>
     </div>
   </div>
 </nav>
 
-<script src="/js/nav.js" defer></script>
+<script src="/js/nav.js?v={{ '/js/nav.js' | rev }}" defer></script>

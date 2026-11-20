@@ -8,7 +8,11 @@ eleventyExcludeFromCollections: true
   {%- if not page.data.eleventyExcludeFromCollections and page.url and page.data.robots != "noindex, nofollow" %}
   <url>
     <loc>https://shrinath.me{{ page.url }}</loc>
-    <lastmod>{{ "now" | isoDate }}</lastmod>
+    {#- lastmod only where a real edit date is known; a build-time "now" on
+        every URL teaches crawlers to ignore the field #}
+    {%- if page.data.dateModified or page.data.category %}
+    <lastmod>{{ (page.data.dateModified or page.date) | ymd }}</lastmod>
+    {%- endif %}
   </url>
   {%- endif %}
   {%- endfor %}

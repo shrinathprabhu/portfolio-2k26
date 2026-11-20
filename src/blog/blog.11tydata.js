@@ -1,8 +1,14 @@
+import { resolveCover } from "../../lib/blog-cover.js";
+
+// Open Graph copies and blur placeholders come from `npm run images`, which
+// records them in src/_data/blogImages.json (global data: blogImages).
+
 export default {
   layout: "post.njk",
   tags: ["posts"],
   ogType: "article",
   author: "Shrinath Prabhu",
+  authorRole: "Senior Staff Engineer at Avail",
   eleventyComputed: {
     permalink: (data) => {
       if (data.draft) {
@@ -16,12 +22,17 @@ export default {
       }
       return false;
     },
+    // See lib/blog-cover.js for how a post's cover is chosen.
+    image: (data) => resolveCover(data.image, data.imageFallback),
+    // Social cards use the 1200x630 copy. If `npm run images` has not run for
+    // this cover yet, fall back to the master rather than to no image.
     ogImage: (data) => {
-      if (data.image) {
-        return `https://shrinath.me${data.image}`;
-      }
-      return undefined; // falls back to global meta.jpg
+      if (!data.image) return undefined; // falls back to the site-wide og-image.jpg
+      const og = data.blogImages?.[data.image]?.og;
+      return `https://shrinath.me${og || data.image}`;
     },
+    coverPlaceholder: (data) =>
+      data.blogImages?.[data.image]?.placeholder || "",
     readingTime: (data) => {
       if (data.readingTime) return data.readingTime; // manual override
       const content = data.page?.rawInput || "";

@@ -5,68 +5,136 @@ stylesheet: /blog.css
 ogType: article
 ---
 
-<div class="container">
-  <article class="blog-post">
-    <div class="page-header fade-in">
-      <h1>{{ title }}</h1>
-      <div class="blog-post__meta">
-        {% if category %}
-        <span class="blog-item__tag">{{ category }}</span>
-        {% endif %}
-        <span>{{ date | readableDate }}</span>
-        <span> · {{ readingTime or (content | readingTime) }}</span>
-      </div>
-      {% if dateModified %}
-      <div class="blog-post__meta" style="margin-top: 4px; font-size: 0.8rem;">
-        <span>Updated: {{ dateModified | readableDate }}</span>
-      </div>
+{% set outline = content | articleOutline %}
+{% set showOutline = outline.headings.length >= 4 %}
+{% macro outlineLinks() %}
+  <ol class="post-outline__list">
+    {% for heading in outline.headings %}
+    <li><a href="#{{ heading.id }}">{{ heading.label | safe }}</a></li>
+    {% endfor %}
+  </ol>
+{% endmacro %}
+
+<div class="container{% if showOutline %} post-layout--outline{% endif %}">
+  <article class="blog-post{% if showOutline %} blog-post--outline{% endif %}">
+    <header class="page-header fade-in">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/blog/">Blog</a>{% if category %} <span aria-hidden="true">/</span> <span>{{ category }}</span>{% endif %}
+      </nav>
+      <h1 tabindex="-1">{{ title }}</h1>
+      {% if description %}
+      <p class="blog-post__lede">{{ description }}</p>
       {% endif %}
-    </div>
+      <div class="blog-post__meta">
+        <span>By <a href="/" rel="author">{{ author or 'Shrinath Prabhu' }}</a>{% if authorRole %}, {{ authorRole }}{% endif %}</span>
+        <span aria-hidden="true">·</span>
+        <time datetime="{{ date | ymd }}">{{ date | readableDate }}</time>
+        <span aria-hidden="true">·</span>
+        <span>{{ readingTime or (content | readingTime) }}</span>
+        {% if dateModified %}
+        <span aria-hidden="true">·</span>
+        <span>Updated <time datetime="{{ dateModified | ymd }}">{{ dateModified | readableDate }}</time></span>
+        {% endif %}
+      </div>
+    </header>
 
     {% if image %}
-    <div class="blog-post__cover fade-in">
-      <img src="{{ image }}" alt="{{ title }}" loading="lazy" />
+    <div class="blog-post__cover lqip"{% if coverPlaceholder %} style="--placeholder: url('{{ coverPlaceholder }}')"{% endif %}>
+      {% img image, imageAlt or title, "cover", true %}
     </div>
     {% endif %}
 
-    <div class="blog-post__body fade-in">
-      {{ content | safe }}
+    {% if showOutline %}
+    <div class="post-outline">
+      <nav class="post-outline__desktop" aria-label="On this page">
+        <p class="post-outline__title">On this page</p>
+        {{ outlineLinks() }}
+      </nav>
+      <details class="post-outline__mobile">
+        <summary>On this page</summary>
+        <nav aria-label="On this page">
+          {{ outlineLinks() }}
+        </nav>
+      </details>
+    </div>
+    {% endif %}
+
+    <div class="blog-post__body">
+      {{ outline.content | safe }}
+      {% if faq %}
+      <section class="post-faq" aria-labelledby="post-faq-title">
+        <h2 id="post-faq-title">Questions people ask</h2>
+        {% for item in faq %}
+        <h3>{{ item.q }}</h3>
+        <p>{{ item.a }}</p>
+        {% endfor %}
+      </section>
+      {% endif %}
     </div>
   </article>
 
-  <div style="text-align: center; padding: 48px 0 16px;">
-    <p style="margin-bottom: 16px">Read more posts or see the projects behind them.</p>
-    <a href="/blog/" class="btn btn--primary">← All Posts</a>
-    <a href="/work/" class="btn btn--secondary" style="margin-left: 8px">Case Studies →</a>
-  </div>
+  <aside class="post-next" aria-label="Keep reading">
+    <p>Read more posts or see the projects behind them.</p>
+    <div class="hero__actions">
+      <a href="/blog/" class="btn btn--primary">← All posts</a>
+      <a href="/work/" class="btn btn--secondary">Case studies →</a>
+    </div>
+  </aside>
 </div>
 
-<script type="module" src="/js/post.js"></script>
+<script type="module" src="/js/post.js?v={{ '/js/post.js' | rev }}"></script>
 
-{# ── JSON-LD: BlogPosting ── #}
+{# ── JSON-LD: BlogPosting + BreadcrumbList ── #}
 {% if ogType == "article" %}
+{% set postUrl = "https://shrinath.me" + page.url %}
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "{{ title }}",
-  "description": "{{ description }}",
-  "url": "https://shrinath.me{{ page.url }}",
-  "datePublished": "{{ date | isoDate }}",
-  {% if dateModified %}
-  "dateModified": "{{ dateModified | isoDate }}",
-  {% endif %}
-  "author": {
-    "@type": "Person",
-    "name": "{{ author or 'Shrinath Prabhu' }}",
-    "url": "https://shrinath.me"
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": {{ title | dump | safe }},
+    "description": {{ description | dump | safe }},
+    "url": "{{ postUrl }}",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "{{ postUrl }}" },
+    "datePublished": "{{ date | isoDate }}",
+    "dateModified": "{{ (dateModified or date) | isoDate }}",
+    "inLanguage": "en",
+    "image": "{{ ogImage or 'https://shrinath.me/images/og-image.jpg' }}",
+    {% if keywords %}"keywords": {{ keywords | dump | safe }},{% endif %}
+    {% if category %}"articleSection": {{ category | dump | safe }},{% endif %}
+    "author": {
+      "@type": "Person",
+      "@id": "https://shrinath.me/#person",
+      "name": {{ (author or 'Shrinath Prabhu') | dump | safe }},
+      "url": "https://shrinath.me",
+      "jobTitle": "Senior Staff Frontend Engineer"
+    },
+    "publisher": { "@id": "https://shrinath.me/#person" }
   },
-  {% if keywords %}
-  "keywords": {{ keywords | dump | safe }},
+  {% if faq %}
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {% for item in faq %}
+      {
+        "@type": "Question",
+        "name": {{ item.q | dump | safe }},
+        "acceptedAnswer": { "@type": "Answer", "text": {{ item.a | dump | safe }} }
+      }{% if not loop.last %},{% endif %}
+      {% endfor %}
+    ]
+  },
   {% endif %}
-  {% if category %}
-  "articleSection": "{{ category }}"
-  {% endif %}
-}
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://shrinath.me/" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://shrinath.me/blog/" },
+      { "@type": "ListItem", "position": 3, "name": {{ title | dump | safe }}, "item": "{{ postUrl }}" }
+    ]
+  }
+]
 </script>
 {% endif %}

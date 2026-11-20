@@ -15,8 +15,8 @@ extraCSS: |
   }
   .page-404__code {
     font-family: var(--font-heading);
-    font-size: clamp(5rem, 15vw, 10rem);
-    font-weight: 700;
+    font-size: var(--type-display);
+    font-weight: var(--weight-title);
     color: var(--text-primary);
     line-height: 1;
     letter-spacing: -0.04em;
@@ -35,14 +35,14 @@ extraCSS: |
     max-width: 480px;
   }
   .page-404__title {
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: var(--type-section);
+    font-weight: var(--weight-title);
     margin-bottom: 8px;
     color: var(--text-primary);
     text-wrap: balance;
   }
   .page-404__subtitle {
-    font-size: 0.95rem;
+    font-size: var(--type-body);
     color: var(--text-secondary);
     margin-bottom: 28px;
     line-height: 1.6;
@@ -62,15 +62,15 @@ extraCSS: |
     display: block;
   }
   .game-prompt {
-    font-size: 0.8rem;
+    font-size: var(--type-meta);
     color: var(--text-tertiary);
     margin-bottom: 24px;
     transition: opacity 0.3s ease-in;
   }
   .game-score {
     font-family: var(--font-heading);
-    font-size: 0.85rem;
-    font-weight: 600;
+    font-size: var(--type-meta);
+    font-weight: var(--weight-strong);
     color: var(--text-secondary);
     margin-bottom: 4px;
   }
@@ -81,7 +81,7 @@ extraCSS: |
     flex-wrap: wrap;
   }
   .page-404__easter {
-    font-size: 0.75rem;
+    font-size: var(--type-caption);
     color: var(--text-tertiary);
     margin-top: 32px;
     opacity: 0.5;
@@ -93,11 +93,11 @@ extraCSS: |
 ---
 
 <div class="page-404">
-  <div class="page-404__code">404</div>
+  <div class="page-404__code" aria-hidden="true">404</div>
   <div class="page-404__content fade-in">
-    <div class="page-404__title">
+    <h1 class="page-404__title">
       Shipped too fast, forgot to deploy this page.
-    </div>
+    </h1>
     <div class="page-404__subtitle">
       While you're here, try beating my high score.
     </div>
@@ -124,4 +124,4 @@ extraCSS: |
   </div>
 </div>
 
-<script src="/js/game.js" defer></script>
+<script src="/js/game.js?v={{ "/js/game.js" | rev }}" defer></script>
