@@ -6,6 +6,7 @@ import { createHash } from 'node:crypto';
 import { test } from 'node:test';
 import worker from '../worker/index.js';
 import { negotiate } from '../worker/content.js';
+import { checkCrawlerAccess } from './check-crawler-access.js';
 import { pageToMarkdown, writeAgentContent } from '../lib/agent-content.js';
 
 const index = JSON.parse(readFileSync('_site/content-index.json', 'utf8'));
@@ -32,6 +33,25 @@ function assets() {
 }
 const request = (path, accept, options = {}) => new Request(`https://shrinath.me${path}`, {
   ...options, headers: { ...(accept === undefined ? {} : { Accept: accept }), ...options.headers },
+});
+
+test('crawler checks distinguish edge denials, challenge pages and incorrect negotiation', async () => {
+  const env = assets();
+  const visited = [];
+  const failures = await checkCrawlerAccess(async (path, accept, { headers }) => {
+    const name = headers['User-Agent'];
+    visited.push([name, accept]);
+    if (name === 'PerplexityBot') return new Response('Denied', { status: 403, headers: { 'cf-ray': 'example-ray' } });
+    if (name === 'Claude-User' && accept === 'text/html') return new Response('', { headers: { 'cf-mitigated': 'challenge' } });
+    const response = await worker.fetch(request(path, accept, { headers }), env);
+    if (name === 'OAI-SearchBot' && accept === 'text/markdown') response.headers.set('Vary', 'Accept-Encoding');
+    return response;
+  });
+  assert.equal(new Set(visited.map(pair => pair.join(' '))).size, 8);
+  assert.equal(failures.length, 4);
+  assert.ok(failures.some(message => message.includes('OAI-SearchBot') && message.includes('missing Vary: Accept')));
+  assert.ok(failures.some(message => message.includes('Claude-User') && message.includes('Cloudflare challenge')));
+  assert.equal(failures.filter(message => message.includes('PerplexityBot') && message.includes('HTTP 403') && message.includes('example-ray')).length, 2);
 });
 
 test('Accept negotiation honors quality, specificity, exclusions, wildcards, and charset', () => {
@@ -85,6 +105,22 @@ test('negotiated variants keep separate validators, HEAD metadata, and 304 bodie
   assert.match(notModified.headers.get('Vary'), /Accept/);
   const other = await worker.fetch(request('/', 'text/html', { headers: { 'If-None-Match': md.headers.get('ETag') } }), env);
   assert.equal(other.status, 200);
+});
+
+test('API path probes get structured errors by default and honor explicit format preferences', async () => {
+  const env = assets();
+  for (const path of ['/api', '/api/', '/api/nonexistent']) {
+    for (const accept of [undefined, '*/*']) {
+      const response = await worker.fetch(request(path, accept), env);
+      assert.equal(response.status, 404);
+      assert.equal(response.headers.get('Content-Type'), 'application/problem+json');
+      assert.match((await response.json()).detail, /No API access/);
+    }
+    const html = await worker.fetch(request(path, 'text/html, */*;q=0.5'), env);
+    assert.equal(html.headers.get('Content-Type'), 'text/html; charset=utf-8');
+  }
+  const ordinary = await worker.fetch(request('/missing', '*/*'), env);
+  assert.equal(ordinary.headers.get('Content-Type'), 'text/html; charset=utf-8');
 });
 
 test('404 recovery negotiates Markdown and structured JSON without inventing an API', async () => {

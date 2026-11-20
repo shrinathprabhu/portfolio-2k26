@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { checkCrawlerAccess } from './check-crawler-access.js';
 
 // Run against Wrangler for release checks, or the public origin after deployment.
 const base = new URL(process.argv[2] || 'http://127.0.0.1:8787');
@@ -15,11 +16,16 @@ function check(response, status, type) {
   if (type) assert.ok(response.headers.get('Content-Type')?.startsWith(type), `${response.url}: ${response.headers.get('Content-Type')}`);
 }
 function negotiated(response) {
-  assert.match(response.headers.get('Vary') || '', /\bAccept\b/i);
+  assert.match(response.headers.get('Vary') || '', /(?:^|,)\s*Accept\s*(?:,|$)/i);
   assert.equal(response.headers.get('CDN-Cache-Control'), 'no-store');
   assert.match(response.headers.get('Link') || '', /rel="describedby"/);
 }
 
+const crawlerFailures = await checkCrawlerAccess(get);
+if (crawlerFailures.length) {
+  process.exitCode = 1;
+  console.error(crawlerFailures.join('\n'));
+}
 const inventory = await get('/content-index.json');
 check(inventory, 200, 'application/json');
 const index = await inventory.json();
@@ -96,6 +102,9 @@ for (const path of ['/agent-check-missing', '/api/agent-check-missing', '/404.ht
     } else assert.match(await response.text(), /sitemap\.xml/, `${path}: recovery links`);
   }
 }
+const apiProbe = await get('/api/agent-check-missing');
+check(apiProbe, 404, 'application/problem+json');
+assert.match((await apiProbe.json()).detail, /No API access/);
 for (const accept of ['image/png', 'text/html;q=0,text/markdown;q=0']) {
   const response = await get('/', accept);
   check(response, 406, 'application/problem+json');
@@ -123,4 +132,4 @@ for (const [from, to] of [['/docs', '/agents/'], ['/security.txt', '/.well-known
   assert.ok([301, 307, 308].includes(response.status), `${from}: redirect (${response.status})`);
   assert.equal(new URL(response.headers.get('Location'), base).pathname, to);
 }
-console.log(`Verified ${index.pages.length} public pages in HTML and Markdown, HEAD, all 10 discovery/data files (including the security alias), JSON-LD, errors, quality negotiation, redirects, and conditional caching. ${requests} HTTP requests passed against ${base.origin}.`);
+console.log(`Verified ${index.pages.length} public pages in HTML and Markdown, HEAD, discovery/data files, JSON-LD, errors, redirects, and caching. ${requests} requests to ${base.origin}, including 8 crawler-name probes. ${crawlerFailures.length} failed.`);

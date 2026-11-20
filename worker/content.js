@@ -46,7 +46,12 @@ export function errorResponse(request, status, original) {
     : status === 405 ? 'This website supports reading public content with GET and HEAD. No API access or write operations are available.'
       : status === 406 ? 'This page is available as text/html or text/markdown. Request one of these media types, or use its Markdown link.'
         : 'The requested content representation is temporarily unavailable. Try the HTML page or site guide.';
-  const type = negotiate(request.headers.get('Accept'), [HTML, MARKDOWN, 'application/problem+json', 'application/json']) || 'application/problem+json';
+  // Clients probing an API URL often send */*. Give them the no-API
+  // explanation as structured data while honoring specific Accept headers.
+  const formats = noApi
+    ? ['application/problem+json', 'application/json', HTML, MARKDOWN]
+    : [HTML, MARKDOWN, 'application/problem+json', 'application/json'];
+  const type = negotiate(request.headers.get('Accept'), formats) || 'application/problem+json';
   const headers = new Headers(original?.headers);
   varyAccept(headers);
   headers.set('Content-Type', type);
