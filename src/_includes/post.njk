@@ -99,7 +99,7 @@ ogType: article
     "datePublished": "{{ date | isoDate }}",
     "dateModified": "{{ (dateModified or date) | isoDate }}",
     "inLanguage": "en",
-    "image": "{{ ogImage or 'https://shrinath.me/images/meta.jpg' }}",
+    "image": "{{ ogImage or 'https://shrinath.me/images/og-image.jpg' }}",
     {% if keywords %}"keywords": {{ keywords | dump | safe }},{% endif %}
     {% if category %}"articleSection": {{ category | dump | safe }},{% endif %}
     "author": {

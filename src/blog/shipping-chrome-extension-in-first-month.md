@@ -15,7 +15,6 @@ keywords:
   ]
 postTags: ["posts", "shipping", "career", "decision-making"]
 image: "/images/blog/shipping-chrome-extension-in-first-month.png"
-imageFallback: "/images/shipping-skizzle.png"
 ---
 
 In January 2021 I joined Newfang, a decentralized storage startup that later became Arcana Network, as a frontend engineer. I had never worked in Web3. I had built Chrome extensions before, but never one that lived inside Gmail.

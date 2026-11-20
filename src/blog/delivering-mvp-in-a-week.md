@@ -14,7 +14,6 @@ keywords:
     "startup engineering",
   ]
 image: "/images/blog/delivering-mvp-in-a-week.png"
-imageFallback: "/images/agrostar-mvp.png"
 ---
 
 I joined [AgroStar](https://agrostar.in), an Indian agtech company, as a temporary resource. The requirements arrived on day one. On Friday the VP was using the app, and he offered to keep me on.

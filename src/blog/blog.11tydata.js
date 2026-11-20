@@ -27,7 +27,7 @@ export default {
     // Social cards use the 1200x630 copy. If `npm run images` has not run for
     // this cover yet, fall back to the master rather than to no image.
     ogImage: (data) => {
-      if (!data.image) return undefined; // falls back to global meta.jpg
+      if (!data.image) return undefined; // falls back to the site-wide og-image.jpg
       const og = data.blogImages?.[data.image]?.og;
       return `https://shrinath.me${og || data.image}`;
     },

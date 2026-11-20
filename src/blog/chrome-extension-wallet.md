@@ -17,7 +17,6 @@ keywords:
   ]
 postTags: ["posts", "web3", "architecture", "decision-making"]
 image: "/images/blog/chrome-extension-wallet.png"
-imageFallback: "/images/chrome-extension-wallet.png"
 ---
 
 In 2024 I was the sole architect of the Arcana wallet: a non-custodial Chrome extension that supported 10+ blockchains and showed the user one balance across all of them, inside apps like Aave, Uniswap, Lido and Hyperliquid that had no idea we existed. It reached 750+ users and a 4.7-star rating on the [Chrome Web Store](https://chromewebstore.google.com/detail/arcana-wallet/nieddmedbnibfkfokcionggafcmcgkpi) during a bear market.

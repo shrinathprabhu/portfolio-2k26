@@ -15,7 +15,6 @@ keywords:
     "web performance",
   ]
 image: "/images/blog/frontend-distributed-systems-problem.png"
-imageFallback: "/images/frontend-distributed-systems.png"
 ---
 
 A common project plan: four backend engineers, one frontend engineer, and a line item that says "UI".

@@ -9,6 +9,9 @@
 //    for a year, so replacing a cover also changes its URL.
 // 3. Blur placeholders: a tiny inline image per cover, shown blurred behind
 //    the card and post cover until the real image loads.
+// 4. Site-wide social images: og-image (every page) and blog-og-image (the
+//    blog index), dropped as PNG or JPG into src/images or src/images/blog,
+//    become src/images/<name>.jpg at 1200x630 and under 200KB.
 //
 // Results are recorded in src/_data/blogImages.json, which the build reads.
 // Unchanged covers are skipped, so running it again is quick.
@@ -34,6 +37,8 @@ const POSTS_DIR = "src/blog";
 const MASTERS_DIR = "src/images/blog";
 const OG_DIR = "src/images/og";
 const MANIFEST = "src/_data/blogImages.json";
+const SITE_DIR = "src/images";
+const SITE_IMAGES = ["og-image", "blog-og-image"]; // referenced by templates
 
 const MASTER_MAX_BYTES = 1024 * 1024;
 const MASTER_MAX_WIDTH = 2400; // plenty for a 672px cover on a 3x screen
@@ -64,12 +69,50 @@ async function encodeJpeg(pipeline, out, maxBytes, qualities) {
   return buffer.length;
 }
 
+// ── 4. Site-wide social images (run first, so they are not taken for covers) ──
+async function prepareSiteImages() {
+  for (const name of SITE_IMAGES) {
+    const out = join(SITE_DIR, `${name}.jpg`);
+    const dropped = [
+      ...[".png", ".jpg", ".jpeg"].map((ext) => join(MASTERS_DIR, name + ext)),
+      join(SITE_DIR, `${name}.png`),
+      join(SITE_DIR, `${name}.jpeg`),
+    ].find((path) => existsSync(path));
+
+    let src = dropped;
+    if (!src && existsSync(out)) {
+      // Already converted: only redo it if it is the wrong size or too heavy.
+      const meta = await sharp(out).metadata();
+      const ok =
+        meta.width === OG_WIDTH && meta.height === OG_HEIGHT && statSync(out).size <= OG_MAX_BYTES;
+      if (ok) continue;
+      src = out;
+    }
+    if (!src) {
+      problems.push(`${out} is missing; the site's social previews point to it`);
+      continue;
+    }
+    if (check) {
+      problems.push(`${src} needs converting to ${out}`);
+      continue;
+    }
+
+    const pipeline = sharp(readFileSync(src))
+      .resize(OG_WIDTH, OG_HEIGHT, { fit: "cover", kernel: "lanczos3" })
+      .flatten({ background: BACKGROUND });
+    const size = await encodeJpeg(pipeline, out, OG_MAX_BYTES, [92, 88, 84, 80, 75, 70]);
+    if (src !== out) unlinkSync(src);
+    log(`site    ${src} → ${out} (${kb(size)})`);
+  }
+}
+
 // ── 1. Masters ──
 async function prepareMasters() {
   if (!existsSync(MASTERS_DIR)) return;
   for (const file of readdirSync(MASTERS_DIR)) {
     const ext = extname(file).toLowerCase();
     if (![".png", ".jpg", ".jpeg"].includes(ext)) continue;
+    if (SITE_IMAGES.includes(basename(file, extname(file)))) continue;
 
     const src = join(MASTERS_DIR, file);
     const meta = await sharp(src).metadata();
@@ -171,8 +214,18 @@ async function prepareDerived(covers, previous) {
 
 const previous = existsSync(MANIFEST) ? JSON.parse(readFileSync(MANIFEST, "utf8")) : {};
 console.log(check ? "Checking blog images…" : "Preparing blog images…");
+await prepareSiteImages();
 await prepareMasters();
-const manifest = await prepareDerived(coversInUse(), previous);
+const covers = coversInUse();
+const manifest = await prepareDerived(covers, previous);
+
+// A cover no post points to is usually a file named after an old slug.
+for (const file of readdirSync(MASTERS_DIR)) {
+  const path = `/images/blog/${file}`;
+  if (/\.(jpe?g|png)$/i.test(file) && !covers.includes(path)) {
+    problems.push(`${join(MASTERS_DIR, file)} is not used by any post (check the file name matches the post's slug)`);
+  }
+}
 
 if (check) {
   if (problems.length) {
