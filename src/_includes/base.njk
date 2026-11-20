@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#f7fafb" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0b1417" media="(prefers-color-scheme: dark)" />
+    {# Apply the saved preference before styles paint; external for the site's CSP. #}
+    <script src="/js/theme.js?v={{ '/js/theme.js' | rev }}"></script>
 
     {# ── SEO & Meta ── #}
     {% include "partials/seo.njk" %}
@@ -18,6 +20,7 @@
     {# ── Stylesheets (inlined: no render-blocking requests) ── #}
     <style>
       {% inlineCss "styles.css" %}
+      {% inlineCss "theme-selector.css" %}
     </style>
     {% if stylesheet %}
       {% if stylesheet == "/blog.css" %}
@@ -48,6 +51,8 @@
     {{ extraHead | safe }}
     {% endif %}
 
+    <style>{% inlineCss "motion.css" %}</style>
+
     {# ── RSS feed discovery ── #}
     <link rel="alternate" type="application/atom+xml" title="Shrinath Prabhu — Blog" href="/feed.xml" />
   </head>
@@ -61,5 +66,9 @@
 
     {% include "partials/footer.njk" %}
     {% include "partials/reading-tools.njk" %}
+
+    {# Cloudflare Web Analytics: cookie-free page views. The only script from
+       another origin; src/_headers allows it in script-src and connect-src. #}
+    <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "c20a2967d1314d6d854c7e013e9891c1"}'></script>
   </body>
 </html>

@@ -92,11 +92,11 @@
 }
 .voice__play svg { position: relative; }
 .voice__play:hover { background-color: var(--accent-soft); }
-.voice__play:active { transform: scale(0.94); }
+:root[data-motion="enabled"] .voice__play:active { transform: scale(0.94); }
 @media (prefers-reduced-transparency: no-preference) and (prefers-contrast: no-preference)
-  and (prefers-reduced-motion: no-preference) and (forced-colors: none) {
+  and (forced-colors: none) {
   @supports (backdrop-filter: url("#voice-refraction")) {
-    .voice__play:is(:hover, :focus-visible)::before { backdrop-filter: url("#voice-refraction"); }
+    :root[data-motion="enabled"] .voice__play:is(:hover, :focus-visible)::before { backdrop-filter: url("#voice-refraction"); }
   }
 }
 @media (prefers-reduced-transparency: reduce), (prefers-contrast: more), (forced-colors: active) {
@@ -114,9 +114,6 @@
 .voice.is-ended .voice__play .i-replay {
   opacity: 1;
   transform: none;
-}
-@media (prefers-reduced-motion: reduce) {
-  .voice__play svg { transform: none; }
 }
 
 .voice__wave { position: relative; flex: 1; min-width: 0; height: 56px; border-radius: 6px; }
@@ -246,7 +243,7 @@
   white-space: pre;
 }
 .stat-digit__reel::before { content: attr(data-reel); }
-@media (prefers-reduced-motion: reduce), (forced-colors: active) {
+@media (forced-colors: active) {
   .stat-digit.is-rolling { color: inherit; }
   .stat-digit__window { display: none; }
 }
@@ -306,7 +303,8 @@
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
-.row:hover .row__title, .row:focus-visible .row__title { color: var(--accent); transform: translateX(4px); }
+.row:hover .row__title, .row:focus-visible .row__title { color: var(--accent); }
+:root[data-motion="enabled"] .row:is(:hover, :focus-visible) .row__title { transform: translateX(4px); }
 /* ── Recent writing ── */
 .writing-row {
   display: grid;
@@ -334,8 +332,8 @@
   transition: color var(--fast) ease, transform 200ms var(--glass-ease);
 }
 .writing-row:is(:hover, :focus-visible) :is(h3, .writing-row__arrow) { color: var(--accent-hover); }
-@media (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .writing-row:hover .writing-row__arrow { transform: translateX(3px); }
+@media (hover: hover) {
+  :root[data-motion="enabled"] .writing-row:hover .writing-row__arrow { transform: translateX(3px); }
 }
 
 /* ── About ── */
@@ -422,8 +420,4 @@
       .hero > .stats { background: var(--glass-matte); }
     }
   }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .voice__play:active, .row:is(:hover, :focus-visible) .row__title { transform: none; }
 }

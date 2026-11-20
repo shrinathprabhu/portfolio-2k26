@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════════
    Shrinath Prabhu - Portfolio
    Cool off-white canvas · graphite ink · aqua accent
-   Light default · Dark via system preference
+   System default · Light and dark appearance overrides
    ═══════════════════════════════════════════ */
 
 /* One self-hosted variable family (fontsource). The italic file is only
@@ -23,7 +23,7 @@
 
 /* ── Tokens ── */
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
 
   --font-body: 'DM Sans Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-heading: var(--font-body);
@@ -88,8 +88,51 @@
   --fast: 160ms;
 }
 
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0b1417;
+  --bg-card: #111d21;
+  --bg-card-hover: #16262b;
+  --bg-tag: #172930;
+  --glass-solid: #122126;
+  --glass-liquid: rgb(16 30 35 / 90%);
+  --glass-frost: rgb(19 42 49 / 90%);
+  --glass-matte: #15292f;
+  --glass-matte-light: #192f36;
+  --glass-ambient: rgb(32 140 148 / 28%);
+  --glass-ambient-blue: rgb(60 108 163 / 22%);
+  --glass-specular: rgb(175 235 242 / 16%);
+  --glass-control: rgb(18 39 45 / 90%);
+  --glass-button: #79d9df;
+  --glass-button-edge: #abedf0;
+  --glass-button-text: #09282c;
+  --glass-button-light: rgb(235 255 255 / 62%);
+  --glass-rim: rgb(145 210 216 / 24%);
+  --glass-light: rgb(196 241 245 / 25%);
+  --glass-sheen: rgb(196 241 245 / 8%);
+  --glass-shadow: 0 8px 24px rgb(0 0 0 / 35%);
+  --glass-selected: rgb(112 224 229 / 13%);
+  --text-primary: #e7eff1;
+  --text-secondary: #a9bbc0;
+  --text-tertiary: #8ca1a7;
+  --border: #20333a;
+  --border-light: #182830;
+  --accent: #4cc9cf;
+  --accent-hover: #7adadf;
+  --accent-bg: rgba(76, 201, 207, 0.12);
+  --accent-soft: rgba(76, 201, 207, 0.26);
+  --on-accent: #062226;
+  --wave-idle: #2c444c;
+  --star: #e8b04a;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* Keep system appearance when JavaScript is unavailable. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme]) {
+    color-scheme: dark;
     --bg: #0b1417;
     --bg-card: #111d21;
     --bg-card-hover: #16262b;
@@ -198,6 +241,9 @@ code, .mono {
   padding: 2px 6px;
   border-radius: 4px;
 }
+/* Accent text on the tinted code background falls just under 4.5:1, so linked
+   code uses the deeper accent (about 6:1 in light mode). */
+a code { color: var(--accent-hover); }
 
 /* ── Layout ── */
 .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
@@ -303,7 +349,7 @@ code, .mono {
   color: var(--text-primary);
 }
 .nav__logo:hover { color: var(--accent-hover); }
-.nav__links { display: flex; gap: 2px; align-items: center; }
+.nav__links { display: flex; gap: 2px; align-items: center; margin-left: auto; }
 .nav__links a {
   position: relative;
   display: grid;
@@ -466,13 +512,12 @@ code, .mono {
   border-color: var(--accent);
   --control-shadow: var(--shadow-md);
 }
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  :is(.btn, .case-study__link, .section-head a):hover { transform: translateY(-2px); }
+@media (hover: hover) and (pointer: fine) {
+  :root[data-motion="enabled"] :is(.btn, .case-study__link, .section-head a):hover { transform: translateY(-2px); }
   .btn--primary > svg { transition: transform 200ms var(--glass-ease); }
-  .btn--primary:is(:hover, :focus-visible) > svg { transform: translateX(2px); }
+  :root[data-motion="enabled"] .btn--primary:is(:hover, :focus-visible) > svg { transform: translateX(2px); }
 }
 :is(.btn, .case-study__link, .section-head a):active {
-  transform: scale(0.975);
   --control-shadow: inset 0 2px 5px rgb(12 41 48 / 16%);
 }
 @media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
@@ -482,9 +527,7 @@ code, .mono {
   .btn--primary { background: var(--glass-button); }
   .btn--quiet { background: transparent; }
 }
-@media (prefers-reduced-motion: reduce) {
-  :is(.btn, .case-study__link, .section-head a):active { transform: none; }
-}
+:root[data-motion="enabled"] :is(.btn, .case-study__link, .section-head a):active { transform: scale(0.975); }
 
 /* ── Tags / Chips ── */
 .tag {
@@ -562,7 +605,7 @@ code, .mono {
   padding: 2px 8px;
   border-radius: 99px;
   background: var(--accent-bg);
-  color: var(--accent);
+  color: var(--accent-hover); /* --accent on --accent-bg is 4.2:1; this is about 6:1 */
   margin-left: 8px;
   vertical-align: middle;
 }
@@ -651,10 +694,7 @@ code, .mono {
 }
 .lqip img { position: relative; z-index: 1; }
 .lqip img.is-loading { opacity: 0; }
-@media (prefers-reduced-motion: reduce) {
-  .lqip img { transition: none; }
-}
-.blog-card:hover .blog-card__image img { transform: scale(1.025); }
+:root[data-motion="enabled"] .blog-card:hover .blog-card__image img { transform: scale(1.025); }
 .blog-card__body { display: flex; flex-direction: column; flex: 1; padding: 20px; }
 .blog-card__title {
   font-weight: var(--weight-strong);
@@ -931,18 +971,13 @@ body:has(.nav__toggle.open) .reading-tools { visibility: hidden; }
 @keyframes settle {
   from { opacity: 0.25; transform: translateY(14px); }
 }
-@media (prefers-reduced-motion: no-preference) {
-  html { scroll-behavior: smooth; }
-  @supports (animation-timeline: view()) {
-    .reveal {
-      animation: settle linear both;
-      animation-timeline: view();
-      animation-range: entry 0 entry 160px;
-    }
+:root[data-motion="enabled"] { scroll-behavior: smooth; }
+@supports (animation-timeline: view()) {
+  :root[data-motion="enabled"] .reveal {
+    animation: settle linear both;
+    animation-timeline: view();
+    animation-range: entry 0 entry 160px;
   }
-}
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }
 
 /* ── Responsive ── */

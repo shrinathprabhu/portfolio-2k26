@@ -1,0 +1,186 @@
+/* The preview-card interaction is inspired by Rare UI's theme selector. */
+.theme-selector {
+  margin-left: 8px;
+  pointer-events: auto;
+}
+.theme-selector[hidden], .theme-selector__panel[hidden] { display: none; }
+.theme-selector__toggle {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: background-color var(--fast) var(--ease), color var(--fast) var(--ease);
+}
+.theme-selector__toggle:hover,
+.theme-selector__toggle[aria-expanded="true"] {
+  color: var(--text-primary);
+  background: var(--glass-selected);
+}
+.theme-selector__panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: min(352px, 100%);
+  max-height: calc(100dvh - 88px);
+  overflow-y: auto;
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-lg);
+  animation: theme-panel-in 180ms var(--glass-ease);
+}
+.theme-selector__fieldset { border: 0; min-width: 0; }
+.theme-selector__fieldset legend {
+  font-size: var(--type-small);
+  font-weight: var(--weight-strong);
+}
+.theme-selector__fieldset > p {
+  margin-top: 2px;
+  font-size: var(--type-meta);
+}
+.theme-selector__options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+.theme-option { position: relative; min-width: 0; cursor: pointer; }
+.theme-preview, .theme-option__label { pointer-events: none; }
+.theme-option__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.theme-preview {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  border-radius: 10px;
+  outline: 2px solid transparent;
+  outline-offset: 3px;
+  background: #e3ecef;
+  transition: outline-color 180ms var(--ease);
+}
+.theme-preview--dark { background: #24383f; }
+.theme-preview--system { background: linear-gradient(90deg, #e3ecef 50%, #24383f 50%); }
+.theme-preview__screen {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+.theme-preview__screen--light {
+  --preview-sidebar: #eef4f6;
+  --preview-page: #ffffff;
+  --preview-card: #e8f2f4;
+  --preview-muted: #c8d6dc;
+  --preview-ink: #526e79;
+}
+.theme-preview__screen--dark {
+  --preview-sidebar: #172930;
+  --preview-page: #0b1417;
+  --preview-card: #20353d;
+  --preview-muted: #3b535c;
+  --preview-ink: #9bb7c1;
+}
+.theme-preview--system .theme-preview__screen--dark { clip-path: inset(0 0 0 50%); }
+.theme-preview__check {
+  position: absolute;
+  top: -7px;
+  right: -7px;
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--bg-card);
+  border-radius: 50%;
+  color: var(--on-accent);
+  background: var(--accent);
+  opacity: 0;
+  transform: scale(0.7);
+  transition: opacity 160ms ease, transform 220ms var(--glass-ease);
+}
+.theme-option__label {
+  display: block;
+  padding-top: 10px;
+  color: var(--text-secondary);
+  text-align: center;
+  font-size: var(--type-caption);
+  font-weight: var(--weight-medium);
+}
+.theme-option:hover .theme-preview { outline-color: var(--border); }
+.theme-option__input:checked + .theme-preview { outline-color: var(--accent); }
+.theme-option__input:checked + .theme-preview .theme-preview__check { opacity: 1; transform: none; }
+.theme-option__input:checked ~ .theme-option__label { color: var(--text-primary); }
+.theme-option__input:focus-visible { outline: none; }
+.theme-option__input:focus-visible + .theme-preview { outline: 2px dashed var(--accent); outline-offset: 5px; }
+.theme-selector__hint {
+  margin-top: 16px;
+  font-size: var(--type-caption);
+  line-height: 1.5;
+}
+@keyframes theme-panel-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (max-width: 640px) {
+  .theme-selector { margin-left: auto; }
+  .nav__toggle { order: 3; margin-left: 4px; }
+  .theme-selector__panel { padding: 18px; }
+}
+.theme-selector__motion { margin-top: 18px; padding-top: 12px; border-top: 1px solid var(--border); }
+.theme-selector__motion-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+#motion-label { font-size: var(--type-small); font-weight: var(--weight-medium); }
+#motion-status { font-size: var(--type-caption); }
+.motion-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 2px 0 10px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-secondary);
+  font: inherit;
+  font-size: var(--type-caption);
+  cursor: pointer;
+}
+.motion-toggle__track { display: block; width: 36px; height: 22px; padding: 3px; border-radius: 12px; background: var(--text-tertiary); }
+.motion-toggle__track > span { display: block; width: 16px; height: 16px; border-radius: 50%; background: var(--bg-card); transition: transform 180ms var(--glass-ease); }
+.motion-toggle[aria-checked="true"] .motion-toggle__track { background: var(--accent); }
+.motion-toggle[aria-checked="true"] .motion-toggle__track > span { transform: translateX(14px); }
+.motion-reset { margin-top: 4px; padding: 8px 0; border: 0; background: transparent; color: var(--accent); font: inherit; font-size: var(--type-caption); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.motion-reset[hidden] { display: none; }
+
+/* A short crossfade keeps the page still while its palette changes. */
+::view-transition { pointer-events: none; }
+::view-transition-group(root) { animation-duration: 280ms; }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: 280ms; animation-timing-function: ease-in-out; }
+:root[data-theme-transition="fallback"],
+:root[data-theme-transition="fallback"] *,
+:root[data-theme-transition="fallback"] *::before,
+:root[data-theme-transition="fallback"] *::after {
+  transition: color 280ms ease, background-color 280ms ease, border-color 280ms ease, fill 280ms ease, stroke 280ms ease !important;
+}
+@media (forced-colors: active) {
+  .theme-selector__panel { border: 1px solid CanvasText; }
+  .theme-option__input:checked + .theme-preview { outline-color: Highlight; }
+  .theme-option__input:focus-visible + .theme-preview { outline-color: Highlight; }
+  .theme-preview__check { background: Highlight; color: HighlightText; }
+  .motion-toggle__track { border: 1px solid ButtonText; padding: 2px; }
+  .motion-toggle__track > span { background: ButtonText; }
+  .motion-toggle[aria-checked="true"] .motion-toggle__track { background: Highlight; }
+  .motion-toggle[aria-checked="true"] .motion-toggle__track > span { background: HighlightText; }
+}

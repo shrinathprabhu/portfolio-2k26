@@ -1,0 +1,26 @@
+/* The saved preference is resolved before paint. Manual choices can override
+   the device preference; without JavaScript the media query remains the fallback. */
+:root[data-motion="disabled"],
+:root[data-motion="disabled"] *,
+:root[data-motion="disabled"] *::before,
+:root[data-motion="disabled"] *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+:root[data-motion="disabled"]::view-transition-group(*),
+:root[data-motion="disabled"]::view-transition-old(*),
+:root[data-motion="disabled"]::view-transition-new(*) { animation: none !important; }
+:root[data-motion="disabled"] .stat-digit.is-rolling { color: inherit; }
+:root[data-motion="disabled"] .stat-digit__window { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  :root:not([data-motion="enabled"]),
+  :root:not([data-motion="enabled"]) *,
+  :root:not([data-motion="enabled"]) *::before,
+  :root:not([data-motion="enabled"]) *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

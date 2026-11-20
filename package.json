@@ -4,6 +4,7 @@
   "description": "Portfolio of Shrinath Prabhu \u2014 Senior Staff Frontend Engineer",
   "type": "module",
   "scripts": {
+    "test": "node --test scripts/*.test.js",
     "dev": "npx @11ty/eleventy --serve",
     "build": "npx @11ty/eleventy",
     "clean": "rm -rf _site",
