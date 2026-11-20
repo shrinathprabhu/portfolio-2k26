@@ -1,29 +1,116 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const toggle = document.querySelector('.nav__toggle');
-  const links = document.querySelector('.nav__links');
-  if (!toggle || !links) return;
+const nav = document.querySelector('.nav');
+const toggle = nav.querySelector('.nav__toggle');
+const links = nav.querySelector('.nav__links');
+const activeLink = links.querySelector('.active');
+const desktop = matchMedia('(min-width: 641px)');
 
-  const setOpen = (open) => {
-    links.classList.toggle('open', open);
-    toggle.classList.toggle('open', open);
-    toggle.setAttribute('aria-expanded', String(open));
-  };
+function setOpen(open) {
+  links.classList.toggle('open', open);
+  toggle.classList.toggle('open', open);
+  toggle.setAttribute('aria-expanded', String(open));
+  links.inert = !desktop.matches && !open;
+}
 
-  toggle.addEventListener('click', (e) => {
-    e.stopPropagation();
-    setOpen(!links.classList.contains('open'));
-  });
-
-  document.addEventListener('click', (e) => {
-    if (links.classList.contains('open') && !links.contains(e.target) && !toggle.contains(e.target)) {
-      setOpen(false);
-    }
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && links.classList.contains('open')) {
-      setOpen(false);
-      toggle.focus();
-    }
-  });
+setOpen(false);
+desktop.addEventListener('change', () => {
+  const focusWasInMenu = links.contains(document.activeElement);
+  setOpen(false);
+  if (!desktop.matches && focusWasInMenu) toggle.focus();
 });
+
+toggle.addEventListener('click', () => setOpen(!links.classList.contains('open')));
+document.addEventListener('click', (event) => {
+  if (!nav.contains(event.target)) setOpen(false);
+});
+nav.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && links.classList.contains('open')) {
+    setOpen(false);
+    toggle.focus();
+  }
+});
+
+function syncNav() {
+  nav.classList.toggle('is-floating', window.scrollY > 36);
+}
+
+syncNav();
+window.addEventListener('scroll', syncNav, { passive: true });
+
+function highlight(link) {
+  if (link && desktop.matches) {
+    links.style.setProperty('--indicator-x', `${link.offsetLeft}px`);
+    links.style.setProperty('--indicator-width', `${link.offsetWidth}px`);
+  }
+  links.classList.toggle('has-indicator', Boolean(link && desktop.matches));
+}
+
+function restoreHighlight() {
+  highlight(links.querySelector('a:focus-visible') || activeLink);
+}
+
+for (const link of links.querySelectorAll('a')) {
+  link.addEventListener('pointerenter', (event) => {
+    if (event.pointerType === 'mouse') highlight(link);
+  });
+  link.addEventListener('focus', restoreHighlight);
+}
+links.addEventListener('pointerleave', restoreHighlight);
+links.addEventListener('focusout', (event) => {
+  if (!links.contains(event.relatedTarget)) highlight(activeLink);
+});
+new ResizeObserver(restoreHighlight).observe(links);
+restoreHighlight();
+
+// Update only the control under the mouse, at most once per rendered frame.
+const opticalControls = '.nav__inner, .btn, .case-study__link, .section-head a, .reading-tools, .voice__play';
+const opticalMotion = matchMedia(
+  '(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) and (forced-colors: none)'
+);
+const reducedTransparency = matchMedia('(prefers-reduced-transparency: reduce), (prefers-contrast: more)');
+let litControl;
+let lightFrame = 0;
+
+function clearLight() {
+  if (lightFrame) cancelAnimationFrame(lightFrame);
+  lightFrame = 0;
+  litControl?.style.removeProperty('--light-x');
+  litControl?.style.removeProperty('--light-y');
+  litControl?.style.removeProperty('--nav-light-x');
+  litControl?.removeAttribute('data-lit');
+  litControl = undefined;
+}
+
+function moveLight(event) {
+  if (event.pointerType !== 'mouse') return;
+  const control = event.target.closest(opticalControls);
+  if (control !== litControl) {
+    clearLight();
+    litControl = control;
+  }
+  if (!control) return;
+  if (lightFrame) cancelAnimationFrame(lightFrame);
+  lightFrame = requestAnimationFrame(() => {
+    lightFrame = 0;
+    const { left, top, width, height } = control.getBoundingClientRect();
+    if (control.classList.contains('nav__inner')) {
+      control.style.setProperty('--nav-light-x', `${event.clientX - left}px`);
+      control.setAttribute('data-lit', '');
+      return;
+    }
+    control.style.setProperty('--light-x', `${(event.clientX - left) / width * 100}%`);
+    control.style.setProperty('--light-y', `${(event.clientY - top) / height * 100}%`);
+  });
+}
+
+function syncOpticalMotion() {
+  document.removeEventListener('pointermove', moveLight);
+  clearLight();
+  if (opticalMotion.matches && !reducedTransparency.matches) {
+    document.addEventListener('pointermove', moveLight, { passive: true });
+  }
+}
+
+document.addEventListener('pointerleave', clearLight);
+opticalMotion.addEventListener('change', syncOpticalMotion);
+reducedTransparency.addEventListener('change', syncOpticalMotion);
+syncOpticalMotion();

@@ -15,9 +15,12 @@
   const barsEl = panel.querySelector('.voice__bars');
   const seek = panel.querySelector('.voice__seek');
   const timeEl = panel.querySelector('.voice__time');
+  const speed = panel.querySelector('.voice__speed');
+  const rates = [1, 1.25, 1.5, 2];
   const captionEl = panel.querySelector('.voice__caption');
   const label = trigger.querySelector('.voice-btn__label');
   const cta = document.getElementById('contact-cta');
+  const transcript = document.querySelector('.voice-transcript');
   const idleLabel = label.textContent;
 
   let audio = null;
@@ -46,6 +49,12 @@
     }
   });
   playBtn.addEventListener('click', toggle);
+  speed.addEventListener('click', () => {
+    const next = rates[(rates.indexOf(audio.playbackRate) + 1) % rates.length];
+    audio.playbackRate = next;
+    speed.textContent = `${next}×`;
+    speed.setAttribute('aria-label', `Playback speed ${next}×. Change playback speed.`);
+  });
 
   function toggle() {
     if (!audio) return start();
@@ -66,6 +75,7 @@
     trigger.setAttribute('aria-expanded', 'true');
 
     audio.addEventListener('play', () => setState(true));
+    audio.addEventListener('playing', () => transcript.classList.add('is-available'), { once: true });
     audio.addEventListener('pause', () => setState(false));
     audio.addEventListener('ended', onEnded);
     audio.addEventListener('seeked', render);
@@ -74,6 +84,13 @@
       if (Number.isFinite(audio.duration)) setDuration(audio.duration);
     });
 
+    seek.addEventListener('keydown', (event) => {
+      const direction = { ArrowRight: 1, ArrowUp: 1, ArrowLeft: -1, ArrowDown: -1 }[event.key];
+      if (!direction) return;
+      event.preventDefault();
+      seek.value = Math.min(duration, Math.max(0, audio.currentTime + direction * 5));
+      seek.dispatchEvent(new Event('input'));
+    });
     seek.addEventListener('input', () => {
       audio.currentTime = Number(seek.value);
       panel.classList.remove('is-ended');
@@ -125,8 +142,12 @@
 
     seek.value = t;
     const total = clock(Math.round(duration));
-    seek.setAttribute('aria-valuetext', `${clock(t)} of ${total}`);
-    timeEl.textContent = `${clock(t)} / ${total}`;
+    const elapsed = clock(t);
+    const time = `${elapsed} / ${total}`;
+    if (timeEl.textContent !== time || !seek.hasAttribute('aria-valuetext')) {
+      seek.setAttribute('aria-valuetext', `${elapsed} of ${total}`);
+      timeEl.textContent = time;
+    }
 
     // Waveform: touch the DOM only when the played bar count changes
     const lit = Math.round((t / duration) * bars.length);

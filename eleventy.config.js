@@ -191,21 +191,6 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy("src/audio");
   eleventyConfig.addPassthroughCopy("src/js");
-  // Mermaid is served from a versioned folder. Its files are cached as
-  // immutable, and the entry imports chunks whose names change per release,
-  // so an upgrade must change the URL or returning visitors keep a stale entry.
-  const mermaidVersion = JSON.parse(
-    readFileSync("node_modules/mermaid/package.json", "utf-8"),
-  ).version;
-  const mermaidBase = `js/mermaid/${mermaidVersion}`;
-  eleventyConfig.addPassthroughCopy({
-    "node_modules/mermaid/dist/mermaid.esm.min.mjs": `${mermaidBase}/mermaid.esm.min.mjs`,
-  });
-  eleventyConfig.addPassthroughCopy({
-    "node_modules/mermaid/dist/chunks/mermaid.esm.min": `${mermaidBase}/chunks/mermaid.esm.min`,
-  });
-  // ── Global data ──
-  eleventyConfig.addGlobalData("mermaidUrl", `/${mermaidBase}/mermaid.esm.min.mjs`);
   // ── Collections ──
   eleventyConfig.addCollection("posts", function (collectionApi) {
     return collectionApi
@@ -245,6 +230,28 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("head", (array, n) => {
     if (!Array.isArray(array)) return array;
     return array.slice(0, n);
+  });
+
+  eleventyConfig.addFilter("articleOutline", (html) => {
+    const headings = [];
+    const ids = new Set([...html.matchAll(/\sid="([^"]+)"/g)].map((match) => match[1]));
+    const content = html.replace(/<h2(\s[^>]*)?>([\s\S]*?)<\/h2>/gi, (heading, attributes = "", body) => {
+      const label = body.replace(/<[^>]+>/g, "").trim();
+      if (!label) return heading;
+      let id = attributes.match(/\sid="([^"]+)"/)?.[1];
+      if (!id) {
+        const slug = label.toLowerCase().replace(/&[a-z0-9#]+;/gi, " ")
+          .replace(/[^\p{L}\p{N}]+/gu, "-").replace(/^-|-$/g, "") || "section";
+        const base = `section-${slug}`;
+        id = base;
+        for (let suffix = 2; ids.has(id); suffix++) id = `${base}-${suffix}`;
+        ids.add(id);
+        heading = `<h2${attributes} id="${id}" tabindex="-1">${body}</h2>`;
+      }
+      headings.push({ id, label });
+      return heading;
+    });
+    return { content, headings };
   });
 
   // Cache-buster for files under src/ (/*.js is cached as immutable)

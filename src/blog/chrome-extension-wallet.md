@@ -93,26 +93,12 @@ For engineers who want the how.
 
 **Injection takes five hops.** A page and an extension cannot talk directly, so every request from an app passes through an injected provider in the page, a content script, the background service worker, and the sidebar for approval, then all the way back. Every hop is asynchronous and every hop can fail.
 
-```mermaid
-sequenceDiagram
-    participant dApp
-    participant IP as Injected Provider
-    participant CS as Content Script
-    participant BG as Background SW
-    participant UI as Sidebar
-    participant RPC as Chain RPC
-
-    dApp->>IP: eth_sendTransaction
-    IP->>CS: CustomEvent
-    CS->>BG: runtime message
-    BG->>UI: Open sidebar with tx details
-    UI->>BG: User approves
-    BG->>RPC: Signed transaction
-    RPC-->>BG: Transaction hash
-    BG-->>CS: runtime message
-    CS-->>IP: postMessage
-    IP-->>dApp: Resolve with tx hash
-```
+<figure class="article-diagram">
+  <div class="article-diagram__scroll" tabindex="0" role="group" aria-label="Transaction sequence diagram">
+    <img src="/images/wallet-transaction-sequence.svg" width="1406" height="745" loading="lazy" decoding="async" alt="The dApp sends a transaction request through the injected provider and content script to the background service worker. The sidebar asks for approval. After approval, the worker sends the signed transaction to the chain RPC, and the transaction hash returns to the dApp through the same extension layers." />
+  </div>
+  <figcaption>How a transaction request moves through the wallet. <a href="/images/wallet-transaction-sequence.svg">Open full-size diagram</a></figcaption>
+</figure>
 
 **The service worker sleeps.** Under Manifest V3 the background script is terminated after about 30 seconds of inactivity. Selected account, active chain and pending approvals all have to be persisted and restored, and any request in flight when the worker dies must be retried or failed cleanly.
 

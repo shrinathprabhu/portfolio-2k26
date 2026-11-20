@@ -27,6 +27,9 @@ containerClass: "container--wide"
     {% if post.data.image %}
     <div class="blog-card__image" style="--placeholder: url('{{ post.data.image | blurPlaceholder }}')">
       {% img post.data.image, "", "card", loop.index <= 2 %}
+      {% if post.data.category %}
+      <span class="blog-item__tag blog-item__tag--cover glass glass--frost">{{ post.data.category }}</span>
+      {% endif %}
     </div>
     {% endif %}
     <div class="blog-card__body">
@@ -36,7 +39,7 @@ containerClass: "container--wide"
       <h2 class="blog-card__title">{{ post.data.title }}</h2>
       <p class="blog-card__desc">{{ post.data.description }}</p>
       <div class="blog-card__footer">
-        {% if post.data.category %}
+        {% if post.data.category and not post.data.image %}
         <span class="blog-item__tag">{{ post.data.category }}</span>
         {% endif %}
         <span class="blog-item__meta">

@@ -5,13 +5,23 @@ stylesheet: /blog.css
 ogType: article
 ---
 
-<div class="container">
-  <article class="blog-post" data-mermaid="{{ mermaidUrl }}">
+{% set outline = content | articleOutline %}
+{% set showOutline = outline.headings.length >= 4 %}
+{% macro outlineLinks() %}
+  <ol class="post-outline__list">
+    {% for heading in outline.headings %}
+    <li><a href="#{{ heading.id }}">{{ heading.label | safe }}</a></li>
+    {% endfor %}
+  </ol>
+{% endmacro %}
+
+<div class="container{% if showOutline %} post-layout--outline{% endif %}">
+  <article class="blog-post{% if showOutline %} blog-post--outline{% endif %}">
     <header class="page-header fade-in">
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <a href="/blog/">Blog</a>{% if category %} <span aria-hidden="true">/</span> <span>{{ category }}</span>{% endif %}
       </nav>
-      <h1>{{ title }}</h1>
+      <h1 tabindex="-1">{{ title }}</h1>
       {% if description %}
       <p class="blog-post__lede">{{ description }}</p>
       {% endif %}
@@ -34,8 +44,23 @@ ogType: article
     </div>
     {% endif %}
 
+    {% if showOutline %}
+    <div class="post-outline">
+      <nav class="post-outline__desktop" aria-label="On this page">
+        <p class="post-outline__title">On this page</p>
+        {{ outlineLinks() }}
+      </nav>
+      <details class="post-outline__mobile">
+        <summary>On this page</summary>
+        <nav aria-label="On this page">
+          {{ outlineLinks() }}
+        </nav>
+      </details>
+    </div>
+    {% endif %}
+
     <div class="blog-post__body">
-      {{ content | safe }}
+      {{ outline.content | safe }}
       {% if faq %}
       <section class="post-faq" aria-labelledby="post-faq-title">
         <h2 id="post-faq-title">Questions people ask</h2>
