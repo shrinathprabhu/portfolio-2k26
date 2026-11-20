@@ -272,6 +272,31 @@ test('no-API specification and trust pages accurately describe this personal sit
   assert.match(privacy, /portfolio-motion/);
 });
 
+test('the catalog and auth.md lead agents to the published site and its access instructions', async () => {
+  const env = assets();
+  const catalogPath = '/.well-known/api-catalog';
+  const catalog = await worker.fetch(request(catalogPath, 'application/linkset+json'), env);
+  assert.equal(catalog.status, 200);
+  const { linkset } = await catalog.json();
+  assert.equal(linkset.length, 1);
+  const [portfolio] = linkset;
+  assert.equal(portfolio.anchor, 'https://shrinath.me/');
+  const spec = JSON.parse(read('/openapi.json'));
+  assert.equal(portfolio['service-desc'][0].href, 'https://shrinath.me/openapi.json');
+  assert.equal(portfolio['service-doc'][0].href, spec.externalDocs.url);
+  assert.deepEqual(spec.paths, {});
+  assert.ok(read('/index.html').includes(`rel="api-catalog" type="application/linkset+json" href="${catalogPath}"`));
+  const auth = await worker.fetch(request('/auth.md', 'text/markdown'), env);
+  assert.equal(auth.status, 200);
+  const guide = await auth.text();
+  assert.match(guide, /^# auth\.md\s/m);
+  assert.match(guide, /without signing in/);
+  for (const target of ['/auth.md', catalogPath]) {
+    assert.ok(read('/agents/index.md').includes(index.site + target));
+    assert.ok(read('/llms.txt').includes(index.site + target));
+  }
+});
+
 test('the homepage links to the same agent guide in HTML, Markdown, and the OpenAPI document', async () => {
   const env = assets();
   const homepage = await worker.fetch(request('/', 'text/html'), env);

@@ -1,0 +1,21 @@
+---
+permalink: /auth.md
+eleventyExcludeFromCollections: true
+---
+# auth.md
+
+Agents can read Shrinath Prabhu’s portfolio and blog without signing in.
+
+## Registration and credentials
+
+Registration is unnecessary. This site has no account provisioning endpoint, supported registration methods, or public API. It does not issue API keys or OAuth tokens. Omit the `Authorization` header and cookies when reading public content.
+
+## Read public content
+
+Use `GET` to read a page or `HEAD` to check its headers. For example, this request returns the blog index as Markdown:
+
+```sh
+curl -fsS -H 'Accept: text/markdown' https://shrinath.me/blog/
+```
+
+The [content index](https://shrinath.me/content-index.json) lists each page’s canonical and Markdown URLs. The [agent guide](https://shrinath.me/agents/) explains content formats and HTTP errors.

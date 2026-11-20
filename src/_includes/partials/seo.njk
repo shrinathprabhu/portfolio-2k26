@@ -52,6 +52,9 @@
 {# ── Canonical URL ── #}
 <link rel="canonical" href="{{ canonical or ('https://shrinath.me' + page.url) }}" />
 <link rel="describedby" type="text/plain" href="/llms.txt" />
+{% if page.url == "/" %}
+<link rel="api-catalog" type="application/linkset+json" href="/.well-known/api-catalog" />
+{% endif %}
 {% if robots != "noindex, nofollow" %}
 <link rel="alternate" type="text/markdown" href="{{ page.url | markdownPath }}" title="Markdown version" />
 {% endif %}

@@ -62,6 +62,7 @@ for (const [path, type] of [
   ['/robots.txt', 'text/plain'], ['/llms.txt', 'text/plain'],
   ['/.well-known/security.txt', 'text/plain'], ['/sitemap.xml', 'application/xml'],
   ['/feed.xml', 'application/xml'], ['/openapi.json', 'application/json'],
+  ['/.well-known/api-catalog', 'application/linkset+json'], ['/auth.md', 'text/markdown'],
   ['/humans.json', 'application/json'], ['/audio/intro.json', 'application/json'],
 ]) {
   const response = await get(path);
@@ -70,6 +71,16 @@ for (const [path, type] of [
   if (type === 'application/json') JSON.parse(body);
   files.set(path, body);
 }
+const catalogPath = '/.well-known/api-catalog';
+const catalogHead = await get(catalogPath, 'application/linkset+json', { method: 'HEAD' });
+check(catalogHead, 200, 'application/linkset+json');
+assert.ok(catalogHead.headers.get('Link')?.includes(`<${catalogPath}>; rel="api-catalog"`));
+assert.equal(await catalogHead.text(), '');
+const catalog = JSON.parse(files.get(catalogPath));
+const website = catalog.linkset.find(entry => entry.anchor === index.site + '/');
+assert.ok(website?.['service-desc'].some(link => link.href === new URL('/openapi.json', index.site).href));
+assert.ok(website?.['service-doc'].some(link => link.href === new URL('/agents/', index.site).href));
+assert.match(files.get('/auth.md'), /^# .*auth\.md\b/im);
 const spec = JSON.parse(files.get('/openapi.json'));
 assert.equal(spec.openapi, '3.1.1');
 assert.deepEqual(spec.paths, {});

@@ -22,6 +22,8 @@ This is a public website and blog. It has no public API, API keys, authenticatio
 
 The [OpenAPI document](/openapi.json) has an empty `paths` object. Its `components.schemas.Problem` schema describes the JSON errors you can receive when reading public pages.
 
+The [API catalog](/.well-known/api-catalog) links to that declaration and this guide. [auth.md](/auth.md) explains how agents can read the portfolio without registering or sending credentials.
+
 ## Discover pages and articles
 
 - [llms.txt](/llms.txt) provides a concise reading guide and Markdown links.

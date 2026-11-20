@@ -1,0 +1,21 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://shrinath.me/",
+      "service-desc": [
+        {
+          "href": "https://shrinath.me/openapi.json",
+          "type": "application/json",
+          "title": "Portfolio declaration of no public API"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://shrinath.me/agents/",
+          "type": "text/html",
+          "title": "Reading public pages and blog posts"
+        }
+      ]
+    }
+  ]
+}
