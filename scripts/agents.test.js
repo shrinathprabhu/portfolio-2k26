@@ -4,6 +4,8 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { createHash } from 'node:crypto';
 import { test } from 'node:test';
+import Ajv2020 from 'ajv/dist/2020.js';
+import addFormats from 'ajv-formats';
 import worker from '../worker/index.js';
 import { negotiate } from '../worker/content.js';
 import { checkCrawlerAccess } from './check-crawler-access.js';
@@ -268,4 +270,50 @@ test('no-API specification and trust pages accurately describe this personal sit
   assert.match(privacy, /Cloudflare Web Analytics/);
   assert.match(privacy, /portfolio-theme/);
   assert.match(privacy, /portfolio-motion/);
+});
+
+test('the homepage links to the same agent guide in HTML, Markdown, and the OpenAPI document', async () => {
+  const env = assets();
+  const homepage = await worker.fetch(request('/', 'text/html'), env);
+  const docsHref = (await homepage.text()).match(/<a href="([^"]+)"[^>]*>Agent docs<\/a>/)?.[1];
+  assert.equal(docsHref, '/docs');
+  const alias = await worker.fetch(request(docsHref, 'text/html'), env);
+  assert.equal(alias.status, 308);
+  const canonical = new URL(alias.headers.get('Location'));
+  assert.equal(canonical.href, JSON.parse(read('/openapi.json')).externalDocs.url);
+  const guide = await worker.fetch(request(canonical.pathname, 'text/html'), env);
+  assert.equal(guide.status, 200);
+  assert.match(await guide.text(), /<h1>Agent guide to Shrinath Prabhu’s portfolio<\/h1>/);
+  const mdUrl = new URL('index.md', canonical);
+  assert.ok(read('/index.md').includes(`[Agent docs](${mdUrl.href})`));
+  assert.ok(read('/llms.txt').includes(mdUrl.href));
+  assert.match(read(mdUrl.pathname), /No API access/);
+});
+
+test('the published Problem schema validates the Worker’s four JSON error responses', async () => {
+  const spec = JSON.parse(read('/openapi.json'));
+  const validator = new Ajv2020();
+  addFormats(validator);
+  const validate = validator.compile(spec.components.schemas.Problem);
+  const content = spec.components.responses.PageError.content;
+  const env = assets();
+  const missingAsset = { ASSETS: { fetch: async () => new Response(null, { status: 404 }) } };
+  for (const mime of ['application/problem+json', 'application/json']) {
+    assert.equal(content[mime].schema.$ref, '#/components/schemas/Problem');
+    for (const [req, status, code, assetEnv] of [
+      [request('/missing', mime), 404, 'NOT_FOUND', env],
+      [request('/work/', mime, { method: 'POST' }), 405, 'METHOD_NOT_ALLOWED', env],
+      [request('/work/', mime), 406, 'NOT_ACCEPTABLE', env],
+      // Accept the HTML page but prefer JSON if fetching its asset fails.
+      [request('/work/', `${mime},text/html;q=0.5`), 503, 'REPRESENTATION_UNAVAILABLE', missingAsset],
+    ]) {
+      const response = await worker.fetch(req, assetEnv);
+      assert.equal(response.status, status);
+      assert.equal(response.headers.get('Content-Type'), mime);
+      const problem = await response.json();
+      assert.equal(problem.code, code);
+      assert.equal(problem.status, status);
+      assert.ok(validate(problem), JSON.stringify(validate.errors));
+    }
+  }
 });

@@ -6,6 +6,7 @@
   "scripts": {
     "test": "npm run build && node --test scripts/*.test.js",
     "check:agents": "node scripts/check-agent-endpoints.js",
+    "report:agents": "is-agentic shrinath.me",
     "dev": "npx @11ty/eleventy --serve",
     "build": "npx @11ty/eleventy",
     "clean": "rm -rf _site",
@@ -18,6 +19,9 @@
     "@11ty/eleventy": "3.1.8",
     "@11ty/eleventy-plugin-rss": "3.1.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "5.0.2",
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1",
+    "is-agentic": "1.0.1",
     "markdown-it-link-attributes": "4.0.1",
     "turndown": "7.2.5",
     "turndown-plugin-gfm": "1.0.2",

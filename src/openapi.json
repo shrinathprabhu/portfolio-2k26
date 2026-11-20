@@ -2,11 +2,44 @@
   "openapi": "3.1.1",
   "info": {
     "title": "Shrinath Prabhu — no public API",
-    "version": "1.0.0",
-    "description": "No API access is available. This is a public portfolio and blog, not an API service. There are no callable operations, authentication flows, API keys, or function-calling tools. The intentionally empty paths object records that absence; it does not represent a hidden or restricted API. Read public pages and articles using ordinary GET requests, optionally with Accept: text/markdown. See the site access guide for discovery links.",
+    "version": "1.1.0",
+    "description": "No API access is available. Read public pages and blog posts with GET. Request text/markdown for Markdown or application/problem+json for structured errors. The version identifies this document. The Problem schema describes errors returned by the website.",
     "contact": { "name": "Shrinath Prabhu", "url": "https://shrinath.me/contact/", "email": "hello@shrinath.me" }
   },
   "paths": {},
+  "components": {
+    "schemas": {
+      "Problem": {
+        "type": "object",
+        "description": "RFC 9457 problem details returned by the portfolio Worker for unsuccessful page requests.",
+        "required": ["type", "title", "status", "detail", "instance", "code", "resolution", "links"],
+        "properties": {
+          "type": { "type": "string", "const": "about:blank" },
+          "title": { "type": "string", "description": "HTTP status title." },
+          "status": { "type": "integer", "enum": [404, 405, 406, 503] },
+          "detail": { "type": "string", "description": "Explanation of this failure." },
+          "instance": { "type": "string", "format": "uri-reference", "description": "Requested URL path." },
+          "code": { "type": "string", "enum": ["NOT_FOUND", "METHOD_NOT_ALLOWED", "NOT_ACCEPTABLE", "REPRESENTATION_UNAVAILABLE"] },
+          "resolution": { "type": "string", "description": "Suggested recovery step." },
+          "links": {
+            "type": "object",
+            "description": "Absolute URLs for site discovery and recovery.",
+            "required": ["guide", "llms", "sitemap", "blog"],
+            "additionalProperties": { "type": "string", "format": "uri" }
+          }
+        }
+      }
+    },
+    "responses": {
+      "PageError": {
+        "description": "JSON representation of a website error (404, 405, 406, or 503).",
+        "content": {
+          "application/problem+json": { "schema": { "$ref": "#/components/schemas/Problem" } },
+          "application/json": { "schema": { "$ref": "#/components/schemas/Problem" } }
+        }
+      }
+    }
+  },
   "externalDocs": { "description": "Public pages and blog access guide", "url": "https://shrinath.me/agents/" },
   "x-api-available": false
 }

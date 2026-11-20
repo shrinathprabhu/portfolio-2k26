@@ -1,7 +1,7 @@
 ---
 layout: guide.njk
-title: "Shrinath Prabhu — site access guide for agents"
-heading: "Site access for agents"
+title: "Agent documentation for Shrinath Prabhu’s portfolio and blog"
+heading: "Agent guide to Shrinath Prabhu’s portfolio"
 description: "Find Shrinath Prabhu’s public profile, work, resume, and technical writing in HTML or Markdown. No API access is available."
 ---
 
@@ -20,7 +20,7 @@ Use this portfolio to research Shrinath Prabhu’s frontend engineering experien
 
 This is a public website and blog. It has no public API, API keys, authentication flow, MCP server, or function-calling operations. There is no programmatic service for contacting Shrinath, booking calls, or changing information.
 
-The [OpenAPI document](/openapi.json) intentionally contains `paths: {}` and declares that no API is available. There are no operations to describe or call. The files below are static discovery resources, not API endpoints.
+The [OpenAPI document](/openapi.json) has an empty `paths` object. Its `components.schemas.Problem` schema describes the JSON errors you can receive when reading public pages.
 
 ## Discover pages and articles
 
@@ -46,6 +46,13 @@ Pages support `GET` and `HEAD`. Normal browser requests receive HTML. Negotiatio
 ## Recover from a missing page
 
 A missing path returns HTTP `404`, never a successful page shell. Ask for `text/markdown` for a short recovery guide, or `application/problem+json` for a structured error with a status, code, explanation, and discovery links. JSON errors do not imply that an API is available. Unsupported write methods return `405` with `Allow: GET, HEAD`.
+
+| HTTP status | Error code | What to do |
+| --- | --- | --- |
+| 404 | `NOT_FOUND` | Look up the current URL in the sitemap. |
+| 405 | `METHOD_NOT_ALLOWED` | Use `GET` to read the page or `HEAD` to check its headers. |
+| 406 | `NOT_ACCEPTABLE` | Request HTML or Markdown at the canonical page URL. |
+| 503 | `REPRESENTATION_UNAVAILABLE` | Try the other format at the canonical URL or retry later. |
 
 ```sh
 curl -i -H 'Accept: text/markdown' https://shrinath.me/page-that-does-not-exist

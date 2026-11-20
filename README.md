@@ -48,7 +48,7 @@ The appearance selector's miniature previews and selection interaction are inspi
 
 This is a portfolio and blog with **no public API**, authentication, MCP server, or function-calling operations. `/openapi.json` is a valid OpenAPI 3.1.1 document with deliberately empty `paths` and an explicit no-API description. Do not add fictional endpoints to satisfy an audit score.
 
-The homepage footer links to `/agents/` (also reachable through `/docs`), `/about/`, and `/privacy/`. `/llms.txt`, `/sitemap.xml`, and `/content-index.json` describe the published pages and blog posts. The site's identity is a `Person`, using the existing public location and professional contact details.
+The homepage footer links to the agent documentation at `/docs`, which redirects to the canonical guide at `/agents/`. It also links to `/about/` and `/privacy/`. `/llms.txt`, `/sitemap.xml`, and `/content-index.json` describe the published pages and blog posts. The site's identity is a `Person`, using the existing public location and professional contact details.
 
 The Eleventy build generates an `index.md` alongside each indexable HTML page, preserving the article text, code, tables, FAQs, transcript, and canonical source links. Markdown comes from the final HTML; it is not a second copy of the content to maintain. The generated content index is also bundled into the Worker, so **build before starting Wrangler or deploying**. `npm run preview` and `npm run deploy` already do this.
 
@@ -58,6 +58,7 @@ The Worker negotiates HTML or Markdown at canonical page URLs using `Accept`, in
 npm test                                      # Build and behavior regressions
 npm run preview                               # Local Cloudflare Worker
 npm run check:agents -- http://127.0.0.1:8787  # All content and discovery routes
+npm run report:agents                         # Latest Is Agentic report for shrinath.me
 ```
 
-Eleventy's `npm run dev` serves static files only; use the Worker preview to test content negotiation, status codes, redirects, and response headers. After an authorized deployment, rerun `npm run check:agents -- https://shrinath.me` and the external readiness audit. Local checks do not establish deployed behavior or a new readiness score. Search indexing and any API-only audit criteria are outside the site's content-access implementation.
+Eleventy's `npm run dev` serves static files only. Use the Worker preview to test content negotiation, status codes, redirects, and response headers. After deployment, verify the public origin with `npm run check:agents -- https://shrinath.me`. The report command reads the latest completed production audit and starts a scan if none exists. Use `npm run --silent report:agents -- --json` for machine-readable output. To refresh an existing score after a release, use **Rescan** on the [public report](https://is-agentic.com/scan/shrinath.me).

@@ -46,6 +46,7 @@ for (const page of index.pages) {
     assert.ok(body.includes(page.url), `${target}: missing canonical source`);
     if (type === 'text/markdown') assert.doesNotMatch(body, /<!doctype|<script/i);
     else {
+      if (path === '/') assert.match(body, /<a href="\/docs"[^>]*>Agent docs<\/a>/);
       for (const jsonLd of body.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) JSON.parse(jsonLd[1]);
       assert.ok(body.includes(`href="${new URL(page.markdown).pathname}"`));
     }
@@ -72,6 +73,8 @@ for (const [path, type] of [
 const spec = JSON.parse(files.get('/openapi.json'));
 assert.equal(spec.openapi, '3.1.1');
 assert.deepEqual(spec.paths, {});
+assert.equal(spec.components.responses.PageError.content['application/problem+json'].schema.$ref, '#/components/schemas/Problem');
+assert.deepEqual(spec.components.schemas.Problem.properties.status.enum, [404, 405, 406, 503]);
 assert.equal(spec['x-api-available'], false);
 assert.match(spec.info.description, /No API access/);
 const sitemapUrls = [...files.get('/sitemap.xml').matchAll(/<loc>(.*?)<\/loc>/g)].map(match => match[1]);
