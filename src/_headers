@@ -64,6 +64,14 @@
   Content-Type: text/plain; charset=utf-8
   Cache-Control: public, max-age=0, must-revalidate
 
+/*.md
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=0, must-revalidate
+/openapi.json
+  Content-Type: application/json; charset=utf-8
+/content-index.json
+  Content-Type: application/json; charset=utf-8
+
 # ── HTML pages: always revalidate ──
 /
   Cache-Control: public, max-age=0, must-revalidate
@@ -76,4 +84,10 @@
 /contact/
   Cache-Control: public, max-age=0, must-revalidate
 /uses/
+  Cache-Control: public, max-age=0, must-revalidate
+/about/
+  Cache-Control: public, max-age=0, must-revalidate
+/privacy/
+  Cache-Control: public, max-age=0, must-revalidate
+/agents/
   Cache-Control: public, max-age=0, must-revalidate

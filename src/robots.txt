@@ -7,6 +7,9 @@ Sitemap: https://shrinath.me/sitemap.xml
 # LLM-readable content
 # llms.txt: https://shrinath.me/llms.txt
 # humans.json: https://shrinath.me/humans.json
+# Site access guide: https://shrinath.me/agents/
+# Content index: https://shrinath.me/content-index.json
+# No API access: https://shrinath.me/openapi.json
 
 # Security
 # security.txt: https://shrinath.me/.well-known/security.txt

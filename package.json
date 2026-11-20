@@ -1,10 +1,11 @@
 {
   "name": "shrinath-portfolio",
   "version": "1.0.0",
-  "description": "Portfolio of Shrinath Prabhu \u2014 Senior Staff Frontend Engineer",
+  "description": "Portfolio of Shrinath Prabhu — Senior Staff Frontend Engineer",
   "type": "module",
   "scripts": {
-    "test": "node --test scripts/*.test.js",
+    "test": "npm run build && node --test scripts/*.test.js",
+    "check:agents": "node scripts/check-agent-endpoints.js",
     "dev": "npx @11ty/eleventy --serve",
     "build": "npx @11ty/eleventy",
     "clean": "rm -rf _site",
@@ -18,10 +19,13 @@
     "@11ty/eleventy-plugin-rss": "3.1.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "5.0.2",
     "markdown-it-link-attributes": "4.0.1",
+    "turndown": "7.2.5",
+    "turndown-plugin-gfm": "1.0.2",
     "wrangler": "4.158.0"
   },
   "dependencies": {
     "@fontsource-variable/dm-sans": "5.3.0",
+    "negotiator": "1.1.0",
     "sharp": "0.35.5"
   }
 }
