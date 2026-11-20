@@ -1,6 +1,7 @@
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import pluginRss from "@11ty/eleventy-plugin-rss";
 import mila from "markdown-it-link-attributes";
+import { markdownPath, writeAgentContent } from "./lib/agent-content.js";
 import {
   readFileSync,
   existsSync,
@@ -77,6 +78,8 @@ function escapeAttr(value) {
 }
 
 export default function (eleventyConfig) {
+  eleventyConfig.addFilter("markdownPath", markdownPath);
+  eleventyConfig.on("eleventy.after", writeAgentContent);
   // ── Plugins ──
   eleventyConfig.addPlugin(syntaxHighlight, {
     init: function ({ Prism }) {
@@ -131,6 +134,7 @@ export default function (eleventyConfig) {
   }
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy("src/humans.json");
+  eleventyConfig.addPassthroughCopy("src/openapi.json");
   eleventyConfig.addPassthroughCopy({ "src/.well-known": ".well-known" });
   eleventyConfig.addPassthroughCopy({
     "src/.well-known/security.txt": "security.txt",

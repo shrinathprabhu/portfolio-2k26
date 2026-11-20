@@ -1,3 +1,5 @@
+import { serveContent } from './content.js';
+
 const CANONICAL_HOST = "shrinath.me";
 
 // Old paths → current paths, permanent
@@ -15,10 +17,10 @@ const REDIRECTS = {
   "/blog/is-cold-email-still-worth-it-in-2026":
     "/blog/is-cold-email-still-worth-it/",
   "/launch-plan": "/",
+  "/docs": "/agents/",
   "/resume/SHRINATH_PRABHU_UPDATED_RESUME_2026.pdf":
     "/resume/SHRINATH_PRABHU_RESUME.pdf",
 };
-
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -42,6 +44,6 @@ export default {
       return Response.redirect(url.toString(), 308);
     }
 
-    return env.ASSETS.fetch(request);
+    return serveContent(request, env);
   },
 };

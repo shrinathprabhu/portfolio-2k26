@@ -27,9 +27,9 @@
   {%- for post in collections.posts | head(20) %}
   <entry>
     <title>{{ post.data.title }}</title>
-    <link href="{{ metadata.url }}{{ post.url }}"/>
+    <link href="{{ post.url | absoluteUrl(metadata.url) }}"/>
     <updated>{{ post.date | dateToRfc3339 }}</updated>
-    <id>{{ metadata.url }}{{ post.url }}</id>
+    <id>{{ post.url | absoluteUrl(metadata.url) }}</id>
     <content type="html">{{ post.templateContent | htmlToAbsoluteUrls(metadata.url) }}</content>
   </entry>
   {%- endfor %}

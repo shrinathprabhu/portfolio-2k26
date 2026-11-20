@@ -43,3 +43,21 @@ Led frontend engineering at **[Arcana Network](https://arcana.network)** for 4.5
 ## UI credits
 
 The appearance selector's miniature previews and selection interaction are inspired by [Rare UI's theme selector](https://www.rareui.com/components/themeselector), implemented here in HTML, CSS, and JavaScript with Light, Dark, and System preferences.
+
+## Public content and agent access
+
+This is a portfolio and blog with **no public API**, authentication, MCP server, or function-calling operations. `/openapi.json` is a valid OpenAPI 3.1.1 document with deliberately empty `paths` and an explicit no-API description. Do not add fictional endpoints to satisfy an audit score.
+
+The homepage footer links to `/agents/` (also reachable through `/docs`), `/about/`, and `/privacy/`. `/llms.txt`, `/sitemap.xml`, and `/content-index.json` describe the published pages and blog posts. The site's identity is a `Person`, using the existing public location and professional contact details.
+
+The Eleventy build generates an `index.md` alongside each indexable HTML page, preserving the article text, code, tables, FAQs, transcript, and canonical source links. Markdown comes from the final HTML; it is not a second copy of the content to maintain. The generated content index is also bundled into the Worker, so **build before starting Wrangler or deploying**. `npm run preview` and `npm run deploy` already do this.
+
+The Worker negotiates HTML or Markdown at canonical page URLs using `Accept`, including quality values and exclusions. It returns `406` for unsupported page formats, `405` for write methods, and real `404` responses with HTML recovery links, concise Markdown, or structured JSON according to the request. JSON errors describe failed website reads; they do not create an API. HTML and Markdown use separate asset files and validators, `Vary: Accept`, and revalidation; negotiated responses disable outer CDN caching to prevent mixed representations.
+
+```sh
+npm test                                      # Build and behavior regressions
+npm run preview                               # Local Cloudflare Worker
+npm run check:agents -- http://127.0.0.1:8787  # All content and discovery routes
+```
+
+Eleventy's `npm run dev` serves static files only; use the Worker preview to test content negotiation, status codes, redirects, and response headers. After an authorized deployment, rerun `npm run check:agents -- https://shrinath.me` and the external readiness audit. Local checks do not establish deployed behavior or a new readiness score. Search indexing and any API-only audit criteria are outside the site's content-access implementation.
