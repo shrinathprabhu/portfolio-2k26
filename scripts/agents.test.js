@@ -19,6 +19,7 @@ function assets() {
   const requests = [];
   return {
     requests,
+    PORTFOLIO_API_LIMIT: { limit: async () => ({ success: true }) },
     ASSETS: { async fetch(request) {
       requests.push(request);
       const path = new URL(request.url).pathname;
@@ -125,7 +126,8 @@ test('only the homepage agent query selects JSON, including for browser navigati
   for (const capability of view.capabilities) {
     const url = new URL(capability.url);
     assert.equal(url.origin, index.site);
-    assert.ok(existsSync(`_site${url.pathname}`), capability.url);
+    const target = await worker.fetch(request(url.pathname, capability.type, { method: 'HEAD' }), env);
+    assert.equal(target.status, 200, capability.url);
   }
   const head = await worker.fetch(request(agentUrl, '*/*', { method: 'HEAD' }), env);
   assert.equal(head.headers.get('ETag'), agent.headers.get('ETag'));
@@ -142,36 +144,117 @@ test('only the homepage agent query selects JSON, including for browser navigati
   assert.equal(write.status, 405);
 });
 
-test('API path probes get structured errors by default and honor explicit format preferences', async () => {
+test('unknown API paths return problem details for all media preferences', async () => {
   const env = assets();
   for (const path of ['/api', '/api/', '/api/nonexistent']) {
-    for (const accept of [undefined, '*/*']) {
+    for (const accept of [undefined, '*/*', 'text/html']) {
       const response = await worker.fetch(request(path, accept), env);
       assert.equal(response.status, 404);
       assert.equal(response.headers.get('Content-Type'), 'application/problem+json');
-      assert.match((await response.json()).detail, /No API access/);
+      assert.equal((await response.json()).code, 'NOT_FOUND');
     }
-    const html = await worker.fetch(request(path, 'text/html, */*;q=0.5'), env);
-    assert.equal(html.headers.get('Content-Type'), 'text/html; charset=utf-8');
   }
   const ordinary = await worker.fetch(request('/missing', '*/*'), env);
   assert.equal(ordinary.headers.get('Content-Type'), 'text/html; charset=utf-8');
 });
 
-test('404 recovery negotiates Markdown and structured JSON without inventing an API', async () => {
+test('agents can follow every published blog summary to Markdown and validate the API contracts', async () => {
+  const env = assets();
+  const spec = JSON.parse(read('/openapi.json'));
+  const ajv = new Ajv2020();
+  addFormats(ajv);
+  const validateBlog = ajv.compile(spec.components.schemas.BlogSummary);
+  const validateProfile = ajv.compile(spec.components.schemas.Profile);
+  const ids = new Set();
+  for (const path of Object.values(spec.paths)) {
+    for (const op of [path.get, path.head]) {
+      assert.ok(op.operationId && op.description);
+      assert.ok(!ids.has(op.operationId));
+      ids.add(op.operationId);
+    }
+  }
+  const list = await worker.fetch(request('/api/blogs', '*/*'), env);
+  const blogs = await list.json();
+  const expected = index.pages.filter(page => /^\/blog\/[^/]+\/$/.test(new URL(page.url).pathname));
+  assert.equal(blogs.length, expected.length);
+  assert.deepEqual(new Set(blogs.map(post => post.url)), new Set(expected.map(page => page.url)));
+  assert.deepEqual(blogs.map(post => post.postedAt), blogs.map(post => post.postedAt).sort().reverse());
+  assert.match(list.headers.get('Cache-Control'), /private, max-age=86400\b/);
+  assert.equal(list.headers.get('RateLimit-Policy'), '"public-api";q=12;w=60');
+  for (const post of blogs) {
+    assert.ok(validateBlog(post), JSON.stringify(validateBlog.errors));
+    assert.ok(existsSync('_site' + new URL(post.imageUrl).pathname));
+    const path = new URL(post.apiUrl).pathname;
+    assert.equal(path, '/api/blog/' + post.slug);
+    const article = await worker.fetch(request(path, 'text/markdown'), env);
+    assert.equal(article.status, 200);
+    assert.match(article.headers.get('Content-Type'), /^text\/markdown/);
+    assert.match(article.headers.get('Cache-Control'), /private, max-age=604800\b/);
+    assert.equal(await article.text(), read(new URL(post.url).pathname + 'index.md'));
+  }
+  const me = await worker.fetch(request('/api/me', 'application/json'), env);
+  const profile = await me.json();
+  assert.ok(validateProfile(profile), JSON.stringify(validateProfile.errors));
+  assert.equal(profile.name, 'Shrinath Prabhu');
+  for (const path of ['/api/blogs', new URL(blogs[0].apiUrl).pathname, '/api/me']) {
+    const head = await worker.fetch(request(path, '*/*', { method: 'HEAD' }), env);
+    assert.equal(await head.text(), '');
+    assert.ok(head.headers.get('ETag'));
+    const cached = await worker.fetch(request(path, '*/*', { headers: { 'If-None-Match': head.headers.get('ETag') } }), env);
+    assert.equal(cached.status, 304);
+    assert.equal(cached.headers.get('Cache-Control'), head.headers.get('Cache-Control'));
+  }
+});
+
+test('API routes share one client quota and fail closed with documented problem details', async () => {
+  const env = assets();
+  const keys = [];
+  env.PORTFOLIO_API_LIMIT.limit = async ({ key }) => {
+    keys.push(key);
+    return { success: keys.length <= 3 };
+  };
+  const options = { headers: { 'CF-Connecting-IP': '192.0.2.1' } };
+  const spec = JSON.parse(read('/openapi.json'));
+  const ajv = new Ajv2020();
+  addFormats(ajv);
+  const validate = ajv.compile(spec.components.schemas.Problem);
+  for (const [path, accept, method, status, code] of [
+    ['/api/blog/missing', '*/*', 'GET', 404, 'NOT_FOUND'],
+    ['/api/blogs', 'text/html', 'GET', 406, 'NOT_ACCEPTABLE'],
+    ['/api/me', '*/*', 'PUT', 405, 'METHOD_NOT_ALLOWED'],
+    ['/api/me', '*/*', 'GET', 429, 'RATE_LIMITED'],
+    ['/api/blogs', '*/*', 'GET', 503, 'REPRESENTATION_UNAVAILABLE'],
+  ]) {
+    if (status === 503) env.PORTFOLIO_API_LIMIT.limit = async () => { throw new Error('binding unavailable'); };
+    const res = await worker.fetch(request(path, accept, { ...options, method }), env);
+    assert.equal(res.status, status);
+    assert.equal(res.headers.get('Content-Type'), 'application/problem+json');
+    assert.equal(res.headers.get('Cache-Control'), 'no-store');
+    if (status === 429 || status === 503) assert.equal(res.headers.get('Retry-After'), '60');
+    if (status === 405) assert.equal(res.headers.get('Allow'), 'GET, HEAD');
+    const problem = await res.json();
+    assert.equal(problem.code, code);
+    assert.ok(validate(problem), JSON.stringify(validate.errors));
+  }
+  assert.deepEqual(keys, Array(4).fill('portfolio-api:192.0.2.1'));
+  const html = await worker.fetch(request('/blog/', 'text/html'), env);
+  assert.equal(html.status, 200);
+});
+
+test('404 page recovery negotiates Markdown and structured JSON', async () => {
   const env = assets();
   const md = await worker.fetch(request('/missing-agent-test', 'text/markdown'), env);
   assert.equal(md.status, 404);
-  assert.match(await md.text(), /# 404 Not Found[\s\S]*sitemap\.xml[\s\S]*No API access/);
+  assert.match(await md.text(), /# 404 Not Found[\s\S]*sitemap\.xml/);
   for (const type of ['application/json', 'application/problem+json']) {
-    const response = await worker.fetch(request('/api/missing', type), env);
+    const response = await worker.fetch(request('/missing', type), env);
     assert.equal(response.status, 404);
     assert.equal(response.headers.get('Content-Type'), type);
     const problem = await response.json();
     assert.equal(problem.type, 'about:blank');
     assert.equal(problem.status, 404);
     assert.equal(problem.code, 'NOT_FOUND');
-    assert.match(problem.detail, /No API access/);
+    assert.match(problem.detail, /does not exist/);
     assert.equal(problem.links.sitemap, 'https://shrinath.me/sitemap.xml');
   }
   const html = await worker.fetch(request('/missing', 'text/html'), env);
@@ -208,7 +291,7 @@ test('unsupported formats and methods are explicit, uncacheable errors', async (
   const response = await worker.fetch(request('/work/', 'application/json', { method: 'POST' }), env);
   assert.equal(response.status, 405);
   assert.equal(response.headers.get('Allow'), 'GET, HEAD');
-  assert.match((await response.json()).detail, /No API access/);
+  assert.match((await response.json()).detail, /GET or HEAD/);
 });
 
 test('missing built representations fail honestly rather than sending HTML as Markdown', async () => {
@@ -252,7 +335,7 @@ test('discovery inventory, sitemap, alternate links, and llms lists agree', () =
   assert.ok(!index.pages.some(page => /404|draft/.test(page.url)));
   const llms = read('/llms.txt');
   assert.match(llms, /## When to use this site/);
-  assert.match(llms, /No API access/);
+  assert.ok(llms.includes('https://shrinath.me/api/blogs'));
   for (const page of index.pages) {
     const html = read(htmlPath(page.url));
     assert.ok(html.includes(`href="${new URL(page.markdown).pathname}"`));
@@ -276,7 +359,7 @@ test('content generation excludes noindex pages and removes obsolete Markdown fr
       { outputPath: join(output, 'feed.xml'), url: '/feed.xml' },
     ] });
     const inventory = JSON.parse(readFileSync(join(output, 'content-index.json'), 'utf8'));
-    assert.equal(inventory.apiAvailable, false);
+    assert.equal(inventory.apiAvailable, true);
     assert.deepEqual(inventory.pages, [{ title: 'Home', url: 'https://shrinath.me/', markdown: 'https://shrinath.me/index.md' }]);
     assert.match(readFileSync(join(output, 'index.md'), 'utf8'), /Published content/);
     assert.equal(existsSync(join(output, '404.html.md')), false);
@@ -286,12 +369,11 @@ test('content generation excludes noindex pages and removes obsolete Markdown fr
   }
 });
 
-test('no-API specification and trust pages accurately describe this personal site', () => {
+test('REST specification and trust pages accurately describe this personal site', () => {
   const spec = JSON.parse(read('/openapi.json'));
   assert.equal(spec.openapi, '3.1.1');
-  assert.deepEqual(spec.paths, {});
-  assert.equal(spec['x-api-available'], false);
-  assert.match(spec.info.description, /No API access/);
+  assert.deepEqual(Object.keys(spec.paths), ['/api/blogs', '/api/blog/{slug}', '/api/me']);
+  assert.equal(spec['x-api-available'], true);
   for (const path of ['/about/', '/privacy/', '/contact/']) {
     assert.ok(read(`${path}index.md`).length > 500, path);
     assert.ok(read('/index.html').includes(`href="${path}"`), path);
@@ -314,12 +396,12 @@ test('the catalog and auth.md lead agents to the published site and its access i
   const portfolio = linkset.find(entry => entry.anchor === index.site + '/');
   const collection = linkset.find(entry => entry.anchor === index.site + catalogPath);
   assert.deepEqual(collection.item.map(link => link.href), [
-    'https://shrinath.me/openapi.json', 'https://shrinath.me/?mode=agent',
+    'https://shrinath.me/api/blogs', 'https://shrinath.me/openapi.json', 'https://shrinath.me/?mode=agent',
   ]);
   const spec = JSON.parse(read('/openapi.json'));
   assert.equal(portfolio['service-desc'][0].href, 'https://shrinath.me/openapi.json');
   assert.equal(portfolio['service-doc'][0].href, spec.externalDocs.url);
-  assert.deepEqual(spec.paths, {});
+  assert.ok(spec.paths['/api/blogs'].get);
   assert.ok(read('/index.html').includes(`rel="api-catalog" type="application/linkset+json" href="${catalogPath}"`));
   const auth = await worker.fetch(request('/auth.md', 'text/markdown'), env);
   assert.equal(auth.status, 200);
@@ -347,7 +429,7 @@ test('the homepage links to the same agent guide in HTML, Markdown, and the Open
   const mdUrl = new URL('index.md', canonical);
   assert.ok(read('/index.md').includes(`[Agent docs](${mdUrl.href})`));
   assert.ok(read('/llms.txt').includes(mdUrl.href));
-  assert.match(read(mdUrl.pathname), /No API access/);
+  assert.match(read(mdUrl.pathname), /apiUrl/);
 });
 
 test('the published Problem schema validates the Worker’s four JSON error responses', async () => {

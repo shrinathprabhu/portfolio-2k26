@@ -8,7 +8,7 @@ eleventyExcludeFromCollections: true
 
 Available for full-time remote roles (Senior/Staff Frontend Engineer, Technical Lead, Engineering Manager), fractional engagements (20–30 hours/week), and technical advisory. Interested in AI, SaaS, developer tools, fintech, and Web3. Core stack: Vue 3, Nuxt 3, React, TypeScript, Node.js, Chrome Extensions (Manifest V3), and Web3 (non-custodial wallets, cross-chain bridging, chain abstraction).
 
-No API access is available. This is a personal portfolio and blog, with no API keys, authentication, MCP server, or callable tools. Use ordinary GET requests to public content. Request `Accept: text/markdown` at a canonical page URL, or follow the Markdown links below. Cite the canonical source URL included in each Markdown page.
+The public REST API requires no credentials. Start with [GET /api/blogs](https://shrinath.me/api/blogs), choose an entry, and follow its `apiUrl` for the full Markdown article. Use [GET /api/me](https://shrinath.me/api/me) for the professional profile. The three routes share 12 requests per IP per minute at each Cloudflare location. Honor `Cache-Control` and `Retry-After`. Use ordinary GET requests to public content. Request `Accept: text/markdown` at a canonical page URL, or follow the Markdown links below. Cite the canonical source URL included in each Markdown page.
 
 ## When to use this site
 
@@ -35,7 +35,7 @@ No API access is available. This is a personal portfolio and blog, with no API k
 - [auth.md](https://shrinath.me/auth.md) explains credential-free access for agents.
 - [Sitemap](https://shrinath.me/sitemap.xml): Canonical public page and article URLs.
 - [Content index](https://shrinath.me/content-index.json): Titles, canonical URLs, and Markdown URLs for all published content pages.
-- [OpenAPI document](https://shrinath.me/openapi.json): Intentionally empty paths; explicitly declares no API access. There are no operations or function-calling tools.
+- [OpenAPI document](https://shrinath.me/openapi.json): Typed REST operations, success and error schemas, and cache and rate-limit headers.
 - [Crawling guidance](https://shrinath.me/robots.txt): Site crawling rules.
 
 ## Profiles

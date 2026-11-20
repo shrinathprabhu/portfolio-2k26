@@ -29,7 +29,7 @@ if (crawlerFailures.length) {
 const inventory = await get('/content-index.json');
 check(inventory, 200, 'application/json');
 const index = await inventory.json();
-assert.equal(index.apiAvailable, false);
+assert.equal(index.apiAvailable, true);
 assert.ok(index.pages.length > 0);
 const canonicalUrls = new Set(index.pages.map(page => page.url));
 for (const page of index.pages) {
@@ -88,7 +88,7 @@ assert.match(files.get('/auth.md'), /^# .*auth\.md\b/im);
 const agent = await get('/?mode=agent', 'text/html');
 check(agent, 200, 'application/json');
 const view = await agent.json();
-assert.deepEqual(view.api.endpoints, []);
+assert.deepEqual(view.api.endpoints, ['/api/blogs', '/api/blog/{slug}', '/api/me']);
 assert.equal(view.authentication.required, false);
 for (const capability of view.capabilities) {
   const target = new URL(capability.url);
@@ -97,11 +97,23 @@ for (const capability of view.capabilities) {
 }
 const spec = JSON.parse(files.get('/openapi.json'));
 assert.equal(spec.openapi, '3.1.1');
-assert.deepEqual(spec.paths, {});
+assert.deepEqual(Object.keys(spec.paths), view.api.endpoints);
 assert.equal(spec.components.responses.PageError.content['application/problem+json'].schema.$ref, '#/components/schemas/Problem');
-assert.deepEqual(spec.components.schemas.Problem.properties.status.enum, [404, 405, 406, 503]);
-assert.equal(spec['x-api-available'], false);
-assert.match(spec.info.description, /No API access/);
+assert.deepEqual(spec.components.schemas.Problem.properties.status.enum, [404, 405, 406, 429, 503]);
+assert.equal(spec['x-api-available'], true);
+const list = await get('/api/blogs');
+check(list, 200, 'application/json');
+assert.match(list.headers.get('Cache-Control'), /max-age=86400\b/);
+assert.equal(list.headers.get('RateLimit-Policy'), '"public-api";q=12;w=60');
+const blogs = await list.json();
+assert.deepEqual(new Set(blogs.map(post => post.url)), new Set([...canonicalUrls].filter(url => /\/blog\/[^/]+\/$/.test(url))));
+const article = await get(new URL(blogs[0].apiUrl).pathname);
+check(article, 200, 'text/markdown');
+assert.match(article.headers.get('Cache-Control'), /max-age=604800\b/);
+assert.ok((await article.text()).includes(blogs[0].url));
+const me = await get('/api/me');
+check(me, 200, 'application/json');
+assert.equal((await me.json()).name, 'Shrinath Prabhu');
 const sitemapUrls = [...files.get('/sitemap.xml').matchAll(/<loc>(.*?)<\/loc>/g)].map(match => match[1]);
 assert.deepEqual(new Set(sitemapUrls), canonicalUrls);
 for (const page of index.pages) assert.ok(files.get('/llms.txt').includes(page.markdown), page.markdown);
@@ -117,7 +129,7 @@ for (const [accept, type] of [
   negotiated(response);
   await response.text();
 }
-for (const path of ['/agent-check-missing', '/api/agent-check-missing', '/404.html', '/404', '/404/']) {
+for (const path of ['/agent-check-missing', '/404.html', '/404', '/404/']) {
   for (const type of ['text/html', 'text/markdown', 'application/problem+json', 'application/json']) {
     const response = await get(path, type);
     check(response, 404, type);
@@ -132,7 +144,7 @@ for (const path of ['/agent-check-missing', '/api/agent-check-missing', '/404.ht
 }
 const apiProbe = await get('/api/agent-check-missing');
 check(apiProbe, 404, 'application/problem+json');
-assert.match((await apiProbe.json()).detail, /No API access/);
+assert.equal((await apiProbe.json()).code, 'NOT_FOUND');
 for (const accept of ['image/png', 'text/html;q=0,text/markdown;q=0']) {
   const response = await get('/', accept);
   check(response, 406, 'application/problem+json');

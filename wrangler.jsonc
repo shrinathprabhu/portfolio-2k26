@@ -3,6 +3,13 @@
   "name": "portfolio-2k26",
   "main": "worker/index.js",
   "compatibility_date": "2026-09-01",
+  "ratelimits": [
+    {
+      "name": "PORTFOLIO_API_LIMIT",
+      "namespace_id": "27112026",
+      "simple": { "limit": 12, "period": 60 }
+    }
+  ],
   // Serves the Eleventy build output. The Worker runs first on every
   // request so it can redirect www.shrinath.me → shrinath.me before
   // falling through to static assets (_headers is applied automatically).

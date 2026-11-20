@@ -2,7 +2,7 @@
 layout: guide.njk
 title: "Agent documentation for Shrinath Prabhu’s portfolio and blog"
 heading: "Agent guide to Shrinath Prabhu’s portfolio"
-description: "Find Shrinath Prabhu’s public profile, work, resume, and technical writing in HTML or Markdown. No API access is available."
+description: "Read Shrinath Prabhu’s public REST API. Discover blog posts, fetch articles as Markdown, and retrieve his professional profile as JSON."
 ---
 
 ## When to use this site
@@ -16,13 +16,23 @@ Use this portfolio to research Shrinath Prabhu’s frontend engineering experien
 - [Contact](/contact/): professional inquiries and scheduling links.
 - [Privacy](/privacy/): site preferences, hosting, analytics, and external services.
 
-## No API access
+## Public REST API
 
-This is a public website and blog. It has no public API, API keys, authentication flow, MCP server, or function-calling operations. There is no programmatic service for contacting Shrinath, booking calls, or changing information.
+1. Fetch [the blog list](/api/blogs). The JSON array includes every published article, newest publication first. Choose a post by its title and description. Use `postedAt` for publication time and `updatedAt` for the latest edit.
+2. Follow the selected post’s `apiUrl` (`/api/blog/{slug}`) to read its full Markdown. Cite its `url` for the original article. The `imageUrl` field points to the cover.
+3. Fetch [the professional profile](/api/me) for Shrinath’s name, role, experience, work summary, and links to the source pages.
 
-The [OpenAPI document](/openapi.json) has an empty `paths` object. Its `components.schemas.Problem` schema describes the JSON errors you can receive when reading public pages.
+```sh
+curl -fsS https://shrinath.me/api/blogs
+curl -fsS https://shrinath.me/api/blog/aeo-geo-ai-discoverability
+curl -fsS https://shrinath.me/api/me
+```
 
-The [API catalog](/.well-known/api-catalog) links to that declaration and this guide. [auth.md](/auth.md) explains how agents can read the portfolio without registering or sending credentials.
+All three routes accept `GET` and `HEAD` without credentials. They share a limit of **12 requests per IP per 60 seconds** at each Cloudflare location. Each request reaching the API counts, including conditional reads. Cloudflare enforces the threshold approximately. On `429`, wait for the number of seconds in `Retry-After` before trying again.
+
+Cache the blog list and profile for one day and article Markdown for seven days. After expiry, send the saved `ETag` in `If-None-Match`. On `304`, reuse your copy. API failures return `application/problem+json` with a stable `code`, a human-readable `detail`, and a suggested `resolution`. `HEAD` responses have no body.
+
+The [OpenAPI specification](/openapi.json) documents operation IDs, parameters, success schemas, rate limits, and errors. The [API catalog](/.well-known/api-catalog) links to the specification and this guide. [auth.md](/auth.md) describes credential-free access.
 
 ## Discover pages and articles
 
@@ -48,14 +58,15 @@ Pages support `GET` and `HEAD`. Normal browser requests receive HTML. Negotiatio
 
 ## Recover from a missing page
 
-A missing path returns HTTP `404`, never a successful page shell. Ask for `text/markdown` for a short recovery guide, or `application/problem+json` for a structured error with a status, code, explanation, and discovery links. JSON errors do not imply that an API is available. Unsupported write methods return `405` with `Allow: GET, HEAD`.
+A missing path returns HTTP `404`, never a successful page shell. Ask for `text/markdown` for a short recovery guide, or `application/problem+json` for a structured error with a status, code, explanation, and discovery links. Unsupported write methods return `405` with `Allow: GET, HEAD`.
 
 | HTTP status | Error code | What to do |
 | --- | --- | --- |
 | 404 | `NOT_FOUND` | Look up the current URL in the sitemap. |
 | 405 | `METHOD_NOT_ALLOWED` | Use `GET` to read the page or `HEAD` to check its headers. |
-| 406 | `NOT_ACCEPTABLE` | Request HTML or Markdown at the canonical page URL. |
-| 503 | `REPRESENTATION_UNAVAILABLE` | Try the other format at the canonical URL or retry later. |
+| 406 | `NOT_ACCEPTABLE` | Request a format supported by the resource. The API error’s `detail` names its media type. |
+| 429 | `RATE_LIMITED` | Wait for `Retry-After` seconds before requesting the API again. |
+| 503 | `REPRESENTATION_UNAVAILABLE` | Retry later, respecting `Retry-After` on API responses. |
 
 ```sh
 curl -i -H 'Accept: text/markdown' https://shrinath.me/page-that-does-not-exist
@@ -66,4 +77,4 @@ curl -i -H 'Accept: application/problem+json' https://shrinath.me/page-that-does
 
 Quote or summarize the relevant page and cite its canonical URL. Distinguish portfolio statements and article opinions from independently verified facts. Preserve publication and update dates when discussing time-sensitive writing. Availability is an invitation to get in touch, not a guarantee of a particular engagement.
 
-Read [robots.txt](/robots.txt), reuse cached content where appropriate, and avoid unnecessary repeated requests. No numeric rate limit or service-level guarantee is published. Contact links go to email or external services; follow the user’s instructions before taking any action there. Security concerns can be reported through [security.txt](/.well-known/security.txt).
+Read [robots.txt](/robots.txt), reuse cached content where appropriate, and avoid unnecessary repeated requests. Contact links go to email or external services; follow the user’s instructions before taking any action there. Security concerns can be reported through [security.txt](/.well-known/security.txt).

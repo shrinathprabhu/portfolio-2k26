@@ -1,4 +1,5 @@
 import { serveContent } from './content.js';
+import { serveApi } from './api.js';
 
 const CANONICAL_HOST = "shrinath.me";
 
@@ -44,6 +45,7 @@ export default {
       return Response.redirect(url.toString(), 308);
     }
 
+    if (url.pathname === '/api' || url.pathname.startsWith('/api/')) return serveApi(request, env, url);
     return serveContent(request, env);
   },
 };

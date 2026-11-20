@@ -2,6 +2,7 @@ import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import pluginRss from "@11ty/eleventy-plugin-rss";
 import mila from "markdown-it-link-attributes";
 import { markdownPath, writeAgentContent } from "./lib/agent-content.js";
+import { blogSummaries, publicProfile } from "./lib/api-data.js";
 import {
   readFileSync,
   existsSync,
@@ -79,6 +80,8 @@ function escapeAttr(value) {
 
 export default function (eleventyConfig) {
   eleventyConfig.addFilter("markdownPath", markdownPath);
+  eleventyConfig.addFilter("blogSummaries", blogSummaries);
+  eleventyConfig.addFilter("publicProfile", publicProfile);
   eleventyConfig.on("eleventy.after", writeAgentContent);
   // ── Plugins ──
   eleventyConfig.addPlugin(syntaxHighlight, {

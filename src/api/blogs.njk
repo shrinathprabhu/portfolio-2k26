@@ -1,0 +1,5 @@
+---
+permalink: /api/blogs.json
+eleventyExcludeFromCollections: true
+---
+{{ collections.posts | blogSummaries | dump | safe }}

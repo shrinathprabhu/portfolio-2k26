@@ -3,8 +3,9 @@
   "url": "https://shrinath.me/",
   "documentation": "https://shrinath.me/agents/",
   "api": {
-    "available": false,
-    "endpoints": [],
+    "available": true,
+    "endpoints": ["/api/blogs", "/api/blog/{slug}", "/api/me"],
+    "rateLimit": { "requests": 12, "windowSeconds": 60, "scope": "Shared per IP across API routes at each Cloudflare location" },
     "catalog": "https://shrinath.me/.well-known/api-catalog",
     "openapi": "https://shrinath.me/openapi.json"
   },
@@ -15,6 +16,8 @@
   },
   "methods": ["GET", "HEAD"],
   "capabilities": [
+    { "name": "List published articles and follow each apiUrl for Markdown", "url": "https://shrinath.me/api/blogs", "type": "application/json" },
+    { "name": "Read the structured professional profile", "url": "https://shrinath.me/api/me", "type": "application/json" },
     { "name": "Discover public pages and their Markdown URLs", "url": "https://shrinath.me/content-index.json", "type": "application/json" },
     { "name": "Read the professional profile", "url": "https://shrinath.me/about/index.md", "type": "text/markdown" },
     { "name": "Read project case studies", "url": "https://shrinath.me/work/index.md", "type": "text/markdown" },

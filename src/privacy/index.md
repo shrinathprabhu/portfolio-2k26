@@ -9,7 +9,7 @@ This notice covers shrinath.me, the personal portfolio and blog of Shrinath Prab
 
 ## Browsing the site
 
-The public pages and blog do not require an account, sign-in, or an API key. There is no public API and no contact form that submits information to this website. The voice introduction and its transcript data are hosted with the site; the audio is requested when you choose to play it.
+The public pages, blog, and read-only REST API are available without an account or API key. The Worker uses the connecting IP address to enforce a shared request limit on the API. The voice introduction and its transcript data are hosted with the site; the audio is requested when you choose to play it.
 
 ## Preferences stored in your browser
 

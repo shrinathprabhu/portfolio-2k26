@@ -8,7 +8,7 @@ Agents can read Shrinath Prabhu’s portfolio and blog without signing in.
 
 ## Registration and credentials
 
-Registration is unnecessary. This site has no account provisioning endpoint, supported registration methods, or public API. It does not issue API keys or OAuth tokens. Omit the `Authorization` header and cookies when reading public content.
+The public REST API and website are open to anonymous readers. Omit the `Authorization` header and cookies. The site has no account registration or credential provisioning endpoint.
 
 ## Read public content
 
@@ -17,5 +17,7 @@ Use `GET` to read a page or `HEAD` to check its headers. For example, this reque
 ```sh
 curl -fsS -H 'Accept: text/markdown' https://shrinath.me/blog/
 ```
+
+Start with [GET /api/blogs](https://shrinath.me/api/blogs), then follow an entry’s `apiUrl` to read its Markdown. [GET /api/me](https://shrinath.me/api/me) returns the public profile. The routes share an allowance of 12 requests per IP per minute at each Cloudflare location.
 
 The [content index](https://shrinath.me/content-index.json) lists each page’s canonical and Markdown URLs. The [agent guide](https://shrinath.me/agents/) explains content formats and HTTP errors.

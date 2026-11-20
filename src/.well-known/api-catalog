@@ -6,7 +6,7 @@
         {
           "href": "https://shrinath.me/openapi.json",
           "type": "application/json",
-          "title": "Portfolio declaration of no public API"
+          "title": "Portfolio REST API specification"
         }
       ],
       "service-doc": [
@@ -21,9 +21,14 @@
       "anchor": "https://shrinath.me/.well-known/api-catalog",
       "item": [
         {
+          "href": "https://shrinath.me/api/blogs",
+          "type": "application/json",
+          "title": "Public blog API entry point"
+        },
+        {
           "href": "https://shrinath.me/openapi.json",
           "type": "application/json",
-          "title": "OpenAPI declaration of no public API"
+          "title": "Portfolio REST API specification"
         },
         {
           "href": "https://shrinath.me/?mode=agent",

@@ -1,12 +1,215 @@
 {
   "openapi": "3.1.1",
   "info": {
-    "title": "Shrinath Prabhu — no public API",
-    "version": "1.1.0",
-    "description": "No API access is available. Read public pages and blog posts with GET. Request text/markdown for Markdown or application/problem+json for structured errors. The version identifies this document. The Problem schema describes errors returned by the website.",
-    "contact": { "name": "Shrinath Prabhu", "url": "https://shrinath.me/contact/", "email": "hello@shrinath.me" }
+    "title": "Shrinath Prabhu’s public portfolio API",
+    "version": "2.0.0",
+    "description": "Read the public blog and professional profile without credentials. Start with GET /api/blogs and follow an entry’s apiUrl to retrieve the article as Markdown. The three routes share an approximate limit of 12 requests per client IP per 60 seconds at each Cloudflare location. Cache successful responses and honor Retry-After when throttled.",
+    "contact": {"name": "Shrinath Prabhu", "url": "https://shrinath.me/contact/", "email": "hello@shrinath.me"}
   },
-  "paths": {},
+  "paths": {
+    "/api/blogs": {
+      "parameters": [{"$ref": "#/components/parameters/IfNoneMatch"}],
+      "get": {
+        "operationId": "listBlogs",
+        "summary": "List all published blog posts",
+        "description": "Returns every published post, newest publication first. Each summary includes the article’s apiUrl and canonical URL. The client can cache this list for one day.",
+        "responses": {
+          "200": {
+            "description": "List all published blog posts.",
+            "headers": {
+              "RateLimit-Policy": {"$ref": "#/components/headers/RatePolicy"},
+              "Cache-Control": {"$ref": "#/components/headers/CacheControl"},
+              "ETag": {"$ref": "#/components/headers/ETag"}
+            },
+            "content": {
+              "application/json": {"schema": {"type": "array", "items": {"$ref": "#/components/schemas/BlogSummary"}}}
+            }
+          },
+          "304": {"$ref": "#/components/responses/NotModified"},
+          "405": {"$ref": "#/components/responses/MethodNotAllowed"},
+          "406": {"$ref": "#/components/responses/NotAcceptable"},
+          "429": {"$ref": "#/components/responses/RateLimited"},
+          "503": {"$ref": "#/components/responses/Unavailable"}
+        }
+      },
+      "head": {
+        "operationId": "listBlogsHeaders",
+        "summary": "List all published blog posts (headers only)",
+        "description": "Returns the same status and representation headers as GET without transferring a response body. Counts toward the shared request limit.",
+        "responses": {
+          "200": {
+            "description": "Metadata for the application/json representation.",
+            "headers": {
+              "RateLimit-Policy": {"$ref": "#/components/headers/RatePolicy"},
+              "Cache-Control": {"$ref": "#/components/headers/CacheControl"},
+              "ETag": {"$ref": "#/components/headers/ETag"}
+            }
+          },
+          "304": {"$ref": "#/components/responses/NotModified"},
+          "405": {
+            "description": "Use GET or HEAD. HEAD returns no body.",
+            "headers": {
+              "RateLimit-Policy": {"$ref": "#/components/headers/RatePolicy"},
+              "Allow": {"schema": {"type": "string", "const": "GET, HEAD"}}
+            }
+          },
+          "406": {
+            "description": "The requested media type is unavailable. HEAD returns no body.",
+            "headers": {"RateLimit-Policy": {"$ref": "#/components/headers/RatePolicy"}}
+          },
+          "429": {
+            "description": "Pause for Retry-After seconds before retrying. HEAD returns no body.",
+            "headers": {
+              "RateLimit-Policy": {"$ref": "#/components/headers/RatePolicy"},
+              "Retry-After": {"$ref": "#/components/headers/RetryAfter"}
+            }
+          },
+          "503": {
+            "description": "The rate limiter or published content is temporarily unavailable. HEAD returns no body.",
+            "headers": {
+              "RateLimit-Policy": {"$ref": "#/components/headers/RatePolicy"},
+              "Retry-After": {"$ref": "#/components/headers/RetryAfter"}
+            }
+          }
+        }
+      }
+    },
+    "/api/blog/{slug}": {
+      "parameters": [{"$ref": "#/components/parameters/BlogSlug"}, {"$ref": "#/components/parameters/IfNoneMatch"}],
+      "get": {
+        "operationId": "getBlogMarkdown",
+        "summary": "Read a blog post as Markdown",
+        "description": "Use a slug from listBlogs. The response is the full published Markdown article, including its canonical source URL. The client can cache it for seven days.",
+        "responses": {
+          "200": {
+            "description": "Read a blog post as Markdown.",
+            "headers": {
+              "RateLimit-Policy": {"$ref": "#/components/headers/RatePolicy"},
+              "Cache-Control": {"$ref": "#/components/headers/CacheControl"},
+              "ETag": {"$ref": "#/components/headers/ETag"}
+            },
+            "content": {"text/markdown": {"schema": {"type": "string"}}}
+          },
+          "304": {"$ref": "#/components/responses/NotModified"},
+          "404": {"$ref": "#/components/responses/NotFound"},
+          "405": {"$ref": "#/components/responses/MethodNotAllowed"},
+          "406": {"$ref": "#/components/responses/NotAcceptable"},
+          "429": {"$ref": "#/components/responses/RateLimited"},
+          "503": {"$ref": "#/components/responses/Unavailable"}
+        }
+      },
+      "head": {
+        "operationId": "getBlogMarkdownHeaders",
+        "summary": "Read a blog post as Markdown (headers only)",
+        "description": "Returns the same status and representation headers as GET without transferring a response body. Counts toward the shared request limit.",
+        "responses": {
+          "200": {
+            "description": "Metadata for the text/markdown representation.",
+            "headers": {
+              "RateLimit-Policy": {"$ref": "#/components/headers/RatePolicy"},
+              "Cache-Control": {"$ref": "#/components/headers/CacheControl"},
+              "ETag": {"$ref": "#/components/headers/ETag"}
+            }
+          },
+          "304": {"$ref": "#/components/responses/NotModified"},
+          "404": {
+            "description": "The route or article slug does not exist. HEAD returns no body.",
+            "headers": {"RateLimit-Policy": {"$ref": "#/components/headers/RatePolicy"}}
+          },
+          "405": {
+            "description": "Use GET or HEAD. HEAD returns no body.",
+            "headers": {
+              "RateLimit-Policy": {"$ref": "#/components/headers/RatePolicy"},
+              "Allow": {"schema": {"type": "string", "const": "GET, HEAD"}}
+            }
+          },
+          "406": {
+            "description": "The requested media type is unavailable. HEAD returns no body.",
+            "headers": {"RateLimit-Policy": {"$ref": "#/components/headers/RatePolicy"}}
+          },
+          "429": {
+            "description": "Pause for Retry-After seconds before retrying. HEAD returns no body.",
+            "headers": {
+              "RateLimit-Policy": {"$ref": "#/components/headers/RatePolicy"},
+              "Retry-After": {"$ref": "#/components/headers/RetryAfter"}
+            }
+          },
+          "503": {
+            "description": "The rate limiter or published content is temporarily unavailable. HEAD returns no body.",
+            "headers": {
+              "RateLimit-Policy": {"$ref": "#/components/headers/RatePolicy"},
+              "Retry-After": {"$ref": "#/components/headers/RetryAfter"}
+            }
+          }
+        }
+      }
+    },
+    "/api/me": {
+      "parameters": [{"$ref": "#/components/parameters/IfNoneMatch"}],
+      "get": {
+        "operationId": "getProfile",
+        "summary": "Read Shrinath’s professional profile",
+        "description": "Returns Shrinath’s name, role, current organization, work summary, experience, skills, and source URLs. The client can cache this profile for one day.",
+        "responses": {
+          "200": {
+            "description": "Read Shrinath’s professional profile.",
+            "headers": {
+              "RateLimit-Policy": {"$ref": "#/components/headers/RatePolicy"},
+              "Cache-Control": {"$ref": "#/components/headers/CacheControl"},
+              "ETag": {"$ref": "#/components/headers/ETag"}
+            },
+            "content": {"application/json": {"schema": {"$ref": "#/components/schemas/Profile"}}}
+          },
+          "304": {"$ref": "#/components/responses/NotModified"},
+          "405": {"$ref": "#/components/responses/MethodNotAllowed"},
+          "406": {"$ref": "#/components/responses/NotAcceptable"},
+          "429": {"$ref": "#/components/responses/RateLimited"},
+          "503": {"$ref": "#/components/responses/Unavailable"}
+        }
+      },
+      "head": {
+        "operationId": "getProfileHeaders",
+        "summary": "Read Shrinath’s professional profile (headers only)",
+        "description": "Returns the same status and representation headers as GET without transferring a response body. Counts toward the shared request limit.",
+        "responses": {
+          "200": {
+            "description": "Metadata for the application/json representation.",
+            "headers": {
+              "RateLimit-Policy": {"$ref": "#/components/headers/RatePolicy"},
+              "Cache-Control": {"$ref": "#/components/headers/CacheControl"},
+              "ETag": {"$ref": "#/components/headers/ETag"}
+            }
+          },
+          "304": {"$ref": "#/components/responses/NotModified"},
+          "405": {
+            "description": "Use GET or HEAD. HEAD returns no body.",
+            "headers": {
+              "RateLimit-Policy": {"$ref": "#/components/headers/RatePolicy"},
+              "Allow": {"schema": {"type": "string", "const": "GET, HEAD"}}
+            }
+          },
+          "406": {
+            "description": "The requested media type is unavailable. HEAD returns no body.",
+            "headers": {"RateLimit-Policy": {"$ref": "#/components/headers/RatePolicy"}}
+          },
+          "429": {
+            "description": "Pause for Retry-After seconds before retrying. HEAD returns no body.",
+            "headers": {
+              "RateLimit-Policy": {"$ref": "#/components/headers/RatePolicy"},
+              "Retry-After": {"$ref": "#/components/headers/RetryAfter"}
+            }
+          },
+          "503": {
+            "description": "The rate limiter or published content is temporarily unavailable. HEAD returns no body.",
+            "headers": {
+              "RateLimit-Policy": {"$ref": "#/components/headers/RatePolicy"},
+              "Retry-After": {"$ref": "#/components/headers/RetryAfter"}
+            }
+          }
+        }
+      }
+    }
+  },
   "components": {
     "schemas": {
       "Problem": {
@@ -14,32 +217,152 @@
         "description": "RFC 9457 problem details returned by the portfolio Worker for unsuccessful page requests.",
         "required": ["type", "title", "status", "detail", "instance", "code", "resolution", "links"],
         "properties": {
-          "type": { "type": "string", "const": "about:blank" },
-          "title": { "type": "string", "description": "HTTP status title." },
-          "status": { "type": "integer", "enum": [404, 405, 406, 503] },
-          "detail": { "type": "string", "description": "Explanation of this failure." },
-          "instance": { "type": "string", "format": "uri-reference", "description": "Requested URL path." },
-          "code": { "type": "string", "enum": ["NOT_FOUND", "METHOD_NOT_ALLOWED", "NOT_ACCEPTABLE", "REPRESENTATION_UNAVAILABLE"] },
-          "resolution": { "type": "string", "description": "Suggested recovery step." },
+          "type": {"type": "string", "const": "about:blank"},
+          "title": {"type": "string", "description": "HTTP status title."},
+          "status": {"type": "integer", "enum": [404, 405, 406, 429, 503]},
+          "detail": {"type": "string", "description": "Explanation of this failure."},
+          "instance": {"type": "string", "format": "uri-reference", "description": "Requested URL path."},
+          "code": {
+            "type": "string",
+            "enum": ["NOT_FOUND", "METHOD_NOT_ALLOWED", "NOT_ACCEPTABLE", "RATE_LIMITED", "REPRESENTATION_UNAVAILABLE"]
+          },
+          "resolution": {"type": "string", "description": "Suggested next step."},
           "links": {
             "type": "object",
             "description": "Absolute URLs for site discovery and recovery.",
             "required": ["guide", "llms", "sitemap", "blog"],
-            "additionalProperties": { "type": "string", "format": "uri" }
+            "additionalProperties": {"type": "string", "format": "uri"}
           }
+        }
+      },
+      "BlogSummary": {
+        "type": "object",
+        "required": ["slug", "title", "description", "postedAt", "updatedAt", "imageUrl", "url", "apiUrl"],
+        "properties": {
+          "slug": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "examples": ["aeo-geo-ai-discoverability"]},
+          "title": {"type": "string"},
+          "description": {"type": "string"},
+          "postedAt": {"type": "string", "format": "date-time"},
+          "updatedAt": {"type": "string", "format": "date-time"},
+          "imageUrl": {"type": "string", "format": "uri"},
+          "url": {"type": "string", "format": "uri", "description": "Canonical page URL for citation."},
+          "apiUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "Follow this URL to retrieve the article as text/markdown."
+          }
+        }
+      },
+      "Profile": {
+        "type": "object",
+        "required": [
+          "name",
+          "role",
+          "organization",
+          "summary",
+          "experience",
+          "previousOrganizations",
+          "skills",
+          "url",
+          "resumeUrl"
+        ],
+        "properties": {
+          "name": {"type": "string"},
+          "role": {"type": "string"},
+          "organization": {"type": "string"},
+          "summary": {"type": "string"},
+          "experience": {"type": "string"},
+          "previousOrganizations": {"type": "array", "items": {"type": "string"}},
+          "skills": {"type": "array", "items": {"type": "string"}},
+          "url": {"type": "string", "format": "uri"},
+          "resumeUrl": {"type": "string", "format": "uri"}
         }
       }
     },
     "responses": {
       "PageError": {
-        "description": "JSON representation of a website error (404, 405, 406, or 503).",
+        "description": "Structured site error when reading a page.",
         "content": {
-          "application/problem+json": { "schema": { "$ref": "#/components/schemas/Problem" } },
-          "application/json": { "schema": { "$ref": "#/components/schemas/Problem" } }
+          "application/problem+json": {"schema": {"$ref": "#/components/schemas/Problem"}},
+          "application/json": {"schema": {"$ref": "#/components/schemas/Problem"}}
         }
+      },
+      "NotFound": {
+        "description": "The route or article slug does not exist. Error code: NOT_FOUND.",
+        "headers": {"RateLimit-Policy": {"$ref": "#/components/headers/RatePolicy"}},
+        "content": {"application/problem+json": {"schema": {"$ref": "#/components/schemas/Problem"}}}
+      },
+      "MethodNotAllowed": {
+        "description": "Use GET or HEAD. Error code: METHOD_NOT_ALLOWED.",
+        "headers": {
+          "RateLimit-Policy": {"$ref": "#/components/headers/RatePolicy"},
+          "Allow": {"schema": {"type": "string", "const": "GET, HEAD"}}
+        },
+        "content": {"application/problem+json": {"schema": {"$ref": "#/components/schemas/Problem"}}}
+      },
+      "NotAcceptable": {
+        "description": "The requested media type is unavailable. Error code: NOT_ACCEPTABLE.",
+        "headers": {"RateLimit-Policy": {"$ref": "#/components/headers/RatePolicy"}},
+        "content": {"application/problem+json": {"schema": {"$ref": "#/components/schemas/Problem"}}}
+      },
+      "RateLimited": {
+        "description": "Pause for Retry-After seconds before retrying. Error code: RATE_LIMITED.",
+        "headers": {
+          "RateLimit-Policy": {"$ref": "#/components/headers/RatePolicy"},
+          "Retry-After": {"$ref": "#/components/headers/RetryAfter"}
+        },
+        "content": {"application/problem+json": {"schema": {"$ref": "#/components/schemas/Problem"}}}
+      },
+      "Unavailable": {
+        "description": "The rate limiter or published content is temporarily unavailable. Error code: REPRESENTATION_UNAVAILABLE.",
+        "headers": {
+          "RateLimit-Policy": {"$ref": "#/components/headers/RatePolicy"},
+          "Retry-After": {"$ref": "#/components/headers/RetryAfter"}
+        },
+        "content": {"application/problem+json": {"schema": {"$ref": "#/components/schemas/Problem"}}}
+      },
+      "NotModified": {
+        "description": "The supplied validator matches. Reuse the cached representation. The response has no body.",
+        "headers": {
+          "RateLimit-Policy": {"$ref": "#/components/headers/RatePolicy"},
+          "Cache-Control": {"$ref": "#/components/headers/CacheControl"},
+          "ETag": {"$ref": "#/components/headers/ETag"}
+        }
+      }
+    },
+    "headers": {
+      "RatePolicy": {
+        "description": "Shared anonymous allowance per client IP at each Cloudflare location.",
+        "schema": {"type": "string", "example": "\"public-api\";q=12;w=60"}
+      },
+      "RetryAfter": {
+        "description": "Seconds to wait before retrying.",
+        "schema": {"type": "integer", "minimum": 1, "example": 60}
+      },
+      "ETag": {"description": "Validator for conditional reads.", "schema": {"type": "string"}},
+      "CacheControl": {"description": "Client cache lifetime and revalidation directives.", "schema": {"type": "string"}}
+    },
+    "parameters": {
+      "IfNoneMatch": {
+        "name": "If-None-Match",
+        "in": "header",
+        "description": "Send a saved ETag when revalidating a cached response.",
+        "schema": {"type": "string"}
+      },
+      "BlogSlug": {
+        "name": "slug",
+        "in": "path",
+        "required": true,
+        "description": "Published article slug from GET /api/blogs.",
+        "schema": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$", "examples": ["aeo-geo-ai-discoverability"]}
       }
     }
   },
-  "externalDocs": { "description": "Public pages and blog access guide", "url": "https://shrinath.me/agents/" },
-  "x-api-available": false
+  "externalDocs": {
+    "description": "How agents can list posts, follow article links, cache responses, and handle errors.",
+    "url": "https://shrinath.me/agents/"
+  },
+  "x-api-available": true,
+  "servers": [{"url": "https://shrinath.me"}],
+  "security": []
 }

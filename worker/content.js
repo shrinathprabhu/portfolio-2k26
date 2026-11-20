@@ -3,13 +3,20 @@ import contentIndex from '../_site/content-index.json' with { type: 'json' };
 
 const HTML = 'text/html; charset=utf-8';
 const MARKDOWN = 'text/markdown; charset=utf-8';
-const pages = new Map(contentIndex.pages.map(page => [new URL(page.url).pathname, page]));
+export const pages = new Map(contentIndex.pages.map(page => [new URL(page.url).pathname, page]));
 const markdownPages = new Map(contentIndex.pages.map(page => [new URL(page.markdown).pathname, page]));
 const recovery = {
   guide: 'https://shrinath.me/agents/',
   llms: 'https://shrinath.me/llms.txt',
   sitemap: 'https://shrinath.me/sitemap.xml',
   blog: 'https://shrinath.me/blog/',
+};
+const errors = {
+  404: { title: 'Not Found', code: 'NOT_FOUND', detail: 'This resource does not exist. Use the site guide to find a published URL.' },
+  405: { title: 'Method Not Allowed', code: 'METHOD_NOT_ALLOWED', detail: 'Use GET or HEAD to read public content.' },
+  406: { title: 'Not Acceptable', code: 'NOT_ACCEPTABLE', detail: 'Request text/html or text/markdown to read this page.' },
+  429: { title: 'Too Many Requests', code: 'RATE_LIMITED', detail: 'The shared public API request limit has been reached.' },
+  503: { title: 'Service Unavailable', code: 'REPRESENTATION_UNAVAILABLE', detail: 'The requested content is temporarily unavailable.' },
 };
 
 export function negotiate(accept, types = [HTML, MARKDOWN]) {
@@ -37,21 +44,13 @@ function representationHeaders(source, page, type) {
   return headers;
 }
 
-export function errorResponse(request, status, original) {
+export function errorResponse(request, status, original, details = {}) {
   const url = new URL(request.url);
-  const title = { 404: 'Not Found', 405: 'Method Not Allowed', 406: 'Not Acceptable', 503: 'Service Unavailable' }[status];
-  const noApi = /^\/api(?:\/|$)/.test(url.pathname);
-  const detail = status === 404
-    ? (noApi ? 'No API access is available on this portfolio and blog.' : 'This page does not exist. Use the site guide or sitemap to find a published page.')
-    : status === 405 ? 'This website supports reading public content with GET and HEAD. No API access or write operations are available.'
-      : status === 406 ? 'This page is available as text/html or text/markdown. Request one of these media types, or use its Markdown link.'
-        : 'The requested content representation is temporarily unavailable. Try the HTML page or site guide.';
-  // Clients probing an API URL often send */*. Give them the no-API
-  // explanation as structured data while honoring specific Accept headers.
-  const formats = noApi
-    ? ['application/problem+json', 'application/json', HTML, MARKDOWN]
-    : [HTML, MARKDOWN, 'application/problem+json', 'application/json'];
-  const type = negotiate(request.headers.get('Accept'), formats) || 'application/problem+json';
+  const { title, code } = errors[status];
+  const detail = details.detail ?? errors[status].detail;
+  const isApi = /^\/api(?:\/|$)/.test(url.pathname);
+  const type = isApi ? 'application/problem+json'
+    : negotiate(request.headers.get('Accept'), [HTML, MARKDOWN, 'application/problem+json', 'application/json']) || 'application/problem+json';
   const headers = new Headers(original?.headers);
   varyAccept(headers);
   headers.set('Content-Type', type);
@@ -66,11 +65,11 @@ export function errorResponse(request, status, original) {
   let body;
   if (type === HTML && original) body = original.body;
   else if (type === HTML) body = `<!doctype html><html lang="en"><meta charset="utf-8"><title>${status} ${title}</title><h1>${status} ${title}</h1><p>${detail}</p><p><a href="/agents/">Site access guide</a> · <a href="/sitemap.xml">Sitemap</a> · <a href="/llms.txt">llms.txt</a></p></html>`;
-  else if (type === MARKDOWN) body = `# ${status} ${title}\n\n${detail}\n\n- [Site access guide](${recovery.guide})\n- [Agent index](${recovery.llms})\n- [Sitemap](${recovery.sitemap})\n- [Blog](${recovery.blog})\n\nNo API access is available. Read public pages with GET and Accept: text/markdown.\n`;
+  else if (type === MARKDOWN) body = `# ${status} ${title}\n\n${detail}\n\n- [Site access guide](${recovery.guide})\n- [Agent index](${recovery.llms})\n- [Sitemap](${recovery.sitemap})\n- [Blog](${recovery.blog})\n`;
   else body = JSON.stringify({
     type: 'about:blank', title, status, detail, instance: url.pathname,
-    code: { 404: 'NOT_FOUND', 405: 'METHOD_NOT_ALLOWED', 406: 'NOT_ACCEPTABLE', 503: 'REPRESENTATION_UNAVAILABLE' }[status],
-    resolution: 'Find a published URL in the sitemap or site guide; read pages with GET and Accept: text/markdown or text/html.',
+    code,
+    resolution: details.resolution ?? 'Consult the agent guide for supported URLs, methods, and response formats.',
     links: recovery,
   });
   return new Response(request.method === 'HEAD' ? null : body, { status, headers });
