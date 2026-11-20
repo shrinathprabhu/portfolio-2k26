@@ -135,6 +135,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy("src/humans.json");
   eleventyConfig.addPassthroughCopy("src/openapi.json");
+  eleventyConfig.addPassthroughCopy("src/agent-home.json");
   eleventyConfig.addPassthroughCopy({ "src/.well-known": ".well-known" });
   eleventyConfig.addPassthroughCopy({
     "src/.well-known/security.txt": "security.txt",

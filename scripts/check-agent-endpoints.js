@@ -58,11 +58,13 @@ for (const page of index.pages) {
 }
 
 const files = new Map();
+const catalogPath = '/.well-known/api-catalog';
+const profile = 'application/linkset+json;profile="https://www.rfc-editor.org/info/rfc9727"';
 for (const [path, type] of [
   ['/robots.txt', 'text/plain'], ['/llms.txt', 'text/plain'],
   ['/.well-known/security.txt', 'text/plain'], ['/sitemap.xml', 'application/xml'],
   ['/feed.xml', 'application/xml'], ['/openapi.json', 'application/json'],
-  ['/.well-known/api-catalog', 'application/linkset+json'], ['/auth.md', 'text/markdown'],
+  [catalogPath, profile], ['/auth.md', 'text/markdown'],
   ['/humans.json', 'application/json'], ['/audio/intro.json', 'application/json'],
 ]) {
   const response = await get(path);
@@ -71,16 +73,28 @@ for (const [path, type] of [
   if (type === 'application/json') JSON.parse(body);
   files.set(path, body);
 }
-const catalogPath = '/.well-known/api-catalog';
-const catalogHead = await get(catalogPath, 'application/linkset+json', { method: 'HEAD' });
-check(catalogHead, 200, 'application/linkset+json');
+const catalogHead = await get(catalogPath, profile, { method: 'HEAD' });
+check(catalogHead, 200, profile);
 assert.ok(catalogHead.headers.get('Link')?.includes(`<${catalogPath}>; rel="api-catalog"`));
 assert.equal(await catalogHead.text(), '');
 const catalog = JSON.parse(files.get(catalogPath));
+const collection = catalog.linkset.find(entry => entry.anchor === index.site + catalogPath);
+assert.ok(collection.item.some(link => link.href === index.site + '/openapi.json'));
+assert.ok(collection.item.some(link => link.href === index.site + '/?mode=agent'));
 const website = catalog.linkset.find(entry => entry.anchor === index.site + '/');
 assert.ok(website?.['service-desc'].some(link => link.href === new URL('/openapi.json', index.site).href));
 assert.ok(website?.['service-doc'].some(link => link.href === new URL('/agents/', index.site).href));
 assert.match(files.get('/auth.md'), /^# .*auth\.md\b/im);
+const agent = await get('/?mode=agent', 'text/html');
+check(agent, 200, 'application/json');
+const view = await agent.json();
+assert.deepEqual(view.api.endpoints, []);
+assert.equal(view.authentication.required, false);
+for (const capability of view.capabilities) {
+  const target = new URL(capability.url);
+  assert.equal(target.origin, index.site);
+  check(await get(target.pathname, capability.type, { method: 'HEAD' }), 200, capability.type);
+}
 const spec = JSON.parse(files.get('/openapi.json'));
 assert.equal(spec.openapi, '3.1.1');
 assert.deepEqual(spec.paths, {});

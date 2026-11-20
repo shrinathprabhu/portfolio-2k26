@@ -1,0 +1,24 @@
+{
+  "name": "Shrinath Prabhu’s portfolio and blog",
+  "url": "https://shrinath.me/",
+  "documentation": "https://shrinath.me/agents/",
+  "api": {
+    "available": false,
+    "endpoints": [],
+    "catalog": "https://shrinath.me/.well-known/api-catalog",
+    "openapi": "https://shrinath.me/openapi.json"
+  },
+  "authentication": {
+    "required": false,
+    "scheme": "none",
+    "documentation": "https://shrinath.me/auth.md"
+  },
+  "methods": ["GET", "HEAD"],
+  "capabilities": [
+    { "name": "Discover public pages and their Markdown URLs", "url": "https://shrinath.me/content-index.json", "type": "application/json" },
+    { "name": "Read the professional profile", "url": "https://shrinath.me/about/index.md", "type": "text/markdown" },
+    { "name": "Read project case studies", "url": "https://shrinath.me/work/index.md", "type": "text/markdown" },
+    { "name": "Browse blog posts", "url": "https://shrinath.me/blog/index.md", "type": "text/markdown" },
+    { "name": "Follow recent articles", "url": "https://shrinath.me/feed.xml", "type": "application/xml" }
+  ]
+}

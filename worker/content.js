@@ -82,10 +82,17 @@ export async function serveContent(request, env) {
   const directMarkdown = markdownPages.get(url.pathname);
   const page = pages.get(url.pathname) || directMarkdown;
   if (page) {
-    const type = negotiate(request.headers.get('Accept'), directMarkdown ? [MARKDOWN] : [HTML, MARKDOWN]);
-    if (!type) return errorResponse(request, 406);
     const assetUrl = new URL(request.url);
-    assetUrl.pathname = new URL(type === MARKDOWN ? page.markdown : page.url).pathname;
+    let type;
+    if (url.pathname === '/' && url.searchParams.get('mode') === 'agent') {
+      type = 'application/json; charset=utf-8';
+      assetUrl.pathname = '/agent-home.json';
+      assetUrl.search = '';
+    } else {
+      type = negotiate(request.headers.get('Accept'), directMarkdown ? [MARKDOWN] : [HTML, MARKDOWN]);
+      if (!type) return errorResponse(request, 406);
+      assetUrl.pathname = new URL(type === MARKDOWN ? page.markdown : page.url).pathname;
+    }
     const headers = new Headers(request.headers);
     headers.set('Accept', type);
     const asset = await env.ASSETS.fetch(new Request(assetUrl, { method: request.method, headers }));

@@ -65,7 +65,7 @@
   Cache-Control: public, max-age=0, must-revalidate
 
 /.well-known/api-catalog
-  Content-Type: application/linkset+json
+  Content-Type: application/linkset+json;profile="https://www.rfc-editor.org/info/rfc9727"
   Link: </.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json"
   Cache-Control: public, max-age=0, must-revalidate
 

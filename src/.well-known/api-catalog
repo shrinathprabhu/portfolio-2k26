@@ -16,6 +16,21 @@
           "title": "Reading public pages and blog posts"
         }
       ]
+    },
+    {
+      "anchor": "https://shrinath.me/.well-known/api-catalog",
+      "item": [
+        {
+          "href": "https://shrinath.me/openapi.json",
+          "type": "application/json",
+          "title": "OpenAPI declaration of no public API"
+        },
+        {
+          "href": "https://shrinath.me/?mode=agent",
+          "type": "application/json",
+          "title": "Portfolio capabilities and access requirements"
+        }
+      ]
     }
   ]
 }

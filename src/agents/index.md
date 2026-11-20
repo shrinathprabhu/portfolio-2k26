@@ -26,6 +26,7 @@ The [API catalog](/.well-known/api-catalog) links to that declaration and this g
 
 ## Discover pages and articles
 
+- The [agent homepage](/?mode=agent) returns a JSON summary of access, capabilities, and links to public content.
 - [llms.txt](/llms.txt) provides a concise reading guide and Markdown links.
 - [Sitemap](/sitemap.xml) lists canonical public pages and posts.
 - [Content index](/content-index.json) lists page titles, canonical URLs, and Markdown URLs. It is regenerated with the site.

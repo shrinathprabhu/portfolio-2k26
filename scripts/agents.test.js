@@ -109,6 +109,39 @@ test('negotiated variants keep separate validators, HEAD metadata, and 304 bodie
   assert.equal(other.status, 200);
 });
 
+test('only the homepage agent query selects JSON, including for browser navigation', async () => {
+  const env = assets();
+  const agentUrl = '/?utm_source=test&mode=agent';
+  const agent = await worker.fetch(request(agentUrl, 'text/html'), env);
+  assert.equal(agent.status, 200);
+  assert.match(agent.headers.get('Content-Type'), /^application\/json\b/);
+  const view = await agent.json();
+  assert.deepEqual(view.api.endpoints, Object.keys(JSON.parse(read('/openapi.json')).paths));
+  assert.equal(view.api.available, index.apiAvailable);
+  assert.equal(view.authentication.required, false);
+  assert.equal(view.authentication.documentation, index.site + '/auth.md');
+  assert.deepEqual(view.methods, ['GET', 'HEAD']);
+  assert.ok(view.capabilities.length > 0);
+  for (const capability of view.capabilities) {
+    const url = new URL(capability.url);
+    assert.equal(url.origin, index.site);
+    assert.ok(existsSync(`_site${url.pathname}`), capability.url);
+  }
+  const head = await worker.fetch(request(agentUrl, '*/*', { method: 'HEAD' }), env);
+  assert.equal(head.headers.get('ETag'), agent.headers.get('ETag'));
+  assert.equal(await head.text(), '');
+  const headers = { 'If-None-Match': agent.headers.get('ETag') };
+  const cached = await worker.fetch(request(agentUrl, 'application/json', { headers }), env);
+  assert.equal(cached.status, 304);
+  for (const path of ['/', '/?mode=reader', '/blog/?mode=agent']) {
+    const html = await worker.fetch(request(path, 'text/html', { headers }), env);
+    assert.equal(html.status, 200);
+    assert.match(html.headers.get('Content-Type'), /^text\/html\b/);
+  }
+  const write = await worker.fetch(request(agentUrl, 'application/json', { method: 'POST' }), env);
+  assert.equal(write.status, 405);
+});
+
 test('API path probes get structured errors by default and honor explicit format preferences', async () => {
   const env = assets();
   for (const path of ['/api', '/api/', '/api/nonexistent']) {
@@ -278,9 +311,11 @@ test('the catalog and auth.md lead agents to the published site and its access i
   const catalog = await worker.fetch(request(catalogPath, 'application/linkset+json'), env);
   assert.equal(catalog.status, 200);
   const { linkset } = await catalog.json();
-  assert.equal(linkset.length, 1);
-  const [portfolio] = linkset;
-  assert.equal(portfolio.anchor, 'https://shrinath.me/');
+  const portfolio = linkset.find(entry => entry.anchor === index.site + '/');
+  const collection = linkset.find(entry => entry.anchor === index.site + catalogPath);
+  assert.deepEqual(collection.item.map(link => link.href), [
+    'https://shrinath.me/openapi.json', 'https://shrinath.me/?mode=agent',
+  ]);
   const spec = JSON.parse(read('/openapi.json'));
   assert.equal(portfolio['service-desc'][0].href, 'https://shrinath.me/openapi.json');
   assert.equal(portfolio['service-doc'][0].href, spec.externalDocs.url);

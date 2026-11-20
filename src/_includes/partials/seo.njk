@@ -53,6 +53,7 @@
 <link rel="canonical" href="{{ canonical or ('https://shrinath.me' + page.url) }}" />
 <link rel="describedby" type="text/plain" href="/llms.txt" />
 {% if page.url == "/" %}
+<link rel="alternate" type="application/json" href="/?mode=agent" title="Agent capabilities" />
 <link rel="api-catalog" type="application/linkset+json" href="/.well-known/api-catalog" />
 {% endif %}
 {% if robots != "noindex, nofollow" %}
