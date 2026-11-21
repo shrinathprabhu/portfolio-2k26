@@ -1,5 +1,6 @@
 ---
 title: "Everyone Can Pass Your Coding Test Now. Here Is What to Hire For Instead"
+seoTitle: "Everyone Can Pass Your Coding Test Now. Hire for This Instead"
 description: "When a candidate can generate a flawless answer in seconds, the take-home assignment and the algorithm quiz tell you almost nothing. What to look for in engineers now, how to run an interview that AI cannot fake, and the red flags worth more than any score."
 date: 2026-11-12
 postTags: ["posts", "hiring", "leadership", "ai"]

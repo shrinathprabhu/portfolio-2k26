@@ -1,5 +1,6 @@
 ---
 title: "Your Web3 App Doesn't Have a Marketing Problem. It Has a Step Count Problem"
+seoTitle: "Your Web3 App Has a Step Count Problem, Not a Marketing One"
 description: "Most Web3 products lose people before the first transaction: at the wallet install, the seed phrase, the bridge, the gas token. Lessons from building a wallet, a transfer app with 65K+ accounts and cross-chain widgets, and the design rules I now follow."
 date: 2026-10-31
 postTags: ["posts", "web3", "ux", "product"]

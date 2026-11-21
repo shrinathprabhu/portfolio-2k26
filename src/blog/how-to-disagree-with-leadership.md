@@ -1,5 +1,6 @@
 ---
 title: "Stop Nodding in Meetings: How to Disagree With Your Boss and Keep Your Job"
+seoTitle: "How to Disagree With Your Boss and Keep Your Job"
 description: "Saying 'sounds good' to a plan you think will fail is not being a team player. It is withholding the thing you are paid for. How to bring your real opinion to founders and managers, clearly and early, without becoming the difficult one."
 date: 2026-11-05
 postTags: ["posts", "leadership", "career", "communication"]

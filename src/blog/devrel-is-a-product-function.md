@@ -1,5 +1,6 @@
 ---
 title: "Nobody Adopted a Database Because of a T-Shirt: DevRel Is a Product Job"
+seoTitle: "DevRel Is a Product Job: Nobody Adopts a Database for a T-Shirt"
 description: "Developers do not adopt a platform because of a conference booth. They adopt it because they got something working in ten minutes. What good developer relations actually consists of, how to measure it, and where teams waste the budget."
 date: 2026-11-02
 postTags: ["posts", "devrel", "developer-experience", "product"]

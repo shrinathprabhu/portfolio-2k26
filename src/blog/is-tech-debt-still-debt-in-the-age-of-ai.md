@@ -1,5 +1,6 @@
 ---
 title: "Tech Debt Got a Cheaper Interest Rate. Then AI Opened a New Credit Card"
+seoTitle: "Tech Debt in the Age of AI: Cheaper Interest, New Credit Card"
 description: "AI made some tech debt cheap to repay and made other kinds grow faster than ever. The useful question is no longer how much debt you have, but which kind: code you can regenerate, or decisions nobody understands any more."
 date: 2026-11-09
 postTags: ["posts", "ai", "architecture", "engineering"]

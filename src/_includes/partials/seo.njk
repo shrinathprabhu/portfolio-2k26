@@ -1,8 +1,10 @@
 {# ── SEO Meta Tags ── #}
 
 {# Title #}
+{# seoTitle is an optional shorter <title> for search results (aim for 60
+   characters or fewer); the page heading and social cards keep the full title. #}
 {% if title %}
-<title>{{ title }}</title>
+<title>{{ seoTitle or title }}</title>
 {% else %}
 <title>Shrinath Prabhu | Senior Staff Frontend Engineer</title>
 {% endif %}

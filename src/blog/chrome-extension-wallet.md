@@ -1,5 +1,6 @@
 ---
 title: "Making Aave Think We Were MetaMask: Four Decisions Behind a 10-Chain Wallet"
+seoTitle: "Making Aave Think We Were MetaMask: Building a 10-Chain Wallet"
 description: "A non-custodial sidebar wallet that showed one balance across 10+ chains inside apps built for MetaMask. The four decisions that shaped it, what each one cost, and the failure mode that kept me up at night."
 date: 2026-05-02
 category: "Web3"

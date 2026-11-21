@@ -1,5 +1,6 @@
 ---
 title: "Your First Customer Will Not Come From Marketing: How Cursor, Lovable, Clay and Resend Got Theirs"
+seoTitle: "How Cursor, Lovable, Clay and Resend Got Their First Customers"
 description: "The first customers of today's fastest-growing software companies did not come from ads or growth hacks. They came from an existing community, founder-led conversations and a product narrow enough to recommend. The patterns, and how to apply them."
 date: 2026-11-06
 postTags: ["posts", "sales", "startups", "growth"]
