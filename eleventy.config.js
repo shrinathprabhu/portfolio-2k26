@@ -11,6 +11,28 @@ import {
 } from "fs";
 import { join, basename, extname } from "path";
 import { createHash } from "crypto";
+import { execFileSync } from "child_process";
+
+// Last time a source file changed, for sitemap <lastmod> on pages that have
+// no hand-written dateModified. Uncommitted edits count as today; a file git
+// does not know (or no git at all) gives no date, so no lastmod is emitted.
+const editDateCache = new Map();
+function lastEdited(inputPath) {
+  if (!inputPath) return undefined;
+  if (editDateCache.has(inputPath)) return editDateCache.get(inputPath);
+  let date;
+  try {
+    const run = (args) =>
+      execFileSync("git", args, { encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }).trim();
+    if (run(["status", "--porcelain", "--", inputPath])) date = new Date();
+    else {
+      const committed = run(["log", "-1", "--format=%cI", "--", inputPath]);
+      if (committed) date = new Date(committed);
+    }
+  } catch {}
+  editDateCache.set(inputPath, date);
+  return date;
+}
 
 // Build cache for generated WebP variants.
 const CACHE_DIR = ".cache";
@@ -226,6 +248,16 @@ export default function (eleventyConfig) {
   });
 
   // YYYY-MM-DD, for sitemap <lastmod>
+  eleventyConfig.addFilter("lastEdited", lastEdited);
+
+  // Newest edit across posts, for the feed's own <updated>
+  eleventyConfig.addFilter("newestEdit", (posts) =>
+    posts.reduce((newest, post) => {
+      const d = new Date(post.data.dateModified || post.date);
+      return d > newest ? d : newest;
+    }, new Date(0))
+  );
+
   eleventyConfig.addFilter("ymd", (dateObj) => {
     return new Date(dateObj).toISOString().slice(0, 10);
   });

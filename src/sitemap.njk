@@ -9,10 +9,16 @@ eleventyExcludeFromCollections: true
   <url>
     <loc>https://shrinath.me{{ page.url }}</loc>
     {#- lastmod only where a real edit date is known; a build-time "now" on
-        every URL teaches crawlers to ignore the field #}
-    {%- if page.data.dateModified or page.data.category %}
+        every URL teaches crawlers to ignore the field. Posts use their
+        visible "Updated" date (dateModified) so the sitemap, the page and its
+        structured data agree; other pages use the source file's last commit. #}
+    {%- if page.data.category %}
     <lastmod>{{ (page.data.dateModified or page.date) | ymd }}</lastmod>
-    {%- endif %}
+    {%- elif page.data.dateModified %}
+    <lastmod>{{ page.data.dateModified | ymd }}</lastmod>
+    {%- else %}{% set edited = page.inputPath | lastEdited %}{% if edited %}
+    <lastmod>{{ edited | ymd }}</lastmod>
+    {%- endif %}{% endif %}
   </url>
   {%- endif %}
   {%- endfor %}
